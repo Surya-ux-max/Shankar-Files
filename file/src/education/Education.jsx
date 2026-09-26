@@ -1,201 +1,156 @@
 ﻿import './Education.css'
 
 export default function Education() {
+  const educationData = [
+    {
+      id: '01',
+      type: 'BACHELOR OF ENGINEERING',
+      jpType: '大学工学部',
+      status: 'ACTIVE PURSUIT',
+      rank: 'RANK S+',
+      institution: 'Sri Eshwar College of Engineering',
+      location: 'Coimbatore, Tamil Nadu',
+      degree: 'B.E. Computer Science & Engineering',
+      metricLabel: 'CGPA SCORE',
+      metricValue: '8.26 / 10',
+      period: '2024 – 2028',
+      details: 'Core CS Foundations, Data Structures, Algorithms & AI Pipelines',
+      sealText: 'SECE // CSE 2028'
+    },
+    {
+      id: '02',
+      type: 'HIGHER SECONDARY',
+      jpType: '高等教育修了',
+      status: 'DISTINCTION',
+      rank: 'RANK S',
+      institution: 'Jayam Vidhyalaya Higher Secondary School',
+      location: 'Dharmapuri, Tamil Nadu',
+      degree: 'Higher Secondary Education',
+      metricLabel: 'BOARD SCORE',
+      metricValue: '96.67%',
+      period: '2023 – 2024',
+      details: 'Mathematics & Computer Science Stream · High Academic Honors',
+      sealText: 'JVHSS // 96.67%'
+    }
+  ]
+
   return (
-    <section className="anime-shop-edu" id="education">
+    <section className="anime-edu-section" id="education">
       
-      <div className="edu-shop-container">
+      <div className="anime-edu-container">
         
-        {/* Shophouse Chalkboard Sign Header */}
-        <div className="edu-chalkboard-sign">
-          <div className="edu-sign-hanger" aria-hidden="true">
-            <span className="sign-bolt" />
-            <span className="sign-wire left" />
-            <span className="sign-wire right" />
+        {/* Shophouse Timber Signboard Header with Japanese Subtitle */}
+        <div className="shop-hanging-header">
+          <div className="beam-hook" aria-hidden="true">
+            <div className="timber-beam" />
+            <div className="hanging-chains">
+              <span className="chain-link" />
+              <span className="chain-link" />
+            </div>
           </div>
-          <div className="edu-chalk-box">
-            <span className="chalk-star tl">✦</span>
-            <span className="chalk-star tr">✦</span>
-            <span className="chalk-star bl">✦</span>
-            <span className="chalk-star br">✦</span>
-            <span className="edu-chap-tag">ATELIER ARCHIVES // SECTION 03</span>
-            <h2 className="edu-shop-title">Academic Craft &amp; Guild</h2>
+
+          <div className="shop-header-sign">
+            <span className="header-eyebrow">✦ 学歴 // ACADEMIC GUILD ARCHIVES ✦</span>
+            <h2 className="header-title">Credentials &amp; Milestones</h2>
+            <div className="header-ink-line">
+              <span className="line-center-knot">✦</span>
+            </div>
           </div>
         </div>
 
-        {/* The Two Master Craft Board Stands (Side by Side) */}
-        <div className="edu-boards-grid">
-          
-          {/* Card 1: College Guild Certificate */}
-          <div className="shop-craft-card card-college">
-            
-            {/* Awning Top Header */}
-            <div className="card-awning-header" aria-hidden="true">
-              <div className="awning-shingles">
-                <div className="shingle" />
-                <div className="shingle dark" />
-                <div className="shingle" />
-                <div className="shingle dark" />
-                <div className="shingle" />
-              </div>
-              <div className="awning-teeth">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="tooth" />
-                ))}
-              </div>
-            </div>
-
-            {/* Anime Guild Stamp */}
-            <div className="guild-ink-stamp stamp-college" aria-hidden="true">
-              <div className="stamp-ring">
-                <span className="stamp-org">GUILD CSE</span>
-                <strong className="stamp-score">8.26 CGPA</strong>
-                <span className="stamp-yrs">2024-2028</span>
-              </div>
-            </div>
-
-            <div className="craft-card-inner">
+        {/* Sidewalk Chalkboard Easels (Side by Side) */}
+        <div className="edu-easel-grid">
+          {educationData.map((item) => (
+            <div key={item.id} className="easel-board-stand">
               
-              <div className="craft-folio-tag">
-                <span className="folio-label">RECORD № 01 // UNIVERSITY</span>
-                <span className="status-badge-active">● PURSUING</span>
-              </div>
-
-              <h3 className="craft-inst-name">Sri Eshwar College of Engineering</h3>
-              
-              <div className="craft-location">
-                <span className="loc-pin">📍</span>
-                <span>Coimbatore, Tamil Nadu</span>
-              </div>
-
-              {/* Course Detail Plaque */}
-              <div className="craft-course-strip">
-                <div className="course-head">
-                  <span className="course-label">DISCIPLINE</span>
-                  <span className="course-time">2024 – 2028</span>
+              {/* Awning Shingle Topper */}
+              <div className="easel-shingle-topper" aria-hidden="true">
+                <div className="shingle-bars">
+                  <div className="s-bar" />
+                  <div className="s-bar dark" />
+                  <div className="s-bar" />
+                  <div className="s-bar dark" />
+                  <div className="s-bar" />
                 </div>
-                <h4 className="course-title">B.E. Computer Science & Engineering</h4>
+                <div className="shingle-scallops">
+                  {[...Array(5)].map((_, i) => (
+                    <div key={i} className="s-scallop-arch" />
+                  ))}
+                </div>
               </div>
 
-              {/* Hand-hatched Metric Progress Gauge */}
-              <div className="craft-metric-gauge">
-                <div className="gauge-header">
-                  <span className="gauge-title">Cumulative Grade Metric</span>
-                  <span className="gauge-val">8.26 <span className="val-sub">/ 10</span></span>
+              {/* Main Blackboard Card */}
+              <div className="easel-blackboard">
+                
+                {/* Top Board Meta */}
+                <div className="board-meta-strip">
+                  <span className="board-index">№ {item.id}</span>
+                  <span className="board-jp-tag">{item.jpType}</span>
+                  <span className="board-period">{item.period}</span>
                 </div>
-                <div className="gauge-track">
-                  <div className="gauge-fill fill-sece" style={{ width: '82.6%' }}>
-                    <div className="gauge-hatches" />
+
+                {/* Hand-drawn Anime Seal Stamp */}
+                <div className="anime-round-seal" aria-hidden="true">
+                  <div className="seal-border-circle">
+                    <span className="seal-tag">{item.rank}</span>
+                    <strong className="seal-val">{item.sealText}</strong>
                   </div>
                 </div>
-              </div>
 
-              {/* Anime Annotation Note */}
-              <div className="craft-note-row">
-                <svg className="craft-arrow-svg" width="32" height="22" viewBox="0 0 32 22" fill="none">
-                  <path d="M4 16 C 10 10, 18 12, 26 5" stroke="#18181b" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="3 2" />
-                  <path d="M19 5 L 27 4 L 24 12" stroke="#18181b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="craft-note-text">AI Systems, Data Structures & Algorithms</span>
-              </div>
-
-            </div>
-
-            {/* Corner Bracket Reinforcements */}
-            <span className="corner-bracket cb-tl">+</span>
-            <span className="corner-bracket cb-tr">+</span>
-            <span className="corner-bracket cb-bl">+</span>
-            <span className="corner-bracket cb-br">+</span>
-
-          </div>
-
-          {/* Card 2: Higher Secondary Board */}
-          <div className="shop-craft-card card-school">
-            
-            {/* Awning Top Header */}
-            <div className="card-awning-header" aria-hidden="true">
-              <div className="awning-shingles">
-                <div className="shingle" />
-                <div className="shingle dark" />
-                <div className="shingle" />
-                <div className="shingle dark" />
-                <div className="shingle" />
-              </div>
-              <div className="awning-teeth">
-                {[...Array(5)].map((_, i) => (
-                  <div key={i} className="tooth" />
-                ))}
-              </div>
-            </div>
-
-            {/* Anime Guild Stamp */}
-            <div className="guild-ink-stamp stamp-school" aria-hidden="true">
-              <div className="stamp-ring">
-                <span className="stamp-org">HONORS HSC</span>
-                <strong className="stamp-score">96.67%</strong>
-                <span className="stamp-yrs">2023-2024</span>
-              </div>
-            </div>
-
-            <div className="craft-card-inner">
-              
-              <div className="craft-folio-tag">
-                <span className="folio-label">RECORD № 02 // ACADEMIC</span>
-                <span className="status-badge-done">✓ DISTINCTION</span>
-              </div>
-
-              <h3 className="craft-inst-name">Jayam Vidhyalaya Higher Secondary School</h3>
-              
-              <div className="craft-location">
-                <span className="loc-pin">📍</span>
-                <span>Dharmapuri, Tamil Nadu</span>
-              </div>
-
-              {/* Course Detail Plaque */}
-              <div className="craft-course-strip">
-                <div className="course-head">
-                  <span className="course-label">STREAM</span>
-                  <span className="course-time">2023 – 2024</span>
-                </div>
-                <h4 className="course-title">Higher Secondary Education</h4>
-              </div>
-
-              {/* Hand-hatched Metric Progress Gauge */}
-              <div className="craft-metric-gauge">
-                <div className="gauge-header">
-                  <span className="gauge-title">Board Examination Score</span>
-                  <span className="gauge-val">96.67<span className="val-sub">%</span></span>
-                </div>
-                <div className="gauge-track">
-                  <div className="gauge-fill fill-jayam" style={{ width: '96.67%' }}>
-                    <div className="gauge-hatches" />
+                {/* Institution Heading */}
+                <div className="board-institution-wrap">
+                  <h3 className="board-inst-name">{item.institution}</h3>
+                  <div className="board-inst-loc">
+                    <span className="loc-icon">📍</span>
+                    <span>{item.location}</span>
                   </div>
                 </div>
+
+                {/* Degree / Program Strip */}
+                <div className="board-program-box">
+                  <div className="program-header">
+                    <span className="prog-type">{item.type}</span>
+                    <span className={`prog-status ${item.status === 'DISTINCTION' ? 'gold' : 'green'}`}>
+                      {item.status}
+                    </span>
+                  </div>
+                  <h4 className="prog-degree-title">{item.degree}</h4>
+                </div>
+
+                {/* Score & CGPA Plaque */}
+                <div className="board-score-plaque">
+                  <span className="score-desc">{item.metricLabel}</span>
+                  <div className="score-val-row">
+                    <span className="score-main-number">{item.metricValue}</span>
+                    <div className="score-ink-hatch" aria-hidden="true" />
+                  </div>
+                </div>
+
+                {/* Focus Note Annotation */}
+                <div className="board-focus-note">
+                  <span className="quill-pin">✎</span>
+                  <p className="focus-text">{item.details}</p>
+                </div>
+
+                {/* Corner Reinforcement Bolts */}
+                <span className="board-bolt b-tl">+</span>
+                <span className="board-bolt b-tr">+</span>
+                <span className="board-bolt b-bl">+</span>
+                <span className="board-bolt b-br">+</span>
+
               </div>
 
-              {/* Anime Annotation Note */}
-              <div className="craft-note-row">
-                <svg className="craft-arrow-svg" width="32" height="22" viewBox="0 0 32 22" fill="none">
-                  <path d="M4 16 C 10 10, 18 12, 26 5" stroke="#18181b" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="3 2" />
-                  <path d="M19 5 L 27 4 L 24 12" stroke="#18181b" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
-                </svg>
-                <span className="craft-note-text">Mathematics & Computer Science Stream</span>
+              {/* Wooden Easel Legs at Bottom */}
+              <div className="easel-wooden-legs" aria-hidden="true">
+                <div className="leg leg-left" />
+                <div className="leg leg-right" />
               </div>
 
             </div>
-
-            {/* Corner Bracket Reinforcements */}
-            <span className="corner-bracket cb-tl">+</span>
-            <span className="corner-bracket cb-tr">+</span>
-            <span className="corner-bracket cb-bl">+</span>
-            <span className="corner-bracket cb-br">+</span>
-
-          </div>
-
+          ))}
         </div>
 
       </div>
-
     </section>
   )
 }

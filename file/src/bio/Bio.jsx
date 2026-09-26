@@ -6,28 +6,28 @@ export default function Bio() {
       jarNo: '01',
       jarIcon: '⚡',
       title: 'Full-Stack Web',
-      tag: 'CRAFT',
+      tag: 'LEVEL 98',
       desc: 'Building responsive, rich interactive web applications with clean design.'
     },
     {
       jarNo: '02',
       jarIcon: '🛠️',
       title: 'Backend Systems',
-      tag: 'ENGINE',
+      tag: 'LEVEL 95',
       desc: 'Architecting scalable server-side systems, robust APIs & databases.'
     },
     {
       jarNo: '03',
       jarIcon: '📱',
       title: 'Mobile Apps',
-      tag: 'NATIVE',
+      tag: 'LEVEL 90',
       desc: 'Developing smooth, high-performance cross-platform mobile experiences.'
     },
     {
       jarNo: '04',
       jarIcon: '🧠',
       title: 'AI & Machine Learning',
-      tag: 'INTELLIGENCE',
+      tag: 'LEVEL 99',
       desc: 'Engineering intelligent pipelines, models & pragmatic AI integrations.'
     }
   ]
@@ -49,8 +49,8 @@ export default function Bio() {
             <span className="chalk-corner tr">✦</span>
             <span className="chalk-corner bl">✦</span>
             <span className="chalk-corner br">✦</span>
-            <span className="chalk-sub">ATELIER ARCHIVES // SECTION 02</span>
-            <h2 className="chalk-heading">The Shopkeeper's Ledger</h2>
+            <span className="chalk-sub">冒険の書 // CHAPTER 02</span>
+            <h2 className="chalk-heading">The Artisan's Quest Log</h2>
           </div>
         </div>
 
@@ -75,7 +75,11 @@ export default function Bio() {
             
             {/* Bio Narrative Note / Recipe Card */}
             <div className="bio-recipe-card">
-              <div className="recipe-tag">CHIEF RECIPE // BIO</div>
+              <div className="recipe-tag-row">
+                <span className="recipe-tag">CHARACTER BIO // プロフィール</span>
+                <span className="recipe-rank">RANK: APPRENTICE MASTER</span>
+              </div>
+
               <p className="recipe-lead">
                 I’m <strong className="shop-name-ink">Shankar V</strong>, a <strong>Computer Science student</strong> and <strong>Software Developer</strong> passionate about building impactful software and AI systems.
               </p>
@@ -88,7 +92,7 @@ export default function Bio() {
             <div className="shop-pantry-section">
               <div className="pantry-shelf-label">
                 <span className="label-line" />
-                <span className="label-text">✦ INVENTORY OF SKILLS & DOMAINS ✦</span>
+                <span className="label-text">✦ INVENTORY OF SKILLS &amp; ABILITIES (スキル) ✦</span>
                 <span className="label-line" />
               </div>
 
@@ -113,7 +117,7 @@ export default function Bio() {
             {/* Shopkeeper's Stamp & Motto */}
             <div className="shop-motto-row">
               <span className="motto-feather">🪶</span>
-              <span className="motto-text">"Crafting purposeful software with artisan care & zero fluff."</span>
+              <span className="motto-text">"Crafting purposeful software with artisan care &amp; zero fluff."</span>
             </div>
 
           </div>

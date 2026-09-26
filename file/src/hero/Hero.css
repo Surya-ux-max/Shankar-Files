@@ -1,5 +1,5 @@
 ﻿/* ==========================================================================
-   ANIME SHOPFRONT HERO SECTION — GHIBLI & MANGA SKETCH THEME
+   ANIME SHOP HERO SECTION — COMPLETE MANGA / GHIBLI SKETCH THEME
    ========================================================================== */
 
 .anime-shop-hero {
@@ -18,7 +18,41 @@
 }
 
 /* ==========================================================================
-   SKY BACKDROP & NATURE ELEMENTS
+   SAKURA PETALS FLOATING ANIMATION
+   ========================================================================== */
+.sakura-container {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+  overflow: hidden;
+}
+
+.sakura-petal {
+  position: absolute;
+  top: -20px;
+  animation: fallPetal linear infinite;
+}
+
+@keyframes fallPetal {
+  0% {
+    transform: translateY(0) rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.6;
+  }
+  80% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(105vh) rotate(360deg) translateX(60px);
+    opacity: 0;
+  }
+}
+
+/* ==========================================================================
+   SKY BACKDROP & MANGA ELEMENTS
    ========================================================================== */
 .anime-sky-backdrop {
   position: absolute;
@@ -27,27 +61,76 @@
   z-index: 1;
 }
 
+/* Manga SFX Bubbles */
+.manga-sfx {
+  position: absolute;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  background: #ffffff;
+  border: 2px solid #18181b;
+  padding: 3px 10px;
+  border-radius: 200px 8px 180px 8px / 8px 180px 8px 200px;
+  box-shadow: 2.5px 2.5px 0px #18181b;
+  z-index: 3;
+}
+
+.sfx-kirakira {
+  top: 8%;
+  left: 6%;
+  transform: rotate(-6deg);
+  animation: sfxPulse 4s ease-in-out infinite;
+}
+
+.sfx-katakata {
+  top: 14%;
+  right: 8%;
+  transform: rotate(4deg);
+  animation: sfxPulse 5s ease-in-out infinite 1s;
+}
+
+.sfx-japanese {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 900;
+  color: #18181b;
+  letter-spacing: 0.05em;
+}
+
+.sfx-sub {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  font-weight: 700;
+  color: #71717a;
+}
+
+@keyframes sfxPulse {
+  0%, 100% { transform: translateY(0) scale(1) rotate(-4deg); }
+  50% { transform: translateY(-4px) scale(1.04) rotate(-2deg); }
+}
+
+/* Clouds & Nature */
 .anime-cloud {
   position: absolute;
   filter: drop-shadow(2px 2px 0px rgba(24, 24, 27, 0.15));
 }
 
 .c-left {
-  top: 6%;
-  left: 5%;
+  top: 10%;
+  left: 14%;
   animation: floatCloudLeft 25s ease-in-out infinite alternate;
 }
 
 .c-right {
-  top: 14%;
-  left: 32%;
+  top: 18%;
+  left: 36%;
   animation: floatCloudRight 30s ease-in-out infinite alternate;
 }
 
 .anime-birds {
   position: absolute;
-  top: 10%;
-  left: 20%;
+  top: 12%;
+  left: 26%;
   animation: hoverBirds 6s ease-in-out infinite;
 }
 
@@ -61,7 +144,7 @@
 }
 
 /* ==========================================================================
-   MAIN SHOPHOUSE ARCHITECTURE FAÇADE
+   MAIN SHOPHOUSE FAÇADE
    ========================================================================== */
 .anime-shop-facade {
   position: relative;
@@ -74,13 +157,13 @@
   transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
-/* Roof Ridge & Chimney */
+/* Roof & Chimney & Sleeping Neko */
 .shop-roof-ridge {
   position: relative;
   width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: flex-end;
+  justify-content: space-between;
   margin-bottom: -1px;
   z-index: 4;
 }
@@ -107,14 +190,45 @@
   animation: puffSmoke 3s linear infinite;
 }
 
+.roof-anime-cat {
+  position: relative;
+  right: clamp(40px, 10vw, 120px);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid #18181b;
+  border-bottom: none;
+  padding: 2px 8px;
+  border-radius: 6px 6px 0 0;
+}
+
+.cat-sleeping {
+  font-family: monospace;
+  font-size: 11px;
+  font-weight: bold;
+  color: #18181b;
+}
+
+.cat-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  color: #71717a;
+  font-weight: 600;
+}
+
 .roof-shingles-bar {
-  width: 100%;
-  height: 8px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
   background: #18181b;
   border-radius: 2px 2px 0 0;
 }
 
-/* Double Canvas Awning */
+/* Double Scalloped Canvas Awning */
 .shop-double-awning {
   position: relative;
   width: 100%;
@@ -186,7 +300,6 @@
   box-shadow: 8px 0px 0px #18181b, -8px 0px 0px #18181b;
 }
 
-/* Wooden Structural Pillars */
 .timber-pillar {
   position: absolute;
   top: 0;
@@ -227,7 +340,7 @@
 .sign-ropes {
   display: flex;
   justify-content: space-between;
-  width: 80px;
+  width: 90px;
   height: 14px;
 }
 
@@ -266,12 +379,29 @@
   flex-direction: column;
 }
 
-.board-sub {
+.board-jp-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.jp-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 800;
+  color: #18181b;
+  background: #fef08a;
+  padding: 1px 6px;
+  border: 1px solid #18181b;
+  border-radius: 2px;
+}
+
+.jp-roman {
   font-family: var(--font-mono, monospace);
   font-size: 11px;
   font-weight: 700;
   color: #71717a;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
 }
 
 .shop-title-name {
@@ -280,7 +410,7 @@
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.04em;
-  margin: 2px 0 0;
+  margin: 4px 0 0;
   color: #18181b;
 }
 
@@ -323,14 +453,14 @@
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 8px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
 .menu-item {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
 }
 
 .item-badge {
@@ -339,8 +469,13 @@
   font-weight: 800;
   background: #18181b;
   color: #ffffff;
-  padding: 1px 5px;
+  padding: 2px 6px;
   border-radius: 2px;
+}
+
+.item-text-group {
+  display: flex;
+  flex-direction: column;
 }
 
 .item-name {
@@ -350,26 +485,98 @@
   color: #18181b;
 }
 
-.menu-divider {
-  font-family: var(--font-hand, cursive);
-  font-size: 18px;
-  font-weight: bold;
+.item-jp {
+  font-size: 9.5px;
+  font-weight: 600;
   color: #71717a;
 }
 
-/* Sidewalk Bonsai Plant */
-.sidewalk-plant-pot {
+.menu-divider {
+  font-size: 12px;
+  color: #a1a1aa;
+}
+
+/* RPG Status Bar & Steaming Green Tea */
+.sidewalk-items-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 14px;
+  margin-top: 4px;
+}
+
+.rpg-stat-bar {
+  flex: 1;
+  background: #ffffff;
+  border: 1.5px solid #18181b;
+  padding: 6px 12px;
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 6px;
+  box-shadow: 2px 2px 0px #18181b;
 }
 
-.plant-label {
-  font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: 18px;
-  font-weight: 600;
+.rpg-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 800;
+  background: #18181b;
+  color: #ffffff;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+.rpg-bars {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-line {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-code {
+  font-family: var(--font-mono, monospace);
+  font-size: 8.5px;
+  font-weight: 700;
   color: #52525b;
+  width: 24px;
+}
+
+.stat-meter {
+  flex: 1;
+  height: 6px;
+  background: #faf8f5;
+  border: 1px solid #18181b;
+}
+
+.stat-fill {
+  height: 100%;
+  background: #18181b;
+}
+
+.sidewalk-tea-cup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.tea-steam {
+  font-size: 14px;
+  animation: steamRise 2s ease-in-out infinite;
+}
+
+@keyframes steamRise {
+  0%, 100% { transform: translateY(0) scale(0.9); opacity: 0.4; }
+  50% { transform: translateY(-4px) scale(1.2); opacity: 0.9; }
 }
 
 /* --------------------------------------------------------------------------
@@ -383,7 +590,7 @@
   width: 100%;
 }
 
-/* Hanging Lantern */
+/* Lantern */
 .shop-lantern {
   position: absolute;
   top: -24px;
@@ -401,20 +608,60 @@
 }
 
 .lantern-body {
-  width: 18px;
-  height: 22px;
+  width: 22px;
+  height: 26px;
   background: #ffffff;
   border: 1.8px solid #18181b;
   border-radius: 4px;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lantern-kanji {
+  font-size: 11px;
+  font-weight: 900;
+  color: #18181b;
+  z-index: 2;
 }
 
 .lantern-glow {
   position: absolute;
   inset: 2px;
   background: #fef08a;
-  opacity: 0.8;
+  opacity: 0.85;
   border-radius: 2px;
+}
+
+/* Speech Bubble */
+.anime-speech-bubble {
+  position: absolute;
+  top: -38px;
+  left: 0;
+  background: #ffffff;
+  border: 1.8px solid #18181b;
+  padding: 4px 10px;
+  border-radius: 8px;
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 15px;
+  font-weight: 700;
+  color: #18181b;
+  box-shadow: 2px 2px 0px #18181b;
+  z-index: 5;
+  white-space: nowrap;
+}
+
+.bubble-tail {
+  position: absolute;
+  bottom: -6px;
+  left: 20px;
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  border-right: 1.8px solid #18181b;
+  border-bottom: 1.8px solid #18181b;
+  transform: rotate(45deg);
 }
 
 /* Window Frame Card */
@@ -463,19 +710,12 @@
   display: block;
 }
 
-.glass-reflection-hatch {
+.manga-screentone-overlay {
   position: absolute;
-  top: 0;
-  right: 0;
-  width: 60px;
-  height: 100%;
-  background: repeating-linear-gradient(
-    -45deg,
-    rgba(255, 255, 255, 0.4),
-    rgba(255, 255, 255, 0.4) 3px,
-    transparent 3px,
-    transparent 8px
-  );
+  inset: 0;
+  background-image: radial-gradient(#18181b 1px, transparent 1px);
+  background-size: 6px 6px;
+  opacity: 0.08;
   pointer-events: none;
 }
 
@@ -490,20 +730,29 @@
   color: #18181b;
 }
 
-.plate-tag {
-  color: #71717a;
-  font-size: 9px;
+.plate-rank {
+  background: #fef08a;
   border: 1px solid #18181b;
-  padding: 1px 4px;
+  padding: 1px 5px;
+  font-size: 9px;
+  font-weight: 800;
+  border-radius: 2px;
 }
 
-/* Sidewalk Crate */
+/* Sidewalk Box */
 .sidewalk-crate {
+  display: flex;
+  align-items: center;
+  gap: 6px;
   margin-top: 10px;
   padding: 3px 12px;
   background: #faf8f5;
   border: 1.5px solid #18181b;
   border-radius: 2px;
+}
+
+.crate-daruma {
+  font-size: 12px;
 }
 
 .crate-label {
@@ -515,7 +764,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   SIDEWALK COBBLESTONE PAVEMENT
+   SIDEWALK PAVEMENT
    -------------------------------------------------------------------------- */
 .shop-sidewalk-base {
   width: 100%;
@@ -583,9 +832,9 @@
     align-items: center;
   }
 
-  .anime-tree-foliage {
-    opacity: 0.4;
-    width: 180px;
+  .anime-speech-bubble {
+    left: 50%;
+    transform: translateX(-50%);
   }
 
   .window-frame-card {
@@ -598,17 +847,13 @@
     padding: 24px 12px 30px;
   }
 
-  .awning-stripes {
-    height: 20px;
-  }
-
-  .scallop-petal {
-    height: 12px;
+  .manga-sfx {
+    display: none;
   }
 
   .menu-items {
     flex-direction: column;
-    gap: 4px;
+    gap: 6px;
   }
 
   .menu-divider {

@@ -1,8 +1,8 @@
 ﻿/* ==========================================================================
-   ANIME SHOP EDUCATION SECTION — GUILD BOARDS & CRAFT CERTIFICATES
+   EDUCATION SECTION — ANIME SHOP SIDEWALK EASEL BOARDS
    ========================================================================== */
 
-.anime-shop-edu {
+.anime-edu-section {
   position: relative;
   width: 100%;
   padding: clamp(60px, 8vh, 100px) clamp(16px, 3.5vw, 60px);
@@ -12,10 +12,17 @@
   overflow: hidden;
 }
 
-.edu-shop-container {
+.edu-sky-accents {
+  position: absolute;
+  top: 24px;
+  right: 15%;
+  pointer-events: none;
+}
+
+.anime-edu-container {
   position: relative;
   z-index: 2;
-  max-width: 1080px;
+  max-width: 1040px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -23,145 +30,140 @@
 }
 
 /* --------------------------------------------------------------------------
-   CHALKBOARD HEADER SIGN
+   HANGING TIMBER SIGN HEADER
    -------------------------------------------------------------------------- */
-.edu-chalkboard-sign {
+.shop-hanging-header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: -4px;
 }
 
-.edu-sign-hanger {
+.beam-hook {
   display: flex;
   flex-direction: column;
   align-items: center;
-  position: relative;
-  width: 120px;
-  height: 20px;
+  width: 100%;
+  max-width: 280px;
 }
 
-.sign-bolt {
-  width: 8px;
-  height: 8px;
+.timber-beam {
+  width: 100%;
+  height: 6px;
   background: #18181b;
-  border-radius: 50%;
+  border-radius: 2px;
 }
 
-.sign-wire {
-  position: absolute;
-  top: 4px;
-  width: 50px;
+.hanging-chains {
+  display: flex;
+  justify-content: space-between;
+  width: 140px;
   height: 16px;
 }
 
-.sign-wire.left {
-  left: 10px;
-  border-left: 1.5px solid #18181b;
-  transform: rotate(25deg);
-  transform-origin: top left;
+.chain-link {
+  width: 1.8px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    to bottom,
+    #18181b,
+    #18181b 3px,
+    transparent 3px,
+    transparent 6px
+  );
 }
 
-.sign-wire.right {
-  right: 10px;
-  border-right: 1.5px solid #18181b;
-  transform: rotate(-25deg);
-  transform-origin: top right;
-}
-
-.edu-chalk-box {
+.shop-header-sign {
   position: relative;
-  background: #18181b;
-  color: #ffffff;
-  padding: 10px 28px 12px;
-  border: 2px solid #18181b;
-  box-shadow: 4px 4px 0px rgba(24, 24, 27, 0.4);
+  background: #ffffff;
+  border: 2.2px solid #18181b;
+  padding: 10px 32px 14px;
+  box-shadow: 4px 4px 0px #18181b;
   text-align: center;
 }
 
-.chalk-star {
-  position: absolute;
-  font-size: 10px;
-  color: #a1a1aa;
-}
-
-.chalk-star.tl { top: 3px; left: 5px; }
-.chalk-star.tr { top: 3px; right: 5px; }
-.chalk-star.bl { bottom: 3px; left: 5px; }
-.chalk-star.br { bottom: 3px; right: 5px; }
-
-.edu-chap-tag {
+.header-eyebrow {
   display: block;
   font-family: var(--font-mono, monospace);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.12em;
-  color: #a1a1aa;
+  letter-spacing: 0.14em;
+  color: #71717a;
+  margin-bottom: 2px;
 }
 
-.edu-shop-title {
+.header-title {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(22px, 3vw, 32px);
+  font-size: clamp(24px, 3.2vw, 36px);
   font-weight: 800;
-  letter-spacing: -0.02em;
-  margin: 2px 0 0;
-  color: #ffffff;
+  letter-spacing: -0.03em;
+  margin: 0;
+  color: #18181b;
+}
+
+.header-ink-line {
+  position: relative;
+  width: 80px;
+  height: 1.5px;
+  background: #18181b;
+  margin: 6px auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line-center-knot {
+  font-size: 8px;
+  background: #ffffff;
+  padding: 0 4px;
+  color: #18181b;
 }
 
 /* --------------------------------------------------------------------------
-   CRAFT BOARDS GRID (SIDE BY SIDE)
+   SIDEWALK CHALKBOARD EASEL GRID
    -------------------------------------------------------------------------- */
-.edu-boards-grid {
+.edu-easel-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(28px, 4vw, 44px);
+  gap: clamp(28px, 4vw, 48px);
 }
 
-.shop-craft-card {
+.easel-board-stand {
   position: relative;
-  background: #ffffff;
-  border: 2.5px solid #18181b;
-  border-top: none;
-  box-shadow: 8px 8px 0px #18181b;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.25s ease;
 }
 
-.card-college:hover {
-  transform: translateY(-4px) rotate(-0.5deg);
-  box-shadow: 11px 11px 0px #18181b;
+.easel-board-stand:hover {
+  transform: translateY(-4px);
 }
 
-.card-school:hover {
-  transform: translateY(-4px) rotate(0.5deg);
-  box-shadow: 11px 11px 0px #18181b;
-}
-
-/* Awning Shingles on Card */
-.card-awning-header {
+/* Awning Shingle Topper */
+.easel-shingle-topper {
   width: 100%;
+  margin-bottom: -1px;
 }
 
-.awning-shingles {
+.shingle-bars {
   display: flex;
   height: 18px;
-  border-top: 2.2px solid #18181b;
-  border-bottom: 1.5px solid #18181b;
+  border: 2px solid #18181b;
+  border-bottom: none;
   background: #ffffff;
   overflow: hidden;
 }
 
-.shingle {
+.s-bar {
   flex: 1;
   border-right: 1.5px solid #18181b;
   background: #ffffff;
 }
 
-.shingle:last-child {
+.s-bar:last-child {
   border-right: none;
 }
 
-.shingle.dark {
+.s-bar.dark {
   background: repeating-linear-gradient(
     45deg,
     #18181b,
@@ -171,12 +173,12 @@
   );
 }
 
-.awning-teeth {
+.shingle-scallops {
   display: flex;
   width: 100%;
 }
 
-.tooth {
+.s-scallop-arch {
   flex: 1;
   height: 10px;
   background: #ffffff;
@@ -186,34 +188,66 @@
   margin-top: -1px;
 }
 
-/* Anime Guild Stamp */
-.guild-ink-stamp {
+/* Main Blackboard */
+.easel-blackboard {
+  position: relative;
+  background: #ffffff;
+  border: 2.5px solid #18181b;
+  padding: 24px 22px 20px;
+  box-shadow: 6px 6px 0px #18181b;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  box-sizing: border-box;
+}
+
+.easel-board-stand:hover .easel-blackboard {
+  box-shadow: 9px 9px 0px #18181b;
+}
+
+/* Board Meta */
+.board-meta-strip {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.board-index {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 800;
+  color: #ffffff;
+  background: #18181b;
+  padding: 1px 6px;
+  border-radius: 2px;
+}
+
+.board-period {
+  font-family: var(--font-mono, monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #18181b;
+}
+
+/* Anime Round Seal */
+.anime-round-seal {
   position: absolute;
-  top: 28px;
+  top: 24px;
   right: 18px;
-  width: 72px;
-  height: 72px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
-  border: 2px dashed #18181b;
+  border: 1.8px dashed #18181b;
   display: flex;
   align-items: center;
   justify-content: center;
+  transform: rotate(-10deg);
+  background: #faf8f5;
   pointer-events: none;
   z-index: 2;
-  opacity: 0.85;
 }
 
-.stamp-college {
-  transform: rotate(-10deg);
-  background: rgba(250, 248, 245, 0.85);
-}
-
-.stamp-school {
-  transform: rotate(10deg);
-  background: rgba(250, 248, 245, 0.85);
-}
-
-.stamp-ring {
+.seal-border-circle {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -222,69 +256,26 @@
   line-height: 1.1;
 }
 
-.stamp-org {
-  font-size: 8px;
+.seal-tag {
+  font-size: 7.5px;
   font-weight: 700;
   color: #71717a;
 }
 
-.stamp-score {
-  font-size: 11px;
+.seal-val {
+  font-size: 10px;
   font-weight: 900;
   color: #18181b;
 }
 
-.stamp-yrs {
-  font-size: 8px;
-  font-weight: 600;
-  color: #52525b;
-}
-
-/* Card Inner Content */
-.craft-card-inner {
-  padding: 24px 22px 20px;
+/* Institution Name */
+.board-institution-wrap {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 4px;
 }
 
-.craft-folio-tag {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-
-.folio-label {
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 700;
-  color: #71717a;
-}
-
-.status-badge-active {
-  font-family: var(--font-mono, monospace);
-  font-size: 9.5px;
-  font-weight: 800;
-  background: #fef08a;
-  color: #18181b;
-  padding: 1px 6px;
-  border: 1px solid #18181b;
-  border-radius: 2px;
-}
-
-.status-badge-done {
-  font-family: var(--font-mono, monospace);
-  font-size: 9.5px;
-  font-weight: 800;
-  background: #f4f4f5;
-  color: #18181b;
-  padding: 1px 6px;
-  border: 1px solid #18181b;
-  border-radius: 2px;
-}
-
-.craft-inst-name {
+.board-inst-name {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
   font-size: clamp(19px, 2vw, 23px);
   font-weight: 800;
@@ -294,22 +285,21 @@
   padding-right: 56px;
 }
 
-.craft-location {
+.board-inst-loc {
   display: inline-flex;
   align-items: center;
   gap: 4px;
   font-family: var(--font-sans, sans-serif);
   font-size: 13px;
   color: #52525b;
-  margin-top: -6px;
 }
 
-.loc-pin {
+.loc-icon {
   font-size: 11px;
 }
 
-/* Course Strip */
-.craft-course-strip {
+/* Program Box */
+.board-program-box {
   background: #faf8f5;
   border: 1.8px solid #18181b;
   padding: 10px 12px;
@@ -318,7 +308,7 @@
   gap: 4px;
 }
 
-.course-head {
+.program-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -327,19 +317,28 @@
   font-weight: 700;
 }
 
-.course-label {
+.prog-type {
   color: #71717a;
   letter-spacing: 0.05em;
 }
 
-.course-time {
-  color: #18181b;
-  background: #ffffff;
+.prog-status {
   padding: 1px 5px;
   border: 1px solid #18181b;
+  border-radius: 2px;
 }
 
-.course-title {
+.prog-status.gold {
+  background: #fef08a;
+  color: #18181b;
+}
+
+.prog-status.green {
+  background: #dcfce7;
+  color: #15803d;
+}
+
+.prog-degree-title {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
   font-size: 15px;
   font-weight: 700;
@@ -347,89 +346,79 @@
   margin: 0;
 }
 
-/* Metric Gauge */
-.craft-metric-gauge {
+/* Score Plaque */
+.board-score-plaque {
   display: flex;
-  flex-direction: column;
-  gap: 6px;
+  align-items: center;
+  justify-content: space-between;
   background: #ffffff;
   border: 1.5px solid #18181b;
   padding: 8px 12px;
 }
 
-.gauge-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.score-desc {
   font-family: var(--font-mono, monospace);
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
   color: #71717a;
+  letter-spacing: 0.05em;
 }
 
-.gauge-val {
-  font-size: 15px;
-  font-weight: 800;
+.score-val-row {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.score-main-number {
+  font-family: var(--font-mono, monospace);
+  font-size: 16px;
+  font-weight: 900;
   color: #18181b;
 }
 
-.val-sub {
-  font-size: 11px;
-  color: #71717a;
-}
-
-.gauge-track {
-  height: 12px;
-  background: #faf8f5;
-  border: 1.5px solid #18181b;
-  overflow: hidden;
-}
-
-.gauge-fill {
-  height: 100%;
-}
-
-.fill-sece {
+.score-ink-hatch {
+  position: absolute;
+  top: 0;
+  right: -6px;
+  bottom: 0;
+  width: 12px;
   background: repeating-linear-gradient(
     45deg,
     #18181b,
-    #18181b 3px,
-    #3f3f46 3px,
-    #3f3f46 6px
+    #18181b 1px,
+    transparent 1px,
+    transparent 3px
   );
+  opacity: 0.15;
 }
 
-.fill-jayam {
-  background: repeating-linear-gradient(
-    -45deg,
-    #18181b,
-    #18181b 3px,
-    #3f3f46 3px,
-    #3f3f46 6px
-  );
-}
-
-/* Annotation */
-.craft-note-row {
+/* Focus Note */
+.board-focus-note {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 6px;
+  padding-top: 8px;
+  border-top: 1.5px dashed #e4e4e7;
+}
+
+.quill-pin {
+  font-size: 12px;
+  color: #71717a;
   margin-top: 2px;
 }
 
-.craft-arrow-svg {
-  flex-shrink: 0;
-}
-
-.craft-note-text {
+.focus-text {
   font-family: var(--font-hand, 'Caveat', cursive);
   font-size: 16px;
   font-weight: 600;
   color: #3f3f46;
+  margin: 0;
+  line-height: 1.35;
 }
 
-/* Corner Bracket */
-.corner-bracket {
+/* Bolts */
+.board-bolt {
   position: absolute;
   font-family: monospace;
   font-size: 12px;
@@ -438,31 +427,48 @@
   pointer-events: none;
 }
 
-.cb-tl { top: 3px; left: 5px; }
-.cb-tr { top: 3px; right: 5px; }
-.cb-bl { bottom: 3px; left: 5px; }
-.cb-br { bottom: 3px; right: 5px; }
+.b-tl { top: 3px; left: 5px; }
+.b-tr { top: 3px; right: 5px; }
+.b-bl { bottom: 3px; left: 5px; }
+.b-br { bottom: 3px; right: 5px; }
+
+/* Wooden Easel Legs */
+.easel-wooden-legs {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 24px;
+}
+
+.leg {
+  width: 8px;
+  height: 14px;
+  background: #18181b;
+  border-radius: 0 0 2px 2px;
+}
+
+.leg-left { transform: rotate(15deg); }
+.leg-right { transform: rotate(-15deg); }
 
 /* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 720px) {
-  .edu-boards-grid {
+  .edu-easel-grid {
     grid-template-columns: 1fr;
   }
 
-  .craft-card-inner {
+  .easel-blackboard {
     padding: 20px 16px;
   }
 
-  .craft-inst-name {
+  .board-inst-name {
     padding-right: 0;
   }
 
-  .guild-ink-stamp {
+  .anime-round-seal {
     position: relative;
     top: auto;
     right: auto;
-    margin: 0 auto 10px;
+    margin: 0 auto 8px;
   }
 }
