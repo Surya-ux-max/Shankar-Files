@@ -1,34 +1,21 @@
 ﻿/* ==========================================================================
-   BIO SECTION — INK SKETCH & CROSSHATCH THEME
+   ANIME SHOP BIO SECTION — THE SHOPKEEPER'S LEDGER & PANTRY
    ========================================================================== */
 
-.ink-bio-section {
+.anime-shop-bio {
   position: relative;
   width: 100%;
-  padding: clamp(60px, 8vh, 100px) clamp(20px, 4vw, 80px);
+  padding: clamp(60px, 8vh, 100px) clamp(16px, 3.5vw, 60px);
   background-color: var(--paper, #faf8f5);
   color: #18181b;
   box-sizing: border-box;
   overflow: hidden;
 }
 
-/* Background Ruled Lines */
-.ink-grid-backdrop {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  background-image: 
-    linear-gradient(to bottom, rgba(24, 24, 27, 0.035) 1px, transparent 1px),
-    linear-gradient(to right, rgba(24, 24, 27, 0.02) 1px, transparent 1px);
-  background-size: 100% 32px, 32px 100%;
-  z-index: 0;
-}
-
-/* Container */
-.ink-bio-container {
+.bio-shop-container {
   position: relative;
-  z-index: 1;
-  max-width: 960px;
+  z-index: 2;
+  max-width: 980px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -36,141 +23,194 @@
 }
 
 /* --------------------------------------------------------------------------
-   HEADER PLAQUE
+   CHALKBOARD HEADER SIGN
    -------------------------------------------------------------------------- */
-.ink-section-header {
+.shop-chalkboard-sign {
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  gap: 12px;
+  margin-bottom: -6px;
 }
 
-.header-plaque {
-  position: relative;
-  display: inline-flex;
+.sign-hanger {
+  display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 8px 24px 10px;
-  background: #ffffff;
-  border: 2px solid #18181b;
-  box-shadow: 4px 4px 0px #18181b;
+  position: relative;
+  width: 120px;
+  height: 20px;
 }
 
-.plaque-corner {
+.sign-screw {
+  width: 8px;
+  height: 8px;
+  background: #18181b;
+  border-radius: 50%;
+}
+
+.sign-chain {
   position: absolute;
-  font-family: monospace;
-  font-size: 12px;
-  font-weight: bold;
-  color: #18181b;
-  line-height: 1;
+  top: 4px;
+  width: 50px;
+  height: 16px;
 }
 
-.top-left { top: 2px; left: 3px; }
-.top-right { top: 2px; right: 3px; }
-.bottom-left { bottom: 2px; left: 3px; }
-.bottom-right { bottom: 2px; right: 3px; }
+.sign-chain.left {
+  left: 10px;
+  border-left: 1.5px solid #18181b;
+  transform: rotate(25deg);
+  transform-origin: top left;
+}
 
-.header-chapter {
+.sign-chain.right {
+  right: 10px;
+  border-right: 1.5px solid #18181b;
+  transform: rotate(-25deg);
+  transform-origin: top right;
+}
+
+.chalkboard-frame {
+  position: relative;
+  background: #18181b;
+  color: #ffffff;
+  padding: 10px 28px 12px;
+  border: 2px solid #18181b;
+  box-shadow: 4px 4px 0px rgba(24, 24, 27, 0.4);
+  text-align: center;
+}
+
+.chalk-corner {
+  position: absolute;
+  font-size: 10px;
+  color: #a1a1aa;
+}
+
+.chalk-corner.tl { top: 3px; left: 5px; }
+.chalk-corner.tr { top: 3px; right: 5px; }
+.chalk-corner.bl { bottom: 3px; left: 5px; }
+.chalk-corner.br { bottom: 3px; right: 5px; }
+
+.chalk-sub {
+  display: block;
   font-family: var(--font-mono, monospace);
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.1em;
-  color: #71717a;
+  letter-spacing: 0.12em;
+  color: #a1a1aa;
 }
 
-.header-main-title {
+.chalk-heading {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(24px, 3vw, 36px);
+  font-size: clamp(22px, 3vw, 32px);
   font-weight: 800;
   letter-spacing: -0.02em;
   margin: 2px 0 0;
-  color: #18181b;
-}
-
-.header-divider-line {
-  position: relative;
-  width: 140px;
-  height: 2px;
-  background: #18181b;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.line-diamond {
-  background: #faf8f5;
-  padding: 0 6px;
-  font-size: 10px;
-  color: #18181b;
+  color: #ffffff;
 }
 
 /* --------------------------------------------------------------------------
-   STORY CARD
+   STORYBOARD BOX WITH SCALLOPED CANOPY
    -------------------------------------------------------------------------- */
-.ink-story-card {
+.shop-story-box {
   position: relative;
   background: #ffffff;
   border: 2.5px solid #18181b;
   border-top: none;
   box-shadow: 8px 8px 0px #18181b;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-sizing: border-box;
 }
 
-.ink-story-card:hover {
-  transform: translateY(-2px);
-  box-shadow: 10px 10px 0px #18181b;
-}
-
-/* Scalloped Awning on Top */
-.card-top-awning {
+/* Scalloped Awning Top */
+.story-awning-top {
   width: 100%;
-  margin-top: -1px;
 }
 
-.awning-scallops {
+.story-stripes {
+  display: flex;
+  height: 20px;
+  border-top: 2.2px solid #18181b;
+  border-bottom: 1.5px solid #18181b;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.s-stripe {
+  flex: 1;
+  border-right: 1.5px solid #18181b;
+  background: #ffffff;
+}
+
+.s-stripe:last-child {
+  border-right: none;
+}
+
+.s-stripe.dark {
+  background: repeating-linear-gradient(
+    45deg,
+    #18181b,
+    #18181b 2px,
+    #ffffff 2px,
+    #ffffff 6px
+  );
+}
+
+.story-scallops {
   display: flex;
   width: 100%;
 }
 
-.awning-arch {
+.s-scallop {
   flex: 1;
   height: 12px;
   background: #ffffff;
-  border: 2px solid #18181b;
+  border: 1.8px solid #18181b;
   border-top: none;
   border-radius: 0 0 50% 50%;
   margin-top: -1px;
 }
 
-.card-body {
+.story-box-body {
   padding: clamp(24px, 4vw, 44px);
-}
-
-/* Lead Paragraphs */
-.story-lead-block {
   display: flex;
   flex-direction: column;
-  gap: 14px;
-  margin-bottom: 28px;
+  gap: 28px;
 }
 
-.story-lead-paragraph {
+/* Bio Recipe Card */
+.bio-recipe-card {
+  background: #faf8f5;
+  border: 2px solid #18181b;
+  padding: 20px 24px;
+  position: relative;
+}
+
+.recipe-tag {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 800;
+  background: #18181b;
+  color: #ffffff;
+  padding: 2px 7px;
+  margin-bottom: 12px;
+  border-radius: 2px;
+}
+
+.recipe-lead {
   font-family: var(--font-sans, sans-serif);
   font-size: clamp(18px, 2vw, 22px);
   line-height: 1.5;
   color: #18181b;
   font-weight: 500;
-  margin: 0;
+  margin: 0 0 12px;
 }
 
-.ink-name-highlight {
+.shop-name-ink {
   font-weight: 800;
   border-bottom: 2px solid #18181b;
-  padding-bottom: 1px;
 }
 
-.story-sub-paragraph {
+.recipe-sub {
   font-family: var(--font-sans, sans-serif);
   font-size: clamp(15px, 1.3vw, 17px);
   line-height: 1.65;
@@ -178,56 +218,99 @@
   margin: 0;
 }
 
-.ink-underline-phrase {
+.shop-underline {
   font-weight: 600;
   color: #18181b;
   border-bottom: 1.5px dashed #18181b;
   padding-bottom: 1px;
 }
 
-/* --------------------------------------------------------------------------
-   CROSS-HATCHED DOMAIN CARDS
-   -------------------------------------------------------------------------- */
-.domains-ink-grid {
+/* Pantry Shelves Grid */
+.shop-pantry-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.pantry-shelf-label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  justify-content: center;
+}
+
+.label-line {
+  flex: 1;
+  height: 1.5px;
+  background: #18181b;
+}
+
+.label-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #18181b;
+}
+
+.pantry-shelf-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 14px;
-  margin-bottom: 26px;
 }
 
-.domain-card {
+.shelf-jar-box {
   position: relative;
-  background: #faf8f5;
+  background: #ffffff;
   border: 1.8px solid #18181b;
   padding: 16px 14px;
-  overflow: hidden;
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-.domain-card:hover {
-  transform: translate(-2px, -2px);
   box-shadow: 4px 4px 0px #18181b;
-  background: #ffffff;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.domain-top-bar {
+.shelf-jar-box:hover {
+  transform: translate(-2px, -2px) rotate(-0.5deg);
+  box-shadow: 6px 6px 0px #18181b;
+  background: #faf8f5;
+}
+
+.jar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.jar-num {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 800;
+  color: #18181b;
+}
+
+.jar-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 9px;
+  font-weight: 700;
+  border: 1px solid #18181b;
+  padding: 1px 4px;
+  border-radius: 2px;
+  color: #71717a;
+}
+
+.jar-title-row {
   display: flex;
   align-items: center;
   gap: 8px;
   margin-bottom: 6px;
 }
 
-.domain-code {
-  font-family: var(--font-mono, monospace);
-  font-size: 11px;
-  font-weight: 700;
-  color: #ffffff;
-  background: #18181b;
-  padding: 1px 5px;
-  border-radius: 2px;
+.jar-icon {
+  font-size: 18px;
 }
 
-.domain-title {
+.jar-title {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
   font-size: 15px;
   font-weight: 700;
@@ -235,22 +318,20 @@
   margin: 0;
 }
 
-.domain-desc {
+.jar-desc {
   font-family: var(--font-sans, sans-serif);
   font-size: 13px;
   line-height: 1.45;
   color: #52525b;
   margin: 0;
-  position: relative;
-  z-index: 2;
 }
 
-.domain-hatch {
+.jar-hatch-accent {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 28px;
-  height: 28px;
+  width: 24px;
+  height: 24px;
   background: repeating-linear-gradient(
     45deg,
     #18181b,
@@ -259,42 +340,45 @@
     transparent 4px
   );
   opacity: 0.12;
-  pointer-events: none;
 }
 
-/* --------------------------------------------------------------------------
-   FOOTER SIGNATURE
-   -------------------------------------------------------------------------- */
-.story-card-footer {
+/* Motto Footer */
+.shop-motto-row {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  padding-top: 18px;
-  border-top: 1.5px solid #18181b;
+  padding-top: 14px;
+  border-top: 1.8px solid #18181b;
 }
 
-.quill-icon {
-  font-size: 16px;
-  color: #18181b;
+.motto-feather {
+  font-size: 18px;
 }
 
-.footer-quote {
+.motto-text {
   font-family: var(--font-hand, 'Caveat', cursive);
   font-size: clamp(18px, 1.8vw, 22px);
   font-weight: 600;
   color: #3f3f46;
 }
 
+/* Base Timber */
+.story-timber-base {
+  width: 100%;
+  height: 8px;
+  background: #18181b;
+}
+
 /* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 640px) {
-  .domains-ink-grid {
+  .pantry-shelf-grid {
     grid-template-columns: 1fr;
   }
 
-  .card-body {
-    padding: 20px 16px;
+  .story-box-body {
+    padding: 20px 14px;
   }
 }

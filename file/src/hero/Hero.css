@@ -1,8 +1,8 @@
 ﻿/* ==========================================================================
-   INK LINE-ART HERO SECTION — INSPIRED BY ARCHITECTURAL SKETCHES
+   ANIME SHOPFRONT HERO SECTION — GHIBLI & MANGA SKETCH THEME
    ========================================================================== */
 
-.ink-hero-section {
+.anime-shop-hero {
   position: relative;
   width: 100%;
   min-height: 100vh;
@@ -10,7 +10,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: clamp(40px, 6vh, 80px) clamp(20px, 4vw, 80px) 60px;
+  padding: clamp(40px, 6vh, 80px) clamp(16px, 3.5vw, 60px) 40px;
   background-color: var(--paper, #faf8f5);
   color: #18181b;
   overflow: hidden;
@@ -18,524 +18,600 @@
 }
 
 /* ==========================================================================
-   SKY LAYER: CLOUDS, BIRDS & BOTANICAL TREE BRANCHES
+   SKY BACKDROP & NATURE ELEMENTS
    ========================================================================== */
-.ink-sky-layer {
+.anime-sky-backdrop {
   position: absolute;
   inset: 0;
   pointer-events: none;
   z-index: 1;
 }
 
-.ink-cloud {
+.anime-cloud {
   position: absolute;
-  opacity: 0.85;
+  filter: drop-shadow(2px 2px 0px rgba(24, 24, 27, 0.15));
 }
 
-.cloud-1 {
-  top: 8%;
-  left: 6%;
-  animation: cloudDrift 24s ease-in-out infinite alternate;
+.c-left {
+  top: 6%;
+  left: 5%;
+  animation: floatCloudLeft 25s ease-in-out infinite alternate;
 }
 
-.cloud-2 {
-  top: 18%;
-  left: 28%;
-  animation: cloudDrift 30s ease-in-out infinite alternate-reverse;
-}
-
-.ink-birds {
-  position: absolute;
+.c-right {
   top: 14%;
-  left: 18%;
-  animation: birdHover 6s ease-in-out infinite;
+  left: 32%;
+  animation: floatCloudRight 30s ease-in-out infinite alternate;
 }
 
-.ink-tree-branch {
+.anime-birds {
+  position: absolute;
+  top: 10%;
+  left: 20%;
+  animation: hoverBirds 6s ease-in-out infinite;
+}
+
+.anime-tree-foliage {
   position: absolute;
   top: 0;
   right: 0;
-  opacity: 0.9;
+  opacity: 0.95;
   transform-origin: top right;
-  animation: branchSway 8s ease-in-out infinite;
+  animation: treeSway 8s ease-in-out infinite;
 }
 
 /* ==========================================================================
-   MAIN ARTISAN WORKSHOP CONTAINER
+   MAIN SHOPHOUSE ARCHITECTURE FAÇADE
    ========================================================================== */
-.ink-hero-container {
+.anime-shop-facade {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 1100px;
+  max-width: 1080px;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-  align-items: center;
-  gap: clamp(32px, 5vw, 64px);
+  display: flex;
+  flex-direction: column;
   transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
-/* --------------------------------------------------------------------------
-   LEFT: SIGNBOARD & CANOPY
-   -------------------------------------------------------------------------- */
-.ink-hero-left {
+/* Roof Ridge & Chimney */
+.shop-roof-ridge {
   position: relative;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  margin-bottom: -1px;
+  z-index: 4;
 }
 
-/* Canopy / Scalloped Awning */
-.ink-canopy-roof {
+.chimney-pot {
+  position: relative;
+  left: clamp(40px, 8vw, 100px);
+  width: 24px;
+  height: 18px;
+  background: #ffffff;
+  border: 2px solid #18181b;
+  border-bottom: none;
+}
+
+.smoke-puff {
+  position: absolute;
+  top: -10px;
+  left: 4px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid #71717a;
+  border-bottom: none;
+  animation: puffSmoke 3s linear infinite;
+}
+
+.roof-shingles-bar {
+  width: 100%;
+  height: 8px;
+  background: #18181b;
+  border-radius: 2px 2px 0 0;
+}
+
+/* Double Canvas Awning */
+.shop-double-awning {
   position: relative;
   width: 100%;
-  max-width: 480px;
   z-index: 3;
 }
 
-.canopy-stripes {
+.awning-tier {
+  width: 100%;
+}
+
+.awning-stripes {
   display: flex;
-  height: 24px;
-  border: 2px solid #18181b;
+  height: 28px;
+  border: 2.2px solid #18181b;
   border-bottom: none;
   background: #ffffff;
   overflow: hidden;
 }
 
-.stripe {
+.a-stripe {
   flex: 1;
   border-right: 1.5px solid #18181b;
   background: #ffffff;
 }
 
-.stripe:last-child {
+.a-stripe:last-child {
   border-right: none;
 }
 
-.stripe.dark {
+.a-stripe.dark {
   background: repeating-linear-gradient(
     45deg,
     #18181b,
-    #18181b 2px,
-    #ffffff 2px,
-    #ffffff 6px
+    #18181b 3px,
+    #ffffff 3px,
+    #ffffff 8px
   );
 }
 
-.canopy-scallop-edge {
+.awning-scallops {
   display: flex;
   width: 100%;
 }
 
-.scallop-arch {
+.scallop-petal {
   flex: 1;
-  height: 14px;
+  height: 16px;
   background: #ffffff;
-  border: 2px solid #18181b;
+  border: 2.2px solid #18181b;
   border-top: none;
   border-radius: 0 0 50% 50%;
   margin-top: -1px;
 }
 
-/* Main Signboard Card */
-.ink-signboard-card {
+/* --------------------------------------------------------------------------
+   STOREFRONT MAIN STAGE
+   -------------------------------------------------------------------------- */
+.shop-front-body {
   position: relative;
-  width: 100%;
-  max-width: 480px;
   background: #ffffff;
   border: 2.5px solid #18181b;
-  border-top: 1.5px solid #18181b;
-  padding: 24px 28px 20px;
-  box-shadow: 6px 6px 0px #18181b;
-  box-sizing: border-box;
+  border-top: none;
+  border-bottom: none;
+  padding: 28px clamp(20px, 4vw, 44px);
+  display: grid;
+  grid-template-columns: 1.25fr 0.85fr;
+  gap: clamp(24px, 4vw, 48px);
+  align-items: center;
+  box-shadow: 8px 0px 0px #18181b, -8px 0px 0px #18181b;
 }
 
-/* Badge Pill */
-.ink-badge-pill {
+/* Wooden Structural Pillars */
+.timber-pillar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 12px;
+  background: repeating-linear-gradient(
+    0deg,
+    #18181b,
+    #18181b 2px,
+    #faf8f5 2px,
+    #faf8f5 8px
+  );
+  border: 1.5px solid #18181b;
+  z-index: 5;
+}
+
+.pillar-left { left: 0; }
+.pillar-right { right: 0; }
+
+/* --------------------------------------------------------------------------
+   LEFT: MAIN COUNTER & SIGNS
+   -------------------------------------------------------------------------- */
+.shop-main-counter {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+/* Hanging Open Sign */
+.hanging-open-sign {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: -4px;
+}
+
+.sign-ropes {
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  height: 14px;
+}
+
+.sign-ropes .rope {
+  width: 1.5px;
+  height: 100%;
+  background: #18181b;
+}
+
+.sign-board {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 3px 10px;
+  padding: 4px 12px;
   background: #faf8f5;
-  border: 1.5px solid #18181b;
+  border: 1.8px solid #18181b;
+  box-shadow: 2px 2px 0px #18181b;
+}
+
+.sign-dot {
+  color: #10b981;
+  font-size: 10px;
+}
+
+.sign-text {
   font-family: var(--font-mono, monospace);
   font-size: 11px;
   font-weight: 700;
   letter-spacing: 0.08em;
   color: #18181b;
-  margin-bottom: 12px;
 }
 
-.badge-ink-icon {
-  font-size: 10px;
-}
-
-/* Name */
-.ink-name-wrapper {
-  position: relative;
+/* Shop Nameboard */
+.shop-name-board {
   display: flex;
   flex-direction: column;
 }
 
-.ink-hello-tag {
-  font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: 22px;
-  font-weight: 600;
-  color: #52525b;
-  margin-bottom: -4px;
+.board-sub {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: #71717a;
+  letter-spacing: 0.1em;
 }
 
-.ink-hero-name {
+.shop-title-name {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(48px, 6.5vw, 84px);
+  font-size: clamp(52px, 8vw, 92px);
   font-weight: 900;
   line-height: 0.95;
   letter-spacing: -0.04em;
-  margin: 0;
+  margin: 2px 0 0;
   color: #18181b;
-  display: flex;
 }
 
-.name-letter {
-  display: inline-block;
-  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
-  cursor: default;
-}
-
-.name-letter:hover {
-  transform: translateY(-6px) rotate(-3deg);
-  color: #000000;
-  text-shadow: 3px 3px 0px #18181b;
-}
-
-.ink-underline-svg {
+.name-ink-hatch {
   width: 100%;
   max-width: 320px;
-  height: 16px;
+  height: 14px;
   margin-top: 6px;
 }
 
-/* Profession Plaque */
-.ink-profession-plaque {
-  position: relative;
-  margin-top: 18px;
+/* Profession Menu Plaque */
+.shop-profession-menu {
+  width: 100%;
   background: #faf8f5;
   border: 2px solid #18181b;
-  padding: 10px 16px;
-  overflow: hidden;
+  padding: 12px 16px;
+  box-shadow: 4px 4px 0px #18181b;
 }
 
-.plaque-inner {
-  position: relative;
-  z-index: 2;
+.menu-header {
   display: flex;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #71717a;
+  letter-spacing: 0.1em;
+  margin-bottom: 8px;
+  border-bottom: 1px dashed #d4d4d8;
+  padding-bottom: 4px;
 }
 
-.plaque-title {
+.menu-icon {
+  font-size: 8px;
+}
+
+.menu-items {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.menu-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.item-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 800;
+  background: #18181b;
+  color: #ffffff;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.item-name {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(14px, 1.5vw, 18px);
+  font-size: clamp(14px, 1.6vw, 17px);
   font-weight: 700;
   color: #18181b;
-  letter-spacing: -0.01em;
 }
 
-.plaque-sep {
-  font-size: 11px;
+.menu-divider {
+  font-family: var(--font-hand, cursive);
+  font-size: 18px;
+  font-weight: bold;
   color: #71717a;
 }
 
-.plaque-hatch-lines {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  width: 40px;
-  background: repeating-linear-gradient(
-    -45deg,
-    #18181b,
-    #18181b 1px,
-    transparent 1px,
-    transparent 4px
-  );
-  opacity: 0.15;
+/* Sidewalk Bonsai Plant */
+.sidewalk-plant-pot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 6px;
 }
 
-/* Footer micro-spec */
-.ink-card-footer {
-  margin-top: 14px;
-  padding-top: 10px;
-  border-top: 1.5px dashed #d4d4d8;
-}
-
-.footer-sketch-text {
+.plant-label {
   font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #52525b;
 }
 
-/* Plant Pot */
-.ink-floor-pot {
-  margin-top: 14px;
-  margin-left: 12px;
-}
-
 /* --------------------------------------------------------------------------
-   RIGHT: PORTRAIT IN WOODCUT / INK FRAME
+   RIGHT: DISPLAY WINDOW PHOTO
    -------------------------------------------------------------------------- */
-.ink-hero-right {
+.shop-display-window {
+  position: relative;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
   width: 100%;
 }
 
-.ink-portrait-easel {
+/* Hanging Lantern */
+.shop-lantern {
+  position: absolute;
+  top: -24px;
+  right: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 6;
+}
+
+.lantern-cord {
+  width: 1.5px;
+  height: 20px;
+  background: #18181b;
+}
+
+.lantern-body {
+  width: 18px;
+  height: 22px;
+  background: #ffffff;
+  border: 1.8px solid #18181b;
+  border-radius: 4px;
+  position: relative;
+}
+
+.lantern-glow {
+  position: absolute;
+  inset: 2px;
+  background: #fef08a;
+  opacity: 0.8;
+  border-radius: 2px;
+}
+
+/* Window Frame Card */
+.window-frame-card {
   position: relative;
   width: 100%;
   max-width: 320px;
-}
-
-/* Hanging wires */
-.easel-hanger {
-  position: absolute;
-  top: -24px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 24px;
-  pointer-events: none;
-}
-
-.hanger-pin {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background: #18181b;
-  border: 1px solid #ffffff;
-}
-
-.hanger-wire-left {
-  position: absolute;
-  top: 4px;
-  left: 50%;
-  width: 48px;
-  height: 20px;
-  border-left: 1.5px solid #18181b;
-  transform: rotate(35deg);
-  transform-origin: top left;
-}
-
-.hanger-wire-right {
-  position: absolute;
-  top: 4px;
-  right: 50%;
-  width: 48px;
-  height: 20px;
-  border-right: 1.5px solid #18181b;
-  transform: rotate(-35deg);
-  transform-origin: top right;
-}
-
-/* Ink Frame */
-.ink-photo-frame {
-  position: relative;
   background: #ffffff;
   border: 2.5px solid #18181b;
-  padding: 10px;
   box-shadow: 6px 6px 0px #18181b;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.ink-photo-frame:hover {
-  transform: translate(-3px, -3px) rotate(-1deg);
+.window-frame-card:hover {
+  transform: translate(-3px, -3px) rotate(-0.5deg);
   box-shadow: 9px 9px 0px #18181b;
 }
 
-.frame-corner {
-  position: absolute;
-  font-family: monospace;
-  font-size: 14px;
-  font-weight: bold;
+.window-header-pane {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: #faf8f5;
+  border-bottom: 1.8px solid #18181b;
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
   color: #18181b;
-  line-height: 1;
 }
 
-.fc-tl { top: 3px; left: 4px; }
-.fc-tr { top: 3px; right: 4px; }
-.fc-bl { bottom: 3px; left: 4px; }
-.fc-br { bottom: 3px; right: 4px; }
-
-.ink-photo-media {
+.window-glass {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  border: 1.8px solid #18181b;
   overflow: hidden;
   background: #f4f4f5;
+  border-bottom: 1.8px solid #18181b;
 }
 
-.ink-photo-img {
+.shopkeeper-photo {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
-  filter: contrast(1.05) grayscale(0.15);
-  transition: filter 0.3s ease;
 }
 
-.ink-photo-frame:hover .ink-photo-img {
-  filter: contrast(1.1) grayscale(0);
-}
-
-.photo-ink-border-inset {
+.glass-reflection-hatch {
   position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 0 1px rgba(24, 24, 27, 0.15);
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 100%;
+  background: repeating-linear-gradient(
+    -45deg,
+    rgba(255, 255, 255, 0.4),
+    rgba(255, 255, 255, 0.4) 3px,
+    transparent 3px,
+    transparent 8px
+  );
   pointer-events: none;
 }
 
-/* Tag below photo */
-.ink-photo-tag {
+.window-base-plate {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 8px;
-  padding: 2px 2px 0;
+  padding: 8px 10px;
   font-family: var(--font-mono, monospace);
   font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
+  font-weight: 800;
   color: #18181b;
 }
 
-.tag-roman {
-  font-style: italic;
+.plate-tag {
+  color: #71717a;
+  font-size: 9px;
+  border: 1px solid #18181b;
+  padding: 1px 4px;
 }
 
-.tag-status {
-  background: #18181b;
-  color: #ffffff;
-  padding: 1px 5px;
-  font-size: 9px;
+/* Sidewalk Crate */
+.sidewalk-crate {
+  margin-top: 10px;
+  padding: 3px 12px;
+  background: #faf8f5;
+  border: 1.5px solid #18181b;
   border-radius: 2px;
 }
 
-.ink-floor-shadow {
-  width: 80%;
-  height: 6px;
-  margin: 12px auto 0;
-  background: #18181b;
-  border-radius: 50%;
-  opacity: 0.15;
-  filter: blur(2px);
+.crate-label {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #71717a;
+  letter-spacing: 0.05em;
 }
 
 /* --------------------------------------------------------------------------
-   SIDEWALK / GROUND TILES
+   SIDEWALK COBBLESTONE PAVEMENT
    -------------------------------------------------------------------------- */
-.ink-ground-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  border-top: 2px solid #18181b;
-  background: #faf8f5;
-  padding: 4px 20px;
+.shop-sidewalk-base {
+  width: 100%;
+  border: 2.5px solid #18181b;
+  background: #ffffff;
+  padding: 6px 12px;
+  box-sizing: border-box;
 }
 
-.ground-stones {
+.pavement-stones {
   display: flex;
+  gap: 8px;
   justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
 }
 
-.stone {
-  width: clamp(30px, 8vw, 80px);
+.cobble-stone {
+  flex: 1;
   height: 8px;
   border: 1px solid #a1a1aa;
-  border-top: none;
-  border-radius: 0 0 3px 3px;
+  border-radius: 2px;
+  background: #faf8f5;
 }
 
 /* ==========================================================================
    ANIMATIONS
    ========================================================================== */
-@keyframes cloudDrift {
+@keyframes floatCloudLeft {
   0% { transform: translateX(0); }
-  100% { transform: translateX(35px); }
+  100% { transform: translateX(30px); }
 }
 
-@keyframes birdHover {
+@keyframes floatCloudRight {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-30px); }
+}
+
+@keyframes hoverBirds {
   0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  50% { transform: translateY(-8px); }
 }
 
-@keyframes branchSway {
+@keyframes treeSway {
   0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(1.2deg); }
+  50% { transform: rotate(1deg); }
+}
+
+@keyframes puffSmoke {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.6); }
+  50% { opacity: 0.8; }
+  100% { opacity: 0; transform: translate(-8px, -14px) scale(1.4); }
 }
 
 /* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
 @media (max-width: 860px) {
-  .ink-hero-container {
+  .shop-front-body {
     grid-template-columns: 1fr;
     text-align: center;
-    gap: 40px;
+    gap: 36px;
+    padding: 24px 18px;
   }
 
-  .ink-hero-left {
+  .shop-main-counter {
     align-items: center;
   }
 
-  .ink-hero-name {
-    justify-content: center;
-  }
-
-  .ink-tree-branch {
+  .anime-tree-foliage {
     opacity: 0.4;
     width: 180px;
   }
 
-  .ink-portrait-easel {
+  .window-frame-card {
     max-width: 270px;
   }
 }
 
 @media (max-width: 520px) {
-  .ink-hero-section {
-    padding: 30px 16px 50px;
+  .anime-shop-hero {
+    padding: 24px 12px 30px;
   }
 
-  .canopy-stripes {
-    height: 18px;
+  .awning-stripes {
+    height: 20px;
   }
 
-  .scallop-arch {
-    height: 10px;
+  .scallop-petal {
+    height: 12px;
   }
 
-  .ink-signboard-card {
-    padding: 18px 16px;
-  }
-
-  .plaque-inner {
+  .menu-items {
     flex-direction: column;
     gap: 4px;
   }
 
-  .plaque-sep {
+  .menu-divider {
     display: none;
   }
 }

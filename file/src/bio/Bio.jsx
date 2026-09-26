@@ -1,102 +1,130 @@
 ﻿import './Bio.css'
 
 export default function Bio() {
-  const domains = [
+  const shelfItems = [
     {
-      code: '01',
-      title: 'Full-Stack Development',
-      desc: 'Crafting responsive, intuitive web interfaces and interactive client systems.'
+      jarNo: '01',
+      jarIcon: '⚡',
+      title: 'Full-Stack Web',
+      tag: 'CRAFT',
+      desc: 'Building responsive, rich interactive web applications with clean design.'
     },
     {
-      code: '02',
-      title: 'Backend Engineering',
-      desc: 'Architecting scalable server-side systems, microservices & reliable databases.'
+      jarNo: '02',
+      jarIcon: '🛠️',
+      title: 'Backend Systems',
+      tag: 'ENGINE',
+      desc: 'Architecting scalable server-side systems, robust APIs & databases.'
     },
     {
-      code: '03',
-      title: 'Mobile Applications',
-      desc: 'Developing performant cross-platform mobile experiences with clean architecture.'
+      jarNo: '03',
+      jarIcon: '📱',
+      title: 'Mobile Apps',
+      tag: 'NATIVE',
+      desc: 'Developing smooth, high-performance cross-platform mobile experiences.'
     },
     {
-      code: '04',
+      jarNo: '04',
+      jarIcon: '🧠',
       title: 'AI & Machine Learning',
-      desc: 'Building intelligent pipelines, LLM agent workflows & practical AI integrations.'
+      tag: 'INTELLIGENCE',
+      desc: 'Engineering intelligent pipelines, models & pragmatic AI integrations.'
     }
   ]
 
   return (
-    <section className="ink-bio-section" id="about">
-      {/* Background Ruled Architecture Lines */}
-      <div className="ink-grid-backdrop" aria-hidden="true" />
-
-      <div className="ink-bio-container">
+    <section className="anime-shop-bio" id="about">
+      
+      <div className="bio-shop-container">
         
-        {/* Section Heading Plaque */}
-        <div className="ink-section-header">
-          <div className="header-plaque">
-            <span className="plaque-corner top-left">+</span>
-            <span className="plaque-corner top-right">+</span>
-            <span className="plaque-corner bottom-left">+</span>
-            <span className="plaque-corner bottom-right">+</span>
-            <span className="header-chapter">CHAPTER // 02</span>
-            <h2 className="header-main-title">About Shankar</h2>
+        {/* Shophouse Signpost / Chalkboard Menu Header */}
+        <div className="shop-chalkboard-sign">
+          <div className="sign-hanger" aria-hidden="true">
+            <span className="sign-screw" />
+            <span className="sign-chain left" />
+            <span className="sign-chain right" />
           </div>
-          <div className="header-divider-line">
-            <span className="line-diamond">◆</span>
+          <div className="chalkboard-frame">
+            <span className="chalk-corner tl">✦</span>
+            <span className="chalk-corner tr">✦</span>
+            <span className="chalk-corner bl">✦</span>
+            <span className="chalk-corner br">✦</span>
+            <span className="chalk-sub">ATELIER ARCHIVES // SECTION 02</span>
+            <h2 className="chalk-heading">The Shopkeeper's Ledger</h2>
           </div>
         </div>
 
-        {/* Main Artisan Workshop Storyboard Card */}
-        <div className="ink-story-card">
+        {/* The Main Artisan Storyboard Box */}
+        <div className="shop-story-box">
           
-          {/* Top Canopy Scallop Border */}
-          <div className="card-top-awning" aria-hidden="true">
-            <div className="awning-scallops">
-              {[...Array(9)].map((_, i) => (
-                <div key={i} className="awning-arch" />
+          {/* Scalloped Canopy Roof for the Section */}
+          <div className="story-awning-top" aria-hidden="true">
+            <div className="story-stripes">
+              {[...Array(11)].map((_, i) => (
+                <div key={i} className={`s-stripe ${i % 2 === 1 ? 'dark' : ''}`} />
+              ))}
+            </div>
+            <div className="story-scallops">
+              {[...Array(11)].map((_, i) => (
+                <div key={i} className="s-scallop" />
               ))}
             </div>
           </div>
 
-          <div className="card-body">
+          <div className="story-box-body">
             
-            {/* Primary Bio Statement */}
-            <div className="story-lead-block">
-              <p className="story-lead-paragraph">
-                I’m <strong className="ink-name-highlight">Shankar V</strong>, a <strong>Computer Science student</strong> and <strong>Software Developer</strong> passionate about building impactful software and AI systems.
+            {/* Bio Narrative Note / Recipe Card */}
+            <div className="bio-recipe-card">
+              <div className="recipe-tag">CHIEF RECIPE // BIO</div>
+              <p className="recipe-lead">
+                I’m <strong className="shop-name-ink">Shankar V</strong>, a <strong>Computer Science student</strong> and <strong>Software Developer</strong> passionate about building impactful software and AI systems.
               </p>
-              <p className="story-sub-paragraph">
-                I work across <span className="ink-underline-phrase">full-stack development</span>, <span className="ink-underline-phrase">backend engineering</span>, <span className="ink-underline-phrase">mobile applications</span>, and <span className="ink-underline-phrase">AI/ML</span>. I enjoy solving complex problems, contributing to open source, and turning ideas into practical solutions.
+              <p className="recipe-sub">
+                I work across <span className="shop-underline">full-stack development</span>, <span className="shop-underline">backend engineering</span>, <span className="shop-underline">mobile applications</span>, and <span className="shop-underline">AI/ML</span>. I enjoy solving complex problems, contributing to open source, and turning ideas into practical solutions.
               </p>
             </div>
 
-            {/* Cross-Hatched Domain Pillars */}
-            <div className="domains-ink-grid">
-              {domains.map((item, idx) => (
-                <div key={idx} className="domain-card">
-                  <div className="domain-top-bar">
-                    <span className="domain-code">{item.code}</span>
-                    <h3 className="domain-title">{item.title}</h3>
+            {/* Shop Pantry / Shelves of Craft Skills */}
+            <div className="shop-pantry-section">
+              <div className="pantry-shelf-label">
+                <span className="label-line" />
+                <span className="label-text">✦ INVENTORY OF SKILLS & DOMAINS ✦</span>
+                <span className="label-line" />
+              </div>
+
+              <div className="pantry-shelf-grid">
+                {shelfItems.map((item) => (
+                  <div key={item.jarNo} className="shelf-jar-box">
+                    <div className="jar-header">
+                      <span className="jar-num">№ {item.jarNo}</span>
+                      <span className="jar-tag">{item.tag}</span>
+                    </div>
+                    <div className="jar-title-row">
+                      <span className="jar-icon">{item.jarIcon}</span>
+                      <h3 className="jar-title">{item.title}</h3>
+                    </div>
+                    <p className="jar-desc">{item.desc}</p>
+                    <div className="jar-hatch-accent" aria-hidden="true" />
                   </div>
-                  <p className="domain-desc">{item.desc}</p>
-                  <div className="domain-hatch" aria-hidden="true" />
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
 
-            {/* Bottom Signature Line */}
-            <div className="story-card-footer">
-              <span className="quill-icon">✒</span>
-              <span className="footer-quote">
-                "Solving complex challenges through clean code and pragmatic AI."
-              </span>
+            {/* Shopkeeper's Stamp & Motto */}
+            <div className="shop-motto-row">
+              <span className="motto-feather">🪶</span>
+              <span className="motto-text">"Crafting purposeful software with artisan care & zero fluff."</span>
             </div>
 
           </div>
+
+          {/* Wooden Shelf Base */}
+          <div className="story-timber-base" aria-hidden="true" />
 
         </div>
 
       </div>
+
     </section>
   )
 }
