@@ -1,1 +1,25 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Caveat+Brush&display=swap');
 @import "tailwindcss";
+
+*, *::before, *::after { box-sizing: border-box; }
+
+:root {
+  --paper:       #faf8f3;
+  --paper-dark:  #f0ede4;
+  --cream:       #f5f2e8;
+  --ink:         #2c2c2c;
+  --ink-light:   #555;
+  --pencil:      #999;
+  --border:      #333;
+  --font-sketch: 'Caveat', 'Caveat Brush', cursive;
+}
+
+html, body {
+  margin: 0; padding: 0;
+  width: 100%; overflow-x: hidden;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sketch);
+}
+
+#root { width: 100%; min-height: 100vh; }
