@@ -1,360 +1,541 @@
 ﻿/* ==========================================================================
-   HERO SECTION - CLEAN SKETCH UI
+   INK LINE-ART HERO SECTION — INSPIRED BY ARCHITECTURAL SKETCHES
    ========================================================================== */
 
-.sketch-hero {
+.ink-hero-section {
   position: relative;
   width: 100%;
   min-height: 100vh;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  padding: clamp(40px, 6vh, 80px) clamp(24px, 5vw, 90px);
-  background-color: var(--paper, #fbf9f4);
-  color: var(--ink, #18181b);
+  align-items: center;
+  padding: clamp(40px, 6vh, 80px) clamp(20px, 4vw, 80px) 60px;
+  background-color: var(--paper, #faf8f5);
+  color: #18181b;
   overflow: hidden;
   box-sizing: border-box;
 }
 
-/* Subtle background grid */
-.sketch-bg-grid {
+/* ==========================================================================
+   SKY LAYER: CLOUDS, BIRDS & BOTANICAL TREE BRANCHES
+   ========================================================================== */
+.ink-sky-layer {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-image: 
-    linear-gradient(to right, rgba(0, 0, 0, 0.04) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(0, 0, 0, 0.04) 1px, transparent 1px);
-  background-size: 28px 28px;
-  z-index: 0;
+  z-index: 1;
 }
 
-/* Container Shell */
-.hero-shell {
+.ink-cloud {
+  position: absolute;
+  opacity: 0.85;
+}
+
+.cloud-1 {
+  top: 8%;
+  left: 6%;
+  animation: cloudDrift 24s ease-in-out infinite alternate;
+}
+
+.cloud-2 {
+  top: 18%;
+  left: 28%;
+  animation: cloudDrift 30s ease-in-out infinite alternate-reverse;
+}
+
+.ink-birds {
+  position: absolute;
+  top: 14%;
+  left: 18%;
+  animation: birdHover 6s ease-in-out infinite;
+}
+
+.ink-tree-branch {
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.9;
+  transform-origin: top right;
+  animation: branchSway 8s ease-in-out infinite;
+}
+
+/* ==========================================================================
+   MAIN ARTISAN WORKSHOP CONTAINER
+   ========================================================================== */
+.ink-hero-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
-  max-width: 1240px;
+  max-width: 1100px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.2fr 0.8fr;
   align-items: center;
-  gap: clamp(36px, 5vw, 80px);
+  gap: clamp(32px, 5vw, 64px);
+  transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
 }
 
 /* --------------------------------------------------------------------------
-   LEFT COLUMN: CONTENT
+   LEFT: SIGNBOARD & CANOPY
    -------------------------------------------------------------------------- */
-.hero-text-col {
+.ink-hero-left {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 20px;
 }
 
-/* Status Badge */
-.sketch-badge {
+/* Canopy / Scalloped Awning */
+.ink-canopy-roof {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  z-index: 3;
+}
+
+.canopy-stripes {
+  display: flex;
+  height: 24px;
+  border: 2px solid #18181b;
+  border-bottom: none;
+  background: #ffffff;
+  overflow: hidden;
+}
+
+.stripe {
+  flex: 1;
+  border-right: 1.5px solid #18181b;
+  background: #ffffff;
+}
+
+.stripe:last-child {
+  border-right: none;
+}
+
+.stripe.dark {
+  background: repeating-linear-gradient(
+    45deg,
+    #18181b,
+    #18181b 2px,
+    #ffffff 2px,
+    #ffffff 6px
+  );
+}
+
+.canopy-scallop-edge {
+  display: flex;
+  width: 100%;
+}
+
+.scallop-arch {
+  flex: 1;
+  height: 14px;
+  background: #ffffff;
+  border: 2px solid #18181b;
+  border-top: none;
+  border-radius: 0 0 50% 50%;
+  margin-top: -1px;
+}
+
+/* Main Signboard Card */
+.ink-signboard-card {
+  position: relative;
+  width: 100%;
+  max-width: 480px;
+  background: #ffffff;
+  border: 2.5px solid #18181b;
+  border-top: 1.5px solid #18181b;
+  padding: 24px 28px 20px;
+  box-shadow: 6px 6px 0px #18181b;
+  box-sizing: border-box;
+}
+
+/* Badge Pill */
+.ink-badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 14px;
-  background: var(--paper-card, #ffffff);
-  border: 1.5px solid var(--ink, #18181b);
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-  box-shadow: 2px 2px 0px var(--ink, #18181b);
+  gap: 6px;
+  padding: 3px 10px;
+  background: #faf8f5;
+  border: 1.5px solid #18181b;
   font-family: var(--font-mono, monospace);
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--ink, #18181b);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #18181b;
+  margin-bottom: 12px;
 }
 
-.badge-dot {
-  width: 8px;
-  height: 8px;
-  border-radius: 50%;
-  background-color: #10b981;
-  box-shadow: 0 0 0 2px rgba(16, 185, 129, 0.2);
+.badge-ink-icon {
+  font-size: 10px;
 }
 
-/* Titles */
-.hero-title-group {
+/* Name */
+.ink-name-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2px;
 }
 
-.hero-greeting {
+.ink-hello-tag {
   font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: clamp(24px, 2.5vw, 32px);
+  font-size: 22px;
   font-weight: 600;
-  color: var(--ink-secondary, #4b5563);
-  margin-left: 2px;
+  color: #52525b;
+  margin-bottom: -4px;
 }
 
-.hero-name-wrap {
-  position: relative;
+.ink-hero-name {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: clamp(48px, 6.5vw, 84px);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: #18181b;
+  display: flex;
+}
+
+.name-letter {
   display: inline-block;
-  width: fit-content;
+  transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+  cursor: default;
 }
 
-.hero-name {
-  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(48px, 6.5vw, 76px);
-  font-weight: 800;
-  line-height: 1.05;
-  letter-spacing: -0.03em;
-  margin: 0;
-  color: var(--ink, #18181b);
+.name-letter:hover {
+  transform: translateY(-6px) rotate(-3deg);
+  color: #000000;
+  text-shadow: 3px 3px 0px #18181b;
 }
 
-.sketch-underline {
-  position: absolute;
-  left: 0;
-  bottom: -6px;
+.ink-underline-svg {
   width: 100%;
-  height: 12px;
-  pointer-events: none;
+  max-width: 320px;
+  height: 16px;
+  margin-top: 6px;
 }
 
-.hero-role {
+/* Profession Plaque */
+.ink-profession-plaque {
+  position: relative;
+  margin-top: 18px;
+  background: #faf8f5;
+  border: 2px solid #18181b;
+  padding: 10px 16px;
+  overflow: hidden;
+}
+
+.plaque-inner {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.plaque-title {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(18px, 2.2vw, 24px);
+  font-size: clamp(14px, 1.5vw, 18px);
+  font-weight: 700;
+  color: #18181b;
+  letter-spacing: -0.01em;
+}
+
+.plaque-sep {
+  font-size: 11px;
+  color: #71717a;
+}
+
+.plaque-hatch-lines {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: 40px;
+  background: repeating-linear-gradient(
+    -45deg,
+    #18181b,
+    #18181b 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.15;
+}
+
+/* Footer micro-spec */
+.ink-card-footer {
+  margin-top: 14px;
+  padding-top: 10px;
+  border-top: 1.5px dashed #d4d4d8;
+}
+
+.footer-sketch-text {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 16px;
   font-weight: 600;
-  color: var(--ink-secondary, #374151);
-  margin: 0;
+  color: #52525b;
 }
 
-.role-sep {
-  color: var(--accent-amber, #d97706);
-  padding: 0 4px;
-}
-
-.hero-bio {
-  font-family: var(--font-sans, sans-serif);
-  font-size: clamp(15px, 1.15vw, 17px);
-  line-height: 1.6;
-  color: var(--ink-muted, #52525b);
-  max-width: 540px;
-  margin: 0;
-}
-
-/* Skills Chips */
-.hero-skills-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-  margin-top: 4px;
-}
-
-.skill-chip {
-  padding: 5px 12px;
-  background: var(--paper-card, #ffffff);
-  border: 1.2px solid var(--ink, #18181b);
-  border-radius: 200px 8px 180px 8px / 8px 180px 8px 200px;
-  box-shadow: 1.5px 1.5px 0px rgba(0, 0, 0, 0.85);
-  font-family: var(--font-mono, monospace);
-  font-size: 12.5px;
-  font-weight: 600;
-  color: var(--ink, #18181b);
-  transition: transform 0.15s ease;
-}
-
-.skill-chip:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 2.5px 2.5px 0px rgba(0, 0, 0, 0.85);
-}
-
-/* CTA Buttons */
-.hero-cta-group {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 14px;
-  margin-top: 8px;
-}
-
-.btn-sketch {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 22px;
-  font-family: var(--font-sans, sans-serif);
-  font-size: 15px;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-  border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
-  transition: all 0.15s ease;
-}
-
-.btn-sketch-primary {
-  background: var(--ink, #18181b);
-  color: #ffffff;
-  border: 2px solid var(--ink, #18181b);
-  box-shadow: 3px 3px 0px var(--accent-amber, #d97706);
-}
-
-.btn-sketch-primary:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px var(--accent-amber, #d97706);
-}
-
-.btn-sketch-secondary {
-  background: var(--paper-card, #ffffff);
-  color: var(--ink, #18181b);
-  border: 2px solid var(--ink, #18181b);
-  box-shadow: 3px 3px 0px var(--ink, #18181b);
-}
-
-.btn-sketch-secondary:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 5px 5px 0px var(--ink, #18181b);
-}
-
-.btn-sketch-secondary.copied {
-  background: #dcfce7;
-  border-color: #15803d;
-  color: #15803d;
+/* Plant Pot */
+.ink-floor-pot {
+  margin-top: 14px;
+  margin-left: 12px;
 }
 
 /* --------------------------------------------------------------------------
-   RIGHT COLUMN: PHOTO & SKETCH FRAME
+   RIGHT: PORTRAIT IN WOODCUT / INK FRAME
    -------------------------------------------------------------------------- */
-.hero-image-col {
+.ink-hero-right {
   display: flex;
   justify-content: center;
   align-items: center;
   width: 100%;
 }
 
-.sketch-frame-wrapper {
+.ink-portrait-easel {
   position: relative;
   width: 100%;
-  max-width: 380px;
+  max-width: 320px;
 }
 
-/* Annotation Hand Note */
-.sketch-annotation {
+/* Hanging wires */
+.easel-hanger {
   position: absolute;
-  top: -36px;
-  right: -10px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  z-index: 3;
+  top: -24px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 24px;
+  pointer-events: none;
 }
 
-.annotation-hand {
-  font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: 20px;
-  font-weight: 700;
-  color: var(--ink, #18181b);
-  background: var(--highlight-yellow, #fef08a);
-  padding: 2px 8px;
-  border-radius: 4px;
-  transform: rotate(3deg);
-  border: 1px dashed var(--ink, #18181b);
+.hanger-pin {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #18181b;
+  border: 1px solid #ffffff;
 }
 
-/* Photo Card */
-.photo-card {
+.hanger-wire-left {
+  position: absolute;
+  top: 4px;
+  left: 50%;
+  width: 48px;
+  height: 20px;
+  border-left: 1.5px solid #18181b;
+  transform: rotate(35deg);
+  transform-origin: top left;
+}
+
+.hanger-wire-right {
+  position: absolute;
+  top: 4px;
+  right: 50%;
+  width: 48px;
+  height: 20px;
+  border-right: 1.5px solid #18181b;
+  transform: rotate(-35deg);
+  transform-origin: top right;
+}
+
+/* Ink Frame */
+.ink-photo-frame {
   position: relative;
   background: #ffffff;
-  border: 2.5px solid var(--ink, #18181b);
-  border-radius: 16px;
-  padding: 12px;
-  box-shadow: 6px 6px 0px var(--ink, #18181b);
+  border: 2.5px solid #18181b;
+  padding: 10px;
+  box-shadow: 6px 6px 0px #18181b;
   transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.photo-card:hover {
-  transform: translate(-2px, -2px) rotate(-0.5deg);
-  box-shadow: 9px 9px 0px var(--ink, #18181b);
+.ink-photo-frame:hover {
+  transform: translate(-3px, -3px) rotate(-1deg);
+  box-shadow: 9px 9px 0px #18181b;
 }
 
-.photo-inner {
+.frame-corner {
+  position: absolute;
+  font-family: monospace;
+  font-size: 14px;
+  font-weight: bold;
+  color: #18181b;
+  line-height: 1;
+}
+
+.fc-tl { top: 3px; left: 4px; }
+.fc-tr { top: 3px; right: 4px; }
+.fc-bl { bottom: 3px; left: 4px; }
+.fc-br { bottom: 3px; right: 4px; }
+
+.ink-photo-media {
   position: relative;
   width: 100%;
   aspect-ratio: 4 / 5;
-  border-radius: 10px;
+  border: 1.8px solid #18181b;
   overflow: hidden;
-  border: 1.5px solid var(--ink, #18181b);
   background: #f4f4f5;
 }
 
-.photo-img {
+.ink-photo-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   object-position: center top;
   display: block;
+  filter: contrast(1.05) grayscale(0.15);
+  transition: filter 0.3s ease;
 }
 
-/* Photo Tag Strip */
-.photo-tag-strip {
+.ink-photo-frame:hover .ink-photo-img {
+  filter: contrast(1.1) grayscale(0);
+}
+
+.photo-ink-border-inset {
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px rgba(24, 24, 27, 0.15);
+  pointer-events: none;
+}
+
+/* Tag below photo */
+.ink-photo-tag {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin-top: 10px;
-  padding: 0 4px;
+  margin-top: 8px;
+  padding: 2px 2px 0;
   font-family: var(--font-mono, monospace);
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
-  color: var(--ink, #18181b);
   letter-spacing: 0.05em;
+  color: #18181b;
 }
 
-.tag-dot {
-  color: var(--accent-amber, #d97706);
+.tag-roman {
+  font-style: italic;
 }
 
-.tag-sub {
-  color: var(--ink-muted, #71717a);
-  font-weight: 600;
+.tag-status {
+  background: #18181b;
+  color: #ffffff;
+  padding: 1px 5px;
+  font-size: 9px;
+  border-radius: 2px;
+}
+
+.ink-floor-shadow {
+  width: 80%;
+  height: 6px;
+  margin: 12px auto 0;
+  background: #18181b;
+  border-radius: 50%;
+  opacity: 0.15;
+  filter: blur(2px);
 }
 
 /* --------------------------------------------------------------------------
-   RESPONSIVE DESIGN
+   SIDEWALK / GROUND TILES
    -------------------------------------------------------------------------- */
-@media (max-width: 960px) {
-  .hero-shell {
+.ink-ground-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border-top: 2px solid #18181b;
+  background: #faf8f5;
+  padding: 4px 20px;
+}
+
+.ground-stones {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.stone {
+  width: clamp(30px, 8vw, 80px);
+  height: 8px;
+  border: 1px solid #a1a1aa;
+  border-top: none;
+  border-radius: 0 0 3px 3px;
+}
+
+/* ==========================================================================
+   ANIMATIONS
+   ========================================================================== */
+@keyframes cloudDrift {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(35px); }
+}
+
+@keyframes birdHover {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+@keyframes branchSway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(1.2deg); }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 860px) {
+  .ink-hero-container {
     grid-template-columns: 1fr;
     text-align: center;
     gap: 40px;
   }
 
-  .hero-text-col {
+  .ink-hero-left {
     align-items: center;
   }
 
-  .hero-bio {
-    max-width: 600px;
-  }
-
-  .hero-skills-row,
-  .hero-cta-group {
+  .ink-hero-name {
     justify-content: center;
   }
 
-  .sketch-frame-wrapper {
-    max-width: 320px;
+  .ink-tree-branch {
+    opacity: 0.4;
+    width: 180px;
   }
 
-  .sketch-annotation {
-    right: 0;
+  .ink-portrait-easel {
+    max-width: 270px;
   }
 }
 
-@media (max-width: 640px) {
-  .sketch-hero {
-    padding: 60px 18px 40px;
-    min-height: auto;
+@media (max-width: 520px) {
+  .ink-hero-section {
+    padding: 30px 16px 50px;
   }
 
-  .hero-shell {
-    gap: 32px;
+  .canopy-stripes {
+    height: 18px;
   }
 
-  .sketch-frame-wrapper {
-    max-width: 280px;
+  .scallop-arch {
+    height: 10px;
+  }
+
+  .ink-signboard-card {
+    padding: 18px 16px;
+  }
+
+  .plaque-inner {
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .plaque-sep {
+    display: none;
   }
 }

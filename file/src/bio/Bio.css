@@ -1,0 +1,300 @@
+﻿/* ==========================================================================
+   BIO SECTION — INK SKETCH & CROSSHATCH THEME
+   ========================================================================== */
+
+.ink-bio-section {
+  position: relative;
+  width: 100%;
+  padding: clamp(60px, 8vh, 100px) clamp(20px, 4vw, 80px);
+  background-color: var(--paper, #faf8f5);
+  color: #18181b;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Background Ruled Lines */
+.ink-grid-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: 
+    linear-gradient(to bottom, rgba(24, 24, 27, 0.035) 1px, transparent 1px),
+    linear-gradient(to right, rgba(24, 24, 27, 0.02) 1px, transparent 1px);
+  background-size: 100% 32px, 32px 100%;
+  z-index: 0;
+}
+
+/* Container */
+.ink-bio-container {
+  position: relative;
+  z-index: 1;
+  max-width: 960px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* --------------------------------------------------------------------------
+   HEADER PLAQUE
+   -------------------------------------------------------------------------- */
+.ink-section-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 12px;
+}
+
+.header-plaque {
+  position: relative;
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 24px 10px;
+  background: #ffffff;
+  border: 2px solid #18181b;
+  box-shadow: 4px 4px 0px #18181b;
+}
+
+.plaque-corner {
+  position: absolute;
+  font-family: monospace;
+  font-size: 12px;
+  font-weight: bold;
+  color: #18181b;
+  line-height: 1;
+}
+
+.top-left { top: 2px; left: 3px; }
+.top-right { top: 2px; right: 3px; }
+.bottom-left { bottom: 2px; left: 3px; }
+.bottom-right { bottom: 2px; right: 3px; }
+
+.header-chapter {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #71717a;
+}
+
+.header-main-title {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: clamp(24px, 3vw, 36px);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  margin: 2px 0 0;
+  color: #18181b;
+}
+
+.header-divider-line {
+  position: relative;
+  width: 140px;
+  height: 2px;
+  background: #18181b;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.line-diamond {
+  background: #faf8f5;
+  padding: 0 6px;
+  font-size: 10px;
+  color: #18181b;
+}
+
+/* --------------------------------------------------------------------------
+   STORY CARD
+   -------------------------------------------------------------------------- */
+.ink-story-card {
+  position: relative;
+  background: #ffffff;
+  border: 2.5px solid #18181b;
+  border-top: none;
+  box-shadow: 8px 8px 0px #18181b;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.ink-story-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 10px 10px 0px #18181b;
+}
+
+/* Scalloped Awning on Top */
+.card-top-awning {
+  width: 100%;
+  margin-top: -1px;
+}
+
+.awning-scallops {
+  display: flex;
+  width: 100%;
+}
+
+.awning-arch {
+  flex: 1;
+  height: 12px;
+  background: #ffffff;
+  border: 2px solid #18181b;
+  border-top: none;
+  border-radius: 0 0 50% 50%;
+  margin-top: -1px;
+}
+
+.card-body {
+  padding: clamp(24px, 4vw, 44px);
+}
+
+/* Lead Paragraphs */
+.story-lead-block {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 28px;
+}
+
+.story-lead-paragraph {
+  font-family: var(--font-sans, sans-serif);
+  font-size: clamp(18px, 2vw, 22px);
+  line-height: 1.5;
+  color: #18181b;
+  font-weight: 500;
+  margin: 0;
+}
+
+.ink-name-highlight {
+  font-weight: 800;
+  border-bottom: 2px solid #18181b;
+  padding-bottom: 1px;
+}
+
+.story-sub-paragraph {
+  font-family: var(--font-sans, sans-serif);
+  font-size: clamp(15px, 1.3vw, 17px);
+  line-height: 1.65;
+  color: #3f3f46;
+  margin: 0;
+}
+
+.ink-underline-phrase {
+  font-weight: 600;
+  color: #18181b;
+  border-bottom: 1.5px dashed #18181b;
+  padding-bottom: 1px;
+}
+
+/* --------------------------------------------------------------------------
+   CROSS-HATCHED DOMAIN CARDS
+   -------------------------------------------------------------------------- */
+.domains-ink-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.domain-card {
+  position: relative;
+  background: #faf8f5;
+  border: 1.8px solid #18181b;
+  padding: 16px 14px;
+  overflow: hidden;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.domain-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 4px 4px 0px #18181b;
+  background: #ffffff;
+}
+
+.domain-top-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.domain-code {
+  font-family: var(--font-mono, monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffffff;
+  background: #18181b;
+  padding: 1px 5px;
+  border-radius: 2px;
+}
+
+.domain-title {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 15px;
+  font-weight: 700;
+  color: #18181b;
+  margin: 0;
+}
+
+.domain-desc {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 13px;
+  line-height: 1.45;
+  color: #52525b;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+}
+
+.domain-hatch {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 28px;
+  height: 28px;
+  background: repeating-linear-gradient(
+    45deg,
+    #18181b,
+    #18181b 1px,
+    transparent 1px,
+    transparent 4px
+  );
+  opacity: 0.12;
+  pointer-events: none;
+}
+
+/* --------------------------------------------------------------------------
+   FOOTER SIGNATURE
+   -------------------------------------------------------------------------- */
+.story-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding-top: 18px;
+  border-top: 1.5px solid #18181b;
+}
+
+.quill-icon {
+  font-size: 16px;
+  color: #18181b;
+}
+
+.footer-quote {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: clamp(18px, 1.8vw, 22px);
+  font-weight: 600;
+  color: #3f3f46;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+@media (max-width: 640px) {
+  .domains-ink-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-body {
+    padding: 20px 16px;
+  }
+}
