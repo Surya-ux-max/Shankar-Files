@@ -1,4 +1,4 @@
-﻿import { useState, useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './Hero.css'
 import shankarPhoto from '../image/shankar1.jpeg'
 

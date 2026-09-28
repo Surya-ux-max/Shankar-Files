@@ -1,15 +1,31 @@
-﻿/* ==========================================================================
-   EDUCATION SECTION — ANIME SHOP SIDEWALK EASEL BOARDS
+/* ==========================================================================
+   EDUCATION SECTION — ANIME SHOP SIDEWALK EASEL BOARDS (PREMIUM)
    ========================================================================== */
 
 .anime-edu-section {
   position: relative;
   width: 100%;
   padding: clamp(60px, 8vh, 100px) clamp(16px, 3.5vw, 60px);
-  background-color: var(--paper, #faf8f5);
+  background-color: var(--paper, #fbf9f4);
+  background-image:
+    radial-gradient(ellipse 60% 50% at 90% 50%, rgba(187,247,208,0.14) 0%, transparent 70%),
+    radial-gradient(ellipse 50% 40% at 10% 80%, rgba(254,215,170,0.12) 0%, transparent 60%);
   color: #18181b;
   box-sizing: border-box;
   overflow: hidden;
+}
+
+/* Grid paper overlay */
+.anime-edu-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--paper-grid, rgba(175,190,210,0.15)) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-grid, rgba(175,190,210,0.15)) 1px, transparent 1px);
+  background-size: 36px 36px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .edu-sky-accents {
@@ -26,7 +42,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 40px;
 }
 
 /* --------------------------------------------------------------------------
@@ -48,20 +64,20 @@
 
 .timber-beam {
   width: 100%;
-  height: 6px;
-  background: #18181b;
-  border-radius: 2px;
+  height: 8px;
+  background: linear-gradient(90deg, #27272a 0%, #18181b 50%, #27272a 100%);
+  border-radius: 3px;
 }
 
 .hanging-chains {
   display: flex;
   justify-content: space-between;
   width: 140px;
-  height: 16px;
+  height: 18px;
 }
 
 .chain-link {
-  width: 1.8px;
+  width: 2px;
   height: 100%;
   background: repeating-linear-gradient(
     to bottom,
@@ -75,10 +91,18 @@
 .shop-header-sign {
   position: relative;
   background: #ffffff;
-  border: 2.2px solid #18181b;
-  padding: 10px 32px 14px;
-  box-shadow: 4px 4px 0px #18181b;
+  border: 2.5px solid #18181b;
+  padding: 12px 36px 16px;
+  box-shadow: 5px 5px 0px #18181b;
   text-align: center;
+  border-radius: 2px;
+  animation: headerSignSway 8s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes headerSignSway {
+  0%, 100% { transform: rotate(-0.5deg); }
+  50%       { transform: rotate(0.5deg); }
 }
 
 .header-eyebrow {
@@ -86,14 +110,14 @@
   font-family: var(--font-mono, monospace);
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.16em;
   color: #71717a;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .header-title {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(24px, 3.2vw, 36px);
+  font-size: clamp(24px, 3.2vw, 38px);
   font-weight: 800;
   letter-spacing: -0.03em;
   margin: 0;
@@ -102,20 +126,22 @@
 
 .header-ink-line {
   position: relative;
-  width: 80px;
-  height: 1.5px;
+  width: 90px;
+  height: 2px;
   background: #18181b;
-  margin: 6px auto 0;
+  margin: 8px auto 0;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
 .line-center-knot {
-  font-size: 8px;
+  font-size: 9px;
   background: #ffffff;
-  padding: 0 4px;
+  padding: 0 5px;
   color: #18181b;
+  position: relative;
+  z-index: 1;
 }
 
 /* --------------------------------------------------------------------------
@@ -123,19 +149,19 @@
    -------------------------------------------------------------------------- */
 .edu-easel-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: clamp(28px, 4vw, 48px);
+  grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+  gap: clamp(32px, 4vw, 52px);
 }
 
 .easel-board-stand {
   position: relative;
   display: flex;
   flex-direction: column;
-  transition: transform 0.25s ease;
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .easel-board-stand:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
 }
 
 /* Awning Shingle Topper */
@@ -146,8 +172,8 @@
 
 .shingle-bars {
   display: flex;
-  height: 18px;
-  border: 2px solid #18181b;
+  height: 20px;
+  border: 2.2px solid #18181b;
   border-bottom: none;
   background: #ffffff;
   overflow: hidden;
@@ -169,7 +195,7 @@
     #18181b,
     #18181b 2px,
     #ffffff 2px,
-    #ffffff 6px
+    #ffffff 7px
   );
 }
 
@@ -180,9 +206,9 @@
 
 .s-scallop-arch {
   flex: 1;
-  height: 10px;
+  height: 12px;
   background: #ffffff;
-  border: 1.8px solid #18181b;
+  border: 2px solid #18181b;
   border-top: none;
   border-radius: 0 0 50% 50%;
   margin-top: -1px;
@@ -193,16 +219,18 @@
   position: relative;
   background: #ffffff;
   border: 2.5px solid #18181b;
-  padding: 24px 22px 20px;
-  box-shadow: 6px 6px 0px #18181b;
+  padding: 26px 24px 22px;
+  box-shadow: 7px 7px 0px #18181b;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
   box-sizing: border-box;
+  background-image: radial-gradient(circle at 100% 0%, rgba(254,240,138,0.06) 0%, transparent 50%);
+  transition: box-shadow 0.3s ease;
 }
 
 .easel-board-stand:hover .easel-blackboard {
-  box-shadow: 9px 9px 0px #18181b;
+  box-shadow: 11px 11px 0px #18181b;
 }
 
 /* Board Meta */
@@ -210,16 +238,26 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
 }
 
 .board-index {
   font-family: var(--font-mono, monospace);
   font-size: 11px;
   font-weight: 800;
-  color: #ffffff;
+  color: var(--highlight-yellow, #fef08a);
   background: #18181b;
-  padding: 1px 6px;
-  border-radius: 2px;
+  padding: 2px 8px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+
+.board-jp-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #71717a;
+  letter-spacing: 0.04em;
 }
 
 .board-period {
@@ -227,24 +265,34 @@
   font-size: 11.5px;
   font-weight: 700;
   color: #18181b;
+  background: var(--highlight-cyan, #bae6fd);
+  padding: 1px 6px;
+  border: 1px solid #18181b;
+  border-radius: 2px;
 }
 
 /* Anime Round Seal */
 .anime-round-seal {
   position: absolute;
-  top: 24px;
-  right: 18px;
-  width: 68px;
-  height: 68px;
+  top: 26px;
+  right: 20px;
+  width: 72px;
+  height: 72px;
   border-radius: 50%;
-  border: 1.8px dashed #18181b;
+  border: 2px dashed #18181b;
   display: flex;
   align-items: center;
   justify-content: center;
   transform: rotate(-10deg);
-  background: #faf8f5;
+  background: var(--paper-cream, #f7f3ea);
   pointer-events: none;
   z-index: 2;
+  box-shadow: 0 0 0 4px rgba(24,24,27,0.04) inset;
+  transition: transform 0.3s ease;
+}
+
+.easel-board-stand:hover .anime-round-seal {
+  transform: rotate(-6deg) scale(1.04);
 }
 
 .seal-border-circle {
@@ -253,59 +301,65 @@
   align-items: center;
   text-align: center;
   font-family: var(--font-mono, monospace);
-  line-height: 1.1;
+  line-height: 1.2;
+  padding: 4px;
 }
 
 .seal-tag {
   font-size: 7.5px;
   font-weight: 700;
   color: #71717a;
+  letter-spacing: 0.04em;
 }
 
 .seal-val {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 900;
   color: #18181b;
+  word-break: break-all;
+  line-height: 1.15;
 }
 
 /* Institution Name */
 .board-institution-wrap {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .board-inst-name {
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
-  font-size: clamp(19px, 2vw, 23px);
+  font-size: clamp(19px, 2vw, 24px);
   font-weight: 800;
   line-height: 1.2;
   color: #18181b;
   margin: 0;
-  padding-right: 56px;
+  padding-right: 60px;
 }
 
 .board-inst-loc {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
+  gap: 5px;
   font-family: var(--font-sans, sans-serif);
   font-size: 13px;
   color: #52525b;
+  font-weight: 500;
 }
 
 .loc-icon {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 /* Program Box */
 .board-program-box {
-  background: #faf8f5;
-  border: 1.8px solid #18181b;
-  padding: 10px 12px;
+  background: var(--paper-cream, #f7f3ea);
+  border: 2px solid #18181b;
+  padding: 12px 14px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
+  border-radius: 2px;
 }
 
 .program-header {
@@ -315,27 +369,33 @@
   font-family: var(--font-mono, monospace);
   font-size: 9.5px;
   font-weight: 700;
+  gap: 8px;
 }
 
 .prog-type {
   color: #71717a;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.06em;
 }
 
 .prog-status {
-  padding: 1px 5px;
-  border: 1px solid #18181b;
-  border-radius: 2px;
+  padding: 2px 7px;
+  border: 1.5px solid #18181b;
+  border-radius: 3px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
 .prog-status.gold {
-  background: #fef08a;
+  background: var(--highlight-yellow, #fef08a);
   color: #18181b;
+  box-shadow: 1.5px 1.5px 0 #18181b;
 }
 
 .prog-status.green {
-  background: #dcfce7;
+  background: var(--highlight-green, #bbf7d0);
   color: #15803d;
+  box-shadow: 1.5px 1.5px 0 #15803d;
 }
 
 .prog-degree-title {
@@ -351,17 +411,19 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #ffffff;
+  background: #18181b;
   border: 1.5px solid #18181b;
-  padding: 8px 12px;
+  padding: 10px 14px;
+  border-radius: 2px;
+  box-shadow: 3px 3px 0 rgba(24,24,27,0.2);
 }
 
 .score-desc {
   font-family: var(--font-mono, monospace);
   font-size: 11px;
   font-weight: 700;
-  color: #71717a;
-  letter-spacing: 0.05em;
+  color: #a1a1aa;
+  letter-spacing: 0.07em;
 }
 
 .score-val-row {
@@ -372,103 +434,116 @@
 
 .score-main-number {
   font-family: var(--font-mono, monospace);
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 900;
-  color: #18181b;
+  color: var(--highlight-yellow, #fef08a);
+  letter-spacing: -0.02em;
 }
 
 .score-ink-hatch {
   position: absolute;
   top: 0;
-  right: -6px;
+  right: -8px;
   bottom: 0;
-  width: 12px;
+  width: 14px;
   background: repeating-linear-gradient(
     45deg,
-    #18181b,
-    #18181b 1px,
+    rgba(254,240,138,0.3),
+    rgba(254,240,138,0.3) 1px,
     transparent 1px,
     transparent 3px
   );
-  opacity: 0.15;
+  opacity: 0.4;
 }
 
 /* Focus Note */
 .board-focus-note {
   display: flex;
   align-items: flex-start;
-  gap: 6px;
-  padding-top: 8px;
-  border-top: 1.5px dashed #e4e4e7;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1.5px dashed #d4d4d8;
 }
 
 .quill-pin {
-  font-size: 12px;
-  color: #71717a;
-  margin-top: 2px;
+  font-size: 14px;
+  color: #a1a1aa;
+  margin-top: 1px;
 }
 
 .focus-text {
   font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: 16px;
+  font-size: 17px;
   font-weight: 600;
   color: #3f3f46;
   margin: 0;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 
 /* Bolts */
 .board-bolt {
   position: absolute;
   font-family: monospace;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: bold;
-  color: #a1a1aa;
+  color: #d4d4d8;
   pointer-events: none;
+  line-height: 1;
 }
 
-.b-tl { top: 3px; left: 5px; }
-.b-tr { top: 3px; right: 5px; }
-.b-bl { bottom: 3px; left: 5px; }
-.b-br { bottom: 3px; right: 5px; }
+.b-tl { top: 4px;  left: 6px; }
+.b-tr { top: 4px;  right: 6px; }
+.b-bl { bottom: 4px; left: 6px; }
+.b-br { bottom: 4px; right: 6px; }
 
 /* Wooden Easel Legs */
 .easel-wooden-legs {
   display: flex;
   justify-content: space-between;
-  padding: 0 24px;
+  padding: 0 28px;
 }
 
 .leg {
-  width: 8px;
-  height: 14px;
+  width: 10px;
+  height: 16px;
   background: #18181b;
-  border-radius: 0 0 2px 2px;
+  border-radius: 0 0 3px 3px;
 }
 
-.leg-left { transform: rotate(15deg); }
-.leg-right { transform: rotate(-15deg); }
+.leg-left  { transform: rotate(15deg); transform-origin: top center; }
+.leg-right { transform: rotate(-15deg); transform-origin: top center; }
 
 /* ==========================================================================
    RESPONSIVE DESIGN
    ========================================================================== */
-@media (max-width: 720px) {
+@media (max-width: 760px) {
   .edu-easel-grid {
     grid-template-columns: 1fr;
   }
 
   .easel-blackboard {
-    padding: 20px 16px;
+    padding: 22px 18px;
   }
 
   .board-inst-name {
     padding-right: 0;
+    font-size: clamp(17px, 4.5vw, 22px);
   }
 
   .anime-round-seal {
     position: relative;
     top: auto;
     right: auto;
-    margin: 0 auto 8px;
+    margin: 0 auto 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edu-easel-grid {
+    gap: 24px;
+  }
+
+  .board-period {
+    display: none;
   }
 }

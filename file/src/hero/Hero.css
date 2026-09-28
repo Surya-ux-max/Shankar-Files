@@ -1,5 +1,5 @@
-﻿/* ==========================================================================
-   ANIME SHOP HERO SECTION — COMPLETE MANGA / GHIBLI SKETCH THEME
+/* ==========================================================================
+   ANIME SHOP HERO SECTION — PREMIUM MANGA / GHIBLI SKETCH THEME
    ========================================================================== */
 
 .anime-shop-hero {
@@ -11,10 +11,26 @@
   justify-content: center;
   align-items: center;
   padding: clamp(40px, 6vh, 80px) clamp(16px, 3.5vw, 60px) 40px;
-  background-color: var(--paper, #faf8f5);
+  background-color: var(--paper, #fbf9f4);
+  background-image:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(254, 240, 138, 0.18) 0%, transparent 70%),
+    linear-gradient(180deg, rgba(186, 230, 253, 0.10) 0%, transparent 40%);
   color: #18181b;
   overflow: hidden;
   box-sizing: border-box;
+}
+
+/* Paper texture grid overlay */
+.anime-shop-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(var(--paper-grid, rgba(175,190,210,0.18)) 1px, transparent 1px),
+    linear-gradient(90deg, var(--paper-grid, rgba(175,190,210,0.18)) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 /* ==========================================================================
@@ -32,6 +48,7 @@
   position: absolute;
   top: -20px;
   animation: fallPetal linear infinite;
+  filter: drop-shadow(1px 2px 2px rgba(24,24,27,0.10));
 }
 
 @keyframes fallPetal {
@@ -39,14 +56,14 @@
     transform: translateY(0) rotate(0deg) translateX(0);
     opacity: 0;
   }
-  15% {
-    opacity: 0.6;
+  10% {
+    opacity: 0.75;
   }
-  80% {
-    opacity: 0.6;
+  85% {
+    opacity: 0.65;
   }
   100% {
-    transform: translateY(105vh) rotate(360deg) translateX(60px);
+    transform: translateY(108vh) rotate(390deg) translateX(80px);
     opacity: 0;
   }
 }
@@ -69,10 +86,15 @@
   align-items: center;
   background: #ffffff;
   border: 2px solid #18181b;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 200px 8px 180px 8px / 8px 180px 8px 200px;
-  box-shadow: 2.5px 2.5px 0px #18181b;
+  box-shadow: 3px 3px 0px #18181b;
   z-index: 3;
+  transition: transform 0.3s ease;
+}
+
+.manga-sfx:hover {
+  transform: scale(1.06) rotate(-2deg);
 }
 
 .sfx-kirakira {
@@ -105,8 +127,8 @@
 }
 
 @keyframes sfxPulse {
-  0%, 100% { transform: translateY(0) scale(1) rotate(-4deg); }
-  50% { transform: translateY(-4px) scale(1.04) rotate(-2deg); }
+  0%, 100% { transform: translateY(0) scale(1) rotate(-4deg); box-shadow: 3px 3px 0px #18181b; }
+  50%       { transform: translateY(-5px) scale(1.05) rotate(-2deg); box-shadow: 4px 5px 0px #18181b; }
 }
 
 /* Clouds & Nature */
@@ -155,6 +177,7 @@
   display: flex;
   flex-direction: column;
   transition: transform 0.2s cubic-bezier(0.2, 0, 0.2, 1);
+  filter: drop-shadow(0 8px 32px rgba(24,24,27,0.10));
 }
 
 /* Roof & Chimney & Sleeping Neko */
@@ -171,23 +194,24 @@
 .chimney-pot {
   position: relative;
   left: clamp(40px, 8vw, 100px);
-  width: 24px;
-  height: 18px;
+  width: 26px;
+  height: 20px;
   background: #ffffff;
   border: 2px solid #18181b;
   border-bottom: none;
+  border-radius: 2px 2px 0 0;
 }
 
 .smoke-puff {
   position: absolute;
-  top: -10px;
-  left: 4px;
-  width: 10px;
-  height: 10px;
+  top: -12px;
+  left: 5px;
+  width: 12px;
+  height: 12px;
   border-radius: 50%;
-  border: 1.5px solid #71717a;
+  border: 1.5px solid #a1a1aa;
   border-bottom: none;
-  animation: puffSmoke 3s linear infinite;
+  animation: puffSmoke 2.8s linear infinite;
 }
 
 .roof-anime-cat {
@@ -197,11 +221,19 @@
   display: flex;
   align-items: center;
   gap: 6px;
-  background: #ffffff;
+  background: var(--highlight-yellow, #fef08a);
   border: 1.5px solid #18181b;
   border-bottom: none;
-  padding: 2px 8px;
-  border-radius: 6px 6px 0 0;
+  padding: 3px 10px;
+  border-radius: 8px 8px 0 0;
+  box-shadow: 2px -2px 0 #18181b;
+  animation: catWiggle 4s ease-in-out infinite;
+}
+
+@keyframes catWiggle {
+  0%, 90%, 100% { transform: rotate(0deg); }
+  93%           { transform: rotate(-2deg); }
+  96%           { transform: rotate(2deg); }
 }
 
 .cat-sleeping {
@@ -214,8 +246,8 @@
 .cat-label {
   font-family: var(--font-mono, monospace);
   font-size: 8.5px;
-  color: #71717a;
-  font-weight: 600;
+  color: #52525b;
+  font-weight: 700;
 }
 
 .roof-shingles-bar {
@@ -223,9 +255,9 @@
   bottom: 0;
   left: 0;
   right: 0;
-  height: 6px;
-  background: #18181b;
-  border-radius: 2px 2px 0 0;
+  height: 7px;
+  background: linear-gradient(90deg, #27272a 0%, #18181b 50%, #27272a 100%);
+  border-radius: 3px 3px 0 0;
 }
 
 /* Double Scalloped Canvas Awning */
@@ -241,7 +273,7 @@
 
 .awning-stripes {
   display: flex;
-  height: 28px;
+  height: 30px;
   border: 2.2px solid #18181b;
   border-bottom: none;
   background: #ffffff;
@@ -264,7 +296,7 @@
     #18181b,
     #18181b 3px,
     #ffffff 3px,
-    #ffffff 8px
+    #ffffff 9px
   );
 }
 
@@ -275,12 +307,13 @@
 
 .scallop-petal {
   flex: 1;
-  height: 16px;
+  height: 18px;
   background: #ffffff;
   border: 2.2px solid #18181b;
   border-top: none;
   border-radius: 0 0 50% 50%;
   margin-top: -1px;
+  transition: background 0.3s;
 }
 
 /* --------------------------------------------------------------------------
@@ -292,25 +325,26 @@
   border: 2.5px solid #18181b;
   border-top: none;
   border-bottom: none;
-  padding: 28px clamp(20px, 4vw, 44px);
+  padding: 32px clamp(20px, 4vw, 48px);
   display: grid;
-  grid-template-columns: 1.25fr 0.85fr;
-  gap: clamp(24px, 4vw, 48px);
+  grid-template-columns: 1.3fr 0.85fr;
+  gap: clamp(24px, 4vw, 52px);
   align-items: center;
   box-shadow: 8px 0px 0px #18181b, -8px 0px 0px #18181b;
+  background-image: radial-gradient(circle at 80% 20%, rgba(254,240,138,0.07) 0%, transparent 60%);
 }
 
 .timber-pillar {
   position: absolute;
   top: 0;
   bottom: 0;
-  width: 12px;
+  width: 14px;
   background: repeating-linear-gradient(
     0deg,
     #18181b,
-    #18181b 2px,
-    #faf8f5 2px,
-    #faf8f5 8px
+    #18181b 3px,
+    #faf8f5 3px,
+    #faf8f5 10px
   );
   border: 1.5px solid #18181b;
   z-index: 5;
@@ -326,7 +360,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: 18px;
 }
 
 /* Hanging Open Sign */
@@ -353,16 +387,30 @@
 .sign-board {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 4px 12px;
-  background: #faf8f5;
-  border: 1.8px solid #18181b;
-  box-shadow: 2px 2px 0px #18181b;
+  gap: 7px;
+  padding: 5px 14px;
+  background: var(--highlight-green, #bbf7d0);
+  border: 2px solid #18181b;
+  box-shadow: 3px 3px 0px #18181b;
+  border-radius: 2px;
+  animation: signSwing 6s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes signSwing {
+  0%, 100% { transform: rotate(-1.5deg); }
+  50%       { transform: rotate(1.5deg); }
 }
 
 .sign-dot {
-  color: #10b981;
-  font-size: 10px;
+  color: #16a34a;
+  font-size: 11px;
+  animation: signDotBlink 2s ease-in-out infinite;
+}
+
+@keyframes signDotBlink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.35; }
 }
 
 .sign-text {
@@ -390,10 +438,11 @@
   font-size: 14px;
   font-weight: 800;
   color: #18181b;
-  background: #fef08a;
-  padding: 1px 6px;
-  border: 1px solid #18181b;
+  background: var(--highlight-yellow, #fef08a);
+  padding: 2px 8px;
+  border: 1.5px solid #18181b;
   border-radius: 2px;
+  box-shadow: 2px 2px 0 #18181b;
 }
 
 .jp-roman {
@@ -426,8 +475,26 @@
   width: 100%;
   background: #faf8f5;
   border: 2px solid #18181b;
-  padding: 12px 16px;
-  box-shadow: 4px 4px 0px #18181b;
+  padding: 14px 18px;
+  box-shadow: 5px 5px 0px #18181b;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+}
+
+.shop-profession-menu::before {
+  content: '';
+  position: absolute;
+  top: 0; right: 0;
+  width: 60px; height: 60px;
+  background: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 4px,
+    rgba(24,24,27,0.04) 4px,
+    rgba(24,24,27,0.04) 5px
+  );
+  pointer-events: none;
 }
 
 .menu-header {
@@ -468,9 +535,11 @@
   font-size: 10px;
   font-weight: 800;
   background: #18181b;
-  color: #ffffff;
-  padding: 2px 6px;
-  border-radius: 2px;
+  color: var(--highlight-yellow, #fef08a);
+  padding: 3px 7px;
+  border-radius: 3px;
+  letter-spacing: 0.06em;
+  box-shadow: 2px 2px 0 rgba(24,24,27,0.3);
 }
 
 .item-text-group {
@@ -509,12 +578,12 @@
 .rpg-stat-bar {
   flex: 1;
   background: #ffffff;
-  border: 1.5px solid #18181b;
-  padding: 6px 12px;
+  border: 2px solid #18181b;
+  padding: 8px 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  box-shadow: 2px 2px 0px #18181b;
+  gap: 12px;
+  box-shadow: 3px 3px 0px #18181b;
 }
 
 .rpg-label {
@@ -522,9 +591,11 @@
   font-size: 10px;
   font-weight: 800;
   background: #18181b;
-  color: #ffffff;
-  padding: 1px 4px;
+  color: var(--highlight-yellow, #fef08a);
+  padding: 2px 6px;
   border-radius: 2px;
+  white-space: nowrap;
+  letter-spacing: 0.04em;
 }
 
 .rpg-bars {
@@ -550,14 +621,33 @@
 
 .stat-meter {
   flex: 1;
-  height: 6px;
-  background: #faf8f5;
+  height: 7px;
+  background: #f4f4f5;
   border: 1px solid #18181b;
+  border-radius: 1px;
+  overflow: hidden;
 }
 
 .stat-fill {
   height: 100%;
-  background: #18181b;
+  background: linear-gradient(90deg, #18181b 0%, #3f3f46 100%);
+  border-radius: 1px;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat-fill::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+  animation: statShimmer 2.5s ease-in-out infinite;
+}
+
+@keyframes statShimmer {
+  0%   { left: -100%; }
+  100% { left: 200%; }
 }
 
 .sidewalk-tea-cup {
@@ -565,18 +655,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 22px;
+  font-size: 24px;
   cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.sidewalk-tea-cup:hover {
+  transform: scale(1.15) rotate(-5deg);
 }
 
 .tea-steam {
-  font-size: 14px;
+  font-size: 15px;
   animation: steamRise 2s ease-in-out infinite;
+  color: #71717a;
 }
 
 @keyframes steamRise {
-  0%, 100% { transform: translateY(0) scale(0.9); opacity: 0.4; }
-  50% { transform: translateY(-4px) scale(1.2); opacity: 0.9; }
+  0%, 100% { transform: translateY(0) scale(0.9); opacity: 0.3; }
+  50%       { transform: translateY(-6px) scale(1.15); opacity: 0.85; }
 }
 
 /* --------------------------------------------------------------------------
@@ -593,74 +689,95 @@
 /* Lantern */
 .shop-lantern {
   position: absolute;
-  top: -24px;
-  right: 12px;
+  top: -28px;
+  right: 14px;
   display: flex;
   flex-direction: column;
   align-items: center;
   z-index: 6;
+  animation: lanternSway 4s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes lanternSway {
+  0%, 100% { transform: rotate(-3deg); }
+  50%       { transform: rotate(3deg); }
 }
 
 .lantern-cord {
   width: 1.5px;
-  height: 20px;
+  height: 22px;
   background: #18181b;
 }
 
 .lantern-body {
-  width: 22px;
-  height: 26px;
+  width: 24px;
+  height: 30px;
   background: #ffffff;
-  border: 1.8px solid #18181b;
-  border-radius: 4px;
+  border: 2px solid #18181b;
+  border-radius: 5px;
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 
 .lantern-kanji {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 900;
   color: #18181b;
   z-index: 2;
+  position: relative;
 }
 
 .lantern-glow {
   position: absolute;
   inset: 2px;
-  background: #fef08a;
-  opacity: 0.85;
-  border-radius: 2px;
+  background: radial-gradient(ellipse at center, #fef08a 30%, #fbbf24 100%);
+  opacity: 0.9;
+  border-radius: 3px;
+  animation: glowPulse 2s ease-in-out infinite;
+}
+
+@keyframes glowPulse {
+  0%, 100% { opacity: 0.8; transform: scale(1); }
+  50%       { opacity: 1;   transform: scale(1.05); }
 }
 
 /* Speech Bubble */
 .anime-speech-bubble {
   position: absolute;
-  top: -38px;
+  top: -44px;
   left: 0;
   background: #ffffff;
-  border: 1.8px solid #18181b;
-  padding: 4px 10px;
-  border-radius: 8px;
+  border: 2px solid #18181b;
+  padding: 5px 12px;
+  border-radius: 10px;
   font-family: var(--font-hand, 'Caveat', cursive);
   font-size: 15px;
   font-weight: 700;
   color: #18181b;
-  box-shadow: 2px 2px 0px #18181b;
+  box-shadow: 3px 3px 0px #18181b;
   z-index: 5;
   white-space: nowrap;
+  animation: bubbleBob 3s ease-in-out infinite;
+}
+
+@keyframes bubbleBob {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
 }
 
 .bubble-tail {
   position: absolute;
-  bottom: -6px;
-  left: 20px;
-  width: 8px;
-  height: 8px;
+  bottom: -7px;
+  left: 22px;
+  width: 9px;
+  height: 9px;
   background: #ffffff;
-  border-right: 1.8px solid #18181b;
-  border-bottom: 1.8px solid #18181b;
+  border-right: 2px solid #18181b;
+  border-bottom: 2px solid #18181b;
   transform: rotate(45deg);
 }
 
@@ -671,26 +788,27 @@
   max-width: 320px;
   background: #ffffff;
   border: 2.5px solid #18181b;
-  box-shadow: 6px 6px 0px #18181b;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 8px 8px 0px #18181b;
+  transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1), box-shadow 0.3s ease;
 }
 
 .window-frame-card:hover {
-  transform: translate(-3px, -3px) rotate(-0.5deg);
-  box-shadow: 9px 9px 0px #18181b;
+  transform: translate(-4px, -4px) rotate(-0.8deg);
+  box-shadow: 12px 12px 0px #18181b;
 }
 
 .window-header-pane {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 4px 8px;
-  background: #faf8f5;
-  border-bottom: 1.8px solid #18181b;
+  padding: 5px 10px;
+  background: #18181b;
+  border-bottom: 2px solid #18181b;
   font-family: var(--font-mono, monospace);
   font-size: 10px;
   font-weight: 700;
-  color: #18181b;
+  color: var(--highlight-yellow, #fef08a);
+  letter-spacing: 0.05em;
 }
 
 .window-glass {
@@ -699,7 +817,7 @@
   aspect-ratio: 4 / 5;
   overflow: hidden;
   background: #f4f4f5;
-  border-bottom: 1.8px solid #18181b;
+  border-bottom: 2px solid #18181b;
 }
 
 .shopkeeper-photo {
@@ -708,14 +826,29 @@
   object-fit: cover;
   object-position: center top;
   display: block;
+  transition: transform 0.4s ease;
+}
+
+.window-frame-card:hover .shopkeeper-photo {
+  transform: scale(1.04);
 }
 
 .manga-screentone-overlay {
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(#18181b 1px, transparent 1px);
-  background-size: 6px 6px;
-  opacity: 0.08;
+  background-image: radial-gradient(#18181b 0.8px, transparent 0.8px);
+  background-size: 5px 5px;
+  opacity: 0.06;
+  pointer-events: none;
+}
+
+/* Corner window glare */
+.window-glass::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 35%; height: 35%;
+  background: linear-gradient(135deg, rgba(255,255,255,0.3) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -723,32 +856,40 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 10px;
+  padding: 10px 12px;
   font-family: var(--font-mono, monospace);
   font-size: 11px;
   font-weight: 800;
   color: #18181b;
+  background: #faf8f5;
 }
 
 .plate-rank {
-  background: #fef08a;
-  border: 1px solid #18181b;
-  padding: 1px 5px;
-  font-size: 9px;
+  background: var(--highlight-yellow, #fef08a);
+  border: 1.5px solid #18181b;
+  padding: 2px 7px;
+  font-size: 9.5px;
   font-weight: 800;
   border-radius: 2px;
+  box-shadow: 2px 2px 0 #18181b;
 }
 
 /* Sidewalk Box */
 .sidewalk-crate {
   display: flex;
   align-items: center;
-  gap: 6px;
-  margin-top: 10px;
-  padding: 3px 12px;
-  background: #faf8f5;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 4px 14px;
+  background: #ffffff;
   border: 1.5px solid #18181b;
-  border-radius: 2px;
+  border-radius: 3px;
+  box-shadow: 3px 3px 0 #18181b;
+  transition: transform 0.2s ease;
+}
+
+.sidewalk-crate:hover {
+  transform: translateY(-2px);
 }
 
 .crate-daruma {
@@ -759,7 +900,7 @@
   font-family: var(--font-mono, monospace);
   font-size: 10px;
   font-weight: 700;
-  color: #71717a;
+  color: #52525b;
   letter-spacing: 0.05em;
 }
 
@@ -770,51 +911,58 @@
   width: 100%;
   border: 2.5px solid #18181b;
   background: #ffffff;
-  padding: 6px 12px;
+  padding: 8px 14px;
   box-sizing: border-box;
+  border-top: 3px solid #18181b;
 }
 
 .pavement-stones {
   display: flex;
-  gap: 8px;
+  gap: 6px;
   justify-content: space-between;
 }
 
 .cobble-stone {
   flex: 1;
-  height: 8px;
-  border: 1px solid #a1a1aa;
-  border-radius: 2px;
-  background: #faf8f5;
+  height: 9px;
+  border: 1px solid #d4d4d8;
+  border-radius: 3px;
+  background: linear-gradient(180deg, #faf8f5 0%, #f0eeeb 100%);
+  transition: background 0.3s;
+}
+
+.cobble-stone:hover {
+  background: var(--highlight-yellow, #fef08a);
 }
 
 /* ==========================================================================
    ANIMATIONS
    ========================================================================== */
 @keyframes floatCloudLeft {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(30px); }
+  0%   { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(40px) translateY(-6px); }
 }
 
 @keyframes floatCloudRight {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-30px); }
+  0%   { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-40px) translateY(4px); }
 }
 
 @keyframes hoverBirds {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0) translateX(0); }
+  33%       { transform: translateY(-10px) translateX(6px); }
+  66%       { transform: translateY(-4px) translateX(-4px); }
 }
 
 @keyframes treeSway {
-  0%, 100% { transform: rotate(0deg); }
-  50% { transform: rotate(1deg); }
+  0%, 100% { transform: rotate(0deg) translateX(0); }
+  50%       { transform: rotate(1.2deg) translateX(-3px); }
 }
 
 @keyframes puffSmoke {
-  0% { opacity: 0; transform: translate(0, 0) scale(0.6); }
-  50% { opacity: 0.8; }
-  100% { opacity: 0; transform: translate(-8px, -14px) scale(1.4); }
+  0%   { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  40%  { opacity: 0.7; }
+  100% { opacity: 0; transform: translate(-10px, -18px) scale(1.6); }
 }
 
 /* ==========================================================================

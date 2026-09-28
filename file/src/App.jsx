@@ -1,4 +1,4 @@
-﻿import './index.css'
+import './index.css'
 import Hero from './hero/Hero'
 import Bio from './bio/Bio'
 import Education from './education/Education'
