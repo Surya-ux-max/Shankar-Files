@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import './Hero.css'
 import shankarPhoto from '../image/shankar1.jpeg'
 
@@ -179,26 +179,7 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="sketchbook-stats">
-            <div className="stats-page-tab">LV. 2026 · STATS</div>
-            <div className="stat-rows">
-              <div className="stat-row">
-                <span className="sr-label">AI</span>
-                <div className="sr-track"><div className="sr-fill" style={{ width: '92%' }}><span className="sr-dots">· · · · · · · · ·</span></div></div>
-                <span className="sr-val">92</span>
-              </div>
-              <div className="stat-row">
-                <span className="sr-label">WEB</span>
-                <div className="sr-track"><div className="sr-fill" style={{ width: '96%' }}><span className="sr-dots">· · · · · · · · · ·</span></div></div>
-                <span className="sr-val">96</span>
-              </div>
-              <div className="stat-row">
-                <span className="sr-label">UX</span>
-                <div className="sr-track"><div className="sr-fill" style={{ width: '85%' }}><span className="sr-dots">· · · · · · · ·</span></div></div>
-                <span className="sr-val">85</span>
-              </div>
-            </div>
-          </div>
+
 
           <div className="handmade-open-sign">
             <div className="sign-string" />

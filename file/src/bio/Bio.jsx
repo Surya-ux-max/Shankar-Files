@@ -1,61 +1,56 @@
 ﻿import './Bio.css'
 
 export default function Bio() {
-  const skillCards = [
+
+  const disciplines = [
     {
       no: '01',
-      icon: '⚡',
       title: 'Full-Stack Web',
       jp: 'ウェブ開発',
-      level: 98,
-      tag: 'MASTERED',
-      desc: 'Building responsive, richly interactive web applications with clean, purposeful design.',
-      wc: 'wc-cyan',
+      desc: 'Building responsive, richly interactive web applications with clean, purposeful design and precision.',
     },
     {
       no: '02',
-      icon: '🛠️',
       title: 'Backend Systems',
       jp: 'バックエンド',
-      level: 95,
-      tag: 'EXPERT',
-      desc: 'Architecting scalable server-side systems, robust APIs and high-performance databases.',
-      wc: 'wc-peach',
+      desc: 'Architecting scalable server-side systems, robust APIs and high-performance databases built to last.',
     },
     {
       no: '03',
-      icon: '📱',
-      title: 'Mobile Apps',
+      title: 'Mobile Applications',
       jp: 'モバイルアプリ',
-      level: 90,
-      tag: 'SKILLED',
-      desc: 'Developing smooth, high-performance cross-platform mobile experiences users love.',
-      wc: 'wc-lavender',
+      desc: 'Developing smooth, high-performance cross-platform mobile experiences that feel native and fluid.',
     },
     {
       no: '04',
-      icon: '🧠',
       title: 'AI & Machine Learning',
       jp: '人工知能',
-      level: 99,
-      tag: 'S+ RANK',
-      desc: 'Engineering intelligent pipelines, models and pragmatic AI integrations at scale.',
-      wc: 'wc-sage',
+      desc: 'Engineering intelligent pipelines, models and pragmatic AI integrations that solve real problems.',
     },
+  ]
+
+  const facts = [
+    { bullet: 'CS', label: 'Computer Science Student', note: 'Actively learning & building' },
+    { bullet: 'IN', label: 'Based in India',           note: 'Building for a global audience' },
+    { bullet: 'OS', label: 'Open Source Contributor',  note: 'Giving back to the community' },
+    { bullet: 'FS', label: 'Fast & Focused Learner',   note: 'Always levelling up' },
+    { bullet: 'AI', label: 'AI Systems Enthusiast',    note: 'Pragmatic, production-first approach' },
   ]
 
   return (
     <section className="ghibli-bio" id="about">
 
-      {/* Background paper + watercolor */}
+      {/* Paper background */}
       <div className="bio-paper-bg" aria-hidden="true" />
+
+      {/* Watercolor blobs */}
       <div className="bio-wc-layer" aria-hidden="true">
         <div className="bio-wc bio-wc-1" />
         <div className="bio-wc bio-wc-2" />
         <div className="bio-wc bio-wc-3" />
       </div>
 
-      {/* Storyboard border corners */}
+      {/* Storyboard corner brackets */}
       <div className="bio-sb-frame" aria-hidden="true">
         <div className="bio-sb-corner bio-sb-tl" />
         <div className="bio-sb-corner bio-sb-tr" />
@@ -63,52 +58,52 @@ export default function Bio() {
         <div className="bio-sb-corner bio-sb-br" />
       </div>
 
-      {/* Floating ink doodles */}
+      {/* Ambient SVG doodles — no emojis */}
       <div className="bio-doodles" aria-hidden="true">
-        {/* top-left ink star */}
-        <svg className="doodle doodle-star-a" width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M14 2 L15.5 12 L24 7 L17 14 L24 21 L15.5 16 L14 26 L12.5 16 L4 21 L11 14 L4 7 L12.5 12 Z"
-            stroke="#9b8c78" strokeWidth="1.4" fill="rgba(254,240,138,0.35)" strokeLinejoin="round"/>
+        <svg className="doodle doodle-star-a" width="30" height="30" viewBox="0 0 30 30" fill="none">
+          <path d="M15 3 L16.8 12 L25 8 L19 15 L25 22 L16.8 18 L15 27 L13.2 18 L5 22 L11 15 L5 8 L13.2 12 Z"
+            stroke="#9b8c78" strokeWidth="1.4" fill="rgba(254,240,138,0.3)" strokeLinejoin="round"/>
         </svg>
-        {/* top-right sketch swirl */}
-        <svg className="doodle doodle-swirl-a" width="50" height="50" viewBox="0 0 50 50" fill="none">
-          <path d="M40 10 C35 5, 15 8, 12 20 C9 32, 20 40, 30 36 C40 32, 42 22, 36 18 C30 14, 20 18, 20 26"
-            stroke="#9b8c78" strokeWidth="1.5" strokeLinecap="round" fill="none"/>
+        <svg className="doodle doodle-swirl-a" width="52" height="52" viewBox="0 0 52 52" fill="none">
+          <path d="M42 10 C36 5, 14 8, 11 21 C8 34, 20 42, 31 38 C42 34, 44 23, 37 18 C30 13, 19 18, 20 27"
+            stroke="#9b8c78" strokeWidth="1.5" strokeLinecap="round"/>
         </svg>
-        {/* bottom-left leaves cluster */}
-        <svg className="doodle doodle-leaves" width="70" height="55" viewBox="0 0 70 55" fill="none">
-          <path d="M10 45 C10 45, 5 25, 20 18 C20 18, 18 38, 10 45 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
-          <path d="M22 42 C22 42, 14 22, 30 15 C30 15, 28 36, 22 42 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
-          <path d="M35 40 C35 40, 28 22, 44 16 C44 16, 40 34, 35 40 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
-          <path d="M10 45 C22 43, 35 41, 55 40" stroke="#7a9b6a" strokeWidth="1.2" strokeLinecap="round"/>
+        <svg className="doodle doodle-leaves" width="72" height="58" viewBox="0 0 72 58" fill="none">
+          <path d="M10 48 C10 48, 4 26, 20 18 C20 18, 17 40, 10 48 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
+          <path d="M23 44 C23 44, 14 22, 32 14 C32 14, 29 38, 23 44 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
+          <path d="M37 42 C37 42, 29 22, 46 15 C46 15, 42 36, 37 42 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
+          <path d="M10 48 C23 45, 37 43, 58 41" stroke="#7a9b6a" strokeWidth="1.2" strokeLinecap="round"/>
         </svg>
-        {/* right ink drop */}
-        <svg className="doodle doodle-drop" width="18" height="26" viewBox="0 0 18 26" fill="none">
-          <path d="M9 2 C9 2, 18 14, 18 18 C18 22, 14 26, 9 26 C4 26, 0 22, 0 18 C0 14, 9 2, 9 2 Z"
-            stroke="#9b8c78" strokeWidth="1.4" fill="rgba(140,190,220,0.25)" strokeLinecap="round"/>
+        <svg className="doodle doodle-drop" width="18" height="27" viewBox="0 0 18 27" fill="none">
+          <path d="M9 2 C9 2, 18 14, 18 19 C18 23, 14 27, 9 27 C4 27, 0 23, 0 19 C0 14, 9 2, 9 2 Z"
+            stroke="#9b8c78" strokeWidth="1.4" fill="rgba(140,190,220,0.22)" strokeLinecap="round"/>
+          <path d="M6 20 C7 17, 10 16, 12 18" stroke="#9b8c78" strokeWidth="0.8" strokeLinecap="round" fill="none"/>
+        </svg>
+        <svg className="doodle doodle-cross" width="22" height="22" viewBox="0 0 22 22" fill="none">
+          <path d="M3 3 L19 19 M19 3 L3 19" stroke="#9b8c78" strokeWidth="1.6" strokeLinecap="round"/>
         </svg>
       </div>
 
       <div className="bio-container">
 
-        {/* ── SECTION HEADER — Sketchbook Page Title ── */}
+        {/* ── SECTION HEADER ── */}
         <div className="bio-page-header">
           <div className="bph-rope-row" aria-hidden="true">
-            <svg width="180" height="20" viewBox="0 0 180 20" fill="none">
-              <path d="M0 10 C30 4, 60 14, 90 8 C120 2, 150 12, 180 8"
+            <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
+              <path d="M0 10 C33 4, 66 15, 100 9 C133 3, 166 13, 200 8"
                 stroke="#9b8c78" strokeWidth="1.5" strokeDasharray="5 4" strokeLinecap="round"/>
             </svg>
             <div className="bph-pin" />
-            <svg width="180" height="20" viewBox="0 0 180 20" fill="none">
-              <path d="M0 8 C30 12, 60 4, 90 10 C120 16, 150 6, 180 10"
+            <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
+              <path d="M0 8 C33 14, 66 4, 100 11 C133 17, 166 6, 200 11"
                 stroke="#9b8c78" strokeWidth="1.5" strokeDasharray="5 4" strokeLinecap="round"/>
             </svg>
           </div>
 
           <div className="bph-card">
-            <svg className="bph-sketch-border" viewBox="0 0 520 80" fill="none" preserveAspectRatio="none">
-              <path d="M6 6 C60 4, 460 4, 514 6 C516 30, 516 54, 514 74 C460 76, 60 76, 6 74 C4 50, 4 30, 6 6 Z"
-                stroke="#6b5c44" strokeWidth="2.5" fill="rgba(254,243,220,0.92)" strokeLinecap="round"/>
+            <svg className="bph-sketch-border" viewBox="0 0 520 82" fill="none" preserveAspectRatio="none">
+              <path d="M6 6 C60 4, 460 4, 514 6 C516 30, 516 56, 514 76 C460 78, 60 78, 6 76 C4 52, 4 28, 6 6 Z"
+                stroke="#6b5c44" strokeWidth="2.5" fill="rgba(254,243,220,0.93)" strokeLinecap="round"/>
             </svg>
             <div className="bph-inner">
               <span className="bph-chapter">冒険の書 · CHAPTER 02</span>
@@ -120,21 +115,20 @@ export default function Bio() {
           </div>
         </div>
 
-        {/* ── BIO NARRATIVE — Open sketchbook spread ── */}
+        {/* ── OPEN SKETCHBOOK SPREAD ── */}
         <div className="bio-sketchbook-spread">
 
-          {/* Left binding spine */}
+          {/* Binding spine */}
           <div className="spread-spine" aria-hidden="true">
             <div className="spine-line" />
-            {[...Array(8)].map((_, i) => (
-              <div key={i} className="spine-stitch" style={{ top: `${8 + i * 12}%` }} />
+            {[...Array(9)].map((_, i) => (
+              <div key={i} className="spine-stitch" style={{ top: `${6 + i * 11}%` }} />
             ))}
           </div>
 
-          {/* Left page — bio text */}
+          {/* Left page — bio narrative */}
           <div className="spread-page page-left">
             <div className="page-lines-overlay" aria-hidden="true" />
-
             <div className="page-margin-line" aria-hidden="true" />
 
             <div className="page-tag-row">
@@ -155,24 +149,25 @@ export default function Bio() {
               <span className="bio-underline">mobile applications</span>, and{' '}
               <span className="bio-underline">AI/ML</span>. I enjoy solving
               complex problems, contributing to open source, and turning ideas
-              into practical solutions.
+              into practical, production-ready solutions.
             </p>
 
-            {/* Hand-drawn ink signature area */}
+            {/* Hand-drawn ink signature */}
             <div className="page-signature">
               <svg width="140" height="40" viewBox="0 0 140 40" fill="none">
                 <path d="M10 30 C20 10, 35 35, 50 20 C65 5, 75 32, 90 22 C105 12, 118 28, 130 24"
                   stroke="#6b5c44" strokeWidth="2" strokeLinecap="round" fill="none"/>
-                <path d="M10 36 C50 34, 100 36, 130 34" stroke="#6b5c44" strokeWidth="0.8" strokeLinecap="round" strokeDasharray="4 3"/>
+                <path d="M10 36 C50 34, 100 36, 130 34"
+                  stroke="#6b5c44" strokeWidth="0.8" strokeLinecap="round" strokeDasharray="4 3"/>
               </svg>
               <span className="sig-label">— Shankar V, 2026</span>
             </div>
 
-            {/* Tiny washi tape corner */}
+            {/* Washi tape accent */}
             <div className="washi-tape" aria-hidden="true" />
           </div>
 
-          {/* Right page — facts & motto */}
+          {/* Right page — quick facts (no emojis, SVG bullets) */}
           <div className="spread-page page-right">
             <div className="page-lines-overlay" aria-hidden="true" />
 
@@ -187,113 +182,83 @@ export default function Bio() {
             </div>
 
             <ul className="facts-list">
-              {[
-                { icon: '🎓', label: 'CS Student', note: 'Computer Science' },
-                { icon: '🌏', label: 'Based in India', note: 'Building globally' },
-                { icon: '☕', label: 'Matcha Powered', note: 'Brewed daily, no bugs' },
-                { icon: '🔓', label: 'Open Source', note: 'Active contributor' },
-                { icon: '⚡', label: 'Fast Learner', note: 'Always levelling up' },
-              ].map((f, i) => (
+              {facts.map((f, i) => (
                 <li key={i} className="fact-item">
-                  <span className="fact-icon">{f.icon}</span>
+                  {/* SVG badge instead of emoji */}
+                  <div className="fact-badge">{f.bullet}</div>
                   <div className="fact-text">
                     <span className="fact-label">{f.label}</span>
                     <span className="fact-note">{f.note}</span>
                   </div>
-                  <svg className="fact-ink-line" height="1" viewBox="0 0 80 1" fill="none" preserveAspectRatio="none">
-                    <line x1="0" y1="0.5" x2="80" y2="0.5" stroke="#d4c9b8" strokeWidth="1" strokeDasharray="3 2"/>
-                  </svg>
                 </li>
               ))}
             </ul>
 
-            {/* Motto banner */}
+            {/* Motto */}
             <div className="page-motto">
-              <svg className="motto-left-curl" width="24" height="40" viewBox="0 0 24 40" fill="none">
-                <path d="M20 2 C10 10, 4 20, 10 30 C14 36, 20 38, 18 38" stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round"/>
+              <svg className="motto-curl" width="20" height="38" viewBox="0 0 20 38" fill="none">
+                <path d="M17 2 C8 10, 3 19, 9 28 C13 34, 17 36, 15 36" stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round"/>
               </svg>
               <span className="motto-text">
                 "Crafting purposeful software with artisan care &amp; zero fluff."
               </span>
-              <svg className="motto-right-curl" width="24" height="40" viewBox="0 0 24 40" fill="none">
-                <path d="M4 2 C14 10, 20 20, 14 30 C10 36, 4 38, 6 38" stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round"/>
+              <svg className="motto-curl" width="20" height="38" viewBox="0 0 20 38" fill="none">
+                <path d="M3 2 C12 10, 17 19, 11 28 C7 34, 3 36, 5 36" stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round"/>
               </svg>
             </div>
 
-            {/* Stamp */}
+            {/* Ink stamp */}
             <div className="page-stamp" aria-hidden="true">
-              <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
-                <circle cx="28" cy="28" r="26" stroke="#9b8c78" strokeWidth="2" strokeDasharray="4 3"/>
-                <circle cx="28" cy="28" r="20" stroke="#9b8c78" strokeWidth="1.2"/>
-                <text x="28" y="26" textAnchor="middle" fontFamily="monospace" fontSize="8" fontWeight="700" fill="#9b8c78" letterSpacing="1">SHANKAR</text>
-                <text x="28" y="36" textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#9b8c78" letterSpacing="1">2026 ✦</text>
+              <svg width="60" height="60" viewBox="0 0 60 60" fill="none">
+                <circle cx="30" cy="30" r="28" stroke="#9b8c78" strokeWidth="2" strokeDasharray="4 3"/>
+                <circle cx="30" cy="30" r="21" stroke="#9b8c78" strokeWidth="1.2"/>
+                <text x="30" y="27" textAnchor="middle" fontFamily="monospace" fontSize="8" fontWeight="700" fill="#9b8c78" letterSpacing="1">SHANKAR</text>
+                <text x="30" y="38" textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#9b8c78" letterSpacing="2">2026</text>
               </svg>
             </div>
           </div>
         </div>
 
-        {/* ── SKILL CARDS — Pinned to cork board ── */}
-        <div className="bio-skills-section">
+        {/* ── DISCIPLINES — clean text grid, no emojis ── */}
+        <div className="bio-disciplines">
 
-          <div className="skills-divider">
-            <svg width="100%" height="24" viewBox="0 0 900 24" fill="none" preserveAspectRatio="none">
-              <path d="M0 12 C150 6, 300 18, 450 12 C600 6, 750 18, 900 12"
-                stroke="#9b8c78" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="0"/>
+          <div className="disc-header">
+            <svg width="100%" height="18" viewBox="0 0 800 18" fill="none" preserveAspectRatio="none">
+              <path d="M0 9 C133 4, 266 14, 400 9 C533 4, 666 14, 800 9"
+                stroke="#9b8c78" strokeWidth="1.2" strokeLinecap="round"/>
             </svg>
-            <div className="divider-tag">
-              <span>✦ スキル · SKILLS INVENTORY ✦</span>
-            </div>
-            <svg width="100%" height="24" viewBox="0 0 900 24" fill="none" preserveAspectRatio="none">
-              <path d="M0 12 C150 18, 300 6, 450 12 C600 18, 750 6, 900 12"
-                stroke="#9b8c78" strokeWidth="1.5" strokeLinecap="round"/>
+            <span className="disc-header-label">職人技 · DISCIPLINES</span>
+            <svg width="100%" height="18" viewBox="0 0 800 18" fill="none" preserveAspectRatio="none">
+              <path d="M0 9 C133 14, 266 4, 400 9 C533 14, 666 4, 800 9"
+                stroke="#9b8c78" strokeWidth="1.2" strokeLinecap="round"/>
             </svg>
           </div>
 
-          <div className="skills-grid">
-            {skillCards.map((card) => (
-              <div key={card.no} className={`skill-card ${card.wc}`}>
+          <div className="disc-grid">
+            {disciplines.map((d, i) => (
+              <div key={d.no} className="disc-card">
+                {/* Top watercolor accent bar — alternating colors via CSS */}
+                <div className={`disc-bar disc-bar-${i + 1}`} />
 
-                {/* Pin at top */}
-                <div className="card-pin" aria-hidden="true">
-                  <svg width="14" height="20" viewBox="0 0 14 20" fill="none">
-                    <circle cx="7" cy="6" r="5" stroke="#6b5c44" strokeWidth="1.5" fill="rgba(254,240,138,0.9)"/>
-                    <circle cx="7" cy="6" r="2.5" fill="#6b5c44"/>
-                    <path d="M7 11 L7 20" stroke="#6b5c44" strokeWidth="1.5" strokeLinecap="round"/>
+                {/* Sketch inner border */}
+                <div className="disc-inner-border" aria-hidden="true" />
+
+                <div className="disc-card-top">
+                  <span className="disc-no">{d.no}</span>
+                  <svg className="disc-tick" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                    <path d="M4 10 L8 14 L16 6" stroke="#6b5c44" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/>
                   </svg>
                 </div>
 
-                {/* Sketch border overlay */}
-                <div className="card-sketch-border" aria-hidden="true" />
-
-                {/* Card content */}
-                <div className="card-header">
-                  <span className="card-no">№ {card.no}</span>
-                  <span className="card-tag">{card.tag}</span>
+                <div className="disc-title-block">
+                  <h3 className="disc-title">{d.title}</h3>
+                  <span className="disc-jp">{d.jp}</span>
                 </div>
 
-                <div className="card-icon-row">
-                  <span className="card-icon">{card.icon}</span>
-                  <div className="card-title-group">
-                    <h3 className="card-title">{card.title}</h3>
-                    <span className="card-jp">{card.jp}</span>
-                  </div>
-                </div>
+                <p className="disc-desc">{d.desc}</p>
 
-                <p className="card-desc">{card.desc}</p>
-
-                {/* Sketch progress bar */}
-                <div className="card-level-row">
-                  <span className="level-label">LV</span>
-                  <div className="level-track">
-                    <div className="level-fill" style={{ width: `${card.level}%` }}>
-                      <span className="level-dots">· · · · · · · · · ·</span>
-                    </div>
-                  </div>
-                  <span className="level-val">{card.level}</span>
-                </div>
-
-                {/* Corner hatch doodle */}
-                <div className="card-hatch" aria-hidden="true" />
+                {/* Corner hatch */}
+                <div className="disc-hatch" aria-hidden="true" />
               </div>
             ))}
           </div>
@@ -301,8 +266,8 @@ export default function Bio() {
 
         {/* ── MEADOW GROUND ── */}
         <div className="bio-ground" aria-hidden="true">
-          <svg width="100%" height="50" viewBox="0 0 1200 50" preserveAspectRatio="none" fill="none">
-            <path d="M0 40 C100 28, 200 44, 350 34 C500 24, 650 44, 800 34 C950 24, 1100 40, 1200 32 L1200 50 L0 50 Z"
+          <svg width="100%" height="52" viewBox="0 0 1200 52" preserveAspectRatio="none" fill="none">
+            <path d="M0 40 C100 28, 200 44, 350 34 C500 24, 650 44, 800 34 C950 24, 1100 40, 1200 32 L1200 52 L0 52 Z"
               fill="rgba(122,155,106,0.14)" stroke="#7a9b6a" strokeWidth="1.5"/>
             {[...Array(18)].map((_, i) => (
               <g key={i} transform={`translate(${i * 68 + 14}, 38)`}>
