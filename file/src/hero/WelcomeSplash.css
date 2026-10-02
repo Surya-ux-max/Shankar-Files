@@ -1,0 +1,279 @@
+﻿/* ==========================================================================
+   WELCOME SPLASH SCREEN — Ghibli Sketch Clouds + Fade-out Opening Scene
+   ========================================================================== */
+
+/* -- Root overlay --------------------------------------------------------- */
+.splash-root {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  overflow: hidden;
+  pointer-events: all;
+  opacity: 1;
+  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.splash-fade-out {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* -- Sky background ------------------------------------------------------- */
+.splash-sky {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    #dbeeff 0%,
+    #eef6ff 30%,
+    #f5f0e8 60%,
+    #fdf9f1 100%
+  );
+}
+
+/* Paper grain overlay */
+.splash-sky::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  background-size: 300px 300px;
+  pointer-events: none;
+}
+
+/* -- Clouds layer --------------------------------------------------------- */
+.splash-clouds {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.splash-cloud {
+  position: absolute;
+  filter: drop-shadow(3px 4px 6px rgba(107,92,68,0.1));
+}
+
+/* Cloud positions */
+.sc-large.sc-left {
+  top: 8%;
+  left: -20px;
+  animation: splashCloudDriftL 18s ease-in-out infinite alternate;
+}
+
+.sc-medium.sc-right-top {
+  top: 5%;
+  right: -10px;
+  animation: splashCloudDriftR 22s ease-in-out infinite alternate;
+}
+
+.sc-small.sc-right-mid {
+  top: 38%;
+  right: 6%;
+  animation: splashCloudDriftR 16s ease-in-out infinite alternate 2s;
+}
+
+.sc-tiny.sc-bottom-left {
+  top: 55%;
+  left: 8%;
+  animation: splashCloudDriftL 14s ease-in-out infinite alternate 1s;
+}
+
+@keyframes splashCloudDriftL {
+  0%   { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(40px) translateY(-10px); }
+}
+
+@keyframes splashCloudDriftR {
+  0%   { transform: translateX(0) translateY(0); }
+  100% { transform: translateX(-36px) translateY(8px); }
+}
+
+/* -- Sketch birds --------------------------------------------------------- */
+.splash-birds {
+  position: absolute;
+  filter: drop-shadow(1px 1px 2px rgba(107,92,68,0.08));
+}
+
+.sb-group-a {
+  top: 14%;
+  left: 28%;
+  animation: splashBirdsFly 8s ease-in-out infinite;
+}
+
+.sb-group-b {
+  top: 24%;
+  right: 30%;
+  animation: splashBirdsFly 10s ease-in-out infinite 2.5s;
+}
+
+@keyframes splashBirdsFly {
+  0%, 100% { transform: translateY(0) translateX(0); }
+  40%       { transform: translateY(-14px) translateX(10px); }
+  70%       { transform: translateY(-6px) translateX(-6px); }
+}
+
+/* -- Welcome note card ---------------------------------------------------- */
+.splash-note-wrap {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+}
+
+.splash-note {
+  position: relative;
+  background: rgba(255, 253, 248, 0.94);
+  border: 2.5px solid #9b8c78;
+  padding: 36px 48px 32px;
+  box-shadow:
+    8px 8px 0 #9b8c78,
+    14px 14px 0 rgba(155,140,120,0.15);
+  border-radius: 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  animation: noteFloat 4s ease-in-out infinite;
+  max-width: 380px;
+  width: 90%;
+}
+
+@keyframes noteFloat {
+  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
+  50%       { transform: translateY(-8px) rotate(0.4deg); }
+}
+
+/* Corner pins */
+.sn-pin {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: rgba(254, 240, 138, 0.9);
+  border: 1.5px solid #9b8c78;
+  box-shadow: 1px 1px 0 rgba(155,140,120,0.4);
+}
+
+.sn-pin-tl { top: -7px; left: -7px; }
+.sn-pin-tr { top: -7px; right: -7px; }
+
+/* Japanese accent line */
+.sn-jp-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.sn-jp-text {
+  font-family: 'Caveat', cursive;
+  font-size: 18px;
+  font-weight: 600;
+  color: #9b8c78;
+  letter-spacing: 0.1em;
+}
+
+/* Main welcome text */
+.sn-hello {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(46px, 8vw, 72px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  color: #3d3226;
+  margin: 0;
+  text-shadow:
+    2px 0 0 rgba(61,50,38,0.07),
+    0 2px 0 rgba(61,50,38,0.05);
+  animation: welcomeReveal 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+@keyframes welcomeReveal {
+  from { opacity: 0; transform: translateY(18px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.sn-sub {
+  font-family: 'Caveat', cursive;
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 600;
+  color: #6b5c44;
+  margin: 0;
+  letter-spacing: 0.02em;
+  animation: welcomeReveal 0.8s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;
+}
+
+/* Ink brush divider */
+.sn-divider {
+  display: block;
+  width: 160px;
+  height: 12px;
+  animation: welcomeReveal 0.6s 0.35s ease both;
+}
+
+/* Tagline */
+.sn-tagline {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  color: #9b8c78;
+  letter-spacing: 0.1em;
+  margin: 0;
+  animation: welcomeReveal 0.6s 0.45s ease both;
+}
+
+/* Bouncing loader dots */
+.sn-loader {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-top: 6px;
+  animation: welcomeReveal 0.4s 0.6s ease both;
+}
+
+.sn-loader span {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #9b8c78;
+  animation: loaderBounce 1.2s ease-in-out infinite;
+}
+
+.sn-loader span:nth-child(2) { animation-delay: 0.18s; }
+.sn-loader span:nth-child(3) { animation-delay: 0.36s; }
+
+@keyframes loaderBounce {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
+  40%           { transform: translateY(-8px); opacity: 1; }
+}
+
+/* -- Grass ground strip --------------------------------------------------- */
+.splash-ground {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  line-height: 0;
+  z-index: 5;
+  pointer-events: none;
+}
+
+/* -- Responsive ----------------------------------------------------------- */
+@media (max-width: 480px) {
+  .splash-note {
+    padding: 28px 28px 24px;
+  }
+
+  .sc-large.sc-left {
+    width: 220px;
+  }
+
+  .sc-medium.sc-right-top {
+    width: 160px;
+  }
+}
