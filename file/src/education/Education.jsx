@@ -6,8 +6,16 @@ export default function Education() {
 
   return (
     <section className="education-landscape-section" id="education" aria-label="Education Journey">
-      {/* Paper & Watercolor Base */}
+      {/* Paper & Farmland Watercolor Atmosphere */}
       <div className="edu-paper-bg" aria-hidden="true" />
+
+      {/* Farmland Background Ambient Washes */}
+      <div className="edu-farmland-backdrop" aria-hidden="true">
+        <div className="farm-wc-patch patch-sky" />
+        <div className="farm-wc-patch patch-paddy-1" />
+        <div className="farm-wc-patch patch-paddy-2" />
+        <div className="farm-wc-patch patch-harvest" />
+      </div>
 
       {/* Storyboard Outer Frame */}
       <div className="edu-frame" aria-hidden="true">
@@ -25,66 +33,137 @@ export default function Education() {
           </div>
           <h2 className="edu-title">THE PATH OF LEARNING</h2>
           <p className="edu-subtitle">
-            Journeying along the countryside road from school foundations to engineering craftsmanship.
+            Journeying across the countryside farm fields from school foundations to engineering craftsmanship.
           </p>
         </div>
 
-        {/* ================= THE COUNTRYSIDE ROUTE CANVAS ================= */}
+        {/* ================= THE COUNTRYSIDE FARMLAND CANVAS ================= */}
         <div className="ghibli-landscape-canvas">
-          {/* Sky Horizon with Hills & Birds */}
+          {/* Sky Horizon with Hills, Clouds, & Farm Silhouettes */}
           <div className="landscape-backdrop" aria-hidden="true">
+            {/* Distant Hills & Terraced Farm Ridges */}
             <svg className="hills-svg" viewBox="0 0 1200 240" preserveAspectRatio="none" fill="none">
+              {/* Distant Mountain Layer */}
               <path
-                d="M0 150 C240 80, 500 130, 750 90 C960 50, 1100 110, 1200 80 L1200 240 L0 240 Z"
+                d="M0 130 C200 70, 480 120, 720 70 C940 35, 1080 95, 1200 65 L1200 240 L0 240 Z"
                 fill="rgba(195, 222, 195, 0.45)"
               />
+              {/* Terraced Farmland Foothills */}
               <path
-                d="M0 175 C300 120, 580 160, 840 125 C1020 95, 1120 145, 1200 130 L1200 240 L0 240 Z"
-                fill="rgba(215, 235, 205, 0.55)"
+                d="M0 160 C260 110, 540 150, 820 110 C1000 80, 1110 130, 1200 115 L1200 240 L0 240 Z"
+                fill="rgba(215, 238, 198, 0.65)"
               />
+              {/* Distant Windmill & Silo Silhouettes */}
+              <g transform="translate(680, 85)" stroke="#7a9b6a" strokeWidth="1.5">
+                <line x1="0" y1="0" x2="0" y2="28" strokeWidth="2.2" />
+                <line x1="-12" y1="-8" x2="12" y2="8" strokeWidth="1.4" />
+                <line x1="-12" y1="8" x2="12" y2="-8" strokeWidth="1.4" />
+                <circle cx="0" cy="0" r="2.5" fill="#7a9b6a" />
+              </g>
+              <rect x="730" y="92" width="16" height="24" rx="2" fill="#d2e6bc" stroke="#7a9b6a" strokeWidth="1.6" />
+              <polygon points="738,82 727,92 749,92" fill="#c4dda9" stroke="#7a9b6a" strokeWidth="1.6" />
             </svg>
 
-            {/* Drifting Clouds */}
+            {/* Drifting Sky Clouds */}
             <div className="sky-cloud cloud-left">
-              <svg width="100" height="42" viewBox="0 0 100 42" fill="none">
+              <svg width="115" height="46" viewBox="0 0 115 46" fill="none">
                 <path
-                  d="M12 30 C5 30, 2 22, 6 16 C4 9, 14 3, 23 9 C29 2, 44 2, 53 7 C62 2, 73 3, 76 12 C84 14, 88 22, 80 27 C73 32, 18 32, 12 30 Z"
+                  d="M14 32 C6 32, 2 24, 7 18 C5 10, 16 3, 26 9 C33 2, 50 2, 60 7 C70 2, 83 3, 87 13 C96 15, 100 24, 91 30 C83 36, 20 36, 14 32 Z"
+                  stroke="#9b8c78" strokeWidth="1.6" fill="rgba(255, 253, 248, 0.9)"
+                />
+              </svg>
+            </div>
+
+            <div className="sky-cloud cloud-center">
+              <svg width="90" height="38" viewBox="0 0 90 38" fill="none">
+                <path
+                  d="M10 26 C4 26, 1 20, 5 15 C3 8, 12 3, 20 7 C26 2, 38 2, 46 6 C54 2, 64 3, 67 11 C74 12, 78 19, 71 24 C65 29, 16 29, 10 26 Z"
                   stroke="#9b8c78" strokeWidth="1.5" fill="rgba(255, 253, 248, 0.85)"
                 />
               </svg>
             </div>
 
             <div className="sky-cloud cloud-right">
-              <svg width="125" height="50" viewBox="0 0 125 50" fill="none">
+              <svg width="135" height="52" viewBox="0 0 135 52" fill="none">
                 <path
-                  d="M16 36 C7 36, 2 27, 7 20 C5 11, 18 5, 29 11 C36 3, 54 3, 65 10 C75 3, 90 5, 95 16 C104 18, 108 27, 99 34 C90 41, 23 41, 16 36 Z"
-                  stroke="#9b8c78" strokeWidth="1.5" fill="rgba(255, 253, 248, 0.85)"
+                  d="M16 38 C8 38, 2 28, 8 21 C6 12, 19 5, 30 11 C38 3, 58 3, 69 10 C80 3, 96 5, 101 16 C111 18, 115 28, 105 35 C96 42, 24 42, 16 38 Z"
+                  stroke="#9b8c78" strokeWidth="1.6" fill="rgba(255, 253, 248, 0.9)"
                 />
               </svg>
             </div>
 
-            {/* Birds */}
+            {/* Birds Flock in Sky */}
             <div className="sky-birds-flock">
-              <svg width="60" height="26" viewBox="0 0 60 26" fill="none" stroke="#6b5c44" strokeWidth="1.5" strokeLinecap="round">
-                <path d="M4 12 Q8 6 12 12" />
-                <path d="M18 17 Q21 12 24 17" strokeWidth="1.2" />
-                <path d="M34 10 Q37 5 40 10" />
+              <svg width="70" height="30" viewBox="0 0 70 30" fill="none" stroke="#6b5c44" strokeWidth="1.6" strokeLinecap="round">
+                <path d="M4 14 Q9 7 14 14" />
+                <path d="M20 20 Q24 14 28 20" strokeWidth="1.3" />
+                <path d="M38 11 Q42 6 46 11" />
+                <path d="M54 18 Q58 13 62 18" strokeWidth="1.2" />
               </svg>
             </div>
           </div>
 
-          {/* Rural Countryside Road with Rice Fields & Grass (Replacing River/Bridge) */}
+          {/* Farmland Layers: Terraced Paddies, Crops, Fences, & Country Route */}
           <div className="country-route-layer" aria-hidden="true">
             <svg className="route-svg" viewBox="0 0 1200 480" preserveAspectRatio="none" fill="none">
-              {/* Green Meadow Plains */}
-              <rect width="1200" height="480" fill="#eef7e6" />
+              {/* Base Green Countryside Grass */}
+              <rect width="1200" height="480" fill="#eaf5e1" />
 
-              {/* Rice Paddies & Farmland Texture */}
-              <g stroke="#9ab888" strokeWidth="1.2" strokeDasharray="6 8" opacity="0.6">
-                <line x1="80" y1="180" x2="320" y2="180" />
-                <line x1="80" y1="210" x2="300" y2="210" />
-                <line x1="880" y1="170" x2="1120" y2="170" />
-                <line x1="900" y1="200" x2="1120" y2="200" />
+              {/* Terraced Rice Paddies Behind Road (Left Farm Zone) */}
+              <path d="M 0 130 C 140 125, 280 135, 420 120 L 410 170 C 260 180, 120 170, 0 180 Z" fill="#d9eed0" stroke="#7a9b6a" strokeWidth="1.5" />
+              <path d="M 0 180 C 130 175, 260 185, 390 170 L 370 220 C 240 230, 110 220, 0 230 Z" fill="#cbe6bd" stroke="#7a9b6a" strokeWidth="1.5" />
+
+              {/* Terraced Rice Paddies (Right Farm Zone) */}
+              <path d="M 800 120 C 940 135, 1070 125, 1200 130 L 1200 180 C 1080 170, 950 180, 810 170 Z" fill="#d9eed0" stroke="#7a9b6a" strokeWidth="1.5" />
+              <path d="M 830 170 C 960 185, 1080 175, 1200 180 L 1200 230 C 1090 220, 970 230, 840 220 Z" fill="#cbe6bd" stroke="#7a9b6a" strokeWidth="1.5" />
+
+              {/* Golden Wheat Fields & Crop Rows */}
+              <g stroke="#8ba876" strokeWidth="1.2" strokeLinecap="round" opacity="0.75">
+                {/* Left crop seedlings */}
+                {[...Array(9)].map((_, i) => (
+                  <path key={`lc-${i}`} d={`M ${50 + i * 36} 145 L ${48 + i * 36} 136 M ${50 + i * 36} 145 L ${53 + i * 36} 137`} />
+                ))}
+                {[...Array(8)].map((_, i) => (
+                  <path key={`lc2-${i}`} d={`M ${60 + i * 38} 195 L ${58 + i * 38} 186 M ${60 + i * 38} 195 L ${63 + i * 38} 187`} />
+                ))}
+                {/* Right crop seedlings */}
+                {[...Array(9)].map((_, i) => (
+                  <path key={`rc-${i}`} d={`M ${850 + i * 36} 145 L ${848 + i * 36} 136 M ${850 + i * 36} 145 L ${853 + i * 36} 137`} />
+                ))}
+                {[...Array(8)].map((_, i) => (
+                  <path key={`rc2-${i}`} d={`M ${870 + i * 38} 195 L ${868 + i * 38} 186 M ${870 + i * 38} 195 L ${873 + i * 38} 187`} />
+                ))}
+              </g>
+
+              {/* Wooden Country Fence Along Farmland */}
+              <g stroke="#6b5c44" strokeWidth="1.8" strokeLinecap="round">
+                {/* Horizontal Rails */}
+                <path d="M 20 225 L 340 215" strokeDasharray="32 10" />
+                <path d="M 20 235 L 340 225" strokeDasharray="32 10" />
+                {/* Vertical Fence Posts */}
+                {[...Array(8)].map((_, i) => (
+                  <line key={`fp-${i}`} x1={30 + i * 42} y1="216" x2={30 + i * 42} y2="242" strokeWidth="2.4" />
+                ))}
+
+                <path d="M 870 215 L 1180 225" strokeDasharray="32 10" />
+                <path d="M 870 225 L 1180 235" strokeDasharray="32 10" />
+                {[...Array(8)].map((_, i) => (
+                  <line key={`fp2-${i}`} x1={880 + i * 40} y1="216" x2={880 + i * 40} y2="242" strokeWidth="2.4" />
+                ))}
+              </g>
+
+              {/* Farm Trees / Orchard Grouping */}
+              <g transform="translate(430, 110)">
+                <line x1="20" y1="20" x2="20" y2="44" stroke="#6b5c44" strokeWidth="2.4" strokeLinecap="round" />
+                <ellipse cx="20" cy="18" rx="16" ry="18" fill="#b9dc9e" stroke="#6b5c44" strokeWidth="2" />
+                <circle cx="16" cy="14" r="2" fill="#ef4444" />
+                <circle cx="25" cy="20" r="2" fill="#ef4444" />
+              </g>
+              <g transform="translate(760, 105)">
+                <line x1="20" y1="20" x2="20" y2="44" stroke="#6b5c44" strokeWidth="2.4" strokeLinecap="round" />
+                <ellipse cx="20" cy="18" rx="17" ry="19" fill="#c6e5a8" stroke="#6b5c44" strokeWidth="2" />
+                <circle cx="15" cy="15" r="2" fill="#ef4444" />
+                <circle cx="24" cy="22" r="2" fill="#ef4444" />
               </g>
 
               {/* Winding Countryside Dirt Road (Source Left -> Dest Right) */}
@@ -171,7 +250,7 @@ export default function Education() {
                   <ellipse cx="44" cy="18" rx="14" ry="4" fill="#eed9be" stroke="#3d3226" strokeWidth="1.6" />
                   <path d="M38 18 C38 10, 50 10, 50 18" fill="#e2c49e" stroke="#3d3226" strokeWidth="1.6" />
                   <circle cx="44" cy="22" r="5" fill="#fcd34d" stroke="#3d3226" strokeWidth="1.4" />
-                  {/* Driver Body / Overalls */}
+                  {/* Driver Body */}
                   <rect x="38" y="27" width="13" height="15" rx="3" fill="#2563eb" stroke="#3d3226" strokeWidth="1.8" />
                   {/* Steering Wheel */}
                   <path d="M53 25 L60 30" stroke="#3d3226" strokeWidth="2.4" strokeLinecap="round" />
@@ -196,9 +275,8 @@ export default function Education() {
                     strokeWidth="2.2"
                   />
 
-                  {/* Rear Tool Basket / Cargo carrying books & seedling */}
+                  {/* Rear Tool Basket / Cargo carrying seedling */}
                   <rect x="10" y="32" width="14" height="16" rx="2" fill="#8c5835" stroke="#3d3226" strokeWidth="1.8" />
-                  {/* Little Green Plant Sprout in back */}
                   <path d="M 16 32 Q 13 24 10 26 Q 16 26 17 32" fill="#22c55e" stroke="#3d3226" strokeWidth="1.2" />
                   <path d="M 17 32 Q 20 22 23 25 Q 18 26 17 32" fill="#22c55e" stroke="#3d3226" strokeWidth="1.2" />
 
@@ -206,7 +284,6 @@ export default function Education() {
                   <g className="tractor-wheel wheel-rear">
                     <circle cx="34" cy="52" r="16" fill="#2d3748" stroke="#1a202c" strokeWidth="3" />
                     <circle cx="34" cy="52" r="8" fill="#fef08a" stroke="#3d3226" strokeWidth="2" />
-                    {/* Wheel spokes / treads */}
                     <line x1="34" y1="38" x2="34" y2="66" stroke="#1a202c" strokeWidth="2.4" />
                     <line x1="20" y1="52" x2="48" y2="52" stroke="#1a202c" strokeWidth="2.4" />
                     <line x1="24" y1="42" x2="44" y2="62" stroke="#1a202c" strokeWidth="2.4" />
@@ -217,7 +294,6 @@ export default function Education() {
                   <g className="tractor-wheel wheel-front">
                     <circle cx="82" cy="55" r="11" fill="#2d3748" stroke="#1a202c" strokeWidth="2.5" />
                     <circle cx="82" cy="55" r="5" fill="#fef08a" stroke="#3d3226" strokeWidth="1.8" />
-                    {/* Front spokes */}
                     <line x1="82" y1="46" x2="82" y2="64" stroke="#1a202c" strokeWidth="2" />
                     <line x1="73" y1="55" x2="91" y2="55" stroke="#1a202c" strokeWidth="2" />
                   </g>

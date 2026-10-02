@@ -1,5 +1,5 @@
 ﻿/* ==========================================================================
-   JAPANESE COUNTRYSIDE TRACTOR ROUTE — ACADEMIC JOURNEY
+   JAPANESE COUNTRYSIDE FARMLANDS & TRACTOR ROUTE — ACADEMIC JOURNEY
    ========================================================================== */
 
 .education-landscape-section {
@@ -21,11 +21,34 @@
   background-size: 300px 300px;
 }
 
+/* Ambient Farmland Backdrop Washes (Behind the entire layout) */
+.edu-farmland-backdrop {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.farm-wc-patch {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(65px);
+  mix-blend-mode: multiply;
+  opacity: 0.6;
+}
+
+.patch-sky     { top: 0%; left: 20%; width: 55vw; height: 35vh; background: rgba(186, 220, 240, 0.22); }
+.patch-paddy-1 { top: 40%; left: -5%; width: 45vw; height: 50vh; background: rgba(195, 230, 185, 0.35); }
+.patch-paddy-2 { top: 40%; right: -5%; width: 45vw; height: 50vh; background: rgba(195, 230, 185, 0.35); }
+.patch-harvest { bottom: -10%; left: 30%; width: 40vw; height: 35vh; background: rgba(254, 240, 138, 0.22); }
+
 /* Outer Storyboard Corners */
 .edu-frame {
   position: absolute;
   inset: 18px;
   pointer-events: none;
+  z-index: 5;
 }
 
 .ef-corner {
@@ -93,12 +116,12 @@
 }
 
 /* ==========================================================================
-   PANORAMIC COUNTRYSIDE ROUTE CANVAS
+   PANORAMIC FARMLAND CANVAS
    ========================================================================== */
 .ghibli-landscape-canvas {
   position: relative;
   width: 100%;
-  min-height: 480px;
+  min-height: 490px;
   background: #fdfaf3;
   border: 2.5px solid #3d3226;
   border-radius: 8px;
@@ -112,7 +135,7 @@
   align-items: center;
 }
 
-/* Backdrop: Rolling Hills & Sky */
+/* Backdrop: Rolling Farmland Hills & Sky */
 .landscape-backdrop {
   position: absolute;
   top: 0;
@@ -128,17 +151,19 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 180px;
+  height: 190px;
 }
 
+/* Drifting Clouds */
 .sky-cloud {
   position: absolute;
   pointer-events: none;
   filter: drop-shadow(2px 2px 3px rgba(107, 92, 68, 0.08));
 }
 
-.cloud-left  { top: 22px; left: 20%; animation: cloudDriftL 22s ease-in-out infinite alternate; }
-.cloud-right { top: 28px; right: 18%; animation: cloudDriftR 26s ease-in-out infinite alternate; }
+.cloud-left   { top: 20px; left: 16%; animation: cloudDriftL 22s ease-in-out infinite alternate; }
+.cloud-center { top: 32px; left: 45%; animation: cloudDriftL 18s ease-in-out infinite alternate 2s; }
+.cloud-right  { top: 24px; right: 14%; animation: cloudDriftR 26s ease-in-out infinite alternate; }
 
 @keyframes cloudDriftL {
   0%   { transform: translateX(0); }
@@ -152,8 +177,8 @@
 
 .sky-birds-flock {
   position: absolute;
-  top: 26px;
-  left: 48%;
+  top: 24px;
+  left: 36%;
   animation: birdsDrift 9s ease-in-out infinite;
 }
 
@@ -163,7 +188,7 @@
 }
 
 /* ==========================================================================
-   COUNTRYSIDE ROUTE & FARMLAND LAYER
+   FARMLAND ROUTE LAYER (TERRACED PADDIES, CROPS, FENCES, ROAD)
    ========================================================================== */
 .country-route-layer {
   position: absolute;
@@ -177,7 +202,7 @@
   height: 100%;
 }
 
-/* Roadside Wooden Signboard Badge */
+/* Roadside Wooden Milestone Signpost Badge */
 .road-sign-badge {
   position: absolute;
   top: 36%;
@@ -197,7 +222,7 @@
 }
 
 /* ==========================================================================
-   ANIMATED JAPANESE FARMER TRACTOR (DRIVING SOURCE -> DESTINATION)
+   ANIMATED JAPANESE FARMER TRACTOR (MOVING SOURCE -> DESTINATION)
    ========================================================================== */
 .tractor-journey-track {
   position: absolute;
@@ -219,7 +244,6 @@
   will-change: transform;
 }
 
-/* Tractor Drive Animation along the curved country path */
 @keyframes tractorDriveAcross {
   0% {
     transform: translate3d(160px, 14px, 0) scale(0.92) rotate(1deg);
@@ -255,13 +279,11 @@
   animation: tractorChug 0.35s ease-in-out infinite alternate;
 }
 
-/* Engine chugging suspension micro-bounce */
 @keyframes tractorChug {
   0%   { transform: translateY(0); }
   100% { transform: translateY(-2px); }
 }
 
-/* Rotating Wheel Spoke Animations */
 .tractor-wheel {
   transform-origin: center;
   animation: wheelSpin 0.7s linear infinite;
@@ -280,7 +302,6 @@
   to   { transform: rotate(360deg); }
 }
 
-/* Exhaust Smoke Puffs */
 .tractor-exhaust-smoke {
   position: absolute;
   top: -8px;
