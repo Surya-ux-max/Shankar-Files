@@ -2,14 +2,14 @@
 import './WelcomeSplash.css'
 
 export default function WelcomeSplash() {
-  // Stages: 'floating' (gentle hover & welcome note) -> 'diving' (3D fly-through zoom) -> 'cleared'
+  // Stages: 'floating' (calm preview) -> 'diving' (high-velocity zoom dive) -> 'cleared'
   const [stage, setStage] = useState('floating')
 
   useEffect(() => {
-    // 1. Hold peaceful sky view for 2.4s, then initiate dive
-    const diveTimer = setTimeout(() => setStage('diving'), 2400)
-    // 2. Remove from DOM after dive completes (1.4s dive)
-    const clearTimer = setTimeout(() => setStage('cleared'), 3800)
+    // 1. Hold view for 1.8s, then initiate high-velocity dive
+    const diveTimer = setTimeout(() => setStage('diving'), 1800)
+    // 2. Unmount cleanly in 650ms after dive initiates
+    const clearTimer = setTimeout(() => setStage('cleared'), 2450)
 
     return () => {
       clearTimeout(diveTimer)
@@ -20,7 +20,7 @@ export default function WelcomeSplash() {
   const handleInstantDive = () => {
     if (stage !== 'diving' && stage !== 'cleared') {
       setStage('diving')
-      setTimeout(() => setStage('cleared'), 1400)
+      setTimeout(() => setStage('cleared'), 650)
     }
   }
 
@@ -41,10 +41,9 @@ export default function WelcomeSplash() {
       {/* Radiant Sun Glow at center */}
       <div className="fly-sun-core">
         <div className="fly-sun-glow" />
-        <div className="fly-sun-rays" />
       </div>
 
-      {/* Layer 3: Far Background Clouds (Gentle Drift & Slower Zoom) */}
+      {/* Layer 3: Distant Clouds */}
       <div className="cloud-plane plane-distant">
         <div className="cloud-item c-far-top-left">
           <svg width="320" height="130" viewBox="0 0 320 130" fill="none">
@@ -64,7 +63,7 @@ export default function WelcomeSplash() {
         </div>
       </div>
 
-      {/* Layer 2: Midground Clouds (Fly outward past camera) */}
+      {/* Layer 2: Midground Clouds */}
       <div className="cloud-plane plane-midground">
         <div className="cloud-item c-mid-left">
           <svg width="420" height="190" viewBox="0 0 420 190" fill="none">
@@ -72,8 +71,6 @@ export default function WelcomeSplash() {
               d="M45 140 C20 140, 8 120, 18 96 C10 68, 38 42, 70 56 C88 24, 140 14, 170 42 C196 18, 248 24, 256 62 C290 68, 302 100, 280 128 C260 148, 62 148, 45 140 Z"
               stroke="#8c7d6b" strokeWidth="2" fill="rgba(255, 253, 248, 0.9)" strokeLinejoin="round"
             />
-            <path d="M78 100 C98 86, 130 92, 138 110" stroke="#8c7d6b" strokeWidth="1.3" fill="none" strokeLinecap="round" />
-            <path d="M178 72 C198 60, 228 66, 234 84" stroke="#8c7d6b" strokeWidth="1.2" fill="none" strokeLinecap="round" />
           </svg>
         </div>
 
@@ -83,13 +80,11 @@ export default function WelcomeSplash() {
               d="M48 145 C22 145, 10 125, 20 100 C12 70, 40 44, 74 58 C92 26, 146 14, 178 44 C204 18, 260 24, 270 65 C304 70, 318 105, 294 135 C274 155, 66 155, 48 145 Z"
               stroke="#8c7d6b" strokeWidth="2" fill="rgba(255, 253, 248, 0.9)" strokeLinejoin="round"
             />
-            <path d="M82 105 C104 90, 136 98, 146 116" stroke="#8c7d6b" strokeWidth="1.3" fill="none" strokeLinecap="round" />
-            <path d="M186 76 C208 64, 240 70, 248 90" stroke="#8c7d6b" strokeWidth="1.2" fill="none" strokeLinecap="round" />
           </svg>
         </div>
       </div>
 
-      {/* Layer 1: Giant Foreground Fluffy Cloud Puffs (Rush past sides on dive) */}
+      {/* Layer 1: Foreground Fluffy Clouds */}
       <div className="cloud-plane plane-foreground">
         <div className="cloud-item c-fore-bottom-left">
           <svg width="550" height="260" viewBox="0 0 550 260" fill="none">
@@ -101,8 +96,6 @@ export default function WelcomeSplash() {
                  C520 230, 460 260, 400 260 Z"
               fill="rgba(255, 253, 248, 0.98)" stroke="#7a6c58" strokeWidth="2.4"
             />
-            <path d="M110 140 C140 160, 170 160, 190 140" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-            <path d="M290 100 C330 120, 360 120, 380 100" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
           </svg>
         </div>
 
@@ -116,13 +109,11 @@ export default function WelcomeSplash() {
                  C30 230, 90 260, 150 260 Z"
               fill="rgba(255, 253, 248, 0.98)" stroke="#7a6c58" strokeWidth="2.4"
             />
-            <path d="M440 140 C410 160, 380 160, 360 140" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-            <path d="M260 100 C220 120, 190 120, 170 100" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
           </svg>
         </div>
       </div>
 
-      {/* Flapping Birds across sky */}
+      {/* Soaring Birds */}
       <div className="fly-birds-layer">
         <div className="fly-birds b-group-top">
           <svg width="90" height="42" viewBox="0 0 90 42" fill="none" stroke="#5a4c38" strokeWidth="1.8" strokeLinecap="round">
@@ -138,7 +129,7 @@ export default function WelcomeSplash() {
       <div className="fly-center-wrap">
         <div className="fly-welcome-card">
           <div className="fcard-badge">
-            <span>SHANKAR&apos;S PORTFOLIO</span>
+            <span>SHANKAR'S PORTFOLIO</span>
           </div>
 
           <h1 className="fcard-title">WELCOME</h1>
@@ -151,16 +142,13 @@ export default function WelcomeSplash() {
             <span className="cue-label">Click anywhere to dive in</span>
           </div>
 
-          {/* Corner Stitch Accents */}
+          {/* Corner Accents */}
           <div className="fcard-pin fp-tl" />
           <div className="fcard-pin fp-tr" />
           <div className="fcard-pin fp-bl" />
           <div className="fcard-pin fp-br" />
         </div>
       </div>
-
-      {/* Flash overlay at the end of dive */}
-      <div className="dive-flash-overlay" />
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react'
+﻿import { useState, useRef } from 'react'
 import './Hero.css'
 import shankarPhoto from '../image/shankar1.jpeg'
 
@@ -6,12 +6,19 @@ export default function Hero() {
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 })
   const [inkDrops, setInkDrops] = useState([])
   const heroRef = useRef(null)
+  const rafId = useRef(null)
 
   const handleMouseMove = (e) => {
-    const { innerWidth, innerHeight } = window
-    const x = (e.clientX / innerWidth - 0.5) * 10
-    const y = (e.clientY / innerHeight - 0.5) * 10
-    setMousePos({ x, y })
+    if (rafId.current) return
+    const clientX = e.clientX
+    const clientY = e.clientY
+    rafId.current = requestAnimationFrame(() => {
+      const { innerWidth, innerHeight } = window
+      const x = (clientX / innerWidth - 0.5) * 10
+      const y = (clientY / innerHeight - 0.5) * 10
+      setMousePos({ x, y })
+      rafId.current = null
+    })
   }
 
   const leaves = [
@@ -128,7 +135,7 @@ export default function Hero() {
               <circle cx="7" cy="7" r="5" stroke="#6b5c44" strokeWidth="1.5" fill="rgba(254,240,138,0.8)" />
               <circle cx="7" cy="7" r="2" fill="#6b5c44" />
             </svg>
-            <span className="tag-text">シャンカル · Portfolio Vol. I</span>
+            <span className="tag-text">SHANKAR · Portfolio Vol. I</span>
           </div>
 
           <div className="ghibli-name-block">
@@ -137,7 +144,7 @@ export default function Hero() {
                 <path d="M4 20 C60 12, 120 18, 176 14" stroke="#6b5c44" strokeWidth="2.5" strokeLinecap="round" />
                 <path d="M8 24 C70 16, 130 22, 172 18" stroke="#6b5c44" strokeWidth="1.2" strokeLinecap="round" strokeDasharray="4 3" />
               </svg>
-              <span className="jp-whisper">— 匠の物語 —</span>
+              <span className="jp-whisper">— AI &amp; Full Stack Crafter —</span>
             </div>
             <h1 className="ghibli-title">SHANKAR</h1>
             <svg className="title-underline" viewBox="0 0 420 20" fill="none">
@@ -153,7 +160,7 @@ export default function Hero() {
             <div className="panel-corner pc-br" />
             <div className="panel-header">
               <span className="panel-num">No. 01</span>
-              <span className="panel-rule">職人技 · SPECIALTY</span>
+              <span className="panel-rule">SPECIALTY &amp; FOCUS</span>
               <span className="panel-num">✦</span>
             </div>
             <div className="roles-grid">
@@ -161,7 +168,7 @@ export default function Hero() {
                 <div className="role-badge">AI</div>
                 <div className="role-info">
                   <span className="role-name">AI Engineer</span>
-                  <span className="role-jp">人工知能エンジニア</span>
+                  <span className="role-jp">Scalable Models &amp; Agents</span>
                 </div>
               </div>
               <div className="role-divider">
@@ -173,19 +180,17 @@ export default function Hero() {
                 <div className="role-badge">DEV</div>
                 <div className="role-info">
                   <span className="role-name">Full Stack Dev</span>
-                  <span className="role-jp">フルスタック開発者</span>
+                  <span className="role-jp">Modern Web &amp; Systems</span>
                 </div>
               </div>
             </div>
           </div>
 
-
-
           <div className="handmade-open-sign">
             <div className="sign-string" />
             <div className="sign-card">
               <span className="sign-green-dot" />
-              <span className="sign-card-text">営業中 · OPEN FOR WORK</span>
+              <span className="sign-card-text">OPEN FOR WORK</span>
             </div>
           </div>
         </div>
@@ -229,7 +234,7 @@ export default function Hero() {
                   <span className="wfh-dot" style={{ background: '#e6a96a' }} />
                   <span className="wfh-dot" style={{ background: '#d4c97a' }} />
                   <span className="wfh-dot" style={{ background: '#8fc78a' }} />
-                  <span className="wfh-title">匠 ATELIER · PORTRAIT PANE · Vol. I</span>
+                  <span className="wfh-title">ATELIER · PORTRAIT PANE · Vol. I</span>
                 </div>
               </div>
 
@@ -248,7 +253,7 @@ export default function Hero() {
               <div className="window-nameplate">
                 <span className="np-name">SHANKAR V</span>
                 <div className="np-divider" />
-                <span className="np-rank">S+ BUILDER</span>
+                <span className="np-rank">BUILDER</span>
               </div>
             </div>
 
@@ -259,7 +264,7 @@ export default function Hero() {
 
             <div className="lucky-charm">
               <span className="charm-emoji">🎐</span>
-              <span className="charm-text">Good vibes only</span>
+              <span className="charm-text">Good vibes</span>
             </div>
           </div>
 
