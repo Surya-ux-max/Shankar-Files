@@ -1,6 +1,7 @@
 ﻿import './index.css'
 import Hero from './hero/Hero'
 import Bio from './bio/Bio'
+import Skills from './skills/Skills'
 import Education from './education/Education'
 import WelcomeSplash from './hero/WelcomeSplash'
 
@@ -10,6 +11,7 @@ export default function App() {
       <WelcomeSplash />
       <Hero />
       <Bio />
+      <Skills />
       <Education />
     </div>
   )
