@@ -1,32 +1,35 @@
 ﻿/* ==========================================================================
-   SIMPLE CLEAN ENGLISH DINING TABLE SKILLS SECTION
+   REALISTIC JAPANESE DINING TABLE SCENE — SKILLS EXPLORATION
    ========================================================================== */
 
-.simple-skills-section {
+.perspective-table-section {
   position: relative;
   width: 100%;
-  padding: 80px 24px 100px;
+  padding: 80px 24px 120px;
   background-color: var(--paper, #fdf9f1);
   box-sizing: border-box;
+  overflow: visible;
 }
 
-.skills-container {
-  max-width: 1100px;
+.pt-container {
+  max-width: 1140px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 36px;
+  gap: 40px;
 }
 
-/* Header */
-.skills-header {
+/* ==========================================================================
+   HEADER
+   ========================================================================== */
+.pt-header {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   gap: 8px;
 }
 
-.skills-tag {
+.pt-badge {
   display: inline-block;
   background: #f4ede2;
   border: 1.5px solid #3d3226;
@@ -39,9 +42,9 @@
   letter-spacing: 0.08em;
 }
 
-.skills-title {
+.pt-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(36px, 5vw, 56px);
+  font-size: clamp(38px, 6vw, 58px);
   font-weight: 900;
   line-height: 1;
   letter-spacing: -0.03em;
@@ -49,7 +52,7 @@
   margin: 0;
 }
 
-.skills-hint {
+.pt-subtitle {
   font-family: 'Space Grotesk', sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -57,183 +60,415 @@
   margin: 0;
 }
 
-/* Single Dining Table Surface */
-.simple-dining-table {
-  background: #ffffff;
-  border: 2px solid #3d3226;
-  border-radius: 6px;
-  padding: clamp(24px, 4vw, 40px);
+/* ==========================================================================
+   3D PERSPECTIVE DINING TABLE
+   ========================================================================== */
+.table-scene-viewport {
+  position: relative;
+  width: 100%;
+  perspective: 1200px;
+  margin-top: 10px;
+}
+
+.wooden-dining-table {
+  position: relative;
+  width: 100%;
+  background: #fdfaf3;
+  border: 2.5px solid #3d3226;
+  border-radius: 8px;
   box-shadow:
     6px 6px 0 #3d3226,
-    12px 12px 0 rgba(61, 50, 38, 0.1);
-}
-
-/* 3x2 Grid of Dishes */
-.table-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-@media (max-width: 900px) {
-  .table-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 600px) {
-  .table-grid {
-    grid-template-columns: 1fr;
-  }
-}
-
-/* Dish Card */
-.table-dish-card {
-  background: #fcfaf6;
-  border: 1.8px solid #3d3226;
-  border-radius: 4px;
-  padding: 16px 16px 18px;
+    14px 14px 0 rgba(61, 50, 38, 0.12);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+}
+
+/* Tabletop Surface (Angled Wood Planks) */
+.tabletop-surface {
+  position: relative;
+  width: 100%;
+  min-height: 540px;
+  padding: 40px 30px 50px;
+  box-sizing: border-box;
+  background: #ffffff;
+  border-bottom: 2.5px solid #3d3226;
+  overflow: visible;
+}
+
+.table-wood-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(90deg, rgba(61, 50, 38, 0.04) 1px, transparent 1px),
+    linear-gradient(rgba(61, 50, 38, 0.03) 1px, transparent 1px);
+  background-size: 60px 40px;
+}
+
+/* Bowls Arrangement (2 Rows of 3 Bowls based on user sketch) */
+.bowls-arrangement {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto auto;
+  row-gap: 80px;
+  column-gap: 30px;
+  align-items: center;
+  justify-items: center;
+  z-index: 5;
+}
+
+/* Individual Vessel Spot */
+.vessel-spot {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Row-based z-index (top row is behind bottom row, but active vessel elevates to top) */
+.row-top {
+  z-index: 10;
+}
+
+.row-bottom {
+  z-index: 20;
+}
+
+.vessel-spot.vessel-open {
+  z-index: 100 !important;
+}
+
+/* ==========================================================================
+   JAPANESE VESSEL OBJECT
+   ========================================================================== */
+.japanese-vessel {
+  position: relative;
+  width: 130px;
+  height: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
   cursor: pointer;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  user-select: none;
   outline: none;
 }
 
-.table-dish-card:hover {
-  transform: translateY(-3px);
-  box-shadow: 4px 4px 0 #3d3226;
+/* 1. LIFTED LID (Floats in air above when open) */
+.vessel-lid-unit {
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%) translateY(0) rotate(0deg);
+  width: 120px;
+  z-index: 15;
+  transition: transform 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+  will-change: transform;
 }
 
-/* Top bar with Category Name */
-.dish-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-bottom: 1.5px dashed rgba(61, 50, 38, 0.2);
-  padding-bottom: 8px;
+.vessel-lid-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(2px 3px 4px rgba(61, 50, 38, 0.2));
 }
 
-.dish-category {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 16px;
-  font-weight: 800;
-  color: #1f1b16;
-  margin: 0;
+/* When open, lid lifts high into the air */
+.vessel-open .vessel-lid-unit {
+  transform: translateX(-50%) translateY(-110px) rotate(-5deg);
 }
 
-.dish-lid-btn {
+/* 2. BOWL BASIN */
+.vessel-bowl-unit {
+  position: relative;
+  width: 120px;
+  z-index: 5;
+}
+
+.vessel-bowl-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(1px 2px 3px rgba(61, 50, 38, 0.15));
+}
+
+/* Table Shadow */
+.vessel-table-shadow {
+  position: absolute;
+  bottom: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 8px;
+  background: rgba(61, 50, 38, 0.2);
+  border-radius: 50%;
+  filter: blur(3px);
+  z-index: 1;
+}
+
+/* Bottom Name Label when closed */
+.vessel-closed-label {
+  position: absolute;
+  bottom: -28px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
   font-family: 'Space Mono', monospace;
-  font-size: 10px;
+  font-size: 11px;
   font-weight: 700;
+  color: #3d3226;
   background: #f4ede2;
   border: 1px solid #3d3226;
   padding: 2px 8px;
   border-radius: 3px;
-  color: #3d3226;
+  box-shadow: 1.5px 1.5px 0 #3d3226;
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
 
-/* Dish Illustration Stage */
-.dish-stage {
-  position: relative;
-  width: 100%;
-  height: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  overflow: visible;
-}
-
-/* Steam */
-.dish-steam {
-  position: absolute;
-  top: -18px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 35px;
-  display: flex;
-  gap: 8px;
+.vessel-open .vessel-closed-label {
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transform: translateX(-50%) translateY(4px);
   pointer-events: none;
 }
 
-.dish-steam.active {
+/* ==========================================================================
+   FLOATING SKILLS & STEAM CLOUD (Hovering in air above open food)
+   ========================================================================== */
+.floating-skills-air-zone {
+  position: absolute;
+  bottom: 45px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  pointer-events: none;
+  z-index: 25;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.vessel-open .floating-skills-air-zone {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: all;
+  transform: translateX(-50%) translateY(-25px);
+  animation: airHoverFloat 3.5s ease-in-out infinite alternate;
+}
+
+@keyframes airHoverFloat {
+  0%   { transform: translateX(-50%) translateY(-25px); }
+  100% { transform: translateX(-50%) translateY(-33px); }
+}
+
+/* Rising Hand-Drawn Steam */
+.steam-wisps-wrap {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 50px;
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.steam-line {
+  width: 14px;
+  height: 45px;
   opacity: 0.8;
 }
 
-.dish-steam svg {
-  width: 14px;
-  height: 30px;
-  animation: steamRise 2s ease-in-out infinite alternate;
+.st-1 { animation: steamRiseAir 2.2s ease-in-out infinite; }
+.st-2 { animation: steamRiseAir 2.6s ease-in-out infinite 0.5s; }
+.st-3 { animation: steamRiseAir 2s ease-in-out infinite 1s; }
+
+@keyframes steamRiseAir {
+  0%   { transform: translateY(0) scaleY(0.7); opacity: 0; }
+  50%  { opacity: 0.85; }
+  100% { transform: translateY(-30px) scaleY(1.3); opacity: 0; }
 }
 
-@keyframes steamRise {
-  0% { transform: translateY(0); opacity: 0.4; }
-  100% { transform: translateY(-8px); opacity: 0.9; }
-}
-
-/* Lid & Basin */
-.dish-lid {
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%) translateY(0) rotate(0deg);
-  width: 110px;
+/* Floating Category Title in Air */
+.air-category-tag {
+  background: #3d3226;
+  color: #fef08a;
+  border-radius: 3px;
+  padding: 3px 10px;
+  box-shadow: 2px 2px 0 rgba(61, 50, 38, 0.3);
   z-index: 5;
-  transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.is-open .dish-lid {
-  transform: translateX(-50%) translateY(-26px) rotate(-6deg);
+.air-category-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
-.dish-lid svg,
-.dish-basin svg {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.dish-basin {
-  position: absolute;
-  bottom: 6px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 110px;
-  z-index: 2;
-}
-
-/* Skills List inside the food vessel */
-.dish-skills-list {
+/* Floating Skills Pills */
+.air-skills-cloud {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  padding-top: 8px;
-  border-top: 1px solid rgba(61, 50, 38, 0.12);
-  transition: opacity 0.25s ease;
+  justify-content: center;
+  gap: 5px;
+  max-width: 250px;
+  background: rgba(255, 255, 255, 0.96);
+  border: 1.8px solid #3d3226;
+  padding: 10px 12px;
+  border-radius: 6px;
+  box-shadow:
+    3px 3px 0 #3d3226,
+    6px 6px 0 rgba(61, 50, 38, 0.15);
+  z-index: 5;
 }
 
-.is-closed .dish-skills-list {
-  opacity: 0.5;
-}
-
-.skill-pill {
-  background: #ffffff;
+.air-skill-pill {
+  background: #fdfaf3;
   border: 1.2px solid #3d3226;
   border-radius: 3px;
-  padding: 3px 8px;
+  padding: 2px 7px;
   font-family: 'Space Mono', monospace;
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 700;
   color: #1f1b16;
-  box-shadow: 1.5px 1.5px 0 rgba(61, 50, 38, 0.25);
+  box-shadow: 1px 1px 0 rgba(61, 50, 38, 0.2);
   transition: transform 0.15s ease, background 0.15s ease;
+  animation: pillPopIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) both;
 }
 
-.skill-pill:hover {
+.air-skill-pill:hover {
   transform: translate(-1px, -1px);
   background: #fef08a;
+}
+
+@keyframes pillPopIn {
+  from { opacity: 0; transform: scale(0.8) translateY(6px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+/* ==========================================================================
+   TABLE ACCESSORIES (Chopsticks Pairs & Cup)
+   ========================================================================== */
+.table-chopsticks {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.chop-1 {
+  top: 65%;
+  left: 31%;
+}
+
+.chop-2 {
+  top: 65%;
+  left: 64%;
+}
+
+.chopstick-pair {
+  width: 6px;
+  height: 60px;
+  border-left: 2px solid #5a3818;
+  border-right: 2px solid #5a3818;
+  border-radius: 2px;
+  transform: rotate(5deg);
+}
+
+.chopstick-rest-block {
+  width: 14px;
+  height: 4px;
+  background: #9b8c78;
+  border-radius: 1px;
+}
+
+.table-cup {
+  position: absolute;
+  top: 64%;
+  right: 4%;
+  pointer-events: none;
+  z-index: 6;
+  filter: drop-shadow(2px 2px 2px rgba(61, 50, 38, 0.15));
+}
+
+/* ==========================================================================
+   FRONT TABLE LIP & LEGS (Perspective 3D Table Frame)
+   ========================================================================== */
+.table-front-lip {
+  position: relative;
+  width: 100%;
+  height: 18px;
+  background: #e8ded0;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+}
+
+.table-leg {
+  position: absolute;
+  top: 18px;
+  width: 18px;
+  height: 50px;
+  background: #d4c5b2;
+  border: 2px solid #3d3226;
+  border-top: none;
+}
+
+.leg-left {
+  left: 28px;
+}
+
+.leg-right {
+  right: 28px;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 860px) {
+  .bowls-arrangement {
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 90px;
+  }
+
+  .table-chopsticks,
+  .table-cup {
+    display: none;
+  }
+
+  .tabletop-surface {
+    min-height: 640px;
+  }
+}
+
+@media (max-width: 560px) {
+  .bowls-arrangement {
+    grid-template-columns: 1fr;
+    row-gap: 90px;
+  }
+
+  .floating-skills-air-zone {
+    width: 230px;
+  }
+
+  .air-skills-cloud {
+    max-width: 220px;
+  }
+
+  .tabletop-surface {
+    min-height: 800px;
+  }
 }

@@ -2,240 +2,239 @@
 import './Skills.css'
 
 export default function Skills() {
-  // All open by default or toggleable
-  const [openVessels, setOpenVessels] = useState(new Set([1, 2, 3, 4, 5, 6]))
+  // Currently opened vessel ID (starts with one open so the user immediately discovers the interaction)
+  const [activeVesselId, setActiveVesselId] = useState(2)
 
   const toggleVessel = (id) => {
-    setOpenVessels((prev) => {
-      const next = new Set(prev)
-      if (next.has(id)) {
-        next.delete(id)
-      } else {
-        next.add(id)
-      }
-      return next
-    })
+    setActiveVesselId((prev) => (prev === id ? null : id))
   }
 
-  const dishes = [
+  const vessels = [
+    // Top Row (Back of table in perspective)
     {
       id: 1,
-      category: 'Languages',
-      vesselName: 'Bamboo Steamer',
+      name: 'Languages',
+      row: 'top',
       skills: ['C++', 'Java', 'Python', 'JavaScript', 'TypeScript', 'SQL'],
-      vesselType: 'steamer',
+      foodColor: '#f6ad55',
+      soupDetails: 'Dumplings & Noodles',
     },
     {
       id: 2,
-      category: 'Frontend & Backend',
-      vesselName: 'Bento Box',
+      name: 'Frontend & Backend',
+      row: 'top',
       skills: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'FastAPI', 'Flask', 'REST APIs', 'MERN Stack'],
-      vesselType: 'bento',
+      foodColor: '#fc8181',
+      soupDetails: 'Rich Ramen & Chashu',
     },
     {
       id: 3,
-      category: 'Databases',
-      vesselName: 'Donburi Bowl',
+      name: 'Databases',
+      row: 'top',
       skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'ChromaDB'],
-      vesselType: 'donburi',
+      foodColor: '#68d391',
+      soupDetails: 'Steamed Rice & Fish',
     },
+
+    // Bottom Row (Front of table in perspective)
     {
       id: 4,
-      category: 'AI & ML',
-      vesselName: 'Hot Pot',
+      name: 'AI / ML',
+      row: 'bottom',
       skills: ['Machine Learning', 'Deep Learning', 'RAG', 'LangGraph', 'MCP', 'TensorFlow', 'scikit-learn', 'XGBoost'],
-      vesselType: 'nabe',
+      foodColor: '#f6e05e',
+      soupDetails: 'Simmering Hot Pot',
     },
     {
       id: 5,
-      category: 'Core CS',
-      vesselName: 'Ramen Bowl',
+      name: 'Core CS',
+      row: 'bottom',
       skills: ['Data Structures & Algorithms', 'OOP', 'Operating Systems', 'Computer Networks', 'DBMS'],
-      vesselType: 'ramen',
+      foodColor: '#fbd38d',
+      soupDetails: 'Artisan Soba Broth',
     },
     {
       id: 6,
-      category: 'Tools & DevOps',
-      vesselName: 'Serving Platter',
+      name: 'Tools',
+      row: 'bottom',
       skills: ['Git', 'GitHub', 'Docker', 'Postman', 'Jupyter Notebook', 'Google Colab', 'Power BI', 'Vercel'],
-      vesselType: 'yakitori',
+      foodColor: '#b794f4',
+      soupDetails: 'Savory Grilled Skewers',
     },
   ]
 
   return (
-    <section className="simple-skills-section" id="skills" aria-label="Skills Table">
-      <div className="skills-container">
-        {/* Simple Clean Header */}
-        <div className="skills-header">
-          <span className="skills-tag">TECHNICAL SKILLS</span>
-          <h2 className="skills-title">SKILLS TABLE</h2>
-          <p className="skills-hint">Click any dish to open or close the lid</p>
+    <section className="perspective-table-section" id="skills" aria-label="Skills Table">
+      <div className="pt-container">
+        {/* Section Header */}
+        <div className="pt-header">
+          <div className="pt-badge">
+            <span>TECHNICAL TOOLKIT</span>
+          </div>
+          <h2 className="pt-title">SKILLS TABLE</h2>
+          <p className="pt-subtitle">
+            Click any vessel to lift the lid and reveal the floating skills
+          </p>
         </div>
 
-        {/* The Single Dining Table Spread */}
-        <div className="simple-dining-table">
-          <div className="table-grid">
-            {dishes.map((dish) => {
-              const isOpen = openVessels.has(dish.id)
+        {/* 3D Perspective Dining Table Scene */}
+        <div className="table-scene-viewport">
+          <div className="wooden-dining-table">
+            {/* Tabletop Surface with Wood Plank Grid */}
+            <div className="tabletop-surface">
+              <div className="table-wood-lines" aria-hidden="true" />
 
-              return (
-                <div
-                  key={dish.id}
-                  className={`table-dish-card ${isOpen ? 'is-open' : 'is-closed'}`}
-                  onClick={() => toggleVessel(dish.id)}
-                  role="button"
-                  tabIndex={0}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault()
-                      toggleVessel(dish.id)
-                    }
-                  }}
-                  title="Click to toggle lid"
-                >
-                  {/* Category Title */}
-                  <div className="dish-top">
-                    <h3 className="dish-category">{dish.category}</h3>
-                    <span className="dish-lid-btn">{isOpen ? 'Close' : 'Open'}</span>
-                  </div>
+              {/* Table Bowls Grid based on user sketch */}
+              <div className="bowls-arrangement">
+                {vessels.map((vessel) => {
+                  const isOpen = activeVesselId === vessel.id
 
-                  {/* Interactive Food Vessel */}
-                  <div className="dish-stage">
-                    {/* Steam when open */}
-                    <div className={`dish-steam ${isOpen ? 'active' : ''}`} aria-hidden="true">
-                      <svg viewBox="0 0 20 40" fill="none">
-                        <path d="M10 38 C4 28, 16 18, 10 0" stroke="#9b8c78" strokeWidth="1.6" strokeLinecap="round" />
-                      </svg>
-                      <svg viewBox="0 0 20 40" fill="none">
-                        <path d="M10 38 C16 28, 4 18, 10 0" stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round" />
-                      </svg>
+                  return (
+                    <div
+                      key={vessel.id}
+                      className={`vessel-spot spot-${vessel.id} row-${vessel.row} ${isOpen ? 'vessel-open' : 'vessel-closed'}`}
+                    >
+                      {/* Interactive Vessel Object */}
+                      <div
+                        className="japanese-vessel"
+                        onClick={() => toggleVessel(vessel.id)}
+                        role="button"
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            toggleVessel(vessel.id)
+                          }
+                        }}
+                        aria-expanded={isOpen}
+                        title={`Click to ${isOpen ? 'close' : 'open'} ${vessel.name}`}
+                      >
+                        {/* 1. LIFTED LID (Floats in air above when open) */}
+                        <div className="vessel-lid-unit">
+                          <svg className="vessel-lid-svg" viewBox="0 0 140 60" fill="none">
+                            {/* Top Knob Handle */}
+                            <line x1="70" y1="2" x2="70" y2="18" stroke="#3d3226" strokeWidth="3" strokeLinecap="round" />
+                            <ellipse cx="70" cy="18" rx="8" ry="4" fill="#3d3226" />
+                            {/* Dome Lid Shell */}
+                            <path
+                              d="M10 44 C18 16, 122 16, 130 44 Z"
+                              fill="#fcf8f0"
+                              stroke="#3d3226"
+                              strokeWidth="2.4"
+                              strokeLinejoin="round"
+                            />
+                            {/* Hand-drawn Accent Line */}
+                            <path d="M24 38 C40 26, 100 26, 116 38" stroke="#6b5c44" strokeWidth="1.4" strokeLinecap="round" />
+                          </svg>
+                        </div>
+
+                        {/* 2. FLOATING SKILLS & STEAM CLOUD (Hovering in air above open food) */}
+                        <div className="floating-skills-air-zone" aria-hidden={!isOpen}>
+                          {/* Rising Hand-Drawn Steam */}
+                          <div className="steam-wisps-wrap">
+                            <svg className="steam-line st-1" viewBox="0 0 20 60" fill="none">
+                              <path d="M10 55 C4 42, 16 28, 10 14 C6 6, 12 2, 10 0" stroke="#9b8c78" strokeWidth="1.8" strokeLinecap="round" />
+                            </svg>
+                            <svg className="steam-line st-2" viewBox="0 0 20 60" fill="none">
+                              <path d="M10 55 C16 40, 4 25, 10 12 C14 5, 8 2, 10 0" stroke="#9b8c78" strokeWidth="1.6" strokeLinecap="round" />
+                            </svg>
+                            <svg className="steam-line st-3" viewBox="0 0 20 60" fill="none">
+                              <path d="M10 55 C5 38, 15 22, 10 10 C7 4, 11 1, 10 0" stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round" />
+                            </svg>
+                          </div>
+
+                          {/* Floating Category Title */}
+                          <div className="air-category-tag">
+                            <span className="air-category-name">{vessel.name}</span>
+                          </div>
+
+                          {/* Floating Skills Pills in the Air */}
+                          <div className="air-skills-cloud">
+                            {vessel.skills.map((skill, sIdx) => (
+                              <span
+                                key={sIdx}
+                                className="air-skill-pill"
+                                style={{ animationDelay: `${sIdx * 35}ms` }}
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
+
+                        {/* 3. BOWL BASIN WITH HOT FOOD INSIDE */}
+                        <div className="vessel-bowl-unit">
+                          <svg className="vessel-bowl-svg" viewBox="0 0 140 70" fill="none">
+                            {/* Bowl Ceramic Body */}
+                            <path
+                              d="M12 16 C20 60, 120 60, 128 16 Z"
+                              fill="#ffffff"
+                              stroke="#3d3226"
+                              strokeWidth="2.4"
+                              strokeLinejoin="round"
+                            />
+                            {/* Foot Rim */}
+                            <path d="M48 58 L92 58" stroke="#3d3226" strokeWidth="3" strokeLinecap="round" />
+
+                            {/* Hot Broth / Food Layer inside */}
+                            <ellipse
+                              cx="70"
+                              cy="18"
+                              rx="54"
+                              ry="12"
+                              fill={vessel.foodColor}
+                              stroke="#3d3226"
+                              strokeWidth="1.8"
+                            />
+
+                            {/* Savory Garnish Inside */}
+                            <circle cx="58" cy="18" r="4" fill="#16a34a" />
+                            <circle cx="82" cy="19" r="3.5" fill="#dc2626" />
+                            <circle cx="70" cy="16" r="3" fill="#ffffff" />
+                          </svg>
+                        </div>
+
+                        {/* Vessel Table Shadow */}
+                        <div className="vessel-table-shadow" />
+
+                        {/* Bottom Label when Closed */}
+                        <div className="vessel-closed-label">
+                          <span>{vessel.name}</span>
+                        </div>
+                      </div>
                     </div>
+                  )
+                })}
 
-                    {/* Lid (Lifts Up) */}
-                    <div className="dish-lid">
-                      {renderSimpleLid(dish.vesselType)}
-                    </div>
-
-                    {/* Basin / Food Base */}
-                    <div className="dish-basin">
-                      {renderSimpleBasin(dish.vesselType)}
-                    </div>
-                  </div>
-
-                  {/* Skills tags directly inside the vessel */}
-                  <div className="dish-skills-list">
-                    {dish.skills.map((skill, idx) => (
-                      <span key={idx} className="skill-pill">
-                        {skill}
-                      </span>
-                    ))}
-                  </div>
+                {/* Table Accessories (Chopsticks Pairs & Cup as sketched) */}
+                <div className="table-chopsticks chop-1" aria-hidden="true">
+                  <div className="chopstick-pair" />
+                  <div className="chopstick-rest-block" />
                 </div>
-              )
-            })}
+
+                <div className="table-chopsticks chop-2" aria-hidden="true">
+                  <div className="chopstick-pair" />
+                  <div className="chopstick-rest-block" />
+                </div>
+
+                <div className="table-cup" aria-hidden="true">
+                  <svg width="34" height="46" viewBox="0 0 34 46" fill="none">
+                    <path d="M4 6 L8 42 C9 44, 25 44, 26 42 L30 6 Z" fill="#ffffff" stroke="#3d3226" strokeWidth="2" />
+                    <ellipse cx="17" cy="8" rx="12" ry="4" fill="#68d391" stroke="#3d3226" strokeWidth="1.2" />
+                    <line x1="8" y1="18" x2="26" y2="18" stroke="#3d3226" strokeWidth="1.2" strokeDasharray="3 2" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            {/* Front Table Edge & Legs (3D Perspective Table Frame) */}
+            <div className="table-front-lip">
+              <div className="table-leg leg-left" />
+              <div className="table-leg leg-right" />
+            </div>
           </div>
         </div>
       </div>
     </section>
   )
-}
-
-/* =========================================================================
-   CLEAN VECTOR LIDS
-   ========================================================================= */
-function renderSimpleLid(type) {
-  switch (type) {
-    case 'steamer':
-      return (
-        <svg viewBox="0 0 140 50" fill="none">
-          <ellipse cx="70" cy="35" rx="60" ry="12" fill="#edd9b6" stroke="#6b5c44" strokeWidth="2" />
-          <path d="M15 35 C20 12, 120 12, 125 35" fill="#edd9b6" stroke="#6b5c44" strokeWidth="2" />
-          <path d="M62 16 C62 8, 78 8, 78 16" stroke="#6b5c44" strokeWidth="2.5" strokeLinecap="round" />
-        </svg>
-      )
-    case 'bento':
-      return (
-        <svg viewBox="0 0 140 45" fill="none">
-          <rect x="15" y="12" width="110" height="28" rx="3" fill="#2d3748" stroke="#1a202c" strokeWidth="2" />
-          <line x1="15" y1="22" x2="125" y2="22" stroke="#d69e2e" strokeWidth="1.4" />
-        </svg>
-      )
-    case 'donburi':
-      return (
-        <svg viewBox="0 0 140 50" fill="none">
-          <path d="M16 38 C20 12, 120 12, 124 38 Z" fill="#ebf4ff" stroke="#2b6cb0" strokeWidth="2" />
-          <ellipse cx="70" cy="14" rx="8" ry="5" fill="#2b6cb0" />
-        </svg>
-      )
-    case 'nabe':
-      return (
-        <svg viewBox="0 0 140 50" fill="none">
-          <path d="M18 38 C22 14, 118 14, 122 38 Z" fill="#c05621" stroke="#431407" strokeWidth="2" />
-          <ellipse cx="70" cy="14" rx="9" ry="6" fill="#7b341e" />
-        </svg>
-      )
-    case 'ramen':
-      return (
-        <svg viewBox="0 0 140 50" fill="none">
-          <path d="M18 36 C25 14, 115 14, 122 36 Z" fill="#fffaf0" stroke="#744210" strokeWidth="2" />
-          <line x1="28" y1="30" x2="112" y2="30" stroke="#d69e2e" strokeWidth="1.5" strokeDasharray="5 3" />
-        </svg>
-      )
-    case 'yakitori':
-      return (
-        <svg viewBox="0 0 140 45" fill="none">
-          <rect x="12" y="16" width="116" height="22" rx="3" fill="#faf5ff" stroke="#553c9a" strokeWidth="2" />
-          <path d="M50 16 C50 8, 90 8, 90 16" stroke="#805ad5" strokeWidth="2" strokeLinecap="round" />
-        </svg>
-      )
-    default:
-      return null
-  }
-}
-
-/* =========================================================================
-   CLEAN VECTOR BASINS
-   ========================================================================= */
-function renderSimpleBasin(type) {
-  switch (type) {
-    case 'steamer':
-      return (
-        <svg viewBox="0 0 140 60" fill="none">
-          <ellipse cx="70" cy="45" rx="58" ry="12" fill="#d69e2e" opacity="0.2" />
-          <path d="M14 18 L18 46 C20 54, 120 54, 122 46 L126 18" fill="#fef3c7" stroke="#6b5c44" strokeWidth="2" />
-        </svg>
-      )
-    case 'bento':
-      return (
-        <svg viewBox="0 0 140 60" fill="none">
-          <rect x="15" y="12" width="110" height="42" rx="3" fill="#1a202c" stroke="#1a202c" strokeWidth="2" />
-        </svg>
-      )
-    case 'donburi':
-      return (
-        <svg viewBox="0 0 140 60" fill="none">
-          <path d="M18 15 C22 52, 118 52, 122 15 Z" fill="#ebf8ff" stroke="#2b6cb0" strokeWidth="2" />
-        </svg>
-      )
-    case 'nabe':
-      return (
-        <svg viewBox="0 0 140 60" fill="none">
-          <path d="M18 16 C22 54, 118 54, 122 16 Z" fill="#7b341e" stroke="#431407" strokeWidth="2" />
-        </svg>
-      )
-    case 'ramen':
-      return (
-        <svg viewBox="0 0 140 60" fill="none">
-          <path d="M18 15 C22 52, 118 52, 122 15 Z" fill="#fffaf0" stroke="#744210" strokeWidth="2" />
-        </svg>
-      )
-    case 'yakitori':
-      return (
-        <svg viewBox="0 0 140 60" fill="none">
-          <rect x="12" y="16" width="116" height="36" rx="3" fill="#2d3748" stroke="#553c9a" strokeWidth="2" />
-        </svg>
-      )
-    default:
-      return null
-  }
 }
