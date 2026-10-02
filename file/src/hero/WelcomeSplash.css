@@ -1,279 +1,407 @@
 ﻿/* ==========================================================================
-   WELCOME SPLASH SCREEN — Ghibli Sketch Clouds + Fade-out Opening Scene
+   3D CLOUD FLY-THROUGH / ZOOM DIVE — Opening Scene Transition
    ========================================================================== */
 
-/* -- Root overlay --------------------------------------------------------- */
-.splash-root {
+.flythrough-viewport {
   position: fixed;
   inset: 0;
-  z-index: 9999;
+  z-index: 99999;
   overflow: hidden;
+  cursor: pointer;
   pointer-events: all;
-  opacity: 1;
-  transition: opacity 1.4s cubic-bezier(0.4, 0, 0.2, 1);
+  perspective: 1200px;
+  background: transparent;
+  user-select: none;
 }
 
-.splash-fade-out {
-  opacity: 0;
+.flythrough-viewport.is-diving {
   pointer-events: none;
 }
 
-/* -- Sky background ------------------------------------------------------- */
-.splash-sky {
+/* ==========================================================================
+   BACKDROP SKY & TEXTURE
+   ========================================================================== */
+.fly-sky-backdrop {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     180deg,
-    #dbeeff 0%,
-    #eef6ff 30%,
-    #f5f0e8 60%,
+    #cbe2fa 0%,
+    #e1effe 32%,
+    #f5ede1 68%,
     #fdf9f1 100%
   );
+  transition: opacity 1.3s cubic-bezier(0.7, 0, 0.3, 1);
+  will-change: opacity;
 }
 
-/* Paper grain overlay */
-.splash-sky::after {
-  content: '';
+.fly-paper-grain {
   position: absolute;
   inset: 0;
   background-image:
-    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.68' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
   background-size: 300px 300px;
   pointer-events: none;
 }
 
-/* -- Clouds layer --------------------------------------------------------- */
-.splash-clouds {
+.is-diving .fly-sky-backdrop {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   SUN GLOW & RAYS (CENTER HORIZON)
+   ========================================================================== */
+.fly-sun-core {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 500px;
+  height: 500px;
+  pointer-events: none;
+  z-index: 2;
+  transition: transform 1.2s ease, opacity 1s ease;
+}
+
+.fly-sun-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(254, 240, 138, 0.4) 0%, rgba(253, 230, 138, 0.1) 50%, transparent 70%);
+  filter: blur(40px);
+}
+
+.fly-sun-rays {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 800px;
+  height: 30px;
+  background: linear-gradient(90deg, transparent, rgba(254, 240, 138, 0.3) 50%, transparent);
+  transform: translate(-50%, -50%) rotate(25deg);
+  filter: blur(8px);
+}
+
+.is-diving .fly-sun-core {
+  transform: translate(-50%, -50%) scale(2.8);
+  opacity: 0;
+}
+
+/* ==========================================================================
+   3D CLOUD PLANES (PARALLAX DEPTH & DIVE ZOOM)
+   ========================================================================== */
+.cloud-plane {
   position: absolute;
   inset: 0;
   pointer-events: none;
+  transform-style: preserve-3d;
 }
 
-.splash-cloud {
+/* --- Layer 3: Distant Clouds --- */
+.plane-distant {
+  z-index: 5;
+  transition: transform 1.3s cubic-bezier(0.65, 0, 0.35, 1), opacity 1.1s ease;
+  will-change: transform, opacity;
+}
+
+.c-far-top-left {
   position: absolute;
-  filter: drop-shadow(3px 4px 6px rgba(107,92,68,0.1));
-}
-
-/* Cloud positions */
-.sc-large.sc-left {
-  top: 8%;
-  left: -20px;
-  animation: splashCloudDriftL 18s ease-in-out infinite alternate;
-}
-
-.sc-medium.sc-right-top {
-  top: 5%;
-  right: -10px;
-  animation: splashCloudDriftR 22s ease-in-out infinite alternate;
-}
-
-.sc-small.sc-right-mid {
-  top: 38%;
-  right: 6%;
-  animation: splashCloudDriftR 16s ease-in-out infinite alternate 2s;
-}
-
-.sc-tiny.sc-bottom-left {
-  top: 55%;
+  top: 6%;
   left: 8%;
-  animation: splashCloudDriftL 14s ease-in-out infinite alternate 1s;
+  animation: floatDistantL 18s ease-in-out infinite alternate;
 }
 
-@keyframes splashCloudDriftL {
-  0%   { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(40px) translateY(-10px); }
-}
-
-@keyframes splashCloudDriftR {
-  0%   { transform: translateX(0) translateY(0); }
-  100% { transform: translateX(-36px) translateY(8px); }
-}
-
-/* -- Sketch birds --------------------------------------------------------- */
-.splash-birds {
+.c-far-top-right {
   position: absolute;
-  filter: drop-shadow(1px 1px 2px rgba(107,92,68,0.08));
+  top: 8%;
+  right: 8%;
+  animation: floatDistantR 20s ease-in-out infinite alternate;
 }
 
-.sb-group-a {
-  top: 14%;
-  left: 28%;
-  animation: splashBirdsFly 8s ease-in-out infinite;
+@keyframes floatDistantL {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(25px, -10px); }
 }
 
-.sb-group-b {
-  top: 24%;
-  right: 30%;
-  animation: splashBirdsFly 10s ease-in-out infinite 2.5s;
+@keyframes floatDistantR {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-25px, 8px); }
 }
 
-@keyframes splashBirdsFly {
-  0%, 100% { transform: translateY(0) translateX(0); }
-  40%       { transform: translateY(-14px) translateX(10px); }
-  70%       { transform: translateY(-6px) translateX(-6px); }
+.is-diving .plane-distant {
+  transform: scale(2.2) translateZ(200px);
+  opacity: 0;
 }
 
-/* -- Welcome note card ---------------------------------------------------- */
-.splash-note-wrap {
+/* --- Layer 2: Midground Clouds --- */
+.plane-midground {
+  z-index: 10;
+  transition: transform 1.25s cubic-bezier(0.7, 0, 0.25, 1), opacity 1s ease;
+  will-change: transform, opacity;
+}
+
+.c-mid-left {
+  position: absolute;
+  top: 25%;
+  left: 2%;
+  filter: drop-shadow(3px 4px 6px rgba(107, 92, 68, 0.1));
+  animation: floatMidL 14s ease-in-out infinite alternate;
+}
+
+.c-mid-right {
+  position: absolute;
+  top: 28%;
+  right: 2%;
+  filter: drop-shadow(3px 4px 6px rgba(107, 92, 68, 0.1));
+  animation: floatMidR 16s ease-in-out infinite alternate 1s;
+}
+
+@keyframes floatMidL {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(30px, -12px); }
+}
+
+@keyframes floatMidR {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(-30px, 12px); }
+}
+
+.is-diving .plane-midground {
+  transform: scale(2.8) translateZ(400px);
+  opacity: 0;
+}
+
+/* --- Layer 1: Foreground Fluffy Clouds --- */
+.plane-foreground {
+  z-index: 15;
+  transition: transform 1.15s cubic-bezier(0.75, 0, 0.2, 1), opacity 0.9s ease;
+  will-change: transform, opacity;
+}
+
+.c-fore-bottom-left {
+  position: absolute;
+  bottom: -30px;
+  left: -40px;
+  filter: drop-shadow(4px -4px 10px rgba(107, 92, 68, 0.12));
+}
+
+.c-fore-bottom-right {
+  position: absolute;
+  bottom: -30px;
+  right: -40px;
+  filter: drop-shadow(-4px -4px 10px rgba(107, 92, 68, 0.12));
+}
+
+.is-diving .plane-foreground {
+  transform: scale(3.5) translateY(120px) translateZ(600px);
+  opacity: 0;
+  filter: blur(6px);
+}
+
+/* ==========================================================================
+   BIRDS
+   ========================================================================== */
+.fly-birds-layer {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
+  z-index: 8;
+  pointer-events: none;
+  transition: opacity 0.6s ease;
 }
 
-.splash-note {
+.b-group-top {
+  position: absolute;
+  top: 16%;
+  left: 45%;
+  animation: birdsSway 6s ease-in-out infinite;
+}
+
+@keyframes birdsSway {
+  0%, 100% { transform: translate(0, 0); }
+  50%       { transform: translate(14px, -10px); }
+}
+
+.is-diving .fly-birds-layer {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   CENTER CLEAN ENGLISH WELCOME CARD
+   ========================================================================== */
+.fly-center-wrap {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 100;
+  width: 90%;
+  max-width: 440px;
+  pointer-events: none;
+}
+
+.fly-welcome-card {
   position: relative;
-  background: rgba(255, 253, 248, 0.94);
-  border: 2.5px solid #9b8c78;
-  padding: 36px 48px 32px;
+  background: #ffffff;
+  border: 2.5px solid #3d3226;
+  padding: 34px 38px 28px;
   box-shadow:
-    8px 8px 0 #9b8c78,
-    14px 14px 0 rgba(155,140,120,0.15);
-  border-radius: 4px;
+    6px 6px 0 #3d3226,
+    14px 14px 0 rgba(61, 50, 38, 0.14);
+  border-radius: 6px;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  animation: noteFloat 4s ease-in-out infinite;
-  max-width: 380px;
-  width: 90%;
+  gap: 12px;
+  animation: cardGentleHover 4s ease-in-out infinite;
+  transition:
+    transform 0.8s cubic-bezier(0.65, 0, 0.25, 1),
+    opacity 0.6s cubic-bezier(0.65, 0, 0.25, 1),
+    filter 0.6s ease;
+  will-change: transform, opacity, filter;
 }
 
-@keyframes noteFloat {
-  0%, 100% { transform: translateY(0) rotate(-0.4deg); }
-  50%       { transform: translateY(-8px) rotate(0.4deg); }
+@keyframes cardGentleHover {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
 }
 
-/* Corner pins */
-.sn-pin {
-  position: absolute;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(254, 240, 138, 0.9);
-  border: 1.5px solid #9b8c78;
-  box-shadow: 1px 1px 0 rgba(155,140,120,0.4);
+/* Zoom straight forward toward camera on dive */
+.is-diving .fly-welcome-card {
+  transform: scale(2.8) translateY(-40px) translateZ(500px);
+  opacity: 0;
+  filter: blur(8px);
 }
 
-.sn-pin-tl { top: -7px; left: -7px; }
-.sn-pin-tr { top: -7px; right: -7px; }
-
-/* Japanese accent line */
-.sn-jp-line {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 4px;
-}
-
-.sn-jp-text {
-  font-family: 'Caveat', cursive;
-  font-size: 18px;
-  font-weight: 600;
-  color: #9b8c78;
-  letter-spacing: 0.1em;
-}
-
-/* Main welcome text */
-.sn-hello {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(46px, 8vw, 72px);
-  font-weight: 900;
-  line-height: 1;
-  letter-spacing: -0.04em;
-  color: #3d3226;
-  margin: 0;
-  text-shadow:
-    2px 0 0 rgba(61,50,38,0.07),
-    0 2px 0 rgba(61,50,38,0.05);
-  animation: welcomeReveal 0.8s cubic-bezier(0.34,1.56,0.64,1) both;
-}
-
-@keyframes welcomeReveal {
-  from { opacity: 0; transform: translateY(18px) scale(0.9); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-.sn-sub {
-  font-family: 'Caveat', cursive;
-  font-size: clamp(18px, 3vw, 24px);
-  font-weight: 600;
-  color: #6b5c44;
-  margin: 0;
-  letter-spacing: 0.02em;
-  animation: welcomeReveal 0.8s 0.2s cubic-bezier(0.34,1.56,0.64,1) both;
-}
-
-/* Ink brush divider */
-.sn-divider {
-  display: block;
-  width: 160px;
-  height: 12px;
-  animation: welcomeReveal 0.6s 0.35s ease both;
-}
-
-/* Tagline */
-.sn-tagline {
+/* Top Tag */
+.fcard-badge {
+  display: inline-block;
+  background: #f4ede2;
+  border: 1.5px solid #3d3226;
+  padding: 4px 14px;
+  border-radius: 4px;
   font-family: 'Space Mono', monospace;
   font-size: 11px;
   font-weight: 700;
-  color: #9b8c78;
+  color: #3d3226;
   letter-spacing: 0.1em;
-  margin: 0;
-  animation: welcomeReveal 0.6s 0.45s ease both;
 }
 
-/* Bouncing loader dots */
-.sn-loader {
-  display: flex;
+/* Title */
+.fcard-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(48px, 9vw, 68px);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: #1f1b16;
+  margin: 0;
+}
+
+/* Divider Line */
+.fcard-line {
+  width: 130px;
+  height: 2px;
+  background: #3d3226;
+  border-radius: 2px;
+}
+
+/* Subtitle */
+.fcard-subtitle {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(15px, 2.5vw, 18px);
+  font-weight: 600;
+  color: #524436;
+  margin: 0;
+  letter-spacing: 0.01em;
+}
+
+/* Dive Prompt */
+.fcard-cue {
+  display: inline-flex;
   align-items: center;
   gap: 7px;
-  margin-top: 6px;
-  animation: welcomeReveal 0.4s 0.6s ease both;
+  margin-top: 4px;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  padding: 5px 14px;
+  border-radius: 20px;
 }
 
-.sn-loader span {
-  display: inline-block;
+.cue-dot {
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: #9b8c78;
-  animation: loaderBounce 1.2s ease-in-out infinite;
+  background: #16a34a;
+  animation: cueBlink 1.8s ease-in-out infinite;
 }
 
-.sn-loader span:nth-child(2) { animation-delay: 0.18s; }
-.sn-loader span:nth-child(3) { animation-delay: 0.36s; }
-
-@keyframes loaderBounce {
-  0%, 80%, 100% { transform: translateY(0); opacity: 0.5; }
-  40%           { transform: translateY(-8px); opacity: 1; }
+@keyframes cueBlink {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(0.8); }
 }
 
-/* -- Grass ground strip --------------------------------------------------- */
-.splash-ground {
+.cue-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 600;
+  color: #64748b;
+  letter-spacing: 0.04em;
+}
+
+/* Corner Dots */
+.fcard-pin {
   position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  line-height: 0;
-  z-index: 5;
-  pointer-events: none;
+  width: 8px;
+  height: 8px;
+  background: #fef08a;
+  border: 1.5px solid #3d3226;
+  border-radius: 50%;
 }
 
-/* -- Responsive ----------------------------------------------------------- */
-@media (max-width: 480px) {
-  .splash-note {
-    padding: 28px 28px 24px;
+.fp-tl { top: -4px; left: -4px; }
+.fp-tr { top: -4px; right: -4px; }
+.fp-bl { bottom: -4px; left: -4px; }
+.fp-br { bottom: -4px; right: -4px; }
+
+/* ==========================================================================
+   DIVE FLASH OVERLAY
+   ========================================================================== */
+.dive-flash-overlay {
+  position: absolute;
+  inset: 0;
+  background: #fdf9f1;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 500;
+  transition: opacity 0.5s ease 0.6s;
+}
+
+.is-diving .dive-flash-overlay {
+  opacity: 0.8;
+  transition: opacity 0.4s ease 0.5s;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 600px) {
+  .fly-welcome-card {
+    padding: 26px 20px 22px;
+    gap: 10px;
   }
 
-  .sc-large.sc-left {
-    width: 220px;
+  .fcard-title {
+    font-size: 42px;
   }
 
-  .sc-medium.sc-right-top {
-    width: 160px;
+  .fcard-subtitle {
+    font-size: 14px;
+  }
+
+  .c-fore-bottom-left svg,
+  .c-fore-bottom-right svg {
+    width: 380px;
+    height: 180px;
   }
 }

@@ -2,127 +2,165 @@
 import './WelcomeSplash.css'
 
 export default function WelcomeSplash() {
-  const [phase, setPhase] = useState('visible')
+  // Stages: 'floating' (gentle hover & welcome note) -> 'diving' (3D fly-through zoom) -> 'cleared'
+  const [stage, setStage] = useState('floating')
 
   useEffect(() => {
-    const fadeTimer = setTimeout(() => setPhase('fading'), 2800)
-    const goneTimer = setTimeout(() => setPhase('gone'), 4200)
+    // 1. Hold peaceful sky view for 2.4s, then initiate dive
+    const diveTimer = setTimeout(() => setStage('diving'), 2400)
+    // 2. Remove from DOM after dive completes (1.4s dive)
+    const clearTimer = setTimeout(() => setStage('cleared'), 3800)
+
     return () => {
-      clearTimeout(fadeTimer)
-      clearTimeout(goneTimer)
+      clearTimeout(diveTimer)
+      clearTimeout(clearTimer)
     }
   }, [])
 
-  if (phase === 'gone') return null
+  const handleInstantDive = () => {
+    if (stage !== 'diving' && stage !== 'cleared') {
+      setStage('diving')
+      setTimeout(() => setStage('cleared'), 1400)
+    }
+  }
+
+  if (stage === 'cleared') return null
 
   return (
-    <div className={`splash-root ${phase === 'fading' ? 'splash-fade-out' : ''}`} aria-hidden="true">
+    <div
+      className={`flythrough-viewport ${stage === 'diving' ? 'is-diving' : ''}`}
+      onClick={handleInstantDive}
+      title="Click anywhere to dive in"
+      role="banner"
+      aria-label="Welcome Opening Screen"
+    >
+      {/* Deep Sky Base */}
+      <div className="fly-sky-backdrop" />
+      <div className="fly-paper-grain" />
 
-      <div className="splash-sky" />
+      {/* Radiant Sun Glow at center */}
+      <div className="fly-sun-core">
+        <div className="fly-sun-glow" />
+        <div className="fly-sun-rays" />
+      </div>
 
-      <div className="splash-clouds">
-
-        <div className="splash-cloud sc-large sc-left">
+      {/* Layer 3: Far Background Clouds (Gentle Drift & Slower Zoom) */}
+      <div className="cloud-plane plane-distant">
+        <div className="cloud-item c-far-top-left">
+          <svg width="320" height="130" viewBox="0 0 320 130" fill="none">
+            <path
+              d="M30 90 C12 90, 4 75, 12 56 C6 38, 26 22, 48 32 C62 14, 98 8, 120 24 C138 10, 172 14, 178 36 C198 40, 206 58, 192 74 C178 86, 42 86, 30 90 Z"
+              stroke="#b5c4d2" strokeWidth="1.8" fill="rgba(255, 255, 255, 0.6)"
+            />
+          </svg>
+        </div>
+        <div className="cloud-item c-far-top-right">
           <svg width="340" height="140" viewBox="0 0 340 140" fill="none">
             <path
-              d="M42 108 C22 108, 8 92, 18 72 C10 50, 34 30, 62 42 C78 18, 122 10, 148 32 C170 14, 214 18, 222 48 C250 52, 262 78, 244 100 C228 116, 56 116, 42 108 Z"
-              stroke="#b8a898" strokeWidth="2.2" fill="rgba(255,253,248,0.84)" strokeLinejoin="round"
+              d="M34 100 C16 100, 6 84, 14 64 C8 44, 30 26, 54 36 C70 16, 110 10, 134 28 C154 12, 192 16, 200 42 C224 46, 234 68, 218 86 C204 98, 46 98, 34 100 Z"
+              stroke="#b5c4d2" strokeWidth="1.8" fill="rgba(255, 255, 255, 0.6)"
             />
-            <path d="M72 78 C90 66, 118 72, 126 86" stroke="#b8a898" strokeWidth="1.4" fill="none" strokeLinecap="round" />
-            <path d="M158 56 C176 46, 200 52, 206 68" stroke="#b8a898" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-            <path d="M85 95 C105 89, 130 93, 140 100" stroke="#b8a898" strokeWidth="1" fill="none" strokeLinecap="round" />
-          </svg>
-        </div>
-
-        <div className="splash-cloud sc-medium sc-right-top">
-          <svg width="240" height="100" viewBox="0 0 240 100" fill="none">
-            <path
-              d="M28 76 C14 76, 6 64, 12 50 C8 36, 24 22, 44 32 C56 14, 90 10, 110 26 C128 12, 156 16, 162 36 C180 40, 186 58, 174 72 C160 82, 40 82, 28 76 Z"
-              stroke="#b8a898" strokeWidth="2" fill="rgba(255,253,248,0.8)" strokeLinejoin="round"
-            />
-            <path d="M50 58 C64 50, 82 54, 88 64" stroke="#b8a898" strokeWidth="1.2" fill="none" strokeLinecap="round" />
-            <path d="M108 40 C122 34, 140 38, 144 50" stroke="#b8a898" strokeWidth="1" fill="none" strokeLinecap="round" />
-          </svg>
-        </div>
-
-        <div className="splash-cloud sc-small sc-right-mid">
-          <svg width="160" height="70" viewBox="0 0 160 70" fill="none">
-            <path
-              d="M18 50 C10 50, 5 42, 9 32 C6 20, 20 12, 34 20 C44 8, 68 6, 82 18 C96 8, 116 12, 120 28 C132 32, 136 46, 124 54 C112 60, 28 60, 18 50 Z"
-              stroke="#b8a898" strokeWidth="1.8" fill="rgba(255,253,248,0.74)" strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-
-        <div className="splash-cloud sc-tiny sc-bottom-left">
-          <svg width="110" height="52" viewBox="0 0 110 52" fill="none">
-            <path
-              d="M14 38 C8 38, 4 32, 7 24 C5 15, 15 8, 25 14 C32 5, 50 4, 60 12 C70 5, 84 8, 87 20 C95 22, 98 32, 90 38 C82 44, 20 44, 14 38 Z"
-              stroke="#b8a898" strokeWidth="1.6" fill="rgba(255,253,248,0.72)" strokeLinejoin="round"
-            />
-          </svg>
-        </div>
-
-        <div className="splash-birds sb-group-a">
-          <svg width="90" height="40" viewBox="0 0 90 40" fill="none" stroke="#8a7a68" strokeWidth="1.8" strokeLinecap="round">
-            <path d="M4 18 Q10 11 16 18" />
-            <path d="M24 28 Q29 22 34 28" strokeWidth="1.4" />
-            <path d="M44 16 Q50 9 56 16" />
-            <path d="M64 24 Q68 19 72 24" strokeWidth="1.2" />
-          </svg>
-        </div>
-
-        <div className="splash-birds sb-group-b">
-          <svg width="60" height="30" viewBox="0 0 60 30" fill="none" stroke="#8a7a68" strokeWidth="1.5" strokeLinecap="round">
-            <path d="M4 14 Q9 8 14 14" />
-            <path d="M20 22 Q24 17 28 22" strokeWidth="1.2" />
-            <path d="M36 12 Q41 7 46 12" />
           </svg>
         </div>
       </div>
 
-      <div className="splash-note-wrap">
-        <div className="splash-note">
-          <div className="sn-pin sn-pin-tl" />
-          <div className="sn-pin sn-pin-tr" />
+      {/* Layer 2: Midground Clouds (Fly outward past camera) */}
+      <div className="cloud-plane plane-midground">
+        <div className="cloud-item c-mid-left">
+          <svg width="420" height="190" viewBox="0 0 420 190" fill="none">
+            <path
+              d="M45 140 C20 140, 8 120, 18 96 C10 68, 38 42, 70 56 C88 24, 140 14, 170 42 C196 18, 248 24, 256 62 C290 68, 302 100, 280 128 C260 148, 62 148, 45 140 Z"
+              stroke="#8c7d6b" strokeWidth="2" fill="rgba(255, 253, 248, 0.9)" strokeLinejoin="round"
+            />
+            <path d="M78 100 C98 86, 130 92, 138 110" stroke="#8c7d6b" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+            <path d="M178 72 C198 60, 228 66, 234 84" stroke="#8c7d6b" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+          </svg>
+        </div>
 
-          <div className="sn-jp-line">
-            <svg width="140" height="20" viewBox="0 0 140 20" fill="none">
-              <path d="M4 14 C50 8, 100 14, 136 10" stroke="#9b8c78" strokeWidth="2" strokeLinecap="round" />
-              <path d="M8 18 C60 12, 110 17, 132 14" stroke="#9b8c78" strokeWidth="1" strokeLinecap="round" strokeDasharray="4 3" />
-            </svg>
-            <span className="sn-jp-text">ようこそ</span>
+        <div className="cloud-item c-mid-right">
+          <svg width="440" height="200" viewBox="0 0 440 200" fill="none">
+            <path
+              d="M48 145 C22 145, 10 125, 20 100 C12 70, 40 44, 74 58 C92 26, 146 14, 178 44 C204 18, 260 24, 270 65 C304 70, 318 105, 294 135 C274 155, 66 155, 48 145 Z"
+              stroke="#8c7d6b" strokeWidth="2" fill="rgba(255, 253, 248, 0.9)" strokeLinejoin="round"
+            />
+            <path d="M82 105 C104 90, 136 98, 146 116" stroke="#8c7d6b" strokeWidth="1.3" fill="none" strokeLinecap="round" />
+            <path d="M186 76 C208 64, 240 70, 248 90" stroke="#8c7d6b" strokeWidth="1.2" fill="none" strokeLinecap="round" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Layer 1: Giant Foreground Fluffy Cloud Puffs (Rush past sides on dive) */}
+      <div className="cloud-plane plane-foreground">
+        <div className="cloud-item c-fore-bottom-left">
+          <svg width="550" height="260" viewBox="0 0 550 260" fill="none">
+            <path
+              d="M0 260 L0 140
+                 C50 90, 110 100, 150 140
+                 C190 70, 290 50, 370 100
+                 C440 30, 530 60, 550 150
+                 C520 230, 460 260, 400 260 Z"
+              fill="rgba(255, 253, 248, 0.98)" stroke="#7a6c58" strokeWidth="2.4"
+            />
+            <path d="M110 140 C140 160, 170 160, 190 140" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+            <path d="M290 100 C330 120, 360 120, 380 100" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+          </svg>
+        </div>
+
+        <div className="cloud-item c-fore-bottom-right">
+          <svg width="550" height="260" viewBox="0 0 550 260" fill="none">
+            <path
+              d="M550 260 L550 140
+                 C500 90, 440 100, 400 140
+                 C360 70, 260 50, 180 100
+                 C110 30, 20 60, 0 150
+                 C30 230, 90 260, 150 260 Z"
+              fill="rgba(255, 253, 248, 0.98)" stroke="#7a6c58" strokeWidth="2.4"
+            />
+            <path d="M440 140 C410 160, 380 160, 360 140" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+            <path d="M260 100 C220 120, 190 120, 170 100" stroke="#7a6c58" strokeWidth="1.4" fill="none" strokeLinecap="round" />
+          </svg>
+        </div>
+      </div>
+
+      {/* Flapping Birds across sky */}
+      <div className="fly-birds-layer">
+        <div className="fly-birds b-group-top">
+          <svg width="90" height="42" viewBox="0 0 90 42" fill="none" stroke="#5a4c38" strokeWidth="1.8" strokeLinecap="round">
+            <path d="M6 20 Q14 11 22 20" />
+            <path d="M30 30 Q36 23 42 30" strokeWidth="1.4" />
+            <path d="M52 16 Q59 8 66 16" />
+            <path d="M72 26 Q77 20 82 26" strokeWidth="1.2" />
+          </svg>
+        </div>
+      </div>
+
+      {/* ================= CENTER CLEAN WELCOME CARD ================= */}
+      <div className="fly-center-wrap">
+        <div className="fly-welcome-card">
+          <div className="fcard-badge">
+            <span>SHANKAR&apos;S PORTFOLIO</span>
           </div>
 
-          <p className="sn-hello">Welcome</p>
-          <p className="sn-sub">to Shankar&apos;s Portfolio</p>
+          <h1 className="fcard-title">WELCOME</h1>
+          <div className="fcard-line" />
 
-          <svg className="sn-divider" width="180" height="14" viewBox="0 0 180 14" fill="none">
-            <path d="M4 7 C50 3, 130 10, 176 6" stroke="#9b8c78" strokeWidth="1.8" strokeLinecap="round" />
-          </svg>
+          <p className="fcard-subtitle">AI Engineer &amp; Full Stack Developer</p>
 
-          <p className="sn-tagline">Crafting AI &amp; Web magic ✦</p>
-
-          <div className="sn-loader">
-            <span /><span /><span />
+          <div className="fcard-cue">
+            <span className="cue-dot" />
+            <span className="cue-label">Click anywhere to dive in</span>
           </div>
+
+          {/* Corner Stitch Accents */}
+          <div className="fcard-pin fp-tl" />
+          <div className="fcard-pin fp-tr" />
+          <div className="fcard-pin fp-bl" />
+          <div className="fcard-pin fp-br" />
         </div>
       </div>
 
-      <div className="splash-ground">
-        <svg width="100%" height="60" viewBox="0 0 1440 60" preserveAspectRatio="none" fill="none">
-          <path
-            d="M0 45 C120 30, 200 52, 360 40 C480 30, 600 50, 720 38 C840 26, 960 48, 1080 36 C1200 24, 1320 46, 1440 34 L1440 60 L0 60 Z"
-            fill="rgba(122,155,106,0.22)" stroke="#7a9b6a" strokeWidth="1.8"
-          />
-          {[...Array(18)].map((_, i) => (
-            <g key={i} transform={`translate(${i * 82 + 14}, 43)`}>
-              <path d="M0 0 C-2 -10, -1 -16, 0 -20" stroke="#7a9b6a" strokeWidth="1.2" strokeLinecap="round" fill="none" />
-              <path d="M4 0 C6 -12, 5 -18, 4 -14" stroke="#7a9b6a" strokeWidth="1" strokeLinecap="round" fill="none" />
-            </g>
-          ))}
-        </svg>
-      </div>
+      {/* Flash overlay at the end of dive */}
+      <div className="dive-flash-overlay" />
     </div>
   )
 }
