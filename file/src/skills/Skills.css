@@ -8,7 +8,7 @@
   padding: 60px 24px 90px;
   background-color: var(--paper, #fdf9f1);
   box-sizing: border-box;
-  overflow: visible;
+  overflow: hidden;
 }
 
 .pt-container {
@@ -75,7 +75,7 @@
   flex-direction: column;
 }
 
-/* Table Surface Mat (Trapezoidal Angled Tabletop) */
+/* Table Surface Mat */
 .tabletop-mat {
   position: relative;
   width: 100%;
@@ -240,6 +240,7 @@
   left: 50%;
   transform: translateX(-50%);
   width: 250px;
+  max-width: calc(100vw - 36px);
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -433,12 +434,16 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE ENHANCEMENTS (ZERO LAG & ZERO OVERFLOW)
    ========================================================================== */
 @media (max-width: 860px) {
+  .perspective-table-section {
+    padding: 50px 16px 70px;
+  }
+
   .table-dishes-grid {
     grid-template-columns: repeat(2, 1fr);
-    row-gap: 70px;
+    row-gap: 65px;
   }
 
   .table-chopsticks,
@@ -447,23 +452,44 @@
   }
 
   .tabletop-mat {
-    min-height: 560px;
-    padding: 36px 20px;
+    min-height: auto;
+    padding: 30px 16px 40px;
   }
 }
 
 @media (max-width: 560px) {
   .table-dishes-grid {
     grid-template-columns: 1fr;
-    row-gap: 75px;
+    row-gap: 68px;
   }
 
-  .tabletop-mat {
-    min-height: 720px;
-    padding: 30px 16px;
+  .japanese-vessel {
+    width: 130px;
+  }
+
+  .vessel-lid-unit,
+  .vessel-bowl-unit {
+    width: 120px;
   }
 
   .floating-skills-air-zone {
-    width: 220px;
+    width: 230px;
+  }
+
+  .air-skills-cloud {
+    max-width: 215px;
+    padding: 6px 8px;
+  }
+
+  .air-skill-pill {
+    font-size: 9.5px;
+  }
+
+  .pt-title {
+    font-size: 30px;
+  }
+
+  .pt-subtitle {
+    font-size: 14px;
   }
 }

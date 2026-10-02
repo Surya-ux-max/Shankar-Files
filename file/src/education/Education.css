@@ -21,7 +21,7 @@
   background-size: 300px 300px;
 }
 
-/* Ambient Farmland Backdrop Washes (Behind the entire layout) */
+/* Ambient Farmland Backdrop Washes */
 .edu-farmland-backdrop {
   position: absolute;
   inset: 0;
@@ -73,7 +73,7 @@
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  gap: 28px;
+  gap: 24px;
 }
 
 /* Header */
@@ -115,13 +115,46 @@
   margin: 0;
 }
 
+/* Mobile Scroll Hint (Only shown on small screens) */
+.mobile-scroll-hint {
+  display: none;
+  background: rgba(254, 243, 220, 0.95);
+  border: 1px dashed #6b5c44;
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  color: #3d3226;
+}
+
+/* Scroll Container for Mobile */
+.canvas-scroll-container {
+  width: 100%;
+  border-radius: 8px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #d7c2a0 transparent;
+}
+
+.canvas-scroll-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.canvas-scroll-container::-webkit-scrollbar-thumb {
+  background: #d7c2a0;
+  border-radius: 3px;
+}
+
 /* ==========================================================================
    PANORAMIC FARMLAND CANVAS
    ========================================================================== */
 .ghibli-landscape-canvas {
   position: relative;
   width: 100%;
-  min-height: 490px;
+  min-width: 820px;
+  min-height: 480px;
   background: #fdfaf3;
   border: 2.5px solid #3d3226;
   border-radius: 8px;
@@ -202,7 +235,7 @@
   height: 100%;
 }
 
-/* Roadside Wooden Milestone Signpost Badge */
+/* Roadside Milestone Signboard Badge */
 .road-sign-badge {
   position: absolute;
   top: 36%;
@@ -471,24 +504,29 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE OPTIMIZATION
    ========================================================================== */
-@media (max-width: 900px) {
-  .landscape-estates-row {
-    grid-template-columns: 1fr;
-    gap: 40px;
+@media (max-width: 860px) {
+  .education-landscape-section {
+    padding: 50px 16px 70px;
   }
 
-  .estate-journey-spacer {
-    display: none;
-  }
-
-  .tractor-journey-track {
-    display: none;
+  .mobile-scroll-hint {
+    display: inline-block;
   }
 
   .ghibli-landscape-canvas {
-    min-height: auto;
-    padding: 30px 18px;
+    min-width: 800px;
+    padding: 24px 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .edu-title {
+    font-size: 30px;
+  }
+
+  .edu-subtitle {
+    font-size: 14px;
   }
 }

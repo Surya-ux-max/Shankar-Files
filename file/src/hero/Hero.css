@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    GHIBLI SKETCHBOOK HERO — Hand-drawn Watercolor + Pencil Sketch Theme
    ========================================================================== */
 
@@ -977,8 +977,14 @@
 }
 
 @media (max-width: 520px) {
+  .ghibli-content {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
   .ghibli-title {
-    font-size: clamp(52px, 14vw, 72px);
+    font-size: clamp(44px, 13vw, 64px);
+    word-break: break-word;
   }
 
   .sketch-tag,
@@ -998,5 +1004,19 @@
   .hand-bubble {
     font-size: 14px;
     white-space: normal;
+  }
+
+  .window-outer-frame {
+    max-width: calc(100vw - 40px);
+  }
+
+  .corner-tea {
+    right: -4px;
+    bottom: -10px;
+  }
+
+  .lucky-charm {
+    left: -4px;
+    bottom: -14px;
   }
 }
