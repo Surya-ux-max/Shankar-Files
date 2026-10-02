@@ -2,7 +2,6 @@
 import './Skills.css'
 
 export default function Skills() {
-  // Currently opened vessel ID (starts with one open so the user immediately discovers the interaction)
   const [activeVesselId, setActiveVesselId] = useState(2)
 
   const toggleVessel = (id) => {
@@ -10,14 +9,13 @@ export default function Skills() {
   }
 
   const vessels = [
-    // Top Row (Back of table in perspective)
+    // Top / Far row on table
     {
       id: 1,
       name: 'Languages',
       row: 'top',
       skills: ['C++', 'Java', 'Python', 'JavaScript', 'TypeScript', 'SQL'],
       foodColor: '#f6ad55',
-      soupDetails: 'Dumplings & Noodles',
     },
     {
       id: 2,
@@ -25,7 +23,6 @@ export default function Skills() {
       row: 'top',
       skills: ['React.js', 'Next.js', 'Node.js', 'Express.js', 'FastAPI', 'Flask', 'REST APIs', 'MERN Stack'],
       foodColor: '#fc8181',
-      soupDetails: 'Rich Ramen & Chashu',
     },
     {
       id: 3,
@@ -33,17 +30,15 @@ export default function Skills() {
       row: 'top',
       skills: ['MySQL', 'PostgreSQL', 'MongoDB', 'ChromaDB'],
       foodColor: '#68d391',
-      soupDetails: 'Steamed Rice & Fish',
     },
 
-    // Bottom Row (Front of table in perspective)
+    // Bottom / Near row on table
     {
       id: 4,
       name: 'AI / ML',
       row: 'bottom',
       skills: ['Machine Learning', 'Deep Learning', 'RAG', 'LangGraph', 'MCP', 'TensorFlow', 'scikit-learn', 'XGBoost'],
       foodColor: '#f6e05e',
-      soupDetails: 'Simmering Hot Pot',
     },
     {
       id: 5,
@@ -51,7 +46,6 @@ export default function Skills() {
       row: 'bottom',
       skills: ['Data Structures & Algorithms', 'OOP', 'Operating Systems', 'Computer Networks', 'DBMS'],
       foodColor: '#fbd38d',
-      soupDetails: 'Artisan Soba Broth',
     },
     {
       id: 6,
@@ -59,7 +53,6 @@ export default function Skills() {
       row: 'bottom',
       skills: ['Git', 'GitHub', 'Docker', 'Postman', 'Jupyter Notebook', 'Google Colab', 'Power BI', 'Vercel'],
       foodColor: '#b794f4',
-      soupDetails: 'Savory Grilled Skewers',
     },
   ]
 
@@ -77,24 +70,25 @@ export default function Skills() {
           </p>
         </div>
 
-        {/* 3D Perspective Dining Table Scene */}
-        <div className="table-scene-viewport">
-          <div className="wooden-dining-table">
-            {/* Tabletop Surface with Wood Plank Grid */}
-            <div className="tabletop-surface">
-              <div className="table-wood-lines" aria-hidden="true" />
+        {/* Realistic Perspective Dining Table View */}
+        <div className="dining-table-wrapper">
+          {/* Table Canvas with Perspective Surface */}
+          <div className="chabudai-table">
+            {/* Table Surface Mat */}
+            <div className="tabletop-mat">
+              {/* Wood Plank Lines & Grain */}
+              <div className="tabletop-grain-lines" aria-hidden="true" />
 
-              {/* Table Bowls Grid based on user sketch */}
-              <div className="bowls-arrangement">
+              {/* 6 Bowls Positioned on the Table */}
+              <div className="table-dishes-grid">
                 {vessels.map((vessel) => {
                   const isOpen = activeVesselId === vessel.id
 
                   return (
                     <div
                       key={vessel.id}
-                      className={`vessel-spot spot-${vessel.id} row-${vessel.row} ${isOpen ? 'vessel-open' : 'vessel-closed'}`}
+                      className={`table-dish-spot spot-${vessel.id} row-${vessel.row} ${isOpen ? 'is-open' : 'is-closed'}`}
                     >
-                      {/* Interactive Vessel Object */}
                       <div
                         className="japanese-vessel"
                         onClick={() => toggleVessel(vessel.id)}
@@ -109,28 +103,28 @@ export default function Skills() {
                         aria-expanded={isOpen}
                         title={`Click to ${isOpen ? 'close' : 'open'} ${vessel.name}`}
                       >
-                        {/* 1. LIFTED LID (Floats in air above when open) */}
+                        {/* 1. LIFTED LID (Hovers in the air above when open) */}
                         <div className="vessel-lid-unit">
-                          <svg className="vessel-lid-svg" viewBox="0 0 140 60" fill="none">
-                            {/* Top Knob Handle */}
-                            <line x1="70" y1="2" x2="70" y2="18" stroke="#3d3226" strokeWidth="3" strokeLinecap="round" />
-                            <ellipse cx="70" cy="18" rx="8" ry="4" fill="#3d3226" />
-                            {/* Dome Lid Shell */}
+                          <svg className="vessel-lid-svg" viewBox="0 0 160 65" fill="none">
+                            {/* Knob Handle */}
+                            <line x1="80" y1="2" x2="80" y2="18" stroke="#3d3226" strokeWidth="3" strokeLinecap="round" />
+                            <ellipse cx="80" cy="18" rx="9" ry="4.5" fill="#3d3226" />
+                            {/* Dome Shell */}
                             <path
-                              d="M10 44 C18 16, 122 16, 130 44 Z"
+                              d="M12 48 C20 16, 140 16, 148 48 Z"
                               fill="#fcf8f0"
                               stroke="#3d3226"
                               strokeWidth="2.4"
                               strokeLinejoin="round"
                             />
                             {/* Hand-drawn Accent Line */}
-                            <path d="M24 38 C40 26, 100 26, 116 38" stroke="#6b5c44" strokeWidth="1.4" strokeLinecap="round" />
+                            <path d="M28 40 C46 26, 114 26, 132 40" stroke="#8c7d6b" strokeWidth="1.4" strokeLinecap="round" />
                           </svg>
                         </div>
 
-                        {/* 2. FLOATING SKILLS & STEAM CLOUD (Hovering in air above open food) */}
+                        {/* 2. FLOATING SKILLS & STEAM IN THE AIR */}
                         <div className="floating-skills-air-zone" aria-hidden={!isOpen}>
-                          {/* Rising Hand-Drawn Steam */}
+                          {/* Rising Steam Lines */}
                           <div className="steam-wisps-wrap">
                             <svg className="steam-line st-1" viewBox="0 0 20 60" fill="none">
                               <path d="M10 55 C4 42, 16 28, 10 14 C6 6, 12 2, 10 0" stroke="#9b8c78" strokeWidth="1.8" strokeLinecap="round" />
@@ -143,18 +137,18 @@ export default function Skills() {
                             </svg>
                           </div>
 
-                          {/* Floating Category Title */}
+                          {/* Floating Category Banner */}
                           <div className="air-category-tag">
                             <span className="air-category-name">{vessel.name}</span>
                           </div>
 
-                          {/* Floating Skills Pills in the Air */}
+                          {/* Floating Skill Pills Cloud */}
                           <div className="air-skills-cloud">
                             {vessel.skills.map((skill, sIdx) => (
                               <span
                                 key={sIdx}
                                 className="air-skill-pill"
-                                style={{ animationDelay: `${sIdx * 35}ms` }}
+                                style={{ animationDelay: `${sIdx * 30}ms` }}
                               >
                                 {skill}
                               </span>
@@ -162,42 +156,42 @@ export default function Skills() {
                           </div>
                         </div>
 
-                        {/* 3. BOWL BASIN WITH HOT FOOD INSIDE */}
+                        {/* 3. BOWL BASIN WITH HOT FOOD */}
                         <div className="vessel-bowl-unit">
-                          <svg className="vessel-bowl-svg" viewBox="0 0 140 70" fill="none">
-                            {/* Bowl Ceramic Body */}
+                          <svg className="vessel-bowl-svg" viewBox="0 0 160 75" fill="none">
+                            {/* Bowl Body */}
                             <path
-                              d="M12 16 C20 60, 120 60, 128 16 Z"
+                              d="M14 18 C22 64, 138 64, 146 18 Z"
                               fill="#ffffff"
                               stroke="#3d3226"
                               strokeWidth="2.4"
                               strokeLinejoin="round"
                             />
                             {/* Foot Rim */}
-                            <path d="M48 58 L92 58" stroke="#3d3226" strokeWidth="3" strokeLinecap="round" />
+                            <path d="M52 64 L108 64" stroke="#3d3226" strokeWidth="3.2" strokeLinecap="round" />
 
-                            {/* Hot Broth / Food Layer inside */}
+                            {/* Food Soup / Broth Layer */}
                             <ellipse
-                              cx="70"
-                              cy="18"
-                              rx="54"
-                              ry="12"
+                              cx="80"
+                              cy="20"
+                              rx="62"
+                              ry="13"
                               fill={vessel.foodColor}
                               stroke="#3d3226"
                               strokeWidth="1.8"
                             />
 
                             {/* Savory Garnish Inside */}
-                            <circle cx="58" cy="18" r="4" fill="#16a34a" />
-                            <circle cx="82" cy="19" r="3.5" fill="#dc2626" />
-                            <circle cx="70" cy="16" r="3" fill="#ffffff" />
+                            <circle cx="66" cy="20" r="4.5" fill="#16a34a" />
+                            <circle cx="94" cy="21" r="4" fill="#dc2626" />
+                            <circle cx="80" cy="18" r="3.5" fill="#ffffff" />
                           </svg>
                         </div>
 
                         {/* Vessel Table Shadow */}
                         <div className="vessel-table-shadow" />
 
-                        {/* Bottom Label when Closed */}
+                        {/* Bottom Category Label */}
                         <div className="vessel-closed-label">
                           <span>{vessel.name}</span>
                         </div>
@@ -218,16 +212,16 @@ export default function Skills() {
                 </div>
 
                 <div className="table-cup" aria-hidden="true">
-                  <svg width="34" height="46" viewBox="0 0 34 46" fill="none">
-                    <path d="M4 6 L8 42 C9 44, 25 44, 26 42 L30 6 Z" fill="#ffffff" stroke="#3d3226" strokeWidth="2" />
-                    <ellipse cx="17" cy="8" rx="12" ry="4" fill="#68d391" stroke="#3d3226" strokeWidth="1.2" />
-                    <line x1="8" y1="18" x2="26" y2="18" stroke="#3d3226" strokeWidth="1.2" strokeDasharray="3 2" />
+                  <svg width="36" height="48" viewBox="0 0 36 48" fill="none">
+                    <path d="M4 6 L8 44 C9 46, 27 46, 28 44 L32 6 Z" fill="#ffffff" stroke="#3d3226" strokeWidth="2.2" />
+                    <ellipse cx="18" cy="8" rx="13" ry="4" fill="#68d391" stroke="#3d3226" strokeWidth="1.4" />
+                    <line x1="8" y1="20" x2="28" y2="20" stroke="#3d3226" strokeWidth="1.2" strokeDasharray="3 2" />
                   </svg>
                 </div>
               </div>
             </div>
 
-            {/* Front Table Edge & Legs (3D Perspective Table Frame) */}
+            {/* Front Table Lip & Supporting Legs */}
             <div className="table-front-lip">
               <div className="table-leg leg-left" />
               <div className="table-leg leg-right" />
