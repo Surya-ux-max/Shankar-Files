@@ -1,306 +1,269 @@
-﻿import './Education.css'
+﻿import { useState } from 'react'
+import './Education.css'
 
 export default function Education() {
-  const educationData = [
-    {
-      id: '01',
-      stopLabel: 'CURRENT DESTINATION',
-      jpLabel: '現在地',
-      type: 'BACHELOR OF ENGINEERING',
-      jpType: '大学工学部',
-      status: 'ACTIVE PURSUIT',
-      statusColor: 'green',
-      institution: 'Sri Eshwar College of Engineering',
-      location: 'Coimbatore, Tamil Nadu',
-      degree: 'B.E. Computer Science & Engineering',
-      metricLabel: 'CGPA',
-      metricValue: '8.26',
-      metricSuffix: '/ 10',
-      period: '2024 – 2028',
-      details: 'Core CS Foundations, Data Structures, Algorithms & AI Pipelines',
-      sealCode: 'SECE · CSE',
-      wcClass: 'wc-sage',
-    },
-    {
-      id: '02',
-      stopLabel: 'ORIGIN POINT',
-      jpLabel: '出発地',
-      type: 'HIGHER SECONDARY',
-      jpType: '高等教育修了',
-      status: 'DISTINCTION',
-      statusColor: 'gold',
-      institution: 'Jayam Vidhyalaya Higher Secondary School',
-      location: 'Dharmapuri, Tamil Nadu',
-      degree: 'Higher Secondary Education',
-      metricLabel: 'SCORE',
-      metricValue: '96.67',
-      metricSuffix: '%',
-      period: '2023 – 2024',
-      details: 'Mathematics & Computer Science Stream · High Academic Honors',
-      sealCode: 'JVHSS · HSC',
-      wcClass: 'wc-peach',
-    },
-  ]
+  const [activeBuilding, setActiveBuilding] = useState('college') // 'school' | 'college'
 
   return (
-    <section className="ghibli-edu" id="education">
-
-      {/* Paper background */}
+    <section className="education-landscape-section" id="education" aria-label="Education Landscape">
+      {/* Paper & Watercolor Ambience */}
       <div className="edu-paper-bg" aria-hidden="true" />
-
-      {/* Watercolor blobs */}
       <div className="edu-wc-layer" aria-hidden="true">
-        <div className="edu-wc edu-wc-1" />
-        <div className="edu-wc edu-wc-2" />
-        <div className="edu-wc edu-wc-3" />
+        <div className="edu-wc-blob wc-sky" />
+        <div className="edu-wc-blob wc-river" />
+        <div className="edu-wc-blob wc-meadow" />
       </div>
 
-      {/* Storyboard corner brackets */}
-      <div className="edu-sb-frame" aria-hidden="true">
-        <div className="edu-sb-corner edu-sb-tl" />
-        <div className="edu-sb-corner edu-sb-tr" />
-        <div className="edu-sb-corner edu-sb-bl" />
-        <div className="edu-sb-corner edu-sb-br" />
+      {/* Storyboard Frame Corners */}
+      <div className="edu-frame" aria-hidden="true">
+        <div className="ef-corner ef-tl" />
+        <div className="ef-corner ef-tr" />
+        <div className="ef-corner ef-bl" />
+        <div className="ef-corner ef-br" />
       </div>
 
-      {/* Ambient doodles */}
-      <div className="edu-doodles" aria-hidden="true">
-        <svg className="edu-doodle edu-doodle-compass" width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <circle cx="24" cy="24" r="22" stroke="#9b8c78" strokeWidth="1.5" strokeDasharray="4 3"/>
-          <circle cx="24" cy="24" r="3" fill="#9b8c78"/>
-          <path d="M24 6 L24 10 M24 38 L24 42 M6 24 L10 24 M38 24 L42 24" stroke="#9b8c78" strokeWidth="1.2" strokeLinecap="round"/>
-          <path d="M24 24 L18 10 L24 16 L30 10 Z" fill="rgba(107,92,68,0.3)" stroke="#9b8c78" strokeWidth="1"/>
-          <path d="M24 24 L30 38 L24 32 L18 38 Z" fill="rgba(107,92,68,0.12)" stroke="#9b8c78" strokeWidth="0.8"/>
-        </svg>
-        <svg className="edu-doodle edu-doodle-star" width="28" height="28" viewBox="0 0 28 28" fill="none">
-          <path d="M14 2 L15.8 11 L24 7 L18 14 L24 21 L15.8 17 L14 26 L12.2 17 L4 21 L10 14 L4 7 L12.2 11 Z"
-            stroke="#9b8c78" strokeWidth="1.3" fill="rgba(254,240,138,0.3)" strokeLinejoin="round"/>
-        </svg>
-        <svg className="edu-doodle edu-doodle-leaves" width="68" height="55" viewBox="0 0 68 55" fill="none">
-          <path d="M10 47 C10 47, 4 25, 20 17 C20 17, 17 39, 10 47 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
-          <path d="M23 43 C23 43, 13 21, 32 13 C32 13, 29 37, 23 43 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
-          <path d="M37 41 C37 41, 28 21, 46 14 C46 14, 42 35, 37 41 Z" stroke="#7a9b6a" strokeWidth="1.3" fill="rgba(122,155,106,0.2)" strokeLinecap="round"/>
-          <path d="M10 47 C22 44, 37 42, 56 40" stroke="#7a9b6a" strokeWidth="1.2" strokeLinecap="round"/>
-        </svg>
-        <svg className="edu-doodle edu-doodle-swirl" width="44" height="44" viewBox="0 0 44 44" fill="none">
-          <path d="M36 8 C30 4, 12 7, 10 19 C8 31, 18 39, 28 35 C38 31, 40 20, 34 16 C28 12, 17 17, 18 25"
-            stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round"/>
-        </svg>
-      </div>
-
-      <div className="edu-container">
-
-        {/* ── SECTION HEADER ── */}
-        <div className="edu-page-header">
-          <div className="edu-rope-row" aria-hidden="true">
-            <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
-              <path d="M0 10 C33 4, 66 15, 100 9 C133 3, 166 13, 200 8"
-                stroke="#9b8c78" strokeWidth="1.5" strokeDasharray="5 4" strokeLinecap="round"/>
-            </svg>
-            <div className="edu-rope-pin" />
-            <svg width="200" height="20" viewBox="0 0 200 20" fill="none">
-              <path d="M0 8 C33 14, 66 4, 100 11 C133 17, 166 6, 200 11"
-                stroke="#9b8c78" strokeWidth="1.5" strokeDasharray="5 4" strokeLinecap="round"/>
-            </svg>
+      <div className="edu-content-container">
+        {/* Section Header */}
+        <div className="edu-header">
+          <div className="edu-tag">
+            <span>No. 04 · ACADEMIC JOURNEY</span>
           </div>
+          <h2 className="edu-title">THE PATH OF LEARNING</h2>
+          <p className="edu-subtitle">
+            From foundational school roots across the bridge to engineering craftsmanship.
+          </p>
+        </div>
 
-          <div className="edu-header-card">
-            <svg className="edu-header-border" viewBox="0 0 520 82" fill="none" preserveAspectRatio="none">
-              <path d="M6 6 C60 4, 460 4, 514 6 C516 30, 516 56, 514 76 C460 78, 60 78, 6 76 C4 52, 4 28, 6 6 Z"
-                stroke="#6b5c44" strokeWidth="2.5" fill="rgba(254,243,220,0.93)" strokeLinecap="round"/>
-            </svg>
-            <div className="edu-header-inner">
-              <span className="edu-chapter">学歴 · CHAPTER 03</span>
-              <h2 className="edu-title">Credentials &amp; Milestones</h2>
-              <svg viewBox="0 0 280 12" fill="none" style={{width:'clamp(160px,25vw,280px)',height:'12px'}}>
-                <path d="M4 6 C70 2, 180 10, 276 5" stroke="#6b5c44" strokeWidth="2" strokeLinecap="round"/>
+        {/* ================= THE ILLUSTRATED LANDSCAPE ================= */}
+        <div className="landscape-stage">
+          {/* Sky Elements: Drifting Clouds & Birds (Matching sketch) */}
+          <div className="landscape-sky" aria-hidden="true">
+            <div className="sky-cloud cloud-1">
+              <svg width="120" height="50" viewBox="0 0 120 50" fill="none">
+                <path
+                  d="M15 35 C8 35, 4 28, 8 20 C6 12, 18 6, 28 12 C35 4, 52 3, 62 10 C72 4, 86 6, 90 16 C98 18, 102 26, 94 32 C86 38, 22 38, 15 35 Z"
+                  stroke="#9b8c78" strokeWidth="1.8" fill="rgba(255, 253, 248, 0.7)"
+                />
+              </svg>
+            </div>
+
+            <div className="sky-birds">
+              <svg width="70" height="30" viewBox="0 0 70 30" fill="none" stroke="#6b5c44" strokeWidth="1.5" strokeLinecap="round">
+                <path d="M4 14 Q9 7 14 14" />
+                <path d="M20 20 Q24 15 28 20" strokeWidth="1.2" />
+                <path d="M38 12 Q42 7 46 12" />
+              </svg>
+            </div>
+
+            {/* Hillside Tree from sketch */}
+            <div className="sky-tree">
+              <svg width="50" height="70" viewBox="0 0 50 70" fill="none">
+                {/* Trunk */}
+                <path d="M23 40 L23 68 M27 40 L27 68" stroke="#6b5c44" strokeWidth="2.2" strokeLinecap="round" />
+                {/* Foliage */}
+                <path
+                  d="M25 10 C12 10, 8 22, 14 30 C8 36, 16 46, 25 44 C34 46, 42 36, 36 30 C42 22, 38 10, 25 10 Z"
+                  fill="rgba(122, 155, 106, 0.35)"
+                  stroke="#6b5c44"
+                  strokeWidth="2"
+                  strokeLinejoin="round"
+                />
               </svg>
             </div>
           </div>
-        </div>
 
-        {/* ── JOURNEY MAP ── */}
-        <div className="journey-map">
-
-          {/* Map paper background with grid */}
-          <div className="map-paper" aria-hidden="true">
-            <svg className="map-grid-svg" width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice" fill="none">
-              {/* Subtle grid */}
-              {[...Array(14)].map((_,i) => (
-                <line key={`h${i}`} x1="0" y1={i*46} x2="800" y2={i*46} stroke="rgba(107,92,68,0.05)" strokeWidth="1"/>
-              ))}
-              {[...Array(18)].map((_,i) => (
-                <line key={`v${i}`} x1={i*46} y1="0" x2={i*46} y2="600" stroke="rgba(107,92,68,0.05)" strokeWidth="1"/>
-              ))}
-            </svg>
-          </div>
-
-          {/* Map title stamp */}
-          <div className="map-title-stamp" aria-hidden="true">
-            <svg width="110" height="50" viewBox="0 0 110 50" fill="none">
-              <rect x="1" y="1" width="108" height="48" rx="2" stroke="#9b8c78" strokeWidth="1.5" strokeDasharray="4 3" fill="rgba(254,243,220,0.8)"/>
-              <text x="55" y="18" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill="#9b8c78" letterSpacing="1.5">ACADEMIC</text>
-              <text x="55" y="30" textAnchor="middle" fontFamily="monospace" fontSize="7.5" fontWeight="700" fill="#9b8c78" letterSpacing="1.5">JOURNEY MAP</text>
-              <text x="55" y="42" textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#9b8c78" letterSpacing="1">SHANKAR V · 2024–</text>
-            </svg>
-          </div>
-
-          {/* Dotted travel path connecting the two stops */}
-          <div className="travel-path-wrap" aria-hidden="true">
-            <svg className="travel-path-svg" viewBox="0 0 900 120" fill="none" preserveAspectRatio="none">
-              {/* Dotted road */}
+          {/* Flowing River Silhouette (Under bridge) */}
+          <div className="landscape-river" aria-hidden="true">
+            <svg viewBox="0 0 1000 320" preserveAspectRatio="none" fill="none">
+              {/* Riverbanks and Water Flow */}
               <path
-                d="M60 60 C200 20, 400 100, 540 60 C680 20, 800 80, 860 60"
-                stroke="#9b8c78"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeDasharray="8 6"
+                d="M 520 0
+                   C 460 70, 380 120, 240 190
+                   C 100 260, 20 290, 0 320
+                   L 1000 320
+                   C 950 280, 880 230, 780 160
+                   C 680 90, 620 40, 580 0 Z"
+                fill="rgba(140, 190, 220, 0.18)"
               />
-              {/* Direction arrow */}
-              <path d="M560 52 L575 60 L560 68" stroke="#9b8c78" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" fill="none"/>
-              {/* Distance annotation */}
-              <text x="450" y="48" textAnchor="middle" fontFamily="monospace" fontSize="10" fill="#9b8c78" letterSpacing="1">JOURNEY · 2023 → 2028</text>
+              {/* River Current Flow Lines (from sketch) */}
+              <path d="M120 250 C180 230, 260 210, 340 180" stroke="#7aaac6" strokeWidth="1.6" strokeLinecap="round" strokeDasharray="12 8" />
+              <path d="M200 280 C280 260, 380 230, 480 200" stroke="#7aaac6" strokeWidth="1.8" strokeLinecap="round" strokeDasharray="16 10" />
+              <path d="M380 260 C460 230, 560 180, 640 140" stroke="#7aaac6" strokeWidth="1.5" strokeLinecap="round" strokeDasharray="14 8" />
+              <path d="M520 120 C580 80, 660 60, 720 30" stroke="#7aaac6" strokeWidth="1.4" strokeLinecap="round" strokeDasharray="10 6" />
             </svg>
           </div>
 
-          {/* The two destination stop cards */}
-          <div className="journey-stops">
-            {educationData.map((item, idx) => (
-              <div key={item.id} className={`stop-card ${item.wcClass}`}>
+          {/* ================= LEFT BUILDING: SCHOOL ================= */}
+          <div
+            className={`building-entity building-school ${activeBuilding === 'school' ? 'is-active' : ''}`}
+            onClick={() => setActiveBuilding('school')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                setActiveBuilding('school')
+              }
+            }}
+            aria-label="Jayam Vidhyalaya Higher Secondary School"
+          >
+            <div className="building-roof-badge">ORIGIN · 2023 – 2024</div>
 
-                {/* Location map pin (SVG, no emoji) */}
-                <div className="stop-map-pin" aria-hidden="true">
-                  <svg width="28" height="38" viewBox="0 0 28 38" fill="none">
-                    <path d="M14 2 C7 2, 2 7, 2 14 C2 22, 14 36, 14 36 C14 36, 26 22, 26 14 C26 7, 21 2, 14 2 Z"
-                      stroke="#6b5c44" strokeWidth="2"
-                      fill={idx === 0 ? 'rgba(122,155,106,0.4)' : 'rgba(230,169,106,0.4)'}
-                    />
-                    <circle cx="14" cy="14" r="5" fill="#6b5c44"/>
-                    <circle cx="14" cy="14" r="2.5" fill="rgba(253,249,241,0.8)"/>
-                  </svg>
-                </div>
+            {/* Hand-Drawn School House Illustration */}
+            <div className="building-illustration">
+              <svg viewBox="0 0 220 200" fill="none">
+                {/* Chimney with Smoke */}
+                <rect x="40" y="32" width="16" height="30" fill="#edd9b6" stroke="#3d3226" strokeWidth="2.2" />
+                <path d="M48 28 C42 18, 54 10, 46 2" stroke="#9b8c78" strokeWidth="1.4" strokeLinecap="round" strokeDasharray="3 2" />
 
-                {/* Watercolor wash card top */}
-                <div className="stop-wc-wash" aria-hidden="true" />
+                {/* Sloped Roof (matching sketch) */}
+                <polygon points="110,22 15,92 205,92" fill="#edd9b6" stroke="#3d3226" strokeWidth="2.6" strokeLinejoin="round" />
+                <line x1="110" y1="22" x2="110" y2="92" stroke="#6b5c44" strokeWidth="1.4" strokeDasharray="4 3" />
 
-                {/* Sketch inner border */}
-                <div className="stop-inner-border" aria-hidden="true" />
+                {/* School House Main Walls */}
+                <rect x="30" y="92" width="160" height="98" fill="#ffffff" stroke="#3d3226" strokeWidth="2.6" />
 
-                {/* Card meta row */}
-                <div className="stop-meta-row">
-                  <span className="stop-no">№ {item.id}</span>
-                  <span className="stop-label-badge">{item.stopLabel}</span>
-                  <span className="stop-jp">{item.jpLabel}</span>
-                </div>
+                {/* Left & Right Windows */}
+                <rect x="46" y="108" width="28" height="32" rx="2" fill="#fef08a" stroke="#3d3226" strokeWidth="1.8" />
+                <line x1="60" y1="108" x2="60" y2="140" stroke="#3d3226" strokeWidth="1.4" />
+                <line x1="46" y1="124" x2="74" y2="124" stroke="#3d3226" strokeWidth="1.4" />
 
-                {/* Period */}
-                <div className="stop-period-tag">{item.period}</div>
+                <rect x="146" y="108" width="28" height="32" rx="2" fill="#fef08a" stroke="#3d3226" strokeWidth="1.8" />
+                <line x1="160" y1="108" x2="160" y2="140" stroke="#3d3226" strokeWidth="1.4" />
+                <line x1="146" y1="124" x2="174" y2="124" stroke="#3d3226" strokeWidth="1.4" />
 
-                {/* Institution */}
-                <h3 className="stop-institution">{item.institution}</h3>
+                {/* Wooden Door */}
+                <path d="M92 130 C92 120, 128 120, 128 130 L128 190 L92 190 Z" fill="#8c5835" stroke="#3d3226" strokeWidth="2" />
+                <circle cx="120" cy="158" r="2.5" fill="#fef08a" />
 
-                {/* Location — SVG pin icon */}
-                <div className="stop-location">
-                  <svg width="12" height="16" viewBox="0 0 12 16" fill="none">
-                    <path d="M6 1 C3 1, 1 3, 1 6 C1 10, 6 15, 6 15 C6 15, 11 10, 11 6 C11 3, 9 1, 6 1 Z"
-                      stroke="#9b8c78" strokeWidth="1.3" fill="rgba(107,92,68,0.12)"/>
-                    <circle cx="6" cy="6" r="2" fill="#9b8c78"/>
-                  </svg>
-                  <span>{item.location}</span>
-                </div>
+                {/* Ground Grass Baseline */}
+                <line x1="10" y1="190" x2="210" y2="190" stroke="#3d3226" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </div>
 
-                {/* Programme box */}
-                <div className="stop-program-box">
-                  <div className="stop-prog-header">
-                    <span className="stop-prog-type">{item.type}</span>
-                    <span className={`stop-prog-status ${item.statusColor}`}>{item.status}</span>
-                  </div>
-                  <p className="stop-degree">{item.degree}</p>
-                </div>
-
-                {/* Score plaque */}
-                <div className="stop-score-plaque">
-                  <span className="score-plaque-label">{item.metricLabel}</span>
-                  <div className="score-plaque-value">
-                    <span className="score-big">{item.metricValue}</span>
-                    <span className="score-suffix">{item.metricSuffix}</span>
-                  </div>
-                </div>
-
-                {/* Annotation note */}
-                <div className="stop-annotation">
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
-                    <path d="M2 12 L4 8 L10 2 L12 4 L6 10 Z" stroke="#9b8c78" strokeWidth="1.2" strokeLinejoin="round"/>
-                    <path d="M9 3 L11 5" stroke="#9b8c78" strokeWidth="1.2" strokeLinecap="round"/>
-                    <path d="M2 12 L1 13" stroke="#9b8c78" strokeWidth="1" strokeLinecap="round"/>
-                  </svg>
-                  <span className="annotation-text">{item.details}</span>
-                </div>
-
-                {/* Ink seal */}
-                <div className="stop-seal" aria-hidden="true">
-                  <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
-                    <circle cx="32" cy="32" r="30" stroke="#9b8c78" strokeWidth="1.8" strokeDasharray="4 3"/>
-                    <circle cx="32" cy="32" r="23" stroke="#9b8c78" strokeWidth="1"/>
-                    <text x="32" y="30" textAnchor="middle" fontFamily="monospace" fontSize="8" fontWeight="700" fill="#9b8c78" letterSpacing="0.5">{item.sealCode}</text>
-                    <text x="32" y="42" textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#9b8c78" letterSpacing="1">{item.metricValue}{item.metricSuffix}</text>
-                  </svg>
-                </div>
-
-                {/* Corner hatch */}
-                <div className="stop-hatch" aria-hidden="true" />
+            {/* School Name & Information directly on the building façade */}
+            <div className="building-signboard">
+              <h3 className="building-name">Jayam Vidhyalaya Higher Secondary School</h3>
+              <div className="building-sub-details">
+                <span className="b-spec">Higher Secondary Education · HSC</span>
+                <span className="b-score">Score: 96.67%</span>
+                <span className="b-loc">Dharmapuri, Tamil Nadu</span>
               </div>
-            ))}
+            </div>
           </div>
 
-          {/* Map decorative SVG sketches */}
-          <div className="map-deco" aria-hidden="true">
-            {/* Tiny sketch mountains left */}
-            <svg className="map-deco-mountains" width="80" height="48" viewBox="0 0 80 48" fill="none">
-              <path d="M0 48 L18 14 L36 48 Z" stroke="#9b8c78" strokeWidth="1.2" fill="rgba(107,92,68,0.06)" strokeLinejoin="round"/>
-              <path d="M28 48 L50 8 L72 48 Z" stroke="#9b8c78" strokeWidth="1.2" fill="rgba(107,92,68,0.08)" strokeLinejoin="round"/>
-              <path d="M50 48 L64 22 L80 48 Z" stroke="#9b8c78" strokeWidth="1" fill="rgba(107,92,68,0.05)" strokeLinejoin="round"/>
-              <path d="M12 30 L18 14 L24 30" stroke="rgba(255,255,255,0.6)" strokeWidth="1" fill="none"/>
-              <path d="M40 22 L50 8 L60 22" stroke="rgba(255,255,255,0.6)" strokeWidth="1" fill="none"/>
-            </svg>
-            {/* Tiny sketch tree right */}
-            <svg className="map-deco-tree" width="36" height="60" viewBox="0 0 36 60" fill="none">
-              <path d="M18 58 L18 26" stroke="#7a9b6a" strokeWidth="2" strokeLinecap="round"/>
-              <path d="M4 42 C4 42, 8 28, 18 26 C28 24, 32 36, 32 36 C26 34, 10 40, 4 42 Z"
-                stroke="#7a9b6a" strokeWidth="1.2" fill="rgba(122,155,106,0.2)" strokeLinejoin="round"/>
-              <path d="M8 30 C8 30, 12 18, 18 16 C24 14, 30 22, 30 22 C24 20, 12 28, 8 30 Z"
-                stroke="#7a9b6a" strokeWidth="1.2" fill="rgba(122,155,106,0.18)" strokeLinejoin="round"/>
-              <path d="M12 20 C12 20, 15 10, 18 8 C21 6, 26 12, 26 12 C22 10, 14 18, 12 20 Z"
-                stroke="#7a9b6a" strokeWidth="1" fill="rgba(122,155,106,0.15)" strokeLinejoin="round"/>
-            </svg>
-            {/* Wind rose */}
-            <svg className="map-deco-rose" width="38" height="38" viewBox="0 0 38 38" fill="none">
-              <path d="M19 2 L21 16 L19 14 L17 16 Z" fill="rgba(107,92,68,0.25)" stroke="#9b8c78" strokeWidth="0.8"/>
-              <path d="M19 36 L17 22 L19 24 L21 22 Z" fill="rgba(107,92,68,0.12)" stroke="#9b8c78" strokeWidth="0.8"/>
-              <path d="M2 19 L16 17 L14 19 L16 21 Z" fill="rgba(107,92,68,0.12)" stroke="#9b8c78" strokeWidth="0.8"/>
-              <path d="M36 19 L22 21 L24 19 L22 17 Z" fill="rgba(107,92,68,0.12)" stroke="#9b8c78" strokeWidth="0.8"/>
-              <circle cx="19" cy="19" r="4" stroke="#9b8c78" strokeWidth="1" fill="rgba(254,243,220,0.8)"/>
-              <circle cx="19" cy="19" r="1.5" fill="#9b8c78"/>
-              <text x="19" y="7" textAnchor="middle" fontFamily="monospace" fontSize="7" fill="#9b8c78">N</text>
-            </svg>
+          {/* ================= CENTER BRIDGE / PATH ================= */}
+          <div className="landscape-bridge-zone">
+            <div className="bridge-visual-assembly">
+              {/* Arched Wooden Suspension Footbridge (matching sketch) */}
+              <svg className="bridge-svg" viewBox="0 0 380 120" fill="none">
+                {/* Upper Handrail Cable */}
+                <path
+                  d="M 10 40 Q 190 75 370 40"
+                  stroke="#3d3226"
+                  strokeWidth="2.8"
+                  strokeLinecap="round"
+                />
+
+                {/* Lower Footpath Plank Beam */}
+                <path
+                  d="M 10 70 Q 190 102 370 70"
+                  stroke="#3d3226"
+                  strokeWidth="3.2"
+                  strokeLinecap="round"
+                />
+
+                {/* Vertical Bridge Slats / Railing Posts (From sketch) */}
+                {[...Array(14)].map((_, i) => {
+                  const x = 30 + i * 24.5
+                  return (
+                    <line
+                      key={i}
+                      x1={x}
+                      y1={48 + Math.sin((i / 13) * Math.PI) * 22}
+                      x2={x}
+                      y2={74 + Math.sin((i / 13) * Math.PI) * 24}
+                      stroke="#5a3d24"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                    />
+                  )
+                })}
+
+                {/* Bridge Left & Right Anchoring Posts */}
+                <rect x="6" y="32" width="8" height="52" rx="1" fill="#8c5835" stroke="#3d3226" strokeWidth="2.2" />
+                <rect x="366" y="32" width="8" height="52" rx="1" fill="#8c5835" stroke="#3d3226" strokeWidth="2.2" />
+              </svg>
+
+              {/* Journey Stepping Marker / Bridge Narrative Tag */}
+              <div className="bridge-journey-tag">
+                <span className="journey-arrow">➔</span>
+                <span className="journey-text">Transition &amp; Academic Growth</span>
+                <span className="journey-arrow">➔</span>
+              </div>
+            </div>
           </div>
 
-        </div>
+          {/* ================= RIGHT BUILDING: COLLEGE ================= */}
+          <div
+            className={`building-entity building-college ${activeBuilding === 'college' ? 'is-active' : ''}`}
+            onClick={() => setActiveBuilding('college')}
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                setActiveBuilding('college')
+              }
+            }}
+            aria-label="Sri Eshwar College of Engineering"
+          >
+            <div className="building-roof-badge active-badge">CURRENT · 2024 – 2028</div>
 
-        {/* ── MEADOW GROUND ── */}
-        <div className="edu-ground" aria-hidden="true">
-          <svg width="100%" height="52" viewBox="0 0 1200 52" preserveAspectRatio="none" fill="none">
-            <path d="M0 38 C120 26, 240 44, 400 33 C560 22, 700 44, 860 33 C1020 22, 1130 40, 1200 30 L1200 52 L0 52 Z"
-              fill="rgba(122,155,106,0.14)" stroke="#7a9b6a" strokeWidth="1.5"/>
-            {[...Array(18)].map((_,i)=>(
-              <g key={i} transform={`translate(${i*68+14},36)`}>
-                <path d="M0 0 C-2 -10,-1 -17,0 -20" stroke="#7a9b6a" strokeWidth="1.1" strokeLinecap="round" fill="none"/>
-                <path d="M3 0 C5 -11,5 -18,3 -15" stroke="#7a9b6a" strokeWidth="0.9" strokeLinecap="round" fill="none"/>
-              </g>
-            ))}
-          </svg>
-        </div>
+            {/* Hand-Drawn Engineering College Campus Illustration */}
+            <div className="building-illustration">
+              <svg viewBox="0 0 240 200" fill="none">
+                {/* Engineering Clock / Spire Tower */}
+                <rect x="105" y="10" width="30" height="42" fill="#edd9b6" stroke="#3d3226" strokeWidth="2.2" />
+                <polygon points="120,0 102,12 138,12" fill="#3d3226" />
+                <circle cx="120" cy="28" r="6" fill="#fef08a" stroke="#3d3226" strokeWidth="1.5" />
 
+                {/* Sloped Roof (matching sketch) */}
+                <polygon points="120,44 15,92 225,92" fill="#edd9b6" stroke="#3d3226" strokeWidth="2.6" strokeLinejoin="round" />
+                <line x1="120" y1="44" x2="120" y2="92" stroke="#6b5c44" strokeWidth="1.4" strokeDasharray="4 3" />
+
+                {/* College Main Structure */}
+                <rect x="25" y="92" width="190" height="98" fill="#ffffff" stroke="#3d3226" strokeWidth="2.6" />
+
+                {/* Triple Campus Windows */}
+                <rect x="42" y="108" width="30" height="30" rx="2" fill="#fef08a" stroke="#3d3226" strokeWidth="1.8" />
+                <line x1="57" y1="108" x2="57" y2="138" stroke="#3d3226" strokeWidth="1.4" />
+                <line x1="42" y1="123" x2="72" y2="123" stroke="#3d3226" strokeWidth="1.4" />
+
+                <rect x="168" y="108" width="30" height="30" rx="2" fill="#fef08a" stroke="#3d3226" strokeWidth="1.8" />
+                <line x1="183" y1="108" x2="183" y2="138" stroke="#3d3226" strokeWidth="1.4" />
+                <line x1="168" y1="123" x2="198" y2="123" stroke="#3d3226" strokeWidth="1.4" />
+
+                {/* Grand Campus Double Arch Entrance */}
+                <path d="M98 126 C98 114, 142 114, 142 126 L142 190 L98 190 Z" fill="#2d3748" stroke="#3d3226" strokeWidth="2" />
+                <line x1="120" y1="122" x2="120" y2="190" stroke="#fef08a" strokeWidth="1.5" />
+
+                {/* Ground Grass Baseline */}
+                <line x1="10" y1="190" x2="230" y2="190" stroke="#3d3226" strokeWidth="3" strokeLinecap="round" />
+              </svg>
+            </div>
+
+            {/* College Name & Information directly on the building façade */}
+            <div className="building-signboard">
+              <h3 className="building-name">Sri Eshwar College of Engineering</h3>
+              <div className="building-sub-details">
+                <span className="b-spec">B.E. Computer Science &amp; Engineering</span>
+                <span className="b-score">CGPA: 8.26 / 10</span>
+                <span className="b-loc">Coimbatore, Tamil Nadu</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )
