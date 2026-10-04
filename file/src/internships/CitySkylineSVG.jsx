@@ -10,6 +10,9 @@ export default function CitySkylineSVG({
   const isZohoActive = hoveredTower === 'zoho' || activeId === 'zoho'
   const isInfosysActive = hoveredTower === 'infosys' || activeId === 'infosys'
 
+  // Lit up state during sunset and night
+  const isLitUp = timeOfDay >= 0.52
+
   // Calculate celestial, sky, and illumination parameters from the roll lever
   const lighting = getLightingState(timeOfDay)
 
@@ -108,6 +111,24 @@ export default function CitySkylineSVG({
           <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" />
           <feMerge>
             <feMergeNode in="blur" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="glow-zoho-neon" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur1" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="9" result="blur2" />
+          <feMerge>
+            <feMergeNode in="blur2" />
+            <feMergeNode in="blur1" />
+            <feMergeNode in="SourceGraphic" />
+          </feMerge>
+        </filter>
+        <filter id="glow-infosys-neon" x="-60%" y="-60%" width="220%" height="220%">
+          <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur1" />
+          <feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur2" />
+          <feMerge>
+            <feMergeNode in="blur2" />
+            <feMergeNode in="blur1" />
             <feMergeNode in="SourceGraphic" />
           </feMerge>
         </filter>
@@ -447,28 +468,98 @@ export default function CitySkylineSVG({
           </g>
         )}
 
-        {/* Colorful Zoho Logo Quadrant */}
+        {/* Backlit Illumination Panel for Zoho at Sunset & Night */}
+        {isLitUp && (
+          <rect
+            x="632"
+            y="108"
+            width="106"
+            height="58"
+            rx="8"
+            fill="rgba(15, 23, 42, 0.7)"
+            stroke="rgba(251, 191, 36, 0.6)"
+            strokeWidth="1.5"
+            filter="url(#glow-gold)"
+          />
+        )}
+
+        {/* Colorful Zoho Logo Quadrant (Intensely glowing during sunset and night) */}
         <g transform="translate(640, 115)">
-          <rect x="0" y="0" width="18" height="18" rx="4" fill="#fee2e2" stroke="#e11d48" strokeWidth="2.4" />
-          <rect x="14" y="0" width="18" height="18" rx="4" fill="#dcfce7" stroke="#16a34a" strokeWidth="2.4" />
-          <rect x="28" y="0" width="18" height="18" rx="4" fill="#dbeafe" stroke="#2563eb" strokeWidth="2.4" />
-          <rect x="42" y="0" width="18" height="18" rx="4" fill="#fef3c7" stroke="#d97706" strokeWidth="2.4" />
+          <rect
+            x="0"
+            y="0"
+            width="18"
+            height="18"
+            rx="4"
+            fill={isLitUp ? '#ef4444' : '#fee2e2'}
+            stroke={isLitUp ? '#fca5a5' : '#e11d48'}
+            strokeWidth="2.4"
+            filter={isLitUp ? 'url(#glow-gold)' : 'none'}
+          />
+          <rect
+            x="14"
+            y="0"
+            width="18"
+            height="18"
+            rx="4"
+            fill={isLitUp ? '#22c55e' : '#dcfce7'}
+            stroke={isLitUp ? '#86efac' : '#16a34a'}
+            strokeWidth="2.4"
+            filter={isLitUp ? 'url(#glow-gold)' : 'none'}
+          />
+          <rect
+            x="28"
+            y="0"
+            width="18"
+            height="18"
+            rx="4"
+            fill={isLitUp ? '#3b82f6' : '#dbeafe'}
+            stroke={isLitUp ? '#93c5fd' : '#2563eb'}
+            strokeWidth="2.4"
+            filter={isLitUp ? 'url(#glow-blue)' : 'none'}
+          />
+          <rect
+            x="42"
+            y="0"
+            width="18"
+            height="18"
+            rx="4"
+            fill={isLitUp ? '#f59e0b' : '#fef3c7'}
+            stroke={isLitUp ? '#fde047' : '#d97706'}
+            strokeWidth="2.4"
+            filter={isLitUp ? 'url(#glow-gold)' : 'none'}
+          />
         </g>
 
-        {/* Zoho Signage */}
+        {/* Zoho Illuminated Signage */}
+        {isLitUp && (
+          <text
+            x="685"
+            y="156"
+            textAnchor="middle"
+            fill="#fef08a"
+            fontFamily="'Space Grotesk', sans-serif"
+            fontWeight="800"
+            fontSize="22"
+            letterSpacing="2px"
+            filter="url(#glow-zoho-neon)"
+          >
+            ZOHO
+          </text>
+        )}
         <text
           x="685"
           y="156"
           textAnchor="middle"
-          fill={lighting.nightFactor > 0.6 ? '#ffffff' : '#1e293b'}
+          fill={isLitUp ? '#ffffff' : '#1e293b'}
           fontFamily="'Space Grotesk', sans-serif"
           fontWeight="800"
           fontSize="22"
           letterSpacing="2px"
-          filter={lighting.nightFactor > 0.6 ? 'url(#glow-gold)' : 'none'}
         >
           ZOHO
         </text>
+
 
         {/* Spire Beacon */}
         <circle
@@ -547,20 +638,63 @@ export default function CitySkylineSVG({
           </g>
         )}
 
-        {/* Infosys Signage */}
+        {/* Backlit Illumination Panel for Infosys at Sunset & Night */}
+        {isLitUp && (
+          <rect
+            x="942"
+            y="214"
+            width="106"
+            height="34"
+            rx="6"
+            fill="rgba(15, 23, 42, 0.7)"
+            stroke="rgba(56, 189, 248, 0.6)"
+            strokeWidth="1.5"
+            filter="url(#glow-blue)"
+          />
+        )}
+
+        {/* Infosys Illuminated Signage */}
+        {isLitUp && (
+          <text
+            x="995"
+            y="235"
+            textAnchor="middle"
+            fill="#38bdf8"
+            fontFamily="'Space Grotesk', sans-serif"
+            fontWeight="800"
+            fontSize="20"
+            letterSpacing="0.5px"
+            filter="url(#glow-infosys-neon)"
+          >
+            Infosys
+          </text>
+        )}
         <text
           x="995"
           y="235"
           textAnchor="middle"
-          fill={lighting.nightFactor > 0.6 ? '#38bdf8' : '#0284c7'}
+          fill={isLitUp ? '#ffffff' : '#0284c7'}
           fontFamily="'Space Grotesk', sans-serif"
           fontWeight="800"
           fontSize="20"
           letterSpacing="0.5px"
-          filter={lighting.nightFactor > 0.6 ? 'url(#glow-blue)' : 'none'}
         >
           Infosys
         </text>
+
+        {/* Glowing cyan LED underline strip when lit up */}
+        {isLitUp && (
+          <line
+            x1="958"
+            y1="242"
+            x2="1032"
+            y2="242"
+            stroke="#38bdf8"
+            strokeWidth="2"
+            filter="url(#glow-blue)"
+          />
+        )}
+
 
         {/* Spire Beacon */}
         <circle
@@ -606,6 +740,92 @@ export default function CitySkylineSVG({
           />
         </g>
       )}
+
+      {/* ================= 10.5 RIVER CRUISING BOAT ================= */}
+      <g className="river-cruising-boat">
+        {/* Trailing Wake Waves behind the boat */}
+        <path
+          d="M -15 15 Q -40 20 -70 24 M -15 8 Q -35 4 -65 2"
+          stroke="#ffffff"
+          strokeWidth="1.6"
+          fill="none"
+          opacity={lighting.nightFactor > 0.5 ? 0.35 : 0.65}
+          strokeLinecap="round"
+        />
+
+        {/* Night Cabin Water Glow Reflection */}
+        {isLitUp && (
+          <ellipse
+            cx="25"
+            cy="20"
+            rx="38"
+            ry="6"
+            fill="rgba(254, 240, 138, 0.28)"
+            filter="url(#glow-gold)"
+          />
+        )}
+
+        {/* Boat Hull */}
+        <path
+          d="M -15 6 L 45 6 Q 64 7 72 16 L -10 16 Q -15 14 -15 6 Z"
+          fill={lighting.nightFactor > 0.6 ? '#1e293b' : '#ffffff'}
+          stroke="#1e293b"
+          strokeWidth="1.6"
+        />
+        {/* Hull Waterline Accent Stripe */}
+        <path d="M -12 12 L 66 12" stroke="#0284c7" strokeWidth="2.2" />
+
+        {/* Cabin */}
+        <rect
+          x="-2"
+          y="-6"
+          width="44"
+          height="12"
+          rx="2"
+          fill={lighting.nightFactor > 0.6 ? '#334155' : '#f8fafc'}
+          stroke="#1e293b"
+          strokeWidth="1.4"
+        />
+
+        {/* Cabin Windows (turn on and glow warmly in sunset/night!) */}
+        {[3, 13, 23, 33].map((wx, i) => (
+          <rect
+            key={`bw-${i}`}
+            x={wx}
+            y="-3"
+            width="7"
+            height="6"
+            rx="1"
+            fill={isLitUp ? '#fef08a' : '#bae6fd'}
+            stroke="#1e293b"
+            strokeWidth="0.8"
+            filter={isLitUp ? 'url(#glow-gold)' : 'none'}
+          />
+        ))}
+
+        {/* Roof Railing */}
+        <line x1="-1" y1="-8" x2="41" y2="-8" stroke="#475569" strokeWidth="1.2" />
+
+        {/* Mast & Blinking Red Navigation Beacon */}
+        <line x1="20" y1="-6" x2="20" y2="-16" stroke="#1e293b" strokeWidth="1.5" />
+        <circle
+          cx="20"
+          cy="-16"
+          r="2.5"
+          fill="#ef4444"
+          className="boat-beacon"
+        />
+
+        {/* Bow Headlight Beam projecting forward across the water at sunset/night */}
+        {isLitUp && (
+          <polygon
+            points="70,10 170,-2 170,26 70,16"
+            fill="url(#headlightGrad)"
+            opacity={0.8}
+          />
+        )}
+      </g>
+
 
       {/* ================= 11. LOWER HIGHWAY BRIDGE & MOVING TRAFFIC ================= */}
       <g className="lower-bridge-layer">
