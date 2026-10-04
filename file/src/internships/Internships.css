@@ -1,0 +1,1122 @@
+/* ==========================================================================
+   METROPOLIS HORIZONS — PROFESSIONAL INTERNSHIPS SECTION
+   ========================================================================== */
+
+.internships-section {
+  position: relative;
+  width: 100%;
+  padding: 80px 24px 100px;
+  background-color: var(--paper, #faf8f5);
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+/* Background Paper Noise & Subtle Drafting Grid */
+.internships-paper-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(to right, rgba(160, 175, 195, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(160, 175, 195, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  z-index: 0;
+}
+
+/* Ambient Horizon Washes */
+.internships-ambient-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.ambient-patch {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.45;
+  mix-blend-mode: multiply;
+}
+
+.patch-zoho-glow {
+  top: 15%;
+  left: 35%;
+  width: 35vw;
+  height: 35vh;
+  background: rgba(254, 226, 226, 0.6);
+}
+
+.patch-infosys-glow {
+  top: 25%;
+  right: 15%;
+  width: 30vw;
+  height: 30vh;
+  background: rgba(219, 234, 254, 0.6);
+}
+
+/* Outer Section Container */
+.internships-container {
+  position: relative;
+  z-index: 10;
+  max-width: 1320px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/* ================= SECTION HEADER ================= */
+.internships-header {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.internships-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #f4ede2;
+  border: 1.5px solid #3d3226;
+  padding: 4px 14px;
+  border-radius: 4px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #27272a;
+  letter-spacing: 0.08em;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.12);
+}
+
+.tag-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #2563eb;
+  animation: pulse-dot 2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.4); opacity: 0.6; }
+}
+
+.internships-title {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: clamp(2rem, 3.8vw, 3rem);
+  font-weight: 800;
+  color: #18181b;
+  margin: 0;
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.internships-subtitle {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: clamp(0.95rem, 1.2vw, 1.1rem);
+  color: #52525b;
+  max-width: 780px;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.kanji-quote {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 4px;
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: #71717a;
+}
+
+.kanji-badge {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  background: #fef08a;
+  color: #18181b;
+  padding: 1px 8px;
+  border-radius: 3px;
+  border: 1px solid #ca8a04;
+}
+
+/* ================= SKYLINE CANVAS WRAPPER ================= */
+.skyline-canvas-wrapper {
+  position: relative;
+  background: #ffffff;
+  border: 2px solid #27272a;
+  border-radius: 12px;
+  box-shadow: 0 16px 36px -12px rgba(24, 24, 27, 0.18), 4px 6px 0px rgba(39, 39, 42, 0.1);
+  overflow: hidden;
+}
+
+/* Blueprint Top Controls Bar */
+.skyline-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 18px;
+  background: #f7f3ea;
+  border-bottom: 2px solid #27272a;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.blueprint-status-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #27272a;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+}
+
+.live-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #16a34a;
+  box-shadow: 0 0 0 3px rgba(22, 163, 74, 0.2);
+}
+
+.sep {
+  color: #a1a1aa;
+}
+
+.hint-label {
+  color: #71717a;
+  font-weight: 400;
+}
+
+.tower-quick-switch {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.quick-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #ffffff;
+  border: 1.5px solid #a1a1aa;
+  border-radius: 20px;
+  padding: 4px 12px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: #27272a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.quick-pill:hover {
+  border-color: #27272a;
+  transform: translateY(-1px);
+}
+
+.quick-pill.active {
+  background: #18181b;
+  color: #ffffff;
+  border-color: #18181b;
+}
+
+.pill-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+}
+
+.zoho-dot {
+  background: #e24d42;
+}
+
+.infosys-dot {
+  background: #007cc3;
+}
+
+/* ================= THE STAGE / PANORAMA ================= */
+.skyline-stage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  min-height: 480px;
+  background-color: #f5eedf;
+  overflow: hidden;
+}
+
+.artwork-image-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.skyline-artwork-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center bottom;
+  display: block;
+}
+
+/* Radiance Halos */
+.canvas-atmospheric-fx {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.tower-halo {
+  position: absolute;
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  filter: blur(40px);
+}
+
+.halo-zoho {
+  top: 5%;
+  left: 45%;
+  width: 120px;
+  height: 120px;
+  background: rgba(253, 224, 71, 0.4);
+}
+
+.halo-infosys {
+  top: 18%;
+  left: 68%;
+  width: 110px;
+  height: 110px;
+  background: rgba(147, 197, 253, 0.4);
+}
+
+.tower-halo.is-radiant {
+  opacity: 1;
+}
+
+/* Interactive SVG Layer */
+.skyline-interactive-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  pointer-events: auto;
+}
+
+.tower-hotspot-rect {
+  fill: transparent;
+  cursor: pointer;
+  transition: fill 0.25s ease;
+}
+
+.tower-hotspot-rect:hover {
+  fill: rgba(255, 255, 255, 0.08);
+}
+
+/* Pulsing Beacons */
+.beacon-ring {
+  fill: none;
+  stroke-width: 1.5;
+  transform-origin: center;
+}
+
+.zoho-svg-group .beacon-ring {
+  stroke: #f59e0b;
+}
+
+.infosys-svg-group .beacon-ring {
+  stroke: #0284c7;
+}
+
+.ring-1 {
+  animation: beacon-wave 3s infinite ease-out;
+}
+
+.ring-2 {
+  animation: beacon-wave 3s infinite 1.5s ease-out;
+}
+
+@keyframes beacon-wave {
+  0% { transform: scale(0.4); opacity: 0.9; }
+  100% { transform: scale(1.5); opacity: 0; }
+}
+
+.beacon-core {
+  fill: #fef08a;
+  stroke: #b45309;
+  stroke-width: 2;
+  cursor: pointer;
+}
+
+.infosys-core {
+  fill: #bae6fd;
+  stroke: #0369a1;
+}
+
+/* CAD Leader Lines */
+.cad-leader-line {
+  stroke: #27272a;
+  stroke-width: 1.8;
+  fill: none;
+  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+}
+
+.cad-pin-dot {
+  fill: #27272a;
+  stroke: #ffffff;
+  stroke-width: 1.2;
+}
+
+.pin-target {
+  fill: #d97706;
+}
+
+.is-highlighted .cad-leader-line {
+  stroke: #18181b;
+  stroke-width: 2.4;
+}
+
+.is-highlighted.infosys-svg-group .pin-target {
+  fill: #0284c7;
+}
+
+/* ================= FLOATING BLUEPRINT CARDS LAYER ================= */
+.floating-cards-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.floating-card-anchor {
+  position: absolute;
+  pointer-events: auto;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0.2s ease;
+}
+
+/* Positions matching the uploaded sketch */
+.zoho-anchor {
+  top: 9%;
+  left: 21%;
+  width: 280px;
+  max-width: 24vw;
+}
+
+.infosys-anchor {
+  top: 15%;
+  right: 6%;
+  width: 280px;
+  max-width: 24vw;
+}
+
+.floating-card-anchor.focused {
+  z-index: 20;
+}
+
+/* Wooden Kanji Sign Badge */
+.signpost-badge {
+  position: absolute;
+  bottom: 22%;
+  left: 4.2%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(247, 241, 230, 0.92);
+  border: 1.5px solid #524131;
+  padding: 6px 10px;
+  border-radius: 4px;
+  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.15);
+  pointer-events: auto;
+  cursor: default;
+  transition: transform 0.2s ease;
+}
+
+.signpost-badge:hover {
+  transform: scale(1.05);
+}
+
+.sign-kanji {
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #3b2f21;
+  line-height: 1;
+}
+
+.sign-label {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 8px;
+  font-weight: 700;
+  color: #78644e;
+  letter-spacing: 0.1em;
+  margin-top: 3px;
+}
+
+/* ================= BLUEPRINT CALLOUT CARD ================= */
+.blueprint-callout-card {
+  position: relative;
+  background: #ffffff;
+  border: 1.8px solid #27272a;
+  border-radius: 8px;
+  padding: 16px 18px;
+  box-shadow: 0 8px 24px -6px rgba(24, 24, 27, 0.16), 3px 4px 0px rgba(39, 39, 42, 0.08);
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background-image:
+    radial-gradient(#e4e4e7 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.blueprint-callout-card:hover,
+.blueprint-callout-card:focus-visible {
+  border-color: #18181b;
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px -8px rgba(24, 24, 27, 0.24), 4px 6px 0px rgba(24, 24, 27, 0.15);
+}
+
+.blueprint-callout-card.is-active {
+  border-color: #2563eb;
+  box-shadow: 0 14px 32px -8px rgba(37, 99, 235, 0.25), 4px 6px 0px #2563eb;
+}
+
+/* 4 Architectural Drafting Screws (+) */
+.card-screw {
+  position: absolute;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: #a1a1aa;
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+
+.screw-tl { top: 3px; left: 5px; }
+.screw-tr { top: 3px; right: 5px; }
+.screw-bl { bottom: 3px; left: 5px; }
+.screw-br { bottom: 3px; right: 5px; }
+
+/* Header & Brand */
+.card-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.brand-lockup {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-titles {
+  display: flex;
+  flex-direction: column;
+}
+
+.company-heading {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #18181b;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.role-subheading {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #52525b;
+}
+
+.cad-badge {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 9px;
+  font-weight: 700;
+  background: #f4f4f5;
+  color: #27272a;
+  border: 1px solid #d4d4d8;
+  padding: 2px 6px;
+  border-radius: 3px;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+/* Meta Grid (Dates & Location) */
+.card-meta-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px 10px;
+  background: #fafaf9;
+  border: 1px dashed #d4d4d8;
+  border-radius: 5px;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.78rem;
+  color: #3f3f46;
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+}
+
+.meta-icon {
+  width: 14px;
+  height: 14px;
+  stroke: #71717a;
+  flex-shrink: 0;
+}
+
+.meta-text {
+  font-weight: 600;
+  color: #27272a;
+}
+
+/* Contributions List */
+.card-contributions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.contributions-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.doc-icon {
+  stroke: #4f46e5;
+}
+
+.contributions-title {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #52525b;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.bullet-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+  font-size: 0.76rem;
+  line-height: 1.4;
+  color: #3f3f46;
+}
+
+.bullet-dash {
+  color: #a1a1aa;
+  font-weight: 700;
+}
+
+.bullet-text {
+  color: #27272a;
+}
+
+/* Footer & Tech Chips */
+.card-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid #f4f4f5;
+  padding-top: 8px;
+}
+
+.tech-chip-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.tech-chip {
+  background: #f4ede2;
+  border: 1px solid #e2d7c5;
+  border-radius: 3px;
+  padding: 2px 6px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 9.5px;
+  font-weight: 600;
+  color: #453423;
+}
+
+.more-chip {
+  background: #f3f4f6;
+  border-color: #d1d5db;
+  color: #6b7280;
+}
+
+.view-details-prompt {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #2563eb;
+  transition: gap 0.2s ease;
+}
+
+.blueprint-callout-card:hover .view-details-prompt {
+  gap: 7px;
+}
+
+/* ================= MOBILE / RESPONSIVE STACKED CARDS ================= */
+.internships-mobile-cards {
+  display: none;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ================= SPECIFICATION MODAL ================= */
+.internship-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(24, 24, 27, 0.65);
+  backdrop-filter: blur(6px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  animation: modal-fade-in 0.2s ease-out;
+}
+
+@keyframes modal-fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.internship-modal-sheet {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  max-height: 90vh;
+  background: #ffffff;
+  border: 2.5px solid #18181b;
+  border-radius: 10px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 6px 8px 0px #18181b;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: sheet-pop 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  background-image:
+    linear-gradient(to right, rgba(160, 175, 195, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(160, 175, 195, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+@keyframes sheet-pop {
+  from { transform: scale(0.95) translateY(10px); opacity: 0; }
+  to { transform: scale(1) translateY(0); opacity: 1; }
+}
+
+.sheet-screw {
+  position: absolute;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 13px;
+  font-weight: 800;
+  color: #71717a;
+  pointer-events: none;
+}
+
+.sheet-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: #f7f3ea;
+  border-bottom: 2px solid #18181b;
+}
+
+.sheet-meta-tag {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+}
+
+.cad-spec {
+  font-weight: 700;
+  color: #18181b;
+}
+
+.cad-status {
+  background: #18181b;
+  color: #ffffff;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 10px;
+}
+
+.sheet-close-btn {
+  background: transparent;
+  border: 1.5px solid #27272a;
+  border-radius: 4px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-weight: 700;
+  color: #18181b;
+  transition: all 0.15s ease;
+}
+
+.sheet-close-btn:hover {
+  background: #18181b;
+  color: #ffffff;
+}
+
+.sheet-title-banner {
+  padding: 20px 24px;
+  border-bottom: 1.5px solid #e4e4e7;
+  background: #ffffff;
+}
+
+.sheet-brand-group {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.sheet-company-title {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #18181b;
+  margin: 0 0 4px;
+}
+
+.sheet-role-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: #52525b;
+}
+
+.sheet-role {
+  font-weight: 700;
+  color: #2563eb;
+}
+
+.sheet-dot {
+  color: #a1a1aa;
+}
+
+/* Tabs */
+.sheet-nav-tabs {
+  display: flex;
+  border-bottom: 1.5px solid #27272a;
+  background: #fafaf9;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 12px 16px;
+  background: transparent;
+  border: none;
+  border-right: 1px solid #e4e4e7;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #71717a;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tab-btn:hover {
+  color: #18181b;
+  background: #f4f4f5;
+}
+
+.tab-btn.active {
+  color: #18181b;
+  background: #ffffff;
+  border-bottom: 3px solid #2563eb;
+}
+
+/* Content */
+.sheet-body-content {
+  padding: 22px 24px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.sheet-lead-description {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: #27272a;
+  margin: 0;
+}
+
+.sheet-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.sheet-stat-box {
+  padding: 10px 14px;
+  background: #f7f3ea;
+  border: 1.5px solid #27272a;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #71717a;
+  text-transform: uppercase;
+}
+
+.stat-value {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #18181b;
+}
+
+.section-subheading {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: #71717a;
+  margin: 0 0 10px;
+  letter-spacing: 0.08em;
+}
+
+.sheet-bullets-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sheet-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 10px 12px;
+  background: #fcfbf9;
+  border-left: 3px solid #2563eb;
+  border-radius: 0 4px 4px 0;
+}
+
+.bullet-indexer {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: #2563eb;
+  padding-top: 2px;
+}
+
+.bullet-content {
+  font-size: 0.88rem;
+  line-height: 1.5;
+  color: #27272a;
+}
+
+/* Engineering Tab Cards */
+.eng-architecture-breakdown {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.eng-card {
+  padding: 14px;
+  background: #fbf9f4;
+  border: 1.5px solid #27272a;
+  border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.eng-card h5 {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #18181b;
+  margin: 0;
+}
+
+.eng-card p {
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #52525b;
+  margin: 0;
+}
+
+/* Tech Stack Tab */
+.modal-tech-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.modal-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f4ede2;
+  border: 1.5px solid #27272a;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 600;
+  color: #27272a;
+}
+
+.stack-takeaway-box {
+  margin-top: 14px;
+  padding: 14px 18px;
+  background: #eff6ff;
+  border: 1.5px solid #3b82f6;
+  border-radius: 6px;
+}
+
+.takeaway-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+
+.takeaway-tag {
+  background: #2563eb;
+  color: #ffffff;
+  padding: 2px 6px;
+  border-radius: 3px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 9.5px;
+  font-weight: 700;
+}
+
+.stack-takeaway-box p {
+  margin: 0;
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: #1e3a8a;
+}
+
+/* Modal Footer */
+.sheet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px;
+  background: #f7f3ea;
+  border-top: 2px solid #18181b;
+}
+
+.cad-ref-id {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  color: #71717a;
+}
+
+.sheet-done-btn {
+  background: #18181b;
+  color: #ffffff;
+  border: 1.5px solid #18181b;
+  padding: 6px 16px;
+  border-radius: 4px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.sheet-done-btn:hover {
+  background: #3f3f46;
+}
+
+/* ================= RESPONSIVE ADAPTATIONS ================= */
+@media (max-width: 1100px) {
+  .floating-cards-layer {
+    display: none;
+  }
+
+  .cad-leader-line,
+  .cad-pin-dot {
+    display: none;
+  }
+
+  .internships-mobile-cards {
+    display: flex;
+  }
+
+  .skyline-stage {
+    min-height: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .internships-section {
+    padding: 60px 16px 80px;
+  }
+
+  .skyline-stage {
+    min-height: 280px;
+  }
+
+  .sheet-stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .eng-architecture-breakdown {
+    grid-template-columns: 1fr;
+  }
+
+  .blueprint-status-indicator .hint-label,
+  .blueprint-status-indicator .sep {
+    display: none;
+  }
+}
