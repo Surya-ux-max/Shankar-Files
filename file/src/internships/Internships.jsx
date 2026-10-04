@@ -6,12 +6,7 @@ import InternshipModal from './InternshipModal'
 import './Internships.css'
 
 export default function Internships() {
-  const [selectedInternship, setSelectedInternship] = useState(INTERNSHIPS_DATA[0])
   const [modalInternship, setModalInternship] = useState(null)
-
-  const handleSelectInternship = (item) => {
-    setSelectedInternship(item)
-  }
 
   const handleOpenModal = (item) => {
     setModalInternship(item)
@@ -40,24 +35,16 @@ export default function Internships() {
             <span>No. 05 · PROFESSIONAL MILESTONES</span>
           </div>
 
-          <h2 className="internships-title">METROPOLIS OF EXPERIENCE</h2>
+          <h2 className="internships-title">INDUSTRY HORIZONS & INTERNSHIPS</h2>
 
           <p className="internships-subtitle">
-            Looking out from foundational studies into the enterprise skyline — building high-throughput systems,
-            machine learning engines, and civic platforms at <strong>Zoho Corporation</strong> and <strong>Infosys Springboard</strong>.
+            Hands-on software development and full-stack engineering at <strong>Zoho Corporation</strong> and <strong>Infosys Springboard</strong> — building high-throughput systems, relational architectures, and machine learning models.
           </p>
-
-          <div className="kanji-quote">
-            <span className="kanji-badge">未来へ</span>
-            <span>"Looking toward the horizon where concepts transform into enterprise engineering."</span>
-          </div>
         </header>
 
-        {/* Master Panoramic Blueprint Skyline Canvas */}
+        {/* Master Panoramic Vector Skyline Canvas */}
         <SkylineCanvas
           internships={INTERNSHIPS_DATA}
-          activeId={selectedInternship?.id}
-          onSelectInternship={handleSelectInternship}
           onOpenModal={handleOpenModal}
         />
 
@@ -67,7 +54,7 @@ export default function Internships() {
             <InternshipCalloutCard
               key={item.id}
               internship={item}
-              isActive={selectedInternship?.id === item.id}
+              isActive={false}
               onSelect={handleOpenModal}
               isFloating={false}
             />

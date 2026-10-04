@@ -5,8 +5,6 @@ import InternshipCalloutCard from './InternshipCalloutCard'
 
 export default function SkylineCanvas({
   internships,
-  activeId,
-  onSelectInternship,
   onOpenModal
 }) {
   const [hoveredTower, setHoveredTower] = useState(null)
@@ -16,32 +14,11 @@ export default function SkylineCanvas({
 
   return (
     <div className="skyline-canvas-wrapper">
-      {/* Blueprint Navigation Bar */}
-      <div className="skyline-top-bar">
-        <div className="blueprint-status-indicator">
-          <span className="live-dot" />
-          <span className="status-label">VECTOR METROPOLIS BLUEPRINT</span>
-          <span className="sep">/</span>
-          <span className="hint-label">Hover towers or click blueprint cards to inspect engineering systems</span>
-        </div>
-
-        <div className="tower-quick-switch">
-          <button
-            type="button"
-            className={`quick-pill ${activeId === 'zoho' ? 'active' : ''}`}
-            onClick={() => onSelectInternship(zoho)}
-          >
-            <span className="pill-dot zoho-dot" />
-            Zoho Corp (Tower 01)
-          </button>
-          <button
-            type="button"
-            className={`quick-pill ${activeId === 'infosys' ? 'active' : ''}`}
-            onClick={() => onSelectInternship(infosys)}
-          >
-            <span className="pill-dot infosys-dot" />
-            Infosys (Tower 02)
-          </button>
+      {/* Neat, Minimal Hover Prompt Alone (English Only) */}
+      <div className="skyline-clean-bar">
+        <div className="skyline-hover-prompt">
+          <span className="prompt-dot" />
+          <span className="prompt-text">Hover over buildings to view experience</span>
         </div>
       </div>
 
@@ -51,37 +28,31 @@ export default function SkylineCanvas({
         <div className="skyline-artwork-vector-layer">
           <CitySkylineSVG
             hoveredTower={hoveredTower}
-            activeId={activeId}
+            activeId={hoveredTower}
             onHoverTower={setHoveredTower}
             onSelectTower={(id) => {
               const target = internships.find((i) => i.id === id)
-              if (target) onSelectInternship(target)
+              if (target) onOpenModal(target)
             }}
           />
         </div>
 
-        {/* Foreground Overlook (Seated Engineer, Hillside, Railing, Signpost, Foliage) */}
+        {/* Foreground Overlook (Redesigned Seated Engineer, Hillside, Signpost, Foliage) */}
         <div className="skyline-observer-vector-layer" aria-hidden="true">
           <ForegroundObserverSVG />
         </div>
 
-        {/* Interactive CAD Leader Lines & Beacon Overlays */}
+        {/* Interactive CAD Leader Lines & Beacon Overlays (Appears on Hover) */}
         <svg
           className="skyline-cad-overlay-svg"
           viewBox="0 0 1400 700"
           preserveAspectRatio="xMidYMid slice"
         >
           {/* Zoho Tower Beacon & Leader Line */}
-          <g
-            className={`cad-annotation-group ${
-              hoveredTower === 'zoho' || activeId === 'zoho' ? 'is-highlighted' : ''
-            }`}
-          >
-            {/* Spire Pulsing Beacon Rings */}
+          <g className={`cad-annotation-group ${hoveredTower === 'zoho' ? 'is-visible' : ''}`}>
             <circle cx="685" cy="45" r="28" className="beacon-ring ring-1" />
             <circle cx="685" cy="45" r="16" className="beacon-ring ring-2" />
 
-            {/* Leader Line to Floating Zoho Card */}
             <path
               d="M 590 145 L 640 145 L 685 115"
               className="cad-leader-line zoho-cad-line"
@@ -93,16 +64,10 @@ export default function SkylineCanvas({
           </g>
 
           {/* Infosys Tower Beacon & Leader Line */}
-          <g
-            className={`cad-annotation-group ${
-              hoveredTower === 'infosys' || activeId === 'infosys' ? 'is-highlighted' : ''
-            }`}
-          >
-            {/* Spire Pulsing Beacon Rings */}
+          <g className={`cad-annotation-group ${hoveredTower === 'infosys' ? 'is-visible' : ''}`}>
             <circle cx="995" cy="160" r="24" className="beacon-ring ring-1 infosys-ring" />
             <circle cx="995" cy="160" r="14" className="beacon-ring ring-2 infosys-ring" />
 
-            {/* Leader Line to Floating Infosys Card */}
             <path
               d="M 1080 230 L 1040 230 L 995 210"
               className="cad-leader-line infosys-cad-line"
@@ -114,20 +79,20 @@ export default function SkylineCanvas({
           </g>
         </svg>
 
-        {/* Floating Blueprint Cards */}
+        {/* Floating Blueprint Cards (Appear ONLY when hovered over the building or card) */}
         <div className="floating-cards-layer">
           {/* Zoho Card */}
           {zoho && (
             <div
               className={`floating-card-anchor zoho-anchor ${
-                activeId === 'zoho' || hoveredTower === 'zoho' ? 'focused' : ''
+                hoveredTower === 'zoho' ? 'is-shown' : ''
               }`}
               onMouseEnter={() => setHoveredTower('zoho')}
               onMouseLeave={() => setHoveredTower(null)}
             >
               <InternshipCalloutCard
                 internship={zoho}
-                isActive={activeId === 'zoho'}
+                isActive={true}
                 onSelect={() => onOpenModal(zoho)}
                 isFloating={true}
               />
@@ -138,14 +103,14 @@ export default function SkylineCanvas({
           {infosys && (
             <div
               className={`floating-card-anchor infosys-anchor ${
-                activeId === 'infosys' || hoveredTower === 'infosys' ? 'focused' : ''
+                hoveredTower === 'infosys' ? 'is-shown' : ''
               }`}
               onMouseEnter={() => setHoveredTower('infosys')}
               onMouseLeave={() => setHoveredTower(null)}
             >
               <InternshipCalloutCard
                 internship={infosys}
-                isActive={activeId === 'infosys'}
+                isActive={true}
                 onSelect={() => onOpenModal(infosys)}
                 isFloating={true}
               />

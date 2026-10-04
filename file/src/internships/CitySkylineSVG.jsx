@@ -163,6 +163,9 @@ export default function CitySkylineSVG({
         onMouseLeave={() => onHoverTower(null)}
         cursor="pointer"
       >
+        {/* Generous Invisible Hover Hit Area */}
+        <rect x="615" y="20" width="140" height="460" fill="transparent" pointerEvents="all" />
+
         {/* Crown Radiating Sunbeams (Artistic pencil rays) */}
         <g stroke="#eab308" strokeWidth="1.6" strokeLinecap="round" opacity={isZohoActive ? 1 : 0.65}>
           <line x1="685" y1="45" x2="685" y2="15" strokeWidth="2.2" />
@@ -230,10 +233,13 @@ export default function CitySkylineSVG({
       <g
         className={`tower-entity infosys-tower-entity ${isInfosysActive ? 'is-active' : ''}`}
         onClick={() => onSelectTower('infosys')}
-        onHoverTower={() => onHoverTower('infosys')}
+        onMouseEnter={() => onHoverTower('infosys')}
         onMouseLeave={() => onHoverTower(null)}
         cursor="pointer"
       >
+        {/* Generous Invisible Hover Hit Area */}
+        <rect x="930" y="130" width="130" height="355" fill="transparent" pointerEvents="all" />
+
         {/* Crown Radiating Sunbeams */}
         <g stroke="#38bdf8" strokeWidth="1.5" strokeLinecap="round" opacity={isInfosysActive ? 1 : 0.65}>
           <line x1="995" y1="160" x2="995" y2="135" strokeWidth="2" />
