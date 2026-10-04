@@ -1,6 +1,7 @@
 import { useState } from 'react'
+import CitySkylineSVG from './CitySkylineSVG'
+import ForegroundObserverSVG from './ForegroundObserverSVG'
 import InternshipCalloutCard from './InternshipCalloutCard'
-import cityArtwork from '../assets/internships_city.jpg'
 
 export default function SkylineCanvas({
   internships,
@@ -15,13 +16,13 @@ export default function SkylineCanvas({
 
   return (
     <div className="skyline-canvas-wrapper">
-      {/* Visual Navigation Hint */}
+      {/* Blueprint Navigation Bar */}
       <div className="skyline-top-bar">
         <div className="blueprint-status-indicator">
           <span className="live-dot" />
-          <span className="status-label">INTERACTIVE METROPOLIS BLUEPRINT</span>
+          <span className="status-label">VECTOR METROPOLIS BLUEPRINT</span>
           <span className="sep">/</span>
-          <span className="hint-label">Hover towers or click cards to inspect systems</span>
+          <span className="hint-label">Hover towers or click blueprint cards to inspect engineering systems</span>
         </div>
 
         <div className="tower-quick-switch">
@@ -44,125 +45,78 @@ export default function SkylineCanvas({
         </div>
       </div>
 
-      {/* Main Pan / Canvas Viewport */}
+      {/* Main Canvas Stage */}
       <div className="skyline-stage">
-        {/* Foundation Panoramic Artwork */}
-        <div className="artwork-image-container">
-          <img
-            src={cityArtwork}
-            alt="Anime sketch of aspiring engineer overlooking city skyline with Zoho and Infosys landmark towers"
-            className="skyline-artwork-img"
-            loading="lazy"
+        {/* Vector Landscape Background (City, Sky, Towers, River, Train) */}
+        <div className="skyline-artwork-vector-layer">
+          <CitySkylineSVG
+            hoveredTower={hoveredTower}
+            activeId={activeId}
+            onHoverTower={setHoveredTower}
+            onSelectTower={(id) => {
+              const target = internships.find((i) => i.id === id)
+              if (target) onSelectInternship(target)
+            }}
           />
         </div>
 
-        {/* Ambient Watercolor / Light Overlay */}
-        <div className="canvas-atmospheric-fx" aria-hidden="true">
-          <div className={`tower-halo halo-zoho ${hoveredTower === 'zoho' || activeId === 'zoho' ? 'is-radiant' : ''}`} />
-          <div className={`tower-halo halo-infosys ${hoveredTower === 'infosys' || activeId === 'infosys' ? 'is-radiant' : ''}`} />
+        {/* Foreground Overlook (Seated Engineer, Hillside, Railing, Signpost, Foliage) */}
+        <div className="skyline-observer-vector-layer" aria-hidden="true">
+          <ForegroundObserverSVG />
         </div>
 
-        {/* Interactive SVG Layer (Beacons, Leader Lines, Hotspots) */}
+        {/* Interactive CAD Leader Lines & Beacon Overlays */}
         <svg
-          className="skyline-interactive-svg"
-          viewBox="0 0 1600 800"
+          className="skyline-cad-overlay-svg"
+          viewBox="0 0 1400 700"
           preserveAspectRatio="xMidYMid slice"
         >
-          <defs>
-            {/* Pulsing Glow Filters */}
-            <filter id="glow-gold" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-            <filter id="glow-blue" x="-50%" y="-50%" width="200%" height="200%">
-              <feGaussianBlur in="SourceGraphic" stdDeviation="4" result="blur" />
-              <feMerge>
-                <feMergeNode in="blur" />
-                <feMergeNode in="SourceGraphic" />
-              </feMerge>
-            </filter>
-          </defs>
-
-          {/* ============ ZOHO TOWER BEACON & LEADER LINE ============ */}
+          {/* Zoho Tower Beacon & Leader Line */}
           <g
-            className={`tower-svg-group zoho-svg-group ${
+            className={`cad-annotation-group ${
               hoveredTower === 'zoho' || activeId === 'zoho' ? 'is-highlighted' : ''
             }`}
           >
-            {/* Tower Spire Beacon Pulsing Rings */}
-            <circle cx="770" cy="80" r="28" className="beacon-ring ring-1" />
-            <circle cx="770" cy="80" r="16" className="beacon-ring ring-2" />
-            <circle cx="770" cy="80" r="6" className="beacon-core" filter="url(#glow-gold)" />
+            {/* Spire Pulsing Beacon Rings */}
+            <circle cx="685" cy="45" r="28" className="beacon-ring ring-1" />
+            <circle cx="685" cy="45" r="16" className="beacon-ring ring-2" />
 
-            {/* Architectural Leader Line to Left Callout Card */}
+            {/* Leader Line to Floating Zoho Card */}
             <path
-              d="M 660 155 L 720 155 L 755 125"
+              d="M 590 145 L 640 145 L 685 115"
               className="cad-leader-line zoho-cad-line"
               strokeDasharray="4 2"
             />
-            {/* Joint pins */}
-            <circle cx="660" cy="155" r="3.5" className="cad-pin-dot" />
-            <circle cx="720" cy="155" r="3" className="cad-pin-dot" />
-            <circle cx="755" cy="125" r="4.5" className="cad-pin-dot pin-target" />
+            <circle cx="590" cy="145" r="3.5" className="cad-pin-dot" />
+            <circle cx="640" cy="145" r="3" className="cad-pin-dot" />
+            <circle cx="685" cy="115" r="4.5" className="cad-pin-dot pin-target-zoho" />
           </g>
 
-          {/* ============ INFOSYS TOWER BEACON & LEADER LINE ============ */}
+          {/* Infosys Tower Beacon & Leader Line */}
           <g
-            className={`tower-svg-group infosys-svg-group ${
+            className={`cad-annotation-group ${
               hoveredTower === 'infosys' || activeId === 'infosys' ? 'is-highlighted' : ''
             }`}
           >
-            {/* Tower Spire Beacon Pulsing Rings */}
-            <circle cx="1140" cy="205" r="24" className="beacon-ring ring-1 infosys-ring" />
-            <circle cx="1140" cy="205" r="14" className="beacon-ring ring-2 infosys-ring" />
-            <circle cx="1140" cy="205" r="6" className="beacon-core infosys-core" filter="url(#glow-blue)" />
+            {/* Spire Pulsing Beacon Rings */}
+            <circle cx="995" cy="160" r="24" className="beacon-ring ring-1 infosys-ring" />
+            <circle cx="995" cy="160" r="14" className="beacon-ring ring-2 infosys-ring" />
 
-            {/* Architectural Leader Line to Right Callout Card */}
+            {/* Leader Line to Floating Infosys Card */}
             <path
-              d="M 1255 235 L 1205 235 L 1180 248"
+              d="M 1080 230 L 1040 230 L 995 210"
               className="cad-leader-line infosys-cad-line"
               strokeDasharray="4 2"
             />
-            {/* Joint pins */}
-            <circle cx="1255" cy="235" r="3.5" className="cad-pin-dot" />
-            <circle cx="1205" cy="235" r="3" className="cad-pin-dot" />
-            <circle cx="1180" cy="248" r="4.5" className="cad-pin-dot pin-target" />
+            <circle cx="1080" cy="230" r="3.5" className="cad-pin-dot" />
+            <circle cx="1040" cy="230" r="3" className="cad-pin-dot" />
+            <circle cx="995" cy="210" r="4.5" className="cad-pin-dot pin-target-infosys" />
           </g>
-
-          {/* Clickable Hotspot Zones over the Skyscrapers */}
-          {/* Zoho Skyscraper */}
-          <rect
-            x="690"
-            y="50"
-            width="160"
-            height="390"
-            className="tower-hotspot-rect"
-            onMouseEnter={() => setHoveredTower('zoho')}
-            onMouseLeave={() => setHoveredTower(null)}
-            onClick={() => onSelectInternship(zoho)}
-            aria-label="Select Zoho Tower"
-          />
-
-          {/* Infosys Skyscraper */}
-          <rect
-            x="1070"
-            y="170"
-            width="145"
-            height="340"
-            className="tower-hotspot-rect"
-            onMouseEnter={() => setHoveredTower('infosys')}
-            onMouseLeave={() => setHoveredTower(null)}
-            onClick={() => onSelectInternship(infosys)}
-            aria-label="Select Infosys Tower"
-          />
         </svg>
 
-        {/* Floating Blueprint Cards Overlay (Positioned in harmony with the artwork) */}
+        {/* Floating Blueprint Cards */}
         <div className="floating-cards-layer">
-          {/* Zoho Card on Left */}
+          {/* Zoho Card */}
           {zoho && (
             <div
               className={`floating-card-anchor zoho-anchor ${
@@ -180,7 +134,7 @@ export default function SkylineCanvas({
             </div>
           )}
 
-          {/* Infosys Card on Right */}
+          {/* Infosys Card */}
           {infosys && (
             <div
               className={`floating-card-anchor infosys-anchor ${
@@ -197,12 +151,6 @@ export default function SkylineCanvas({
               />
             </div>
           )}
-
-          {/* Wooden Kanji Sign Badge 「未来へ」 */}
-          <div className="signpost-badge" title="Towards the Future">
-            <span className="sign-kanji">未来へ</span>
-            <span className="sign-label">TO THE FUTURE</span>
-          </div>
         </div>
       </div>
     </div>

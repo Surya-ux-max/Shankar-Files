@@ -1,5 +1,5 @@
 /* ==========================================================================
-   METROPOLIS HORIZONS — PROFESSIONAL INTERNSHIPS SECTION
+   METROPOLIS HORIZONS — HAND-CRAFTED PROFESSIONAL INTERNSHIPS CANVAS
    ========================================================================== */
 
 .internships-section {
@@ -11,7 +11,7 @@
   overflow: hidden;
 }
 
-/* Background Paper Noise & Subtle Drafting Grid */
+/* Background Paper Noise & Subtle Architectural Drafting Grid */
 .internships-paper-bg {
   position: absolute;
   inset: 0;
@@ -60,7 +60,7 @@
 .internships-container {
   position: relative;
   z-index: 10;
-  max-width: 1320px;
+  max-width: 1360px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
@@ -119,7 +119,7 @@
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
   font-size: clamp(0.95rem, 1.2vw, 1.1rem);
   color: #52525b;
-  max-width: 780px;
+  max-width: 820px;
   margin: 0;
   line-height: 1.6;
 }
@@ -127,7 +127,7 @@
 .kanji-quote {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
+  gap: 8px;
   margin-top: 4px;
   font-family: var(--font-hand, 'Caveat', cursive);
   font-size: 1.35rem;
@@ -149,7 +149,7 @@
 /* ================= SKYLINE CANVAS WRAPPER ================= */
 .skyline-canvas-wrapper {
   position: relative;
-  background: #ffffff;
+  background: #f9f5ed;
   border: 2px solid #27272a;
   border-radius: 12px;
   box-shadow: 0 16px 36px -12px rgba(24, 24, 27, 0.18), 4px 6px 0px rgba(39, 39, 42, 0.1);
@@ -248,127 +248,94 @@
   position: relative;
   width: 100%;
   aspect-ratio: 2 / 1;
-  min-height: 480px;
-  background-color: #f5eedf;
+  min-height: 520px;
+  background-color: #faefe0;
   overflow: hidden;
 }
 
-.artwork-image-container {
+/* Vector Layers */
+.skyline-artwork-vector-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
+  z-index: 1;
 }
 
-.skyline-artwork-img {
+.metropolis-master-svg {
   width: 100%;
   height: 100%;
-  object-fit: cover;
-  object-position: center bottom;
   display: block;
 }
 
-/* Radiance Halos */
-.canvas-atmospheric-fx {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-.tower-halo {
-  position: absolute;
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.4s ease;
-  filter: blur(40px);
-}
-
-.halo-zoho {
-  top: 5%;
-  left: 45%;
-  width: 120px;
-  height: 120px;
-  background: rgba(253, 224, 71, 0.4);
-}
-
-.halo-infosys {
-  top: 18%;
-  left: 68%;
-  width: 110px;
-  height: 110px;
-  background: rgba(147, 197, 253, 0.4);
-}
-
-.tower-halo.is-radiant {
-  opacity: 1;
-}
-
-/* Interactive SVG Layer */
-.skyline-interactive-svg {
+.skyline-observer-vector-layer {
   position: absolute;
   inset: 0;
   width: 100%;
   height: 100%;
-  z-index: 5;
-  pointer-events: auto;
+  z-index: 3;
+  pointer-events: none;
 }
 
-.tower-hotspot-rect {
-  fill: transparent;
-  cursor: pointer;
-  transition: fill 0.25s ease;
+.foreground-observer-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
 }
 
-.tower-hotspot-rect:hover {
-  fill: rgba(255, 255, 255, 0.08);
+/* Interactive CAD Leader Line Overlay */
+.skyline-cad-overlay-svg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+/* ================= VECTOR TOWER INTERACTIONS ================= */
+.tower-entity {
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.tower-entity:hover,
+.tower-entity.is-active {
+  filter: drop-shadow(0 0 10px rgba(254, 240, 138, 0.45));
+}
+
+.infosys-tower-entity:hover,
+.infosys-tower-entity.is-active {
+  filter: drop-shadow(0 0 10px rgba(186, 230, 253, 0.55));
 }
 
 /* Pulsing Beacons */
 .beacon-ring {
   fill: none;
+  stroke: #ca8a04;
   stroke-width: 1.5;
   transform-origin: center;
-}
-
-.zoho-svg-group .beacon-ring {
-  stroke: #f59e0b;
-}
-
-.infosys-svg-group .beacon-ring {
-  stroke: #0284c7;
-}
-
-.ring-1 {
   animation: beacon-wave 3s infinite ease-out;
 }
 
+.infosys-ring {
+  stroke: #0284c7;
+}
+
 .ring-2 {
-  animation: beacon-wave 3s infinite 1.5s ease-out;
+  animation-delay: 1.5s;
 }
 
 @keyframes beacon-wave {
-  0% { transform: scale(0.4); opacity: 0.9; }
-  100% { transform: scale(1.5); opacity: 0; }
-}
-
-.beacon-core {
-  fill: #fef08a;
-  stroke: #b45309;
-  stroke-width: 2;
-  cursor: pointer;
-}
-
-.infosys-core {
-  fill: #bae6fd;
-  stroke: #0369a1;
+  0% { transform: scale(0.3); opacity: 0.9; }
+  100% { transform: scale(1.6); opacity: 0; }
 }
 
 /* CAD Leader Lines */
 .cad-leader-line {
-  stroke: #27272a;
+  stroke: #3f3f46;
   stroke-width: 1.8;
   fill: none;
-  transition: stroke 0.3s ease, stroke-width 0.3s ease;
+  transition: all 0.25s ease;
 }
 
 .cad-pin-dot {
@@ -377,8 +344,12 @@
   stroke-width: 1.2;
 }
 
-.pin-target {
-  fill: #d97706;
+.pin-target-zoho {
+  fill: #e11d48;
+}
+
+.pin-target-infosys {
+  fill: #0284c7;
 }
 
 .is-highlighted .cad-leader-line {
@@ -386,8 +357,57 @@
   stroke-width: 2.4;
 }
 
-.is-highlighted.infosys-svg-group .pin-target {
-  fill: #0284c7;
+/* ================= ANIMATED COMMUTER TRAIN & VEHICLES ================= */
+.metro-commuter-train {
+  animation: train-glide 24s linear infinite;
+}
+
+@keyframes train-glide {
+  0% {
+    transform: translateX(-500px);
+  }
+  100% {
+    transform: translateX(450px);
+  }
+}
+
+.bridge-vehicle.bus {
+  animation: vehicle-bus-cruise 18s linear infinite;
+}
+
+@keyframes vehicle-bus-cruise {
+  0% {
+    transform: translate(250px, 486px);
+  }
+  100% {
+    transform: translate(1100px, 486px);
+  }
+}
+
+.bridge-vehicle.car-1 {
+  animation: vehicle-car-cruise 14s linear infinite;
+}
+
+@keyframes vehicle-car-cruise {
+  0% {
+    transform: translate(150px, 492px);
+  }
+  100% {
+    transform: translate(1150px, 492px);
+  }
+}
+
+.bridge-vehicle.car-2 {
+  animation: vehicle-car2-cruise 16s linear infinite 3s;
+}
+
+@keyframes vehicle-car2-cruise {
+  0% {
+    transform: translate(300px, 492px);
+  }
+  100% {
+    transform: translate(1200px, 492px);
+  }
 }
 
 /* ================= FLOATING BLUEPRINT CARDS LAYER ================= */
@@ -404,62 +424,23 @@
   transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1), z-index 0.2s ease;
 }
 
-/* Positions matching the uploaded sketch */
+/* Positions matching the sketch */
 .zoho-anchor {
-  top: 9%;
-  left: 21%;
-  width: 280px;
-  max-width: 24vw;
+  top: 7%;
+  left: 20%;
+  width: 285px;
+  max-width: 23vw;
 }
 
 .infosys-anchor {
-  top: 15%;
-  right: 6%;
-  width: 280px;
-  max-width: 24vw;
+  top: 14%;
+  right: 5%;
+  width: 285px;
+  max-width: 23vw;
 }
 
 .floating-card-anchor.focused {
   z-index: 20;
-}
-
-/* Wooden Kanji Sign Badge */
-.signpost-badge {
-  position: absolute;
-  bottom: 22%;
-  left: 4.2%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: rgba(247, 241, 230, 0.92);
-  border: 1.5px solid #524131;
-  padding: 6px 10px;
-  border-radius: 4px;
-  box-shadow: 2px 3px 6px rgba(0, 0, 0, 0.15);
-  pointer-events: auto;
-  cursor: default;
-  transition: transform 0.2s ease;
-}
-
-.signpost-badge:hover {
-  transform: scale(1.05);
-}
-
-.sign-kanji {
-  font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #3b2f21;
-  line-height: 1;
-}
-
-.sign-label {
-  font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 8px;
-  font-weight: 700;
-  color: #78644e;
-  letter-spacing: 0.1em;
-  margin-top: 3px;
 }
 
 /* ================= BLUEPRINT CALLOUT CARD ================= */
@@ -468,11 +449,11 @@
   background: #ffffff;
   border: 1.8px solid #27272a;
   border-radius: 8px;
-  padding: 16px 18px;
-  box-shadow: 0 8px 24px -6px rgba(24, 24, 27, 0.16), 3px 4px 0px rgba(39, 39, 42, 0.08);
+  padding: 15px 17px;
+  box-shadow: 0 10px 25px -6px rgba(24, 24, 27, 0.16), 3px 4px 0px rgba(39, 39, 42, 0.08);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
   cursor: pointer;
   outline: none;
   transition: all 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
@@ -485,12 +466,12 @@
 .blueprint-callout-card:focus-visible {
   border-color: #18181b;
   transform: translateY(-4px);
-  box-shadow: 0 14px 32px -8px rgba(24, 24, 27, 0.24), 4px 6px 0px rgba(24, 24, 27, 0.15);
+  box-shadow: 0 16px 36px -8px rgba(24, 24, 27, 0.25), 4px 6px 0px rgba(24, 24, 27, 0.15);
 }
 
 .blueprint-callout-card.is-active {
   border-color: #2563eb;
-  box-shadow: 0 14px 32px -8px rgba(37, 99, 235, 0.25), 4px 6px 0px #2563eb;
+  box-shadow: 0 16px 36px -8px rgba(37, 99, 235, 0.25), 4px 6px 0px #2563eb;
 }
 
 /* 4 Architectural Drafting Screws (+) */
@@ -562,8 +543,8 @@
 .card-meta-grid {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 8px 10px;
+  gap: 5px;
+  padding: 7px 9px;
   background: #fafaf9;
   border: 1px dashed #d4d4d8;
   border-radius: 5px;
@@ -572,15 +553,15 @@
 .meta-item {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-size: 0.78rem;
+  gap: 7px;
+  font-size: 0.76rem;
   color: #3f3f46;
   font-family: var(--font-sans, 'Space Grotesk', sans-serif);
 }
 
 .meta-icon {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   stroke: #71717a;
   flex-shrink: 0;
 }
@@ -594,7 +575,7 @@
 .card-contributions {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 5px;
 }
 
 .contributions-header {
@@ -609,7 +590,7 @@
 
 .contributions-title {
   font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
   color: #52525b;
   text-transform: uppercase;
@@ -622,15 +603,15 @@
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 4px;
 }
 
 .bullet-item {
   display: flex;
   align-items: flex-start;
   gap: 6px;
-  font-size: 0.76rem;
-  line-height: 1.4;
+  font-size: 0.74rem;
+  line-height: 1.35;
   color: #3f3f46;
 }
 
@@ -647,9 +628,9 @@
 .card-footer {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 6px;
   border-top: 1px solid #f4f4f5;
-  padding-top: 8px;
+  padding-top: 6px;
 }
 
 .tech-chip-group {
@@ -664,7 +645,7 @@
   border-radius: 3px;
   padding: 2px 6px;
   font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 9.5px;
+  font-size: 9px;
   font-weight: 600;
   color: #453423;
 }
@@ -681,7 +662,7 @@
   justify-content: flex-end;
   gap: 4px;
   font-family: var(--font-mono, 'Space Mono', monospace);
-  font-size: 10px;
+  font-size: 9.5px;
   font-weight: 700;
   color: #2563eb;
   transition: gap 0.2s ease;
@@ -1094,7 +1075,7 @@
   }
 
   .skyline-stage {
-    min-height: 380px;
+    min-height: 420px;
   }
 }
 
@@ -1104,7 +1085,7 @@
   }
 
   .skyline-stage {
-    min-height: 280px;
+    min-height: 320px;
   }
 
   .sheet-stats-grid {
