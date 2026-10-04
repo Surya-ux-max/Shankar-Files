@@ -134,12 +134,14 @@
   overflow: hidden;
 }
 
-/* Minimal Top Clean Bar (Hover Prompt Alone) */
+/* Top Clean Bar (Hover Prompt & Interactive Atmosphere Roll Lever) */
 .skyline-clean-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 9px 18px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding: 10px 22px;
   background: #f7f3ea;
   border-bottom: 2px solid #27272a;
 }
@@ -147,7 +149,7 @@
 .skyline-hover-prompt {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 9px;
   font-family: var(--font-mono, 'Space Mono', monospace);
   font-size: 11px;
   font-weight: 700;
@@ -163,6 +165,189 @@
   background-color: #2563eb;
   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.2);
   animation: pulse-dot 1.8s infinite ease-in-out;
+}
+
+/* ================= DAY-NIGHT ROLL LEVER WIDGET ================= */
+.time-roller-widget {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+
+/* Presets: Day, Sunset, Night */
+.time-presets {
+  display: flex;
+  align-items: center;
+  background: #ede4d2;
+  padding: 2px;
+  border-radius: 6px;
+  border: 1.5px solid #27272a;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.1);
+}
+
+.time-preset-btn {
+  background: transparent;
+  border: none;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10.5px;
+  font-weight: 700;
+  color: #52525b;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.time-preset-btn:hover {
+  color: #18181b;
+}
+
+.time-preset-btn.is-active {
+  background: #18181b;
+  color: #ffffff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Analog Roll Dial & Track */
+.time-roller-dial {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: #ffffff;
+  border: 1.5px solid #27272a;
+  border-radius: 20px;
+  padding: 4px 12px;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.08), 2px 2px 0px rgba(0, 0, 0, 0.08);
+}
+
+.celestial-icon {
+  font-size: 13px;
+  user-select: none;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.15));
+}
+
+.sun-icon {
+  animation: sun-pulse 3s infinite ease-in-out;
+}
+
+@keyframes sun-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15) rotate(15deg); }
+}
+
+.dial-track-wrapper {
+  display: flex;
+  align-items: center;
+  width: 120px;
+}
+
+/* Custom styled range slider lever */
+.time-range-input {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  outline: none;
+  cursor: pointer;
+  background: linear-gradient(
+    90deg,
+    #fef08a 0%,
+    #fdba74 35%,
+    #f472b6 65%,
+    #3b82f6 85%,
+    #0f172a 100%
+  );
+  border: 1px solid #71717a;
+}
+
+/* WebKit slider thumb (Chrome, Safari, Edge) */
+.time-range-input::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #d4d4d8 60%, #71717a 100%);
+  border: 2px solid #18181b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35), 0 0 0 2px rgba(254, 240, 138, 0.5);
+  cursor: grab;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.time-range-input::-webkit-slider-thumb:hover {
+  transform: scale(1.22);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45), 0 0 0 4px rgba(254, 240, 138, 0.8);
+}
+
+.time-range-input::-webkit-slider-thumb:active {
+  cursor: grabbing;
+  transform: scale(1.3);
+}
+
+/* Firefox slider thumb */
+.time-range-input::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffffff 0%, #d4d4d8 60%, #71717a 100%);
+  border: 2px solid #18181b;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.35);
+  cursor: grab;
+}
+
+/* Controls End: Badge & Auto Cycle */
+.time-controls-end {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.time-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  border: 1.5px solid currentColor;
+  background: #ffffff;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.08);
+}
+
+.badge-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  animation: pulse-dot 1.4s infinite ease-in-out;
+}
+
+.time-cycle-toggle-btn {
+  background: #18181b;
+  color: #ffffff;
+  border: 1.5px solid #18181b;
+  padding: 4px 10px;
+  border-radius: 4px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10.5px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 1px 1px 0px rgba(0, 0, 0, 0.12);
+}
+
+.time-cycle-toggle-btn:hover {
+  background: #27272a;
+}
+
+.time-cycle-toggle-btn.is-playing {
+  background: #0284c7;
+  border-color: #0284c7;
+  box-shadow: 0 0 8px rgba(2, 132, 199, 0.5);
 }
 
 /* ================= THE STAGE / PANORAMA ================= */
@@ -336,6 +521,68 @@
     transform: translate(1200px, 492px);
   }
 }
+
+/* ================= PASSING CLOUDS & NIGHT STARS ANIMATIONS ================= */
+.cloud-cluster {
+  pointer-events: none;
+}
+
+.cloud-speed-1 {
+  animation: cloud-drift-flow 85s linear infinite;
+}
+
+.cloud-speed-2 {
+  animation: cloud-drift-flow 65s linear infinite -25s;
+}
+
+.cloud-speed-3 {
+  animation: cloud-drift-flow 110s linear infinite -50s;
+}
+
+.cloud-speed-4 {
+  animation: cloud-drift-flow 95s linear infinite -70s;
+}
+
+@keyframes cloud-drift-flow {
+  0% {
+    transform: translateX(-350px);
+  }
+  100% {
+    transform: translateX(1450px);
+  }
+}
+
+/* Star Twinkles */
+.star-twinkle {
+  animation: star-glow-pulse 3s infinite ease-in-out alternate;
+}
+
+@keyframes star-glow-pulse {
+  0% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.35);
+  }
+  100% {
+    opacity: 0.4;
+    transform: scale(0.9);
+  }
+}
+
+/* Zoho & Infosys Night Lit Windows Soft Bloom */
+.zoho-night-lit-windows rect,
+.infosys-night-lit-windows rect,
+.city-night-windows rect {
+  filter: drop-shadow(0 0 2.5px rgba(254, 240, 138, 0.7));
+}
+
+.infosys-night-lit-windows rect {
+  filter: drop-shadow(0 0 2.5px rgba(56, 189, 248, 0.75));
+}
+
 
 /* ================= FLOATING BLUEPRINT CARDS LAYER (HOVER ONLY) ================= */
 .floating-cards-layer {

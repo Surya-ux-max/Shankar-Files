@@ -1,4 +1,5 @@
-export default function ForegroundObserverSVG() {
+export default function ForegroundObserverSVG({ timeOfDay = 0.25 }) {
+  const nightFactor = timeOfDay < 0.65 ? 0 : Math.min(1, (timeOfDay - 0.65) / 0.25)
   return (
     <svg
       className="foreground-observer-svg"
@@ -337,6 +338,18 @@ export default function ForegroundObserverSVG() {
         <path d="M 240 363 Q 250 358 260 363" stroke="#666" strokeWidth="1.4"
           strokeLinecap="round" fill="none" opacity="0.5" />
       </g>
+
+      {/* Night Atmosphere Ambient Overlay for Foreground */}
+      {nightFactor > 0.02 && (
+        <rect
+          width="1400"
+          height="700"
+          fill="#0c1527"
+          opacity={nightFactor * 0.42}
+          style={{ mixBlendMode: 'multiply', pointerEvents: 'none', transition: 'opacity 0.3s ease' }}
+        />
+      )}
     </svg>
   )
 }
+

@@ -2,34 +2,40 @@ import { useState } from 'react'
 import CitySkylineSVG from './CitySkylineSVG'
 import ForegroundObserverSVG from './ForegroundObserverSVG'
 import InternshipCalloutCard from './InternshipCalloutCard'
+import TimeRoller from './TimeRoller'
 
 export default function SkylineCanvas({
   internships,
   onOpenModal
 }) {
   const [hoveredTower, setHoveredTower] = useState(null)
+  const [timeOfDay, setTimeOfDay] = useState(0.28)
 
   const zoho = internships.find((item) => item.id === 'zoho')
   const infosys = internships.find((item) => item.id === 'infosys')
 
   return (
     <div className="skyline-canvas-wrapper">
-      {/* Neat, Minimal Hover Prompt Alone (English Only) */}
+      {/* Top Controls Bar: Minimal Hover Prompt + Interactive Day-Night Lever */}
       <div className="skyline-clean-bar">
         <div className="skyline-hover-prompt">
           <span className="prompt-dot" />
           <span className="prompt-text">Hover over buildings to view experience</span>
         </div>
+
+        {/* Interactive Roll Lever: Day -> Sunset -> Night Atmosphere Cycle */}
+        <TimeRoller timeOfDay={timeOfDay} onChange={setTimeOfDay} />
       </div>
 
       {/* Main Canvas Stage */}
       <div className="skyline-stage">
-        {/* Vector Landscape Background (City, Sky, Towers, River, Train) */}
+        {/* Vector Landscape Background (City, Sky, Towers, River, Train, Passing Sun/Moon/Clouds) */}
         <div className="skyline-artwork-vector-layer">
           <CitySkylineSVG
             hoveredTower={hoveredTower}
             activeId={hoveredTower}
             onHoverTower={setHoveredTower}
+            timeOfDay={timeOfDay}
             onSelectTower={(id) => {
               const target = internships.find((i) => i.id === id)
               if (target) onOpenModal(target)
@@ -37,9 +43,9 @@ export default function SkylineCanvas({
           />
         </div>
 
-        {/* Foreground Overlook (Redesigned Seated Engineer, Hillside, Signpost, Foliage) */}
+        {/* Foreground Overlook (Developer standing in back pose, Hillside, Signpost, Foliage) */}
         <div className="skyline-observer-vector-layer" aria-hidden="true">
-          <ForegroundObserverSVG />
+          <ForegroundObserverSVG timeOfDay={timeOfDay} />
         </div>
 
         {/* Interactive CAD Leader Lines & Beacon Overlays (Appears on Hover) */}
