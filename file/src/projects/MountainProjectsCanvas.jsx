@@ -58,32 +58,6 @@ export default function MountainProjectsCanvas({ projects, onOpenModal }) {
           />
         </div>
 
-        {/* Layer 2: CAD Leader Lines & Summit Reticles SVG */}
-        <svg
-          className="mountain-cad-overlay-svg"
-          viewBox="0 0 1440 680"
-          preserveAspectRatio="xMidYMid slice"
-          aria-hidden="true"
-        >
-          {activeProject && (
-            <g className="cad-annotation-active">
-              {/* Pulsing Beacon on Summit */}
-              <circle
-                cx={activeProject.beaconCoord.x}
-                cy={activeProject.beaconCoord.y}
-                r="18"
-                className="beacon-ping-ring"
-                stroke={activeProject.accentColor}
-              />
-              <circle
-                cx={activeProject.beaconCoord.x}
-                cy={activeProject.beaconCoord.y}
-                r="4.5"
-                fill={activeProject.accentColor}
-              />
-            </g>
-          )}
-        </svg>
 
         {/* Layer 3: Floating Project Callout Card */}
         {activeProject && (
