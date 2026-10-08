@@ -1,6 +1,6 @@
 /* ==========================================================================
    THE SAMURAI PALACE ARMORY — CONTRIBUTIONS SECTION STYLES
-   High-style modern Japanese dojo & gallery aesthetic
+   High-legibility gallery aesthetic with crystal clear typography
    ========================================================================== */
 
 .contributions-section {
@@ -41,7 +41,7 @@
   height: 35vh;
   border-radius: 50%;
   filter: blur(85px);
-  opacity: 0.3;
+  opacity: 0.28;
   background: rgba(254, 215, 170, 0.6);
   mix-blend-mode: multiply;
 }
@@ -54,7 +54,7 @@
   height: 30vh;
   border-radius: 50%;
   filter: blur(85px);
-  opacity: 0.22;
+  opacity: 0.2;
   background: rgba(254, 202, 202, 0.5);
   mix-blend-mode: multiply;
 }
@@ -143,7 +143,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px 20px;
+  padding: 12px 24px;
   background: #0f172a;
   border-bottom: 1.5px solid #1e293b;
 }
@@ -153,13 +153,13 @@
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono, monospace);
-  font-size: 0.78rem;
-  color: #cbd5e1;
+  font-size: 0.8rem;
+  color: #e2e8f0;
 }
 
 .prompt-dot {
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #fbbf24;
   box-shadow: 0 0 8px #f59e0b;
@@ -174,7 +174,7 @@
   color: #fbbf24;
   background: rgba(251, 191, 36, 0.12);
   border: 1px solid rgba(251, 191, 36, 0.3);
-  padding: 2px 10px;
+  padding: 3px 12px;
   border-radius: 9999px;
 }
 
@@ -216,7 +216,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding-top: 135px;
+  padding-top: 130px;
   z-index: 10;
   pointer-events: auto;
 }
@@ -224,10 +224,10 @@
 .wall-photo-frames-container {
   display: flex;
   justify-content: center;
-  align-items: flex-start;
-  gap: 24px;
+  align-items: stretch;
+  gap: 26px;
   width: 100%;
-  max-width: 940px;
+  max-width: 1040px;
   margin: 0 auto;
   box-sizing: border-box;
 }
@@ -235,17 +235,17 @@
 /* Individual Hanging Photo Frame */
 .palace-photo-frame {
   position: relative;
-  flex: 1 1 270px;
-  max-width: 295px;
+  flex: 1 1 310px;
+  max-width: 330px;
   cursor: pointer;
   outline: none;
-  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .palace-photo-frame:hover,
 .palace-photo-frame:focus-visible,
 .palace-photo-frame.is-frame-hovered {
-  transform: translateY(-8px) scale(1.02);
+  transform: translateY(-8px);
 }
 
 /* Hanging Assembly: Brass Peg & Braided Cord */
@@ -273,7 +273,7 @@
 .braided-cord {
   position: absolute;
   top: 6px;
-  width: 2px;
+  width: 2.2px;
   height: 44px;
   background: repeating-linear-gradient(
     180deg,
@@ -313,332 +313,286 @@
   position: relative;
   background: #09090b;
   border: 3px solid #18181b;
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 6px;
   box-shadow: 
-    0 18px 40px rgba(0, 0, 0, 0.65),
+    0 20px 45px rgba(0, 0, 0, 0.65),
     0 4px 12px rgba(0, 0, 0, 0.4);
-  transition: box-shadow 0.3s ease, border-color 0.3s ease;
+  transition: box-shadow 0.28s ease, border-color 0.28s ease;
+  height: calc(100% - 42px);
+  display: flex;
+  flex-direction: column;
 }
 
 .palace-photo-frame:hover .gallery-float-frame {
   border-color: #3f3f46;
   box-shadow: 
-    0 22px 50px rgba(0, 0, 0, 0.8),
-    0 0 24px rgba(254, 240, 138, 0.3);
+    0 24px 55px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(254, 240, 138, 0.28);
 }
 
 /* Metallic Gold Bevel Inlay */
 .frame-gold-bezel {
   padding: 3px;
   background: linear-gradient(135deg, #fef08a 0%, #d97706 45%, #78350f 100%);
-  border-radius: 2px;
+  border-radius: 3px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
-/* Parchment / Rice Paper Canvas Surface */
+/* Parchment / Archival White Paper Matting */
 .frame-parchment-canvas {
   position: relative;
-  background: radial-gradient(ellipse at 70% 20%, #fbf8f1 0%, #f4ede0 65%, #e9ddca 100%);
-  color: #1c1917;
-  padding: 18px 16px 14px;
+  background: #ffffff;
+  color: #09090b;
+  padding: 22px 20px 18px;
   border-radius: 2px;
-  min-height: 310px;
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* Hanko Official Red Vermillion Seal */
-.frame-hanko-seal {
-  position: absolute;
-  top: 12px;
-  right: 12px;
-  width: 38px;
-  height: 38px;
-  border: 1.5px solid #dc2626;
-  border-radius: 50%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  color: #dc2626;
-  transform: rotate(-10deg);
-  opacity: 0.8;
-  pointer-events: none;
-  transition: transform 0.3s ease, opacity 0.3s ease;
+/* Clean Header Inside Frame */
+.frame-clean-header {
+  margin-bottom: 14px;
 }
 
-.palace-photo-frame:hover .frame-hanko-seal {
-  transform: rotate(-4deg) scale(1.08);
-  opacity: 1;
-}
-
-.hanko-seal-kanji {
-  font-size: 0.85rem;
-  font-weight: bold;
-  line-height: 1;
-}
-
-.hanko-seal-sub {
-  font-size: 0.48rem;
-  font-weight: bold;
-  letter-spacing: 0.04em;
-  font-family: var(--font-mono, monospace);
-}
-
-/* Frame Top Tags */
-.frame-top-tag {
-  display: flex;
-  align-items: center;
-  gap: 5px;
+.frame-kicker {
+  display: block;
   font-family: var(--font-mono, monospace);
   font-size: 0.68rem;
   font-weight: 700;
   color: #b45309;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
 }
 
-.tag-sparkle {
-  color: #f59e0b;
-}
-
-.frame-main-title {
+.frame-heading {
   font-family: var(--font-sans, sans-serif);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 800;
-  color: #0f172a;
+  color: #09090b;
   margin: 0 0 6px;
   line-height: 1.25;
 }
 
-.frame-timeline-pill {
-  display: inline-flex;
+.frame-meta-line {
+  display: flex;
   align-items: center;
-  gap: 5px;
-  background: rgba(0, 0, 0, 0.05);
-  padding: 2px 8px;
-  border-radius: 9999px;
+  gap: 6px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.meta-status {
+  color: #15803d;
+  font-weight: 700;
+}
+
+/* Company Title Row (NVIDIA / Uber) */
+.company-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2px;
+}
+
+.company-main-name {
+  font-family: var(--font-sans, sans-serif);
+  font-size: 1.45rem;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  margin: 0;
+}
+
+.name-nvidia {
+  color: #15803d;
+}
+
+.name-uber {
+  color: #09090b;
+}
+
+.company-badge-pill {
   font-family: var(--font-mono, monospace);
   font-size: 0.72rem;
   font-weight: 700;
-  color: #334155;
-  margin-bottom: 12px;
-  align-self: flex-start;
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 3px 8px;
+  border-radius: 4px;
 }
 
-.timeline-pulse-dot {
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #22c55e;
+.frame-sub-kicker {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: #71717a;
 }
 
-/* Callout Box on Overview Frame */
-.frame-merged-stat-box {
+/* Bold Key Metric (Overview Frame) */
+.frame-key-metric {
+  background: #fffbeb;
+  border: 1.5px solid #fde68a;
+  border-radius: 6px;
+  padding: 12px 14px;
   display: flex;
   align-items: center;
-  gap: 10px;
-  background: rgba(180, 83, 9, 0.08);
-  border: 1px solid rgba(180, 83, 9, 0.25);
-  border-radius: 4px;
-  padding: 8px 10px;
-  margin-bottom: 12px;
+  gap: 12px;
+  margin-bottom: 14px;
 }
 
-.merged-num {
-  font-size: 1.8rem;
+.key-number {
+  font-size: 2.2rem;
   font-weight: 900;
   color: #b45309;
   line-height: 1;
 }
 
-.merged-text-col {
-  display: flex;
-  flex-direction: column;
-}
-
-.merged-label-top {
-  font-size: 0.72rem;
+.key-label {
+  font-size: 0.84rem;
   font-weight: 800;
-  color: #1c1917;
-  letter-spacing: 0.04em;
+  color: #78350f;
+  line-height: 1.35;
 }
 
-.merged-label-sub {
-  font-size: 0.65rem;
-  font-family: var(--font-mono, monospace);
-  color: #78716c;
-}
-
-/* Company Breakdown Rows */
-.frame-company-summary-list {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  margin-bottom: 10px;
-}
-
-.company-summary-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background: #ffffff;
-  padding: 5px 8px;
-  border-radius: 3px;
-  font-size: 0.74rem;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-}
-
-.company-summary-row.nvidia-row {
-  border-left: 3px solid #76b900;
-}
-
-.company-summary-row.uber-row {
-  border-left: 3px solid #000000;
-}
-
-.summary-org {
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.summary-val {
-  font-family: var(--font-mono, monospace);
-  color: #15803d;
-  font-weight: 600;
-  font-size: 0.7rem;
-}
-
-/* Company Frames (NVIDIA & Uber) Header */
-.frame-company-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 12px;
-  padding-bottom: 6px;
-  border-bottom: 1px solid rgba(120, 53, 15, 0.15);
-}
-
-.org-mark-badge {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  font-size: 1.05rem;
-  font-weight: 800;
-  letter-spacing: -0.01em;
-}
-
-.org-dot {
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: #76b900;
-}
-
-.dot-dark {
-  background: #09090b;
-}
-
-.nvidia-mark {
-  color: #15803d;
-}
-
-.uber-mark {
-  color: #09090b;
-}
-
-.org-count-chip {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.7rem;
-  font-weight: 700;
-  color: #15803d;
-  background: #dcfce7;
-  padding: 2px 7px;
-  border-radius: 4px;
-}
-
-/* Contribution items inside Company Frames */
-.frame-items-list {
+/* Simple Summary Rows */
+.frame-simple-summary {
   display: flex;
   flex-direction: column;
   gap: 8px;
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
-.frame-contribution-row {
+.summary-line {
   display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 6px;
-  background: #ffffff;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 4px;
-  padding: 6px 8px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  align-items: center;
+  gap: 8px;
+  font-size: 0.88rem;
+  color: #27272a;
 }
 
-.item-row-left {
-  display: flex;
-  align-items: flex-start;
-  gap: 5px;
+.summary-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
 }
 
-.item-num {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.72rem;
-  font-weight: 700;
-  color: #b45309;
+.dot-nvidia {
+  background: #76b900;
 }
 
-.item-text-stack {
+.dot-uber {
+  background: #09090b;
+}
+
+/* Clean, Spacious Bulleted Items */
+.frame-bullet-list {
   display: flex;
   flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
-.item-name {
-  font-size: 0.8rem;
-  color: #0f172a;
-  line-height: 1.25;
+.frame-bullet-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
 }
 
-.item-category-sub {
-  font-size: 0.65rem;
-  color: #64748b;
-  font-family: var(--font-mono, monospace);
-}
-
-.item-merged-tag {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.62rem;
-  font-weight: 700;
-  color: #166534;
-  background: #dcfce7;
-  padding: 1px 5px;
-  border-radius: 3px;
-  white-space: nowrap;
-}
-
-.frame-extra-badge {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.68rem;
+.bullet-num {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #f1f5f9;
   color: #475569;
-  background: rgba(0, 0, 0, 0.04);
-  padding: 4px 8px;
-  border-radius: 4px;
-  margin-bottom: 8px;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 800;
+  flex-shrink: 0;
+  margin-top: 1px;
 }
 
-.frame-footer-hint {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.68rem;
-  color: #b45309;
+.bullet-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.bullet-title {
+  font-size: 0.92rem;
   font-weight: 700;
-  text-align: right;
+  color: #0f172a;
+  line-height: 1.3;
+}
+
+.bullet-desc {
+  font-size: 0.78rem;
+  color: #64748b;
+  line-height: 1.45;
+}
+
+.frame-extra-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 14px;
+}
+
+.highlight-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #334155;
+  padding: 3px 8px;
+  border-radius: 4px;
+}
+
+/* Clean Footer with Vermillion Hanko Seal */
+.frame-clean-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8f0;
   margin-top: auto;
+}
+
+.footer-action-text {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #b45309;
+}
+
+.footer-hanko-seal {
+  width: 32px;
+  height: 32px;
+  border: 1.5px solid #dc2626;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc2626;
+  font-weight: bold;
+  transform: rotate(-6deg);
   opacity: 0.85;
+}
+
+.seal-char {
+  font-size: 0.85rem;
+  line-height: 1;
 }
 
 /* ==========================================================================
@@ -656,7 +610,7 @@
   background: #ffffff;
   border: 1.5px solid #27272a;
   border-radius: 8px;
-  padding: 18px;
+  padding: 20px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
   cursor: pointer;
 }
@@ -665,53 +619,53 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 10px;
 }
 
 .mobile-card-tag {
   font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: #64748b;
   font-weight: 600;
 }
 
 .mobile-card-status {
   font-family: var(--font-mono, monospace);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   font-weight: 700;
   color: #15803d;
   background: #dcfce7;
-  padding: 2px 7px;
+  padding: 2px 8px;
   border-radius: 4px;
 }
 
 .mobile-card-title {
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.25rem;
+  font-weight: 800;
   color: #0f172a;
-  margin: 0 0 8px;
+  margin: 0 0 10px;
 }
 
 .mobile-card-items {
   list-style: none;
   padding: 0;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  font-size: 0.86rem;
+  gap: 6px;
+  font-size: 0.9rem;
   color: #334155;
 }
 
 .mobile-card-desc {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #475569;
-  margin: 0 0 12px;
+  margin: 0 0 14px;
 }
 
 .mobile-card-link {
   font-family: var(--font-mono, monospace);
-  font-size: 0.75rem;
+  font-size: 0.78rem;
   color: #b45309;
   font-weight: 700;
 }
@@ -1065,7 +1019,7 @@
 @media (max-width: 1100px) {
   .wall-photo-frames-container {
     gap: 16px;
-    max-width: 860px;
+    max-width: 900px;
   }
 }
 
