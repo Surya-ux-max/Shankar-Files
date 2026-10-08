@@ -6,8 +6,8 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
   const uberFrame = PHOTO_FRAMES_DATA.find((f) => f.id === 'uber-frame')
 
   return (
-    <div className="wall-photo-frames-container" aria-label="Hanging Photo Frames">
-      {/* ================= FRAME 1: OVERVIEW & ROLE ================= */}
+    <div className="wall-photo-frames-container" aria-label="Gallery Hanging Photo Frames">
+      {/* ================= FRAME 1: OVERVIEW & MASTER ROLE ================= */}
       <div
         className={`palace-photo-frame frame-overview ${
           hoveredFrame === 'overview' ? 'is-frame-hovered' : ''
@@ -19,28 +19,28 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
         tabIndex={0}
         aria-label="Inspect Open Source Contributor Overview Frame"
       >
-        {/* Hanging Cord & Brass Wall Peg */}
+        {/* Gallery Hanging Hardware: Brass Peg & Braided Silk Cord */}
         <div className="hanging-assembly">
-          <div className="peg-mount" />
+          <div className="gallery-brass-peg" />
           <div className="braided-cord cord-l" />
           <div className="braided-cord cord-r" />
           <div className="cord-tassel" />
         </div>
 
-        {/* Lacquered Wood Photo Frame */}
-        <div className="frame-wood-bezel">
-          <div className="gold-fillet-rim">
+        {/* Gallery Float Frame */}
+        <div className="gallery-float-frame">
+          <div className="frame-gold-bezel">
             <div className="frame-parchment-canvas">
-              {/* Hanko Official Red Seal */}
+              {/* Hanko Official Red Vermillion Seal */}
               <div className="frame-hanko-seal" title="Upstream Verified">
                 <span className="hanko-seal-kanji">承認</span>
                 <span className="hanko-seal-sub">MERGED</span>
               </div>
 
-              {/* Content Header */}
+              {/* Top Header Tag */}
               <div className="frame-top-tag">
-                <span className="tag-leaf">✦</span>
-                <span>UPSTREAM CONTRIBUTOR</span>
+                <span className="tag-sparkle">✦</span>
+                <span>OPEN SOURCE ROLE</span>
               </div>
 
               <h3 className="frame-main-title">{overviewFrame.title}</h3>
@@ -50,7 +50,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 <span>{overviewFrame.period}</span>
               </div>
 
-              {/* Big Callout Box */}
+              {/* Big Merged Number Callout */}
               <div className="frame-merged-stat-box">
                 <span className="merged-num">4</span>
                 <div className="merged-text-col">
@@ -59,7 +59,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 </div>
               </div>
 
-              {/* Company Breakdown Summary */}
+              {/* Company Breakdown Summary Rows */}
               <div className="frame-company-summary-list">
                 <div className="company-summary-row nvidia-row">
                   <span className="summary-org">NVIDIA</span>
@@ -72,7 +72,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
               </div>
 
               <div className="frame-footer-hint">
-                <span>Click to view details ↗</span>
+                <span>View Full Spec ↗</span>
               </div>
             </div>
           </div>
@@ -92,14 +92,14 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
         aria-label="Inspect NVIDIA 3 Contributions Frame"
       >
         <div className="hanging-assembly">
-          <div className="peg-mount" />
+          <div className="gallery-brass-peg" />
           <div className="braided-cord cord-l" />
           <div className="braided-cord cord-r" />
           <div className="cord-tassel" />
         </div>
 
-        <div className="frame-wood-bezel">
-          <div className="gold-fillet-rim">
+        <div className="gallery-float-frame">
+          <div className="frame-gold-bezel">
             <div className="frame-parchment-canvas">
               {/* Hanko Seal */}
               <div className="frame-hanko-seal">
@@ -118,7 +118,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 {nvidiaFrame.items.map((item, idx) => (
                   <div key={item.id} className="frame-contribution-row">
                     <div className="item-row-left">
-                      <span className="item-num">{idx + 1}.</span>
+                      <span className="item-num">0{idx + 1}.</span>
                       <div className="item-text-stack">
                         <strong className="item-name">{item.name}</strong>
                         <span className="item-category-sub">{item.category}</span>
@@ -130,7 +130,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
               </div>
 
               <div className="frame-footer-hint">
-                <span>Click to view technical deliverables ↗</span>
+                <span>View Technical Deliverables ↗</span>
               </div>
             </div>
           </div>
@@ -150,14 +150,14 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
         aria-label="Inspect Uber Contribution Frame"
       >
         <div className="hanging-assembly">
-          <div className="peg-mount" />
+          <div className="gallery-brass-peg" />
           <div className="braided-cord cord-l" />
           <div className="braided-cord cord-r" />
           <div className="cord-tassel" />
         </div>
 
-        <div className="frame-wood-bezel">
-          <div className="gold-fillet-rim">
+        <div className="gallery-float-frame">
+          <div className="frame-gold-bezel">
             <div className="frame-parchment-canvas">
               {/* Hanko Seal */}
               <div className="frame-hanko-seal">
@@ -176,7 +176,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 {uberFrame.items.map((item, idx) => (
                   <div key={item.id} className="frame-contribution-row">
                     <div className="item-row-left">
-                      <span className="item-num">{idx + 1}.</span>
+                      <span className="item-num">0{idx + 1}.</span>
                       <div className="item-text-stack">
                         <strong className="item-name">{item.name}</strong>
                         <span className="item-category-sub">{item.category}</span>
@@ -188,7 +188,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
               </div>
 
               <div className="frame-footer-hint">
-                <span>Click to view technical deliverables ↗</span>
+                <span>View Technical Deliverables ↗</span>
               </div>
             </div>
           </div>

@@ -1,6 +1,6 @@
 /* ==========================================================================
    THE SAMURAI PALACE ARMORY — CONTRIBUTIONS SECTION STYLES
-   Layout matched to Internships Section conventions
+   High-style modern Japanese dojo & gallery aesthetic
    ========================================================================== */
 
 .contributions-section {
@@ -12,7 +12,7 @@
   overflow: hidden;
 }
 
-/* Background Paper Noise & Subtle Architectural Drafting Grid */
+/* Background Paper Noise & Subtle Drafting Grid */
 .contributions-paper-bg {
   position: absolute;
   inset: 0;
@@ -36,13 +36,13 @@
 .patch-samurai-amber {
   position: absolute;
   top: 15%;
-  left: 25%;
+  left: 20%;
   width: 35vw;
   height: 35vh;
   border-radius: 50%;
   filter: blur(85px);
-  opacity: 0.35;
-  background: rgba(254, 215, 170, 0.65);
+  opacity: 0.3;
+  background: rgba(254, 215, 170, 0.6);
   mix-blend-mode: multiply;
 }
 
@@ -54,8 +54,8 @@
   height: 30vh;
   border-radius: 50%;
   filter: blur(85px);
-  opacity: 0.25;
-  background: rgba(254, 202, 202, 0.55);
+  opacity: 0.22;
+  background: rgba(254, 202, 202, 0.5);
   mix-blend-mode: multiply;
 }
 
@@ -127,12 +127,12 @@
 .samurai-wall-canvas-wrapper {
   position: relative;
   width: 100%;
-  background: #ffffff;
+  background: #18181b;
   border: 2px solid #27272a;
   border-radius: 12px;
   box-shadow: 
-    0 16px 40px rgba(0, 0, 0, 0.09),
-    0 4px 12px rgba(0, 0, 0, 0.05);
+    0 20px 50px rgba(0, 0, 0, 0.25),
+    0 4px 16px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -144,8 +144,8 @@
   align-items: center;
   justify-content: space-between;
   padding: 10px 20px;
-  background: #f8fafc;
-  border-bottom: 1.5px solid #e2e8f0;
+  background: #0f172a;
+  border-bottom: 1.5px solid #1e293b;
 }
 
 .samurai-hover-prompt {
@@ -154,15 +154,15 @@
   gap: 8px;
   font-family: var(--font-mono, monospace);
   font-size: 0.78rem;
-  color: #64748b;
+  color: #cbd5e1;
 }
 
 .prompt-dot {
   width: 6px;
   height: 6px;
   border-radius: 50%;
-  background: #f59e0b;
-  box-shadow: 0 0 6px #f59e0b;
+  background: #fbbf24;
+  box-shadow: 0 0 8px #f59e0b;
 }
 
 /* Main Wall Canvas Stage */
@@ -170,7 +170,7 @@
   position: relative;
   width: 100%;
   height: 620px;
-  background: #1e110a;
+  background: #9e978c;
   overflow: hidden;
 }
 
@@ -198,64 +198,63 @@
   inset: 0;
   display: flex;
   align-items: flex-start;
-  padding-top: 100px;
+  padding-top: 110px;
   z-index: 10;
   pointer-events: auto;
 }
 
 .wall-photo-frames-container {
   display: flex;
-  justify-content: flex-start;
-  gap: 32px;
+  justify-content: center;
+  gap: 28px;
   width: 100%;
-  padding-left: 200px;
-  padding-right: 380px;
+  padding: 0 40px;
   box-sizing: border-box;
 }
 
 /* Individual Hanging Photo Frame */
 .palace-photo-frame {
   position: relative;
-  flex: 1 1 250px;
-  max-width: 290px;
+  flex: 1 1 260px;
+  max-width: 295px;
   cursor: pointer;
   outline: none;
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .palace-photo-frame:hover,
 .palace-photo-frame:focus-visible,
 .palace-photo-frame.is-frame-hovered {
-  transform: translateY(-8px);
+  transform: translateY(-8px) scale(1.02);
 }
 
-/* Hanging Assembly: Peg, Cord & Tassel */
+/* Hanging Assembly: Brass Peg & Braided Cord */
 .hanging-assembly {
   position: relative;
   width: 100%;
-  height: 44px;
+  height: 46px;
   margin-bottom: -6px;
   z-index: 5;
 }
 
-.peg-mount {
+.gallery-brass-peg {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: 12px;
-  height: 12px;
+  width: 14px;
+  height: 14px;
   border-radius: 50%;
-  background: radial-gradient(circle at 35% 35%, #fde047 0%, #b45309 70%, #451a03 100%);
+  background: radial-gradient(circle at 35% 35%, #fef08a 0%, #d97706 65%, #78350f 100%);
   border: 1px solid #78350f;
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.65);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.55);
 }
 
 .braided-cord {
   position: absolute;
   top: 6px;
   width: 2px;
-  height: 40px;
+  height: 42px;
   background: repeating-linear-gradient(
     180deg,
     #dc2626 0px,
@@ -263,7 +262,7 @@
     #fef08a 4px,
     #fef08a 6px
   );
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.45);
 }
 
 .cord-l {
@@ -280,7 +279,7 @@
 
 .cord-tassel {
   position: absolute;
-  top: 14px;
+  top: 15px;
   left: 50%;
   transform: translateX(-50%);
   width: 3px;
@@ -289,47 +288,48 @@
   border-radius: 0 0 2px 2px;
 }
 
-/* Lacquered Wood Frame Bezel */
-.frame-wood-bezel {
+/* Gallery Float Frame */
+.gallery-float-frame {
   position: relative;
-  background: linear-gradient(135deg, #3d2215 0%, #1c0e07 60%, #2b170d 100%);
-  border: 2px solid #57331f;
+  background: #09090b;
+  border: 3px solid #18181b;
   border-radius: 4px;
-  padding: 8px;
+  padding: 6px;
   box-shadow: 
-    0 14px 32px rgba(0, 0, 0, 0.75),
-    0 4px 10px rgba(0, 0, 0, 0.5);
-  transition: box-shadow 0.28s ease;
+    0 18px 40px rgba(0, 0, 0, 0.65),
+    0 4px 12px rgba(0, 0, 0, 0.4);
+  transition: box-shadow 0.3s ease, border-color 0.3s ease;
 }
 
-.palace-photo-frame:hover .frame-wood-bezel {
+.palace-photo-frame:hover .gallery-float-frame {
+  border-color: #3f3f46;
   box-shadow: 
-    0 18px 40px rgba(0, 0, 0, 0.85),
-    0 0 20px rgba(245, 158, 11, 0.4);
+    0 22px 50px rgba(0, 0, 0, 0.8),
+    0 0 24px rgba(254, 240, 138, 0.3);
 }
 
-/* Gold Fillet Rim Inside Wood Bezel */
-.gold-fillet-rim {
-  padding: 2.5px;
-  background: linear-gradient(135deg, #fef08a 0%, #d97706 50%, #78350f 100%);
+/* Metallic Gold Bevel Inlay */
+.frame-gold-bezel {
+  padding: 3px;
+  background: linear-gradient(135deg, #fef08a 0%, #d97706 45%, #78350f 100%);
   border-radius: 2px;
 }
 
-/* Parchment Canvas matting containing content */
+/* Parchment / Rice Paper Canvas Surface */
 .frame-parchment-canvas {
   position: relative;
   background: radial-gradient(ellipse at 70% 20%, #fbf8f1 0%, #f4ede0 65%, #e9ddca 100%);
   color: #1c1917;
   padding: 18px 16px 14px;
   border-radius: 2px;
-  min-height: 290px;
+  min-height: 295px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   overflow: hidden;
 }
 
-/* Hanko Vermillion Red Stamp in Corner of Frame */
+/* Hanko Official Red Vermillion Seal */
 .frame-hanko-seal {
   position: absolute;
   top: 12px;
@@ -344,8 +344,14 @@
   justify-content: center;
   color: #dc2626;
   transform: rotate(-10deg);
-  opacity: 0.75;
+  opacity: 0.8;
   pointer-events: none;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.palace-photo-frame:hover .frame-hanko-seal {
+  transform: rotate(-4deg) scale(1.08);
+  opacity: 1;
 }
 
 .hanko-seal-kanji {
@@ -375,7 +381,7 @@
   margin-bottom: 6px;
 }
 
-.tag-leaf {
+.tag-sparkle {
   color: #f59e0b;
 }
 
@@ -524,8 +530,8 @@
 .frame-items-list {
   display: flex;
   flex-direction: column;
-  gap: 9px;
-  margin-bottom: 12px;
+  gap: 8px;
+  margin-bottom: 10px;
 }
 
 .frame-contribution-row {
@@ -1012,15 +1018,14 @@
    RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 
-@media (max-width: 1200px) {
+@media (max-width: 1024px) {
   .wall-photo-frames-container {
-    padding-left: 120px;
-    padding-right: 320px;
-    gap: 20px;
+    gap: 16px;
+    padding: 0 20px;
   }
 }
 
-@media (max-width: 992px) {
+@media (max-width: 900px) {
   .samurai-wall-canvas-wrapper {
     display: none;
   }
