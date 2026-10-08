@@ -4,6 +4,7 @@ import Bio from './bio/Bio'
 import Skills from './skills/Skills'
 import Education from './education/Education'
 import Internships from './internships/Internships'
+import Contributions from './contributions/Contributions'
 import WelcomeSplash from './hero/WelcomeSplash'
 
 export default function App() {
@@ -15,6 +16,7 @@ export default function App() {
       <Skills />
       <Education />
       <Internships />
+      <Contributions />
     </div>
   )
 }

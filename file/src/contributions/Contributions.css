@@ -1,0 +1,1788 @@
+/* ==========================================================================
+   THE SAMURAI PALACE ARMORY — CONTRIBUTIONS SECTION STYLES
+   ========================================================================== */
+
+.contributions-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  padding: 5rem 1.5rem 6rem;
+  background-color: #17110c;
+  color: #f5f0e6;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+/* Background Atmosphere & Cedar Wood Grain */
+.palace-chamber-bg {
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse at 50% 20%, rgba(88, 48, 25, 0.35) 0%, rgba(20, 14, 10, 0.8) 60%, #120d09 100%),
+    linear-gradient(180deg, #1f140e 0%, #17100b 50%, #0e0906 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Vertical Japanese Cedar Plank Texture (Ki-kabe) */
+.palace-timber-texture {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    repeating-linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.32) 0px,
+      rgba(0, 0, 0, 0.32) 2px,
+      transparent 2px,
+      transparent 48px,
+      rgba(255, 255, 255, 0.02) 49px,
+      rgba(0, 0, 0, 0.25) 50px
+    ),
+    radial-gradient(circle at 50% 50%, transparent 0%, rgba(0, 0, 0, 0.4) 100%);
+  opacity: 0.85;
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* Atmospheric Fire & Lantern Glow Orbs */
+.palace-ambient-glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.glow-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80px);
+  opacity: 0.35;
+  animation: torchPulse 6s ease-in-out infinite alternate;
+}
+
+.orb-left {
+  top: 15%;
+  left: 5%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #f59e0b 0%, #b45309 60%, transparent 100%);
+}
+
+.orb-center {
+  top: 30%;
+  left: 45%;
+  width: 380px;
+  height: 380px;
+  background: radial-gradient(circle, #d97706 0%, #78350f 70%, transparent 100%);
+  animation-duration: 8s;
+  opacity: 0.22;
+}
+
+.orb-right {
+  top: 15%;
+  right: 5%;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, #f59e0b 0%, #b45309 60%, transparent 100%);
+  animation-delay: -3s;
+}
+
+@keyframes torchPulse {
+  0% { transform: scale(0.95); opacity: 0.28; }
+  50% { transform: scale(1.05); opacity: 0.42; }
+  100% { transform: scale(0.98); opacity: 0.32; }
+}
+
+/* Outer Container */
+.contributions-container {
+  position: relative;
+  max-width: 1380px;
+  margin: 0 auto;
+  z-index: 10;
+}
+
+/* ==========================================================================
+   HEADER SECTION
+   ========================================================================== */
+
+.contributions-header {
+  text-align: center;
+  max-width: 860px;
+  margin: 0 auto 3.5rem;
+}
+
+.contributions-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.4rem 1.1rem;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  border-radius: 9999px;
+  color: #fbbf24;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 1.25rem;
+}
+
+.tag-mon {
+  font-size: 1rem;
+}
+
+.contributions-title {
+  font-family: var(--font-sans, sans-serif);
+  font-size: clamp(2.2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #fffbeb;
+  margin: 0 0 1rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6), 0 0 30px rgba(217, 119, 6, 0.2);
+}
+
+.contributions-subtitle {
+  font-size: 1.1rem;
+  line-height: 1.65;
+  color: #d6cfc7;
+  margin: 0 auto 1.8rem;
+  max-width: 720px;
+}
+
+/* Quick Summary Pill Bar */
+.contributions-summary-bar {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  background: rgba(28, 20, 15, 0.85);
+  border: 1px solid rgba(217, 119, 6, 0.35);
+  padding: 0.6rem 1.4rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.45);
+}
+
+.summary-chip {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.88rem;
+}
+
+.chip-count {
+  font-weight: 800;
+  color: #fbbf24;
+  background: rgba(245, 158, 11, 0.2);
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.chip-label {
+  font-weight: 600;
+  color: #fef3c7;
+}
+
+.chip-org.nvidia {
+  color: #a3e635;
+  font-weight: 700;
+}
+
+.chip-org.uber {
+  color: #e2e8f0;
+  font-weight: 700;
+}
+
+.chip-sub {
+  color: #a8a29e;
+  font-size: 0.8rem;
+}
+
+.chip-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.summary-divider {
+  color: rgba(255, 255, 255, 0.2);
+}
+
+/* ==========================================================================
+   PALACE WALL ARCHITECTURE (STRUCTURE & WOODWORK)
+   ========================================================================== */
+
+.palace-wall-architecture {
+  position: relative;
+  background: 
+    linear-gradient(180deg, rgba(38, 24, 16, 0.95) 0%, rgba(26, 17, 12, 0.98) 100%);
+  border: 3px solid #3d2416;
+  border-radius: 12px;
+  box-shadow: 
+    0 20px 60px rgba(0, 0, 0, 0.7),
+    inset 0 0 80px rgba(0, 0, 0, 0.6);
+  padding: 1.5rem 1.5rem 2rem;
+  overflow: visible;
+}
+
+/* Top Cedar Timber Beam (Nageshi) */
+.palace-timber-beam {
+  position: relative;
+  height: 26px;
+  background: linear-gradient(180deg, #452718 0%, #2e1a10 50%, #1a0f09 100%);
+  border-bottom: 2px solid #57331f;
+  border-top: 1px solid #6b3f27;
+  border-radius: 6px 6px 0 0;
+  margin: -1.5rem -1.5rem 1.5rem -1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.beam-iron-studs {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.iron-rivet {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #71717a 0%, #27272a 70%, #09090b 100%);
+  box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.3), 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* Hanging Lantern Sconces */
+.palace-lantern {
+  position: absolute;
+  top: 12px;
+  width: 38px;
+  z-index: 15;
+}
+
+.lantern-left { left: 24px; }
+.lantern-right { right: 24px; }
+
+.lantern-cord {
+  width: 2px;
+  height: 35px;
+  background: #b45309;
+  margin: 0 auto;
+}
+
+.lantern-cage {
+  position: relative;
+  width: 36px;
+  height: 52px;
+  background: rgba(254, 240, 138, 0.15);
+  border: 2px solid #78350f;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 25px rgba(245, 158, 11, 0.45);
+}
+
+.lantern-flame {
+  width: 10px;
+  height: 18px;
+  background: radial-gradient(ellipse at 50% 80%, #ffffff 0%, #fef08a 40%, #f97316 100%);
+  border-radius: 50% 50% 35% 35%;
+  filter: drop-shadow(0 0 8px #f59e0b);
+  animation: flameFlicker 1.8s infinite alternate ease-in-out;
+}
+
+@keyframes flameFlicker {
+  0% { transform: scale(0.92) rotate(-2deg); opacity: 0.85; }
+  50% { transform: scale(1.08) rotate(3deg); opacity: 1; }
+  100% { transform: scale(0.96) rotate(-1deg); opacity: 0.9; }
+}
+
+.lantern-tassel {
+  display: block;
+  width: 4px;
+  height: 16px;
+  background: #dc2626;
+  margin: 2px auto 0;
+  border-radius: 0 0 2px 2px;
+}
+
+/* ==========================================================================
+   WARFARE TOOLS ROW (NAGINATA, KATANA, TANTO, KUNAI, SHURIKEN)
+   ========================================================================== */
+
+.palace-wall-weapons-row {
+  margin-bottom: 2.5rem;
+  padding: 0 0.5rem;
+}
+
+.warfare-tools-container {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-around;
+  gap: 1.5rem;
+  background: rgba(24, 15, 10, 0.65);
+  border: 1px solid rgba(120, 53, 15, 0.35);
+  border-radius: 8px;
+  padding: 1.2rem 1.5rem;
+}
+
+.wall-weapon-mount {
+  position: relative;
+  cursor: pointer;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+.wall-weapon-mount:hover {
+  transform: translateY(-3px);
+  filter: drop-shadow(0 6px 12px rgba(245, 158, 11, 0.3));
+}
+
+.naginata-mount {
+  flex: 1 1 380px;
+  max-width: 480px;
+}
+
+.naginata-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.katana-rack {
+  flex: 1 1 320px;
+  max-width: 360px;
+}
+
+.katana-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.weapon-label-chip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-size: 0.76rem;
+  color: #d4a373;
+  margin-top: 0.25rem;
+  font-family: var(--font-mono, monospace);
+}
+
+.chip-kanji {
+  color: #f59e0b;
+  font-weight: bold;
+}
+
+/* Hanging Daggers Group */
+.hanging-daggers-group {
+  display: flex;
+  gap: 1.25rem;
+  align-items: flex-start;
+}
+
+.hanging-knife {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.hanging-knife:hover {
+  transform: translateY(-4px) rotate(2deg);
+}
+
+.wall-peg {
+  width: 10px;
+  height: 10px;
+  background: #78350f;
+  border-radius: 50%;
+  margin: 0 auto;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+.knife-svg {
+  width: 42px;
+  height: 110px;
+  display: block;
+  margin: -2px auto 0;
+}
+
+.weapon-tag {
+  font-size: 0.7rem;
+  color: #a8a29e;
+  margin-top: 0.2rem;
+  font-family: var(--font-mono, monospace);
+}
+
+/* Embedded Shuriken */
+.embedded-shuriken-group {
+  position: relative;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.25s ease;
+}
+
+.embedded-shuriken-group:hover {
+  transform: scale(1.1) rotate(-8deg);
+}
+
+.shuriken-svg {
+  width: 58px;
+  height: 58px;
+  display: block;
+  margin: 0 auto;
+  filter: drop-shadow(0 4px 6px rgba(0, 0, 0, 0.7));
+}
+
+.shuriken-hint {
+  font-size: 0.68rem;
+  color: #a8a29e;
+  font-family: var(--font-mono, monospace);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+/* Floating Tooltip Card */
+.weapon-floating-card {
+  position: absolute;
+  bottom: -4.8rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #18181b;
+  border: 1px solid #f59e0b;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  z-index: 30;
+  width: 320px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  animation: fadeIn 0.2s ease;
+}
+
+.wfc-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.wfc-kanji {
+  font-size: 1.4rem;
+  color: #fbbf24;
+}
+
+.wfc-name {
+  font-size: 0.85rem;
+  color: #fef3c7;
+}
+
+.wfc-type {
+  font-size: 0.72rem;
+  color: #f59e0b;
+}
+
+.wfc-desc {
+  font-size: 0.75rem;
+  color: #d4d4d8;
+  line-height: 1.4;
+  margin: 0 0 0.4rem;
+}
+
+.wfc-hint {
+  font-size: 0.7rem;
+  color: #fbbf24;
+  font-style: italic;
+}
+
+/* ==========================================================================
+   PALACE WALL EXHIBIT STAGE (COLUMNS & PHOTO FRAMES)
+   ========================================================================== */
+
+.palace-wall-exhibit-stage {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr 1fr;
+  gap: 2rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+
+.wall-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.wall-section-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  letter-spacing: 0.06em;
+  color: #d97706;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px dashed rgba(217, 119, 6, 0.3);
+}
+
+.label-kanji {
+  color: #fbbf24;
+  font-weight: bold;
+}
+
+.frames-vertical-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+}
+
+/* Center pieces: Master Scroll + Samurai Armor */
+.wall-center-pieces {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+  align-items: center;
+}
+
+.center-piece-scroll {
+  width: 100%;
+}
+
+.center-piece-armor {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ==========================================================================
+   HANGING PHOTO FRAMES (CONTRIBUTION FRAME)
+   ========================================================================== */
+
+.contribution-frame-wrapper {
+  position: relative;
+  cursor: pointer;
+  outline: none;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.contribution-frame-wrapper:hover,
+.contribution-frame-wrapper:focus-visible {
+  transform: translateY(-6px);
+}
+
+/* Braided Silk Cord & Wall Peg Assembly */
+.frame-hanging-assembly {
+  position: relative;
+  width: 100%;
+  height: 48px;
+  margin-bottom: -10px;
+  z-index: 5;
+}
+
+.hanging-peg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 35% 35%, #92400e 0%, #451a03 70%, #1f0b02 100%);
+  border: 1px solid #b45309;
+  border-radius: 50%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.7);
+}
+
+.braided-cord {
+  position: absolute;
+  top: 7px;
+  width: 2.5px;
+  height: 42px;
+  background: repeating-linear-gradient(
+    180deg,
+    #dc2626 0px,
+    #dc2626 4px,
+    #b91c1c 4px,
+    #b91c1c 8px,
+    #fef08a 8px,
+    #fef08a 10px
+  );
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.cord-left {
+  left: 50%;
+  transform-origin: top center;
+  transform: rotate(32deg);
+}
+
+.cord-right {
+  left: 50%;
+  transform-origin: top center;
+  transform: rotate(-32deg);
+}
+
+.agemaki-knot {
+  position: absolute;
+  top: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ef4444;
+  font-size: 0.8rem;
+  line-height: 1;
+}
+
+.knot-center {
+  display: block;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.7));
+}
+
+.tassel {
+  position: absolute;
+  top: 14px;
+  width: 3px;
+  height: 14px;
+  background: #dc2626;
+  border-radius: 0 0 2px 2px;
+}
+
+.tassel-left { left: -3px; }
+.tassel-right { right: -3px; }
+
+/* Photo Frame Body */
+.photo-frame-body {
+  position: relative;
+  background: #1c140e;
+  border-radius: 6px;
+  box-shadow: 
+    0 12px 35px rgba(0, 0, 0, 0.75),
+    0 0 15px rgba(0, 0, 0, 0.5);
+  transition: box-shadow 0.3s ease;
+}
+
+.frame-hovered .photo-frame-body {
+  box-shadow: 
+    0 16px 45px rgba(0, 0, 0, 0.85),
+    0 0 25px rgba(245, 158, 11, 0.35);
+}
+
+/* Lacquered Wood Bezel Outer */
+.frame-bezel-outer {
+  position: relative;
+  padding: 10px;
+  background: linear-gradient(135deg, #382013 0%, #1f120a 50%, #2b180e 100%);
+  border: 2px solid #57331f;
+  border-radius: 6px;
+}
+
+/* Gilded Brass Corner Mounts (Kanakumono) */
+.corner-mount {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  border-color: #f59e0b;
+  border-style: solid;
+  pointer-events: none;
+  z-index: 6;
+}
+
+.mount-tl { top: 2px; left: 2px; border-width: 3px 0 0 3px; border-top-left-radius: 4px; }
+.mount-tr { top: 2px; right: 2px; border-width: 3px 3px 0 0; border-top-right-radius: 4px; }
+.mount-bl { bottom: 2px; left: 2px; border-width: 0 0 3px 3px; border-bottom-left-radius: 4px; }
+.mount-br { bottom: 2px; right: 2px; border-width: 0 3px 3px 0; border-bottom-right-radius: 4px; }
+
+/* Inner Golden Bevel */
+.frame-bezel-inner {
+  padding: 3px;
+  background: linear-gradient(135deg, #d97706 0%, #78350f 50%, #fef08a 100%);
+  border-radius: 3px;
+}
+
+/* Parchment Canvas Surface Inside the Frame */
+.frame-canvas {
+  position: relative;
+  background: 
+    radial-gradient(ellipse at 80% 20%, #faf6eb 0%, #f3ece0 60%, #e8decb 100%);
+  color: #1c1917;
+  padding: 1.4rem 1.3rem;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.canvas-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.8rem;
+}
+
+.frame-org-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: #1c1917;
+}
+
+.org-icon {
+  font-size: 1.15rem;
+}
+
+.org-name {
+  letter-spacing: -0.01em;
+}
+
+.merged-pill {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #15803d;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 0.2rem 0.55rem;
+  border-radius: 9999px;
+  letter-spacing: 0.05em;
+}
+
+.merged-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+/* Hanko Vermillion Red Ink Seal */
+.hanko-seal {
+  position: absolute;
+  top: 1.2rem;
+  right: 1.2rem;
+  opacity: 0.22;
+  pointer-events: none;
+  transform: rotate(-12deg);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.frame-hovered .hanko-seal {
+  opacity: 0.85;
+  transform: rotate(-6deg) scale(1.05);
+}
+
+.hanko-outer-ring {
+  width: 48px;
+  height: 48px;
+  border: 2px solid #dc2626;
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #dc2626;
+  font-weight: bold;
+}
+
+.hanko-kanji {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.hanko-en {
+  font-size: 0.52rem;
+  letter-spacing: 0.06em;
+}
+
+/* Frame Content */
+.canvas-content {
+  margin-bottom: 1rem;
+}
+
+.item-category {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  color: #b45309;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 0.3rem;
+}
+
+.item-title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+  line-height: 1.35;
+}
+
+.item-summary {
+  font-size: 0.84rem;
+  line-height: 1.5;
+  color: #44403c;
+  margin: 0;
+}
+
+/* Frame Footer */
+.canvas-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  padding-top: 0.75rem;
+  border-top: 1px solid rgba(120, 53, 15, 0.15);
+}
+
+.frame-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+.frame-tag-pill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.68rem;
+  background: rgba(180, 83, 9, 0.08);
+  border: 1px solid rgba(180, 83, 9, 0.25);
+  color: #78350f;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.frame-tag-more {
+  font-size: 0.65rem;
+  color: #78716c;
+  align-self: center;
+}
+
+.frame-inspect-action {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.76rem;
+  color: #d97706;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.frame-hovered .frame-inspect-action {
+  color: #b45309;
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   MASTER OVERVIEW HANGING SCROLL (KAKEJIKU)
+   ========================================================================== */
+
+.master-scroll-wrapper {
+  position: relative;
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.scroll-hanging-mount {
+  position: relative;
+  height: 28px;
+  width: 100%;
+}
+
+.scroll-wall-peg {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 12px;
+  background: #78350f;
+  border-radius: 50%;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+}
+
+.scroll-cord {
+  position: absolute;
+  top: 6px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180px;
+  height: 22px;
+  border-top: 2px solid #b91c1c;
+  border-left: 2px solid #b91c1c;
+  border-right: 2px solid #b91c1c;
+  border-top-left-radius: 90px;
+  border-top-right-radius: 90px;
+}
+
+/* Wooden Rods */
+.scroll-wooden-rod {
+  position: relative;
+  height: 14px;
+  background: linear-gradient(180deg, #5c351f 0%, #2f190e 100%);
+  border: 1px solid #78350f;
+  border-radius: 3px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 6;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.6);
+}
+
+.rod-finial {
+  width: 16px;
+  height: 16px;
+  background: radial-gradient(circle at 35% 35%, #fde047 0%, #b45309 80%);
+  border-radius: 50%;
+  margin: 0 -8px;
+  border: 1px solid #78350f;
+}
+
+/* Scroll Parchment Canvas */
+.scroll-body-canvas {
+  position: relative;
+  background: #1b120c;
+  padding: 8px 12px;
+  box-shadow: 0 14px 40px rgba(0, 0, 0, 0.7);
+}
+
+.scroll-silk-brocade-border {
+  border: 2px solid #78350f;
+  padding: 6px;
+  background: #23160e;
+}
+
+.scroll-parchment-inner {
+  background: radial-gradient(ellipse at 50% 30%, #fbf7ee 0%, #f1e9d8 70%, #e2d3bc 100%);
+  color: #1c1917;
+  padding: 1.6rem 1.4rem;
+  border-radius: 2px;
+  text-align: center;
+}
+
+.scroll-crest-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: #dc2626;
+  border: 2px solid #991b1b;
+  border-radius: 50%;
+  color: #fff;
+  margin-bottom: 0.8rem;
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.35);
+}
+
+.crest-kanji {
+  font-size: 1.15rem;
+  font-weight: bold;
+}
+
+.scroll-subtitle-tag {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #b45309;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.3rem;
+}
+
+.scroll-title {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0 0 0.5rem;
+}
+
+.scroll-period-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #1e293b;
+  background: rgba(0, 0, 0, 0.06);
+  padding: 0.2rem 0.7rem;
+  border-radius: 9999px;
+  margin-bottom: 0.9rem;
+}
+
+.period-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #22c55e;
+}
+
+.scroll-motto {
+  font-size: 0.85rem;
+  color: #57534e;
+  line-height: 1.5;
+  margin: 0 0 1.25rem;
+  font-style: italic;
+}
+
+/* Big Metric Box */
+.scroll-metric-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.8rem;
+  background: rgba(180, 83, 9, 0.08);
+  border: 1.5px solid rgba(180, 83, 9, 0.3);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.metric-number-wrap {
+  display: flex;
+  align-items: baseline;
+  color: #b45309;
+}
+
+.metric-number {
+  font-size: 2.5rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.metric-plus {
+  font-size: 1.4rem;
+  font-weight: 700;
+}
+
+.metric-text-wrap {
+  text-align: left;
+}
+
+.metric-heading {
+  display: block;
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: #1c1917;
+}
+
+.metric-sub {
+  font-size: 0.72rem;
+  color: #78716c;
+  font-family: var(--font-mono, monospace);
+  letter-spacing: 0.06em;
+}
+
+/* Organizations Breakdown */
+.scroll-org-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  text-align: left;
+}
+
+.org-stat-card {
+  background: #ffffff;
+  border-radius: 6px;
+  padding: 0.7rem 0.9rem;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.org-nvidia {
+  border-left: 4px solid #76b900;
+}
+
+.org-uber {
+  border-left: 4px solid #000000;
+}
+
+.org-stat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.stat-org-name {
+  font-weight: 800;
+  font-size: 0.88rem;
+  color: #0f172a;
+}
+
+.stat-badge {
+  font-size: 0.7rem;
+  font-weight: 700;
+  font-family: var(--font-mono, monospace);
+  color: #15803d;
+  background: #dcfce7;
+  padding: 0.15rem 0.45rem;
+  border-radius: 4px;
+}
+
+.org-stat-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 0.76rem;
+  color: #475569;
+  line-height: 1.4;
+}
+
+/* ==========================================================================
+   SAMURAI WARRIOR ARMOR STAND
+   ========================================================================== */
+
+.samurai-armor-stand {
+  position: relative;
+  width: 250px;
+  cursor: pointer;
+  outline: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.samurai-armor-stand:hover,
+.armor-stand-active {
+  transform: translateY(-5px);
+}
+
+/* Sashimono War Banner */
+.sashimono-banner {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  display: flex;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.banner-pole {
+  width: 4px;
+  height: 220px;
+  background: #3e2316;
+}
+
+.banner-cloth {
+  width: 32px;
+  height: 120px;
+  background: #dc2626;
+  border-left: 2px solid #991b1b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 10px;
+  color: #fff;
+  box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.banner-kanji {
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.banner-subtext {
+  font-size: 0.5rem;
+  letter-spacing: 0.08em;
+  margin-top: 4px;
+  font-family: var(--font-mono, monospace);
+}
+
+/* Armor SVG Artwork */
+.armor-svg {
+  position: relative;
+  width: 230px;
+  height: 310px;
+  display: block;
+  z-index: 4;
+  filter: drop-shadow(0 15px 25px rgba(0, 0, 0, 0.8));
+  transition: filter 0.3s ease;
+}
+
+.samurai-armor-stand:hover .armor-svg {
+  filter: drop-shadow(0 18px 30px rgba(245, 158, 11, 0.4));
+}
+
+/* Stand Plaque */
+.armor-stand-plaque {
+  margin-top: -15px;
+  background: #18181b;
+  border: 1.5px solid #d97706;
+  border-radius: 4px;
+  padding: 0.4rem 0.9rem;
+  text-align: center;
+  z-index: 8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+}
+
+.plaque-kanji {
+  display: block;
+  font-size: 0.85rem;
+  color: #fbbf24;
+  font-weight: bold;
+}
+
+.plaque-title {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #fef3c7;
+  letter-spacing: 0.06em;
+}
+
+.plaque-sub {
+  font-size: 0.65rem;
+  color: #a8a29e;
+  font-family: var(--font-mono, monospace);
+}
+
+.armor-tooltip-badge {
+  position: absolute;
+  top: -2.2rem;
+  background: #09090b;
+  border: 1px solid #f59e0b;
+  color: #fef08a;
+  font-size: 0.75rem;
+  font-family: var(--font-mono, monospace);
+  padding: 0.35rem 0.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+  animation: fadeIn 0.2s ease;
+  z-index: 25;
+}
+
+/* ==========================================================================
+   PALACE FLOOR & TATAMI BASEBOARD TRIM
+   ========================================================================== */
+
+.palace-floor-base {
+  margin: 2rem -1.5rem -2rem -1.5rem;
+}
+
+.palace-wood-skirting {
+  height: 14px;
+  background: linear-gradient(180deg, #2b170e 0%, #150a05 100%);
+  border-top: 1px solid #4a2918;
+}
+
+.tatami-border-rim {
+  height: 18px;
+  background: #3e502c;
+  overflow: hidden;
+  border-top: 2px solid #556b2f;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.tatami-pattern-strip {
+  width: 100%;
+  height: 100%;
+  background-image: repeating-linear-gradient(
+    45deg,
+    #283618 0px,
+    #283618 8px,
+    #606c38 8px,
+    #606c38 16px
+  );
+  opacity: 0.6;
+}
+
+/* ==========================================================================
+   CONTRIBUTION INSPECTION MODAL
+   ========================================================================== */
+
+.contribution-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 7, 5, 0.85);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+  animation: fadeIn 0.25s ease-out;
+}
+
+.contribution-modal-container {
+  position: relative;
+  width: 100%;
+  max-width: 680px;
+  max-height: 90vh;
+  background: #17110c;
+  border: 3px solid #78350f;
+  border-radius: 8px;
+  box-shadow: 
+    0 25px 60px rgba(0, 0, 0, 0.9),
+    0 0 40px rgba(245, 158, 11, 0.25);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  animation: modalSlideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes modalSlideUp {
+  from { transform: translateY(30px) scale(0.97); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Modal Roller Bars */
+.modal-roller-bar {
+  height: 38px;
+  background: linear-gradient(180deg, #452718 0%, #29150c 100%);
+  border-bottom: 2px solid #b45309;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+}
+
+.roller-finial {
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 35% 35%, #fde047 0%, #b45309 80%);
+  border-radius: 50%;
+  border: 1px solid #78350f;
+}
+
+.roller-title-kanji {
+  font-family: var(--font-hand, cursive);
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #fef08a;
+  letter-spacing: 0.15em;
+}
+
+.modal-close-btn {
+  position: absolute;
+  top: 6px;
+  right: 14px;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(245, 158, 11, 0.4);
+  color: #fef08a;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.modal-close-btn:hover {
+  background: #dc2626;
+  border-color: #ef4444;
+  transform: rotate(90deg);
+}
+
+/* Modal Parchment Scroll Body */
+.modal-body-scroll {
+  background: radial-gradient(ellipse at 50% 20%, #faf6eb 0%, #f4eee2 60%, #e7dac7 100%);
+  color: #1c1917;
+  padding: 2rem 2.2rem;
+  overflow-y: auto;
+  max-height: calc(90vh - 80px);
+}
+
+/* Modal Contribution View */
+.modal-contrib-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.25rem;
+}
+
+.modal-org-tag {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #0f172a;
+}
+
+.modal-org-icon {
+  font-size: 1.4rem;
+}
+
+.modal-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+}
+
+.status-glow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #22c55e;
+  box-shadow: 0 0 8px #22c55e;
+}
+
+.modal-headline {
+  margin-bottom: 1.2rem;
+}
+
+.modal-category-label {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  color: #b45309;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 0.25rem;
+}
+
+.modal-title-text {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #09090b;
+  margin: 0 0 0.4rem;
+  line-height: 1.3;
+}
+
+.modal-timeline-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+.modal-summary-box {
+  background: rgba(255, 255, 255, 0.7);
+  border-left: 4px solid #b45309;
+  padding: 0.9rem 1.2rem;
+  border-radius: 0 6px 6px 0;
+  margin-bottom: 1.5rem;
+}
+
+.modal-summary-text {
+  font-size: 0.96rem;
+  line-height: 1.6;
+  color: #334155;
+  margin: 0;
+}
+
+.modal-details-section {
+  margin-bottom: 1.5rem;
+}
+
+.details-section-title {
+  font-size: 0.95rem;
+  font-weight: 800;
+  color: #1e293b;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.details-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.details-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6rem;
+  font-size: 0.92rem;
+  line-height: 1.55;
+  color: #334155;
+}
+
+.detail-arrow {
+  color: #d97706;
+  font-weight: bold;
+}
+
+.modal-meta-row {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 1.2rem;
+  background: #ffffff;
+  border: 1px solid rgba(120, 53, 15, 0.15);
+  border-radius: 6px;
+  padding: 1rem 1.2rem;
+  margin-bottom: 1.5rem;
+}
+
+.meta-label {
+  display: block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: #64748b;
+  margin-bottom: 0.45rem;
+}
+
+.meta-tag-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tech-badge {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.74rem;
+  background: #f1f5f9;
+  border: 1px solid #cbd5e1;
+  color: #1e293b;
+  padding: 0.2rem 0.55rem;
+  border-radius: 4px;
+}
+
+.modal-stats-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  font-size: 0.82rem;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.stat-name {
+  color: #64748b;
+}
+
+.stat-val {
+  font-weight: 700;
+  color: #0f172a;
+}
+
+/* Palace Armory Tie-in */
+.modal-weapon-tiein {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  background: #fffbeb;
+  border: 1px solid #fde68a;
+  border-radius: 6px;
+  padding: 0.8rem 1.1rem;
+}
+
+.tiein-icon {
+  font-size: 1.4rem;
+}
+
+.tiein-label {
+  display: block;
+  font-size: 0.74rem;
+  font-weight: 700;
+  color: #92400e;
+  text-transform: uppercase;
+}
+
+.tiein-text {
+  font-size: 0.88rem;
+  color: #78350f;
+  margin: 0.15rem 0 0;
+  font-style: italic;
+}
+
+/* Modal Armor / Weapon Lore View */
+.modal-lore-view {
+  text-align: center;
+}
+
+.modal-lore-header {
+  margin-bottom: 1.5rem;
+}
+
+.lore-crest {
+  font-size: 2.2rem;
+  display: block;
+  margin-bottom: 0.4rem;
+}
+
+.lore-kanji {
+  font-family: var(--font-hand, cursive);
+  font-size: 1.8rem;
+  color: #b45309;
+  display: block;
+}
+
+.modal-lore-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0.2rem 0 0.6rem;
+}
+
+.modal-subtitle-chip {
+  display: inline-block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.78rem;
+  color: #b45309;
+  background: #fef3c7;
+  padding: 0.2rem 0.75rem;
+  border-radius: 9999px;
+  border: 1px solid #fde68a;
+}
+
+.modal-lore-quote {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: #475569;
+  margin: 0.6rem auto 0;
+  max-width: 500px;
+}
+
+.modal-weapon-desc {
+  font-size: 1rem;
+  line-height: 1.65;
+  color: #334155;
+  background: #fff;
+  padding: 1.25rem;
+  border-radius: 6px;
+  border: 1px solid rgba(120, 53, 15, 0.15);
+}
+
+.armor-components-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.9rem;
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.armor-part-card {
+  background: #ffffff;
+  border: 1px solid rgba(120, 53, 15, 0.15);
+  border-radius: 6px;
+  padding: 0.8rem 1rem;
+}
+
+.part-label {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: 800;
+  color: #b45309;
+  margin-bottom: 0.25rem;
+}
+
+.armor-part-card p {
+  font-size: 0.84rem;
+  color: #334155;
+  margin: 0;
+}
+
+.modal-motto-callout {
+  background: #18181b;
+  color: #fef08a;
+  padding: 0.8rem 1.2rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-family: var(--font-mono, monospace);
+}
+
+.modal-bottom-bar {
+  background: #23160e;
+  border-top: 1px solid #4a2918;
+  padding: 0.5rem 1.5rem;
+  text-align: center;
+  font-size: 0.72rem;
+  color: #a8a29e;
+  font-family: var(--font-mono, monospace);
+}
+
+/* ==========================================================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+
+@media (max-width: 1100px) {
+  .palace-wall-exhibit-stage {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .wall-col-center {
+    grid-column: 1 / -1;
+    order: -1;
+    margin-bottom: 1.5rem;
+  }
+
+  .wall-center-pieces {
+    flex-direction: row;
+    justify-content: center;
+    gap: 2rem;
+  }
+
+  .center-piece-scroll {
+    max-width: 380px;
+  }
+}
+
+@media (max-width: 768px) {
+  .contributions-section {
+    padding: 3.5rem 1rem 4rem;
+  }
+
+  .palace-wall-exhibit-stage {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .wall-center-pieces {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .warfare-tools-container {
+    flex-direction: column;
+    gap: 1.2rem;
+  }
+
+  .naginata-mount,
+  .katana-rack {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .modal-meta-row {
+    grid-template-columns: 1fr;
+  }
+
+  .armor-components-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .contributions-summary-bar {
+    border-radius: 12px;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .summary-divider {
+    display: none;
+  }
+}
