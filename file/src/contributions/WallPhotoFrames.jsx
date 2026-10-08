@@ -6,10 +6,72 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
   const uberFrame = PHOTO_FRAMES_DATA.find((f) => f.id === 'uber-frame')
 
   return (
-    <div className="wall-photo-frames-container" aria-label="Gallery Hanging Photo Frames">
-      {/* ================= FRAME 1: OVERVIEW & MASTER ROLE ================= */}
+    <div className="wall-photo-frames-container" aria-label="Gallery Wall Photo Frames">
+      {/* ================= FRAME 1 (LEFT): NVIDIA CONTRIBUTIONS ================= */}
       <div
-        className={`palace-photo-frame frame-overview ${
+        className={`palace-photo-frame frame-nvidia ${
+          hoveredFrame === 'nvidia' ? 'is-frame-hovered' : ''
+        }`}
+        onMouseEnter={() => setHoveredFrame('nvidia')}
+        onMouseLeave={() => setHoveredFrame(null)}
+        onClick={() => onSelectFrame && onSelectFrame(nvidiaFrame)}
+        role="button"
+        tabIndex={0}
+        aria-label="Inspect NVIDIA 3 Contributions Frame"
+      >
+        <div className="hanging-assembly">
+          <div className="gallery-brass-peg" />
+          <div className="braided-cord cord-l" />
+          <div className="braided-cord cord-r" />
+          <div className="cord-tassel" />
+        </div>
+
+        <div className="gallery-float-frame">
+          <div className="frame-gold-bezel">
+            <div className="frame-parchment-canvas">
+              {/* Official Red Vermillion Hanko Seal */}
+              <div className="frame-hanko-seal">
+                <span className="hanko-seal-kanji">皆伝</span>
+                <span className="hanko-seal-sub">NVIDIA</span>
+              </div>
+
+              {/* Company Header */}
+              <div className="frame-company-header">
+                <div className="org-mark-badge nvidia-mark">
+                  <span className="org-dot" />
+                  <span className="org-mark-text">NVIDIA</span>
+                </div>
+                <span className="org-count-chip">{nvidiaFrame.countText}</span>
+              </div>
+
+              {/* Exact 3 Contributions requested */}
+              <div className="frame-items-list">
+                {nvidiaFrame.items.map((item, idx) => (
+                  <div key={item.id} className="frame-contribution-row">
+                    <div className="item-row-left">
+                      <span className="item-num">0{idx + 1}.</span>
+                      <div className="item-text-stack">
+                        <strong className="item-name">{item.name}</strong>
+                        <span className="item-category-sub">{item.category}</span>
+                      </div>
+                    </div>
+                    <span className="item-merged-tag">Merged</span>
+                  </div>
+                ))}
+              </div>
+
+              {/* Footer Hint */}
+              <div className="frame-footer-hint">
+                <span>View Upstream PRs ↗</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ================= FRAME 2 (CENTER): MASTER OVERVIEW ROLE ================= */}
+      <div
+        className={`palace-photo-frame frame-overview frame-centerpiece ${
           hoveredFrame === 'overview' ? 'is-frame-hovered' : ''
         }`}
         onMouseEnter={() => setHoveredFrame('overview')}
@@ -19,7 +81,6 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
         tabIndex={0}
         aria-label="Inspect Open Source Contributor Overview Frame"
       >
-        {/* Gallery Hanging Hardware: Brass Peg & Braided Silk Cord */}
         <div className="hanging-assembly">
           <div className="gallery-brass-peg" />
           <div className="braided-cord cord-l" />
@@ -27,7 +88,6 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
           <div className="cord-tassel" />
         </div>
 
-        {/* Gallery Float Frame */}
         <div className="gallery-float-frame">
           <div className="frame-gold-bezel">
             <div className="frame-parchment-canvas">
@@ -71,6 +131,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 </div>
               </div>
 
+              {/* Footer Hint */}
               <div className="frame-footer-hint">
                 <span>View Full Spec ↗</span>
               </div>
@@ -79,65 +140,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
         </div>
       </div>
 
-      {/* ================= FRAME 2: NVIDIA CONTRIBUTIONS ================= */}
-      <div
-        className={`palace-photo-frame frame-nvidia ${
-          hoveredFrame === 'nvidia' ? 'is-frame-hovered' : ''
-        }`}
-        onMouseEnter={() => setHoveredFrame('nvidia')}
-        onMouseLeave={() => setHoveredFrame(null)}
-        onClick={() => onSelectFrame && onSelectFrame(nvidiaFrame)}
-        role="button"
-        tabIndex={0}
-        aria-label="Inspect NVIDIA 3 Contributions Frame"
-      >
-        <div className="hanging-assembly">
-          <div className="gallery-brass-peg" />
-          <div className="braided-cord cord-l" />
-          <div className="braided-cord cord-r" />
-          <div className="cord-tassel" />
-        </div>
-
-        <div className="gallery-float-frame">
-          <div className="frame-gold-bezel">
-            <div className="frame-parchment-canvas">
-              {/* Hanko Seal */}
-              <div className="frame-hanko-seal">
-                <span className="hanko-seal-kanji">皆伝</span>
-                <span className="hanko-seal-sub">NVIDIA</span>
-              </div>
-
-              <div className="frame-company-header">
-                <div className="org-mark-badge nvidia-mark">
-                  <span className="org-mark-text">NVIDIA</span>
-                </div>
-                <span className="org-count-chip">{nvidiaFrame.countText}</span>
-              </div>
-
-              <div className="frame-items-list">
-                {nvidiaFrame.items.map((item, idx) => (
-                  <div key={item.id} className="frame-contribution-row">
-                    <div className="item-row-left">
-                      <span className="item-num">0{idx + 1}.</span>
-                      <div className="item-text-stack">
-                        <strong className="item-name">{item.name}</strong>
-                        <span className="item-category-sub">{item.category}</span>
-                      </div>
-                    </div>
-                    <span className="item-merged-tag">Merged</span>
-                  </div>
-                ))}
-              </div>
-
-              <div className="frame-footer-hint">
-                <span>View Technical Deliverables ↗</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* ================= FRAME 3: UBER CONTRIBUTION ================= */}
+      {/* ================= FRAME 3 (RIGHT): UBER CONTRIBUTION ================= */}
       <div
         className={`palace-photo-frame frame-uber ${
           hoveredFrame === 'uber' ? 'is-frame-hovered' : ''
@@ -167,6 +170,7 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
 
               <div className="frame-company-header">
                 <div className="org-mark-badge uber-mark">
+                  <span className="org-dot dot-dark" />
                   <span className="org-mark-text">Uber</span>
                 </div>
                 <span className="org-count-chip">{uberFrame.countText}</span>
@@ -187,8 +191,13 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 ))}
               </div>
 
+              {/* Additional detail on Uber Open Source */}
+              <div className="frame-extra-badge">
+                <span>Distributed Scale & Platform Tooling</span>
+              </div>
+
               <div className="frame-footer-hint">
-                <span>View Technical Deliverables ↗</span>
+                <span>View Upstream PR ↗</span>
               </div>
             </div>
           </div>

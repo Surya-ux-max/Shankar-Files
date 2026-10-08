@@ -12,16 +12,26 @@ export default function SamuraiWallCanvas({ onOpenModal }) {
         <div className="samurai-hover-prompt">
           <span className="prompt-dot" />
           <span className="prompt-text">
-            Click on any photo frame along the armory wall to inspect upstream engineering contributions
+            Hover or click on the hanging photo frames along the armory wall to inspect verified upstream contributions
+          </span>
+        </div>
+
+        {/* Quick Active Spotlight Status Pill */}
+        <div className="samurai-spotlight-status">
+          <span className="spotlight-icon">💡</span>
+          <span className="spotlight-text">
+            {hoveredFrame
+              ? `Spotlight: ${hoveredFrame.toUpperCase()} FRAME`
+              : 'Ambient Gallery Lighting'}
           </span>
         </div>
       </div>
 
       {/* Main Wall Canvas Stage */}
       <div className="samurai-wall-stage">
-        {/* Layer 1: Real Samurai Palace Wall Vector Scene (Plaster, Timber, Hanging Katana, Knives, Warrior Armor) */}
+        {/* Layer 1: Real Samurai Palace Wall Vector Scene with Warriors, Weapons, and Dynamic Spotlights */}
         <div className="samurai-wall-vector-layer">
-          <SamuraiWallSVG />
+          <SamuraiWallSVG activeSpotlight={hoveredFrame} />
         </div>
 
         {/* Layer 2: Hanging Photo Frames Layer (Only the specified contribution content) */}
