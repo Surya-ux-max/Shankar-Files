@@ -783,6 +783,9 @@
    ========================================================================== */
 
 @media (max-width: 768px) {
+  .ldp-section {
+    padding: 56px 16px 72px;
+  }
   .peel-deck-container {
     min-height: 420px;
   }
@@ -815,5 +818,59 @@
   .peel-nav-btn {
     width: 100%;
     justify-content: center;
+  }
+}
+
+@media (max-width: 640px) {
+  .ldp-stat-bar {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .ldp-stat {
+    border-right: 1.5px solid rgba(61,50,38,0.15);
+    border-bottom: 1.5px solid rgba(61,50,38,0.15);
+  }
+  .ldp-stat:nth-child(2n) {
+    border-right: none;
+  }
+  .ldp-stat:nth-last-child(-n+2) {
+    border-bottom: none;
+  }
+  .peel-deck-tabs {
+    gap: 6px;
+  }
+  .peel-tab-btn {
+    padding: 5px 10px;
+    font-size: 10.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .ldp-section {
+    padding: 44px 12px 56px;
+  }
+  .ldp-title {
+    font-size: clamp(26px, 7vw, 36px);
+  }
+  .ldp-subtitle {
+    font-size: 13.5px;
+  }
+  .peel-deck-container {
+    min-height: 450px;
+  }
+  .peel-card {
+    padding: 0;
+  }
+  .sheet-body {
+    padding: 16px 14px 14px;
+  }
+  .sheet-title {
+    font-size: 1.15rem;
+    line-height: 1.25;
+  }
+  .peel-dot {
+    width: 22px;
+    height: 22px;
+    font-size: 9px;
   }
 }

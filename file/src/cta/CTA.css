@@ -72,6 +72,7 @@
   width: 100%;
   height: 100%;
   pointer-events: auto;
+  touch-action: pan-y;
   cursor: crosshair;
   z-index: 1;
 }
@@ -653,7 +654,21 @@
 }
 
 /* ==========================================================================
-   RESPONSIVE DESIGN
+   RESPONSIVE DESIGN (TABLETS & DESKTOP)
+   ========================================================================== */
+
+@media (max-width: 1024px) {
+  .cta-section {
+    padding: 70px 20px 36px;
+  }
+
+  .giant-text {
+    font-size: clamp(3.2rem, 11vw, 7.2rem);
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (TABLETS & MOBILE <= 768px)
    ========================================================================== */
 
 @media (max-width: 768px) {
@@ -662,27 +677,42 @@
     min-height: auto;
   }
 
+  /* Ensure touches pass through canvas to allow vertical document scrolling */
+  .wind-storm-canvas-container {
+    pointer-events: none;
+  }
+
   .cta-giant-typo-block {
     margin-bottom: 18px;
   }
 
   .giant-text {
-    font-size: clamp(3rem, 13vw, 5.2rem);
+    font-size: clamp(2.6rem, 12vw, 4.8rem);
+    line-height: 0.94;
+    word-break: break-word;
   }
 
   .cta-narrative-container {
+    max-width: 95%;
     margin-bottom: 28px;
+  }
+
+  .cta-narrative-text {
+    font-size: 1rem;
+    line-height: 1.55;
   }
 
   .cta-actions-group {
     flex-direction: column;
     width: 100%;
+    max-width: 360px;
     gap: 12px;
   }
 
   .cta-primary-btn,
   .cta-email-btn-wrapper {
     width: 100%;
+    min-height: 48px;
     justify-content: center;
   }
 
@@ -692,9 +722,9 @@
   }
 
   .cta-social-strip {
-    flex-direction: column;
+    flex-wrap: wrap;
     gap: 8px;
-    padding-bottom: 32px;
+    padding-bottom: 28px;
   }
 
   .cta-colophon-footer {
@@ -706,5 +736,91 @@
   .storm-pool-badge {
     position: static;
     margin-top: 20px;
+    align-self: center;
+  }
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN (SMALL SMARTPHONES <= 480px)
+   ========================================================================== */
+
+@media (max-width: 480px) {
+  .cta-section {
+    padding: 44px 12px 24px;
+  }
+
+  .cta-header-tag {
+    padding: 4px 12px;
+    margin-bottom: 20px;
+  }
+
+  .cta-header-tag .tag-text {
+    font-size: 0.65rem;
+  }
+
+  .giant-text {
+    font-size: clamp(2.1rem, 10.5vw, 3.2rem);
+    letter-spacing: -0.03em;
+  }
+
+  .cta-narrative-text {
+    font-size: 0.92rem;
+  }
+
+  .cta-primary-btn {
+    padding: 14px 24px;
+    font-size: 0.98rem;
+  }
+
+  .cta-secondary-btn {
+    padding: 14px 18px;
+    font-size: 0.98rem;
+  }
+
+  .cta-copy-chip {
+    padding: 14px 12px;
+  }
+
+  .social-pill-link {
+    font-size: 0.72rem;
+    padding: 5px 10px;
+  }
+
+  .availability-live-pill {
+    font-size: 0.68rem;
+    padding: 5px 10px;
+  }
+
+  .cta-colophon-footer {
+    font-size: 0.65rem;
+  }
+
+  /* Mobile Dialog adaptations */
+  .call-dialog-sheet {
+    padding: 22px 16px;
+    max-height: 88vh;
+    overflow-y: auto;
+  }
+
+  .dialog-title {
+    font-size: 1.25rem;
+  }
+
+  .dialog-desc {
+    font-size: 0.88rem;
+  }
+
+  .method-card {
+    padding: 12px 14px;
+  }
+
+  .method-val {
+    font-size: 0.96rem;
+    word-break: break-all;
+  }
+
+  .dialog-footer-details {
+    flex-direction: column;
+    gap: 8px;
   }
 }
