@@ -1,35 +1,42 @@
-import { LEADERSHIP_CATEGORIES, LEADERSHIP_STATS } from './leadershipData'
-import HonourHallSVG from './HonourHallSVG'
+import { useState } from 'react'
+import ConstellationMapSVG, { CONSTELLATIONS } from './ConstellationMapSVG'
+import { LEADERSHIP_STATS } from './leadershipData'
 import './Leadership.css'
 
+// Flatten all stars from all constellations for lookup
+const ALL_STARS = CONSTELLATIONS.flatMap((cat) =>
+  cat.stars.map((star) => ({ ...star, catId: cat.id, catLabel: cat.label, catColor: cat.color }))
+)
+
 export default function Leadership() {
+  const [hoveredStarId, setHoveredStarId] = useState(null)
+
+  const activeStar = ALL_STARS.find((s) => s.id === hoveredStarId) ?? null
+  const activeCat = activeStar
+    ? CONSTELLATIONS.find((c) => c.id === activeStar.catId)
+    : null
+
   return (
     <section className="leadership-section" id="leadership" aria-label="Leadership, Achievements & Recognition">
-
-      {/* Background */}
       <div className="leadership-bg" aria-hidden="true" />
-      <div className="leadership-ambient" aria-hidden="true">
-        <div className="ldp-glow ldp-glow-gold" />
-        <div className="ldp-glow ldp-glow-purple" />
-      </div>
 
       <div className="leadership-container">
 
-        {/* ── Section Header ── */}
+        {/* ── Header ── */}
         <header className="leadership-header">
           <div className="leadership-tag">
             <span className="tag-dot" />
             <span>No. 08 · LEADERSHIP & RECOGNITION</span>
           </div>
-          <h2 className="leadership-title">THE HALL OF HONOURS</h2>
+          <h2 className="leadership-title">THE CONSTELLATION OF HONOURS</h2>
           <p className="leadership-subtitle">
-            Hackathon podiums, national rankings, published research, and campus leadership —
-            each achievement etched into the honour wall of the ceremony hall.
+            Each star is an achievement. Hover over any star to read its story.
+            Four constellations — Competitions, Rankings, Academic, and Leadership.
           </p>
         </header>
 
         {/* ── Stat Bar ── */}
-        <div className="leadership-stat-bar" aria-label="Key Statistics">
+        <div className="leadership-stat-bar">
           {LEADERSHIP_STATS.map((stat) => (
             <div key={stat.label} className="ldp-stat-item">
               <span className="ldp-stat-value">{stat.value}</span>
@@ -38,53 +45,121 @@ export default function Leadership() {
           ))}
         </div>
 
-        {/* ── Honour Hall Vector Illustration ── */}
-        <div className="honour-hall-wrapper" aria-hidden="true">
-          <HonourHallSVG />
-          {/* Banner labels beneath the SVG canvas */}
-          <div className="honour-hall-labels">
-            {LEADERSHIP_CATEGORIES.map((cat) => (
-              <div key={cat.id} className="hall-label" style={{ '--cat-color': cat.color }}>
-                <span className="hall-label-icon">{cat.icon}</span>
-                <span className="hall-label-text">{cat.label}</span>
+        {/* ── Constellation Stage ── */}
+        <div className="constellation-stage">
+
+          {/* Left: SVG Map */}
+          <div className="constellation-map-wrapper">
+            {/* Category legend inside canvas top */}
+            <div className="constellation-legend">
+              {CONSTELLATIONS.map((cat) => (
+                <div key={cat.id} className="legend-item" style={{ '--cat': cat.color }}>
+                  <span className="legend-dot" />
+                  <span className="legend-label">{cat.label}</span>
+                </div>
+              ))}
+            </div>
+
+            <ConstellationMapSVG
+              hoveredStar={hoveredStarId}
+              onHoverStar={setHoveredStarId}
+            />
+
+            {/* Hover hint */}
+            <div className="constellation-hint">
+              <span className="hint-pulse" />
+              <span>Hover over any star to illuminate an achievement</span>
+            </div>
+          </div>
+
+          {/* Right: Detail Panel */}
+          <div className="constellation-detail-panel">
+            {activeStar ? (
+              <div
+                className="detail-card is-active"
+                style={{ '--cat': activeStar.catColor }}
+                key={activeStar.id}
+              >
+                {/* Category badge */}
+                <div className="detail-cat-badge">
+                  <span className="detail-cat-dot" />
+                  <span>{activeStar.catLabel}</span>
+                </div>
+
+                {/* Rank */}
+                <span className="detail-rank">{activeStar.rank}</span>
+
+                {/* Title */}
+                <h3 className="detail-title">{activeStar.title}</h3>
+
+                {/* Prize / tag */}
+                <span className="detail-prize">{activeStar.prize}</span>
+
+                {/* Body text */}
+                <p className="detail-body">
+                  {ALL_STARS.find((s) => s.id === activeStar.id)?.highlight
+                    ? '★ Featured Achievement'
+                    : ''}
+                </p>
+
+                {/* Star glow decoration */}
+                <div
+                  className="detail-star-deco"
+                  style={{ background: `radial-gradient(circle, ${activeStar.catColor}33 0%, transparent 70%)` }}
+                />
               </div>
-            ))}
+            ) : (
+              <div className="detail-card is-empty">
+                {/* Empty state */}
+                <div className="empty-cosmos">
+                  {/* Animated rings */}
+                  <div className="empty-ring ring-1" />
+                  <div className="empty-ring ring-2" />
+                  <div className="empty-ring ring-3" />
+                  <span className="empty-star">✦</span>
+                </div>
+                <p className="empty-text">Hover a star to read its achievement</p>
+                <div className="empty-legend">
+                  {CONSTELLATIONS.map((cat) => (
+                    <div key={cat.id} className="empty-legend-row" style={{ '--cat': cat.color }}>
+                      <span className="empty-legend-dot" />
+                      <span className="empty-legend-name">{cat.label}</span>
+                      <span className="empty-legend-count">{cat.stars.length}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            )}
           </div>
         </div>
 
-        {/* ── Achievement Cards Grid ── */}
+        {/* ── Achievement Cards list — all items ── */}
         <div className="achievement-grid">
-          {LEADERSHIP_CATEGORIES.map((cat) => (
+          {CONSTELLATIONS.map((cat) => (
             <div
               key={cat.id}
               className="achievement-category"
-              style={{ '--cat-color': cat.color, '--cat-glow': cat.glow }}
+              style={{ '--cat-color': cat.color }}
             >
-              {/* Category Header */}
               <div className="cat-header">
-                <span className="cat-kanji">{cat.kanji}</span>
-                <div className="cat-title-group">
-                  <span className="cat-icon">{cat.icon}</span>
-                  <h3 className="cat-title">{cat.label}</h3>
-                </div>
-                <span className="cat-count">{cat.achievements.length}</span>
+                <span className="cat-dot" />
+                <h3 className="cat-title">{cat.label}</h3>
+                <span className="cat-count">{cat.stars.length}</span>
               </div>
-
-              {/* Achievement Items */}
               <div className="cat-items">
-                {cat.achievements.map((item) => (
+                {cat.stars.map((star) => (
                   <div
-                    key={item.id}
-                    className={`achievement-item ${item.highlight ? 'is-highlight' : ''}`}
+                    key={star.id}
+                    className={`ach-row ${star.highlight ? 'is-highlight' : ''} ${hoveredStarId === star.id ? 'is-active' : ''}`}
+                    onMouseEnter={() => setHoveredStarId(star.id)}
+                    onMouseLeave={() => setHoveredStarId(null)}
                   >
-                    <div className="ach-left">
-                      <span className="ach-rank">{item.rank}</span>
-                      <div className="ach-body">
-                        <p className="ach-title">{item.title}</p>
-                        <p className="ach-detail">{item.detail}</p>
-                      </div>
+                    <span className="ach-star-icon">✦</span>
+                    <div className="ach-body">
+                      <span className="ach-rank">{star.rank}</span>
+                      <span className="ach-title">{star.title}</span>
                     </div>
-                    <span className="ach-prize">{item.prize}</span>
+                    <span className="ach-prize">{star.prize}</span>
                   </div>
                 ))}
               </div>
