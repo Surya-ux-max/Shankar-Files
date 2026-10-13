@@ -1,11 +1,9 @@
-import { useState } from 'react'
 import LeadershipIllustration from './LeadershipIllustration'
+import PeelAchievementDeck from './PeelAchievementDeck'
 import { LEADERSHIP_CATEGORIES, LEADERSHIP_STATS } from './leadershipData'
 import './Leadership.css'
 
 export default function Leadership() {
-  const [activeId, setActiveId] = useState(null)
-
   return (
     <section className="ldp-section" id="leadership" aria-label="Leadership & Recognition">
 
@@ -50,49 +48,16 @@ export default function Leadership() {
           ))}
         </div>
 
-        {/* ── Illustration Canvas ── */}
+        {/* ── Illustration Canvas (Untouched Vector Visual) ── */}
         <div className="ldp-canvas-wrapper">
           <LeadershipIllustration />
           <p className="ldp-canvas-caption">
-            Hover over achievements below ↓
+            Honours & Recognition Sketchbook — Team & Milestone Review
           </p>
         </div>
 
-        {/* ── Achievement Grid ── */}
-        <div className="ldp-grid">
-          {LEADERSHIP_CATEGORIES.map((cat) => (
-            <div key={cat.id} className="ldp-cat-card" style={{ '--cat': cat.color }}>
-
-              {/* Category header */}
-              <div className="ldp-cat-head">
-                <span className="ldp-cat-icon">{cat.icon}</span>
-                <h3 className="ldp-cat-title">{cat.label}</h3>
-                <span className="ldp-cat-count">{cat.achievements.length}</span>
-              </div>
-
-              {/* Items */}
-              <div className="ldp-cat-items">
-                {cat.achievements.map((item) => (
-                  <div
-                    key={item.id}
-                    className={`ldp-item ${item.highlight ? 'ldp-item--star' : ''} ${activeId === item.id ? 'ldp-item--active' : ''}`}
-                    onMouseEnter={() => setActiveId(item.id)}
-                    onMouseLeave={() => setActiveId(null)}
-                  >
-                    <div className="ldp-item-left">
-                      <span className="ldp-item-rank">{item.rank}</span>
-                      <p className="ldp-item-title">{item.title}</p>
-                      {activeId === item.id && (
-                        <p className="ldp-item-detail">{item.detail}</p>
-                      )}
-                    </div>
-                    <span className="ldp-item-prize">{item.prize}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+        {/* ── Space-Saving Tactile Peel Card Deck ── */}
+        <PeelAchievementDeck categories={LEADERSHIP_CATEGORIES} />
 
       </div>
     </section>

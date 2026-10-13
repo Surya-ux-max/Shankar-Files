@@ -1,6 +1,6 @@
 /* ==========================================================================
    HONOURS & ACHIEVEMENTS — Paper / Ink Sketchbook Theme
-   Matches Hero, Education, Skills typography & visual language
+   Space-Saving Tactile Peel Card Deck Layout
    ========================================================================== */
 
 /* ── Section wrapper ── */
@@ -159,7 +159,7 @@
   font-weight: 500;
   color: #6b5c44;
   margin: 0;
-  max-width: 720px;
+  max-width: 760px;
   line-height: 1.6;
 }
 
@@ -169,7 +169,7 @@
 
 .ldp-stat-bar {
   display: flex;
-  background: rgba(255,255,255,0.88);
+  background: rgba(255,255,255,0.92);
   border: 2px solid #3d3226;
   box-shadow: 4px 4px 0 #3d3226;
   border-radius: 6px;
@@ -181,7 +181,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3px;
+  gap: 4px;
   padding: 16px 14px;
   border-right: 1.5px solid rgba(61,50,38,0.15);
   transition: background 0.2s ease;
@@ -192,31 +192,31 @@
 
 .ldp-stat-val {
   font-family: var(--font-display, 'Caveat Brush', cursive);
-  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
+  font-size: clamp(1.8rem, 2.8vw, 2.4rem);
   color: #1f1b16;
   line-height: 1;
 }
 
 .ldp-stat-label {
-  font-family: var(--font-mono, monospace);
-  font-size: 9px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
   font-weight: 700;
-  color: #9b8c78;
-  letter-spacing: 0.07em;
+  color: #6b5c44;
   text-transform: uppercase;
+  letter-spacing: 0.05em;
   text-align: center;
 }
 
 /* ==========================================================================
-   ILLUSTRATION CANVAS
+   ILLUSTRATION CANVAS (UNTOUCHED VISUAL)
    ========================================================================== */
 
 .ldp-canvas-wrapper {
   background: #fdfaf3;
-  border: 2.5px solid #3d3226;
+  border: 2px solid #3d3226;
   border-radius: 8px;
   box-shadow:
-    6px 6px 0 #3d3226,
+    4px 4px 0 #3d3226,
     12px 12px 0 rgba(61,50,38,0.10);
   overflow: hidden;
   display: flex;
@@ -232,181 +232,588 @@
 .ldp-canvas-caption {
   text-align: center;
   font-family: var(--font-hand, 'Caveat', cursive);
-  font-size: 15px;
-  color: #9b8c78;
+  font-size: 16px;
+  font-weight: 600;
+  color: #8c7b64;
   margin: 0;
-  padding: 8px 0 12px;
+  padding: 10px 16px 12px;
   border-top: 1.5px dashed rgba(61,50,38,0.18);
+  background: #fdfaf3;
 }
 
 /* ==========================================================================
-   ACHIEVEMENT GRID
+   PEEL ACHIEVEMENT DECK (SPACE-SAVING TACTILE PAPER NOTEPAD)
    ========================================================================== */
 
-.ldp-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
+.peel-deck-section {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  max-width: 880px;
+  margin: 0 auto;
+  width: 100%;
 }
 
-/* ── Category Card ── */
-.ldp-cat-card {
-  background: rgba(255,255,255,0.88);
-  border: 2px solid #3d3226;
-  border-top: 4px solid #3d3226;
-  border-radius: 0 0 6px 6px;
-  box-shadow: 4px 4px 0 rgba(61,50,38,0.12);
-  overflow: hidden;
-  transition: box-shadow 0.2s ease, transform 0.2s ease;
+/* Domain Filter Tabs */
+.peel-deck-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
-.ldp-cat-card:hover {
-  box-shadow: 6px 6px 0 rgba(61,50,38,0.18);
+.peel-tab-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  border: 1.5px solid #3d3226;
+  border-radius: 6px;
+  padding: 6px 14px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #3d3226;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #3d3226;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  outline: none;
+}
+
+.peel-tab-btn:hover {
+  background: #f4ede2;
   transform: translateY(-2px);
+  box-shadow: 3px 3px 0 #3d3226;
 }
 
-/* Category header */
-.ldp-cat-head {
+.peel-tab-btn.is-active {
+  background: #3d3226;
+  color: #fdf9f1;
+  border-color: #1f1b16;
+  box-shadow: 3px 3px 0 rgba(61, 50, 38, 0.35);
+}
+
+.peel-tab-icon {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.peel-tab-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 800;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: rgba(61, 50, 38, 0.1);
+  color: inherit;
+}
+
+.peel-tab-btn.is-active .peel-tab-count {
+  background: #ea580c;
+  color: #ffffff;
+}
+
+/* ── Physical Stack Container ── */
+.peel-deck-container {
+  position: relative;
+  width: 100%;
+  min-height: 360px;
+  margin: 10px 0 6px;
+  perspective: 1200px;
+}
+
+/* Base Paper Sheet in Stack */
+.peel-card-sheet {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  background: #ffffff;
+  border: 2px solid #3d3226;
+  border-radius: 8px;
+  box-sizing: border-box;
+  transition: transform 0.26s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.26s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Layer 2: Sheet underneath with realistic paper offset */
+.sheet-depth-2 {
+  transform: translateY(16px) scale(0.97);
+  background: #f8f2e6;
+  opacity: 0.65;
+  box-shadow: 2px 2px 0 rgba(61, 50, 38, 0.4);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Layer 1: Immediate next sheet preview */
+.sheet-depth-1 {
+  transform: translateY(8px) scale(0.985);
+  background: #fdf9f0;
+  opacity: 0.92;
+  box-shadow: 3px 3px 0 rgba(61, 50, 38, 0.6);
+  pointer-events: none;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px 20px;
+}
+
+.sheet-preview-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #8c7b64;
+  letter-spacing: 0.04em;
+}
+
+/* Top Active Sheet */
+.sheet-active {
+  z-index: 5;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 #3d3226, 0 16px 36px rgba(61, 50, 38, 0.12);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  user-select: none;
+}
+
+.sheet-active:hover {
+  transform: translateY(-2px);
+  box-shadow: 7px 7px 0 #3d3226, 0 20px 42px rgba(61, 50, 38, 0.18);
+}
+
+.sheet-highlight {
+  background: linear-gradient(180deg, #fffefb 0%, #ffffff 100%);
+}
+
+/* Accent Top Strip */
+.sheet-accent-top {
+  height: 5px;
+  width: 100%;
+  background: var(--sheet-accent, #ea580c);
+  flex-shrink: 0;
+}
+
+/* ── Interactive Dog-Ear Peel Corner ── */
+.sheet-peel-corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 64px;
+  height: 64px;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 6px 8px 0 0;
+}
+
+/* Folded Paper Triangle Flap */
+.peel-corner-fold {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 46px 46px 0;
+  border-color: transparent #3d3226 transparent transparent;
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+  filter: drop-shadow(-3px 3px 5px rgba(61, 50, 38, 0.25));
+}
+
+.peel-corner-fold::after {
+  content: '';
+  position: absolute;
+  top: -46px;
+  right: -46px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 42px 42px 0;
+  border-color: transparent #f4ede2 transparent transparent;
+}
+
+.sheet-active:hover .peel-corner-fold,
+.sheet-peel-corner:hover .peel-corner-fold {
+  border-width: 0 54px 54px 0;
+}
+
+.sheet-active:hover .peel-corner-fold::after,
+.sheet-peel-corner:hover .peel-corner-fold::after {
+  top: -54px;
+  right: -54px;
+  border-width: 0 50px 50px 0;
+}
+
+.peel-corner-hint {
+  position: relative;
+  z-index: 12;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 8.5px;
+  font-weight: 800;
+  color: #3d3226;
+  letter-spacing: 0.04em;
+  transform: rotate(45deg) translate(8px, -2px);
+  pointer-events: none;
+}
+
+/* ── Active Sheet Body ── */
+.sheet-body {
+  padding: 24px 28px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  flex: 1;
+}
+
+.sheet-top-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding-right: 48px; /* Leave room for dog-ear */
+}
+
+.sheet-badge-group {
   display: flex;
   align-items: center;
   gap: 8px;
-  padding: 11px 14px;
-  border-bottom: 1.5px dashed rgba(61,50,38,0.2);
-  background: #f4ede2;
 }
 
-.ldp-cat-icon {
-  font-size: 1.05rem;
-  line-height: 1;
-  flex-shrink: 0;
-}
-
-.ldp-cat-title {
-  font-family: var(--font-mono, monospace);
-  font-size: 10px;
-  font-weight: 800;
-  color: #1f1b16;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  flex: 1;
-}
-
-.ldp-cat-count {
-  font-family: var(--font-mono, monospace);
-  font-size: 9px;
-  font-weight: 700;
-  background: #3d3226;
-  color: #fef08a;
-  padding: 2px 6px;
-  border-radius: 3px;
-}
-
-/* Items list */
-.ldp-cat-items {
-  display: flex;
-  flex-direction: column;
-}
-
-/* ── Individual Achievement Item ── */
-.ldp-item {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 8px;
-  padding: 10px 14px;
-  border-bottom: 1px solid rgba(61,50,38,0.08);
-  cursor: default;
-  transition: background 0.18s ease;
-}
-
-.ldp-item:last-child { border-bottom: none; }
-
-.ldp-item:hover,
-.ldp-item--active {
-  background: rgba(254,240,138,0.25);
-}
-
-/* Highlighted top item */
-.ldp-item--star {
-  border-left: 3px solid #3d3226;
-  padding-left: 11px;
-}
-
-.ldp-item--star .ldp-item-rank {
-  color: #1f1b16;
-  font-weight: 800;
-}
-
-.ldp-item-left {
-  display: flex;
-  flex-direction: column;
-  gap: 3px;
-  flex: 1;
-  min-width: 0;
-}
-
-.ldp-item-rank {
-  font-family: var(--font-mono, monospace);
-  font-size: 9px;
-  font-weight: 700;
-  color: #9b8c78;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-.ldp-item-title {
-  font-family: var(--font-sans, sans-serif);
-  font-size: 12.5px;
-  font-weight: 700;
-  color: #1f1b16;
-  margin: 0;
-  line-height: 1.35;
-}
-
-.ldp-item-detail {
-  font-family: var(--font-sans, sans-serif);
+.sheet-cat-badge {
+  font-family: var(--font-mono, 'Space Mono', monospace);
   font-size: 11px;
-  line-height: 1.5;
-  color: #6b5c44;
-  margin: 4px 0 0;
-  animation: detailReveal 0.2s ease;
-}
-
-@keyframes detailReveal {
-  from { opacity: 0; transform: translateY(-4px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.ldp-item-prize {
-  font-family: var(--font-mono, monospace);
-  font-size: 9px;
-  font-weight: 800;
+  font-weight: 700;
   color: #3d3226;
   background: #f4ede2;
   border: 1px solid #3d3226;
-  padding: 2px 6px;
+  padding: 3px 9px;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.cat-emoji {
+  font-size: 12px;
+  line-height: 1;
+}
+
+.sheet-rank-badge {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 800;
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  padding: 3px 9px;
+  border-radius: 4px;
+}
+
+.sheet-index-mark {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  color: #8c7b64;
+  letter-spacing: 0.06em;
+}
+
+/* Title */
+.sheet-title {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: clamp(1.35rem, 2.5vw, 1.7rem);
+  font-weight: 900;
+  color: #1f1b16;
+  margin: 0;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+/* Context / Detail */
+.sheet-desc {
+  font-family: var(--font-sans, 'Space Grotesk', sans-serif);
+  font-size: 14.5px;
+  font-weight: 500;
+  line-height: 1.62;
+  color: #4b3e2f;
+  margin: 0;
+  flex: 1;
+}
+
+/* Footer Row */
+.sheet-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding-top: 16px;
+  border-top: 1.5px dashed rgba(61, 50, 38, 0.2);
+  margin-top: auto;
+}
+
+.sheet-outcome-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.outcome-kicker {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #854d0e;
+  letter-spacing: 0.06em;
+}
+
+.outcome-pill {
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #1f1b16;
+  background: #fef08a;
+  border: 1.5px solid #3d3226;
+  padding: 3px 10px;
+  border-radius: 4px;
+  box-shadow: 1.5px 1.5px 0 #3d3226;
+}
+
+.sheet-peel-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #3d3226;
+  color: #fdf9f1;
+  border: 1.5px solid #1f1b16;
+  border-radius: 4px;
+  padding: 7px 14px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #1f1b16;
+  transition: all 0.2s ease;
+}
+
+.sheet-peel-action-btn:hover {
+  background: #ea580c;
+  color: #ffffff;
+  border-color: #3d3226;
+  box-shadow: 3px 3px 0 #3d3226;
+  transform: translateY(-1px);
+}
+
+.peel-btn-arrow {
+  font-size: 13px;
+  line-height: 1;
+}
+
+/* Subtle Hanko seal mark */
+.sheet-hanko-stamp {
+  position: absolute;
+  bottom: 18px;
+  right: 180px;
+  width: 26px;
+  height: 26px;
+  border: 1.5px solid #dc2626;
   border-radius: 3px;
-  white-space: nowrap;
-  flex-shrink: 0;
-  align-self: flex-start;
-  box-shadow: 1px 1px 0 rgba(61,50,38,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #dc2626;
+  font-size: 10px;
+  font-weight: 900;
+  transform: rotate(-8deg);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ── Realistic Paper Peel Animation ── */
+.is-peeling-away {
+  animation: peelAwayKeyframe 0.42s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes peelAwayKeyframe {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+    transform-origin: bottom left;
+  }
+  35% {
+    transform: translate(24px, -28px) rotate(-6deg) skewY(-3deg);
+    box-shadow: -15px 25px 35px rgba(61, 50, 38, 0.35);
+  }
+  100% {
+    transform: translate(80px, -95px) rotate(-16deg) scale(0.92);
+    opacity: 0;
+  }
+}
+
+.is-peeling-back {
+  animation: peelBackKeyframe 0.42s cubic-bezier(0.2, 0.8, 0.25, 1) forwards;
+  pointer-events: none;
+}
+
+@keyframes peelBackKeyframe {
+  0% {
+    transform: translate(-80px, -95px) rotate(16deg) scale(0.92);
+    opacity: 0;
+    transform-origin: bottom right;
+  }
+  65% {
+    transform: translate(-20px, -24px) rotate(4deg) skewY(2deg);
+    box-shadow: 15px 25px 35px rgba(61, 50, 38, 0.35);
+  }
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ── Deck Navigation Controls Below Deck ── */
+.peel-deck-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+  padding: 6px 0;
+}
+
+.peel-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: #ffffff;
+  border: 1.5px solid #3d3226;
+  border-radius: 6px;
+  padding: 8px 16px;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #3d3226;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #3d3226;
+  transition: all 0.2s ease;
+}
+
+.peel-nav-btn:hover:not(:disabled) {
+  background: #f4ede2;
+  transform: translateY(-2px);
+  box-shadow: 3px 3px 0 #3d3226;
+}
+
+.peel-nav-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.peel-nav-btn.next-btn {
+  background: #3d3226;
+  color: #fdf9f1;
+  border-color: #1f1b16;
+  box-shadow: 2px 2px 0 #1f1b16;
+}
+
+.peel-nav-btn.next-btn:hover:not(:disabled) {
+  background: #ea580c;
+  color: #ffffff;
+  border-color: #3d3226;
+  box-shadow: 3px 3px 0 #3d3226;
+}
+
+/* Dot Navigation */
+.peel-sheet-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.peel-dot {
+  width: 26px;
+  height: 26px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1.5px solid #3d3226;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: var(--font-mono, 'Space Mono', monospace);
+  font-size: 10px;
+  font-weight: 700;
+  color: #3d3226;
+  transition: all 0.18s ease;
+  box-shadow: 1px 1px 0 #3d3226;
+}
+
+.peel-dot:hover {
+  background: #f4ede2;
+  transform: translateY(-1px);
+}
+
+.peel-dot.is-active-dot {
+  background: #3d3226;
+  color: #fef08a;
+  box-shadow: 2px 2px 0 #1f1b16;
+  transform: scale(1.08);
+}
+
+.peel-deck-hint {
+  text-align: center;
+  font-family: var(--font-hand, 'Caveat', cursive);
+  font-size: 15px;
+  color: #8c7b64;
+  margin: -4px 0 0;
 }
 
 /* ==========================================================================
-   RESPONSIVE
+   RESPONSIVE MEDIA QUERIES
    ========================================================================== */
 
-@media (max-width: 1080px) {
-  .ldp-grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 640px) {
-  .ldp-grid { grid-template-columns: 1fr; }
-  .ldp-stat-bar { flex-wrap: wrap; }
-  .ldp-stat {
-    flex: 0 0 50%;
-    border-right: none;
-    border-bottom: 1px solid rgba(61,50,38,0.1);
+@media (max-width: 768px) {
+  .peel-deck-container {
+    min-height: 420px;
+  }
+  .sheet-body {
+    padding: 18px 18px 16px;
+    gap: 12px;
+  }
+  .sheet-title {
+    font-size: 1.25rem;
+  }
+  .sheet-desc {
+    font-size: 13.5px;
+  }
+  .sheet-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .sheet-hanko-stamp {
+    display: none;
+  }
+  .sheet-peel-action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  .peel-deck-controls {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .peel-nav-btn {
+    width: 100%;
+    justify-content: center;
   }
 }
