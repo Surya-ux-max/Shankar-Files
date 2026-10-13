@@ -26,6 +26,12 @@ export default function Contributions() {
         <div className="ambient-patch patch-samurai-crimson" />
       </div>
 
+      {/* Storyboard corner marks */}
+      <div className="cnt-frame" aria-hidden="true">
+        <span className="cf-corner cf-tl" /><span className="cf-corner cf-tr" />
+        <span className="cf-corner cf-bl" /><span className="cf-corner cf-br" />
+      </div>
+
       <div className="contributions-container">
         {/* Section Header */}
         <header className="contributions-header">

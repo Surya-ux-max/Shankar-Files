@@ -26,6 +26,12 @@ export default function Projects() {
         <div className="ambient-patch patch-sunset-amber" />
       </div>
 
+      {/* Storyboard corner marks */}
+      <div className="prj-frame" aria-hidden="true">
+        <span className="pf-corner pf-tl" /><span className="pf-corner pf-tr" />
+        <span className="pf-corner pf-bl" /><span className="pf-corner pf-br" />
+      </div>
+
       <div className="projects-container">
         {/* Section Header */}
         <header className="projects-header">
