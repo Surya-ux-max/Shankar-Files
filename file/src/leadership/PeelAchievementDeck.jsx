@@ -4,28 +4,24 @@ export default function PeelAchievementDeck({ categories }) {
   const [selectedCat, setSelectedCat] = useState('all')
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPeeling, setIsPeeling] = useState(false)
-  const [peelDirection, setPeelDirection] = useState('next') // 'next' | 'prev'
+  const [peelDirection, setPeelDirection] = useState('next')
 
-  // Flatten all achievements with their parent category details
   const allAchievements = useMemo(() => {
     return categories.flatMap((cat) =>
       cat.achievements.map((item) => ({
         ...item,
         categoryId: cat.id,
         categoryLabel: cat.label,
-        categoryIcon: cat.icon,
         categoryColor: cat.color,
       }))
     )
   }, [categories])
 
-  // Filtered list based on current category tab
   const items = useMemo(() => {
     if (selectedCat === 'all') return allAchievements
     return allAchievements.filter((a) => a.categoryId === selectedCat)
   }, [allAchievements, selectedCat])
 
-  // Guard index when category changes
   const safeIndex = currentIndex >= items.length ? 0 : currentIndex
   const currentItem = items[safeIndex] || items[0]
   const nextItem = items[(safeIndex + 1) % items.length]
@@ -36,7 +32,6 @@ export default function PeelAchievementDeck({ categories }) {
     setCurrentIndex(0)
   }
 
-  // Peel to Next card animation trigger
   const handlePeelNext = () => {
     if (isPeeling || items.length <= 1) return
     setPeelDirection('next')
@@ -48,7 +43,6 @@ export default function PeelAchievementDeck({ categories }) {
     }, 420)
   }
 
-  // Peel back to Previous card
   const handlePeelPrev = () => {
     if (isPeeling || items.length <= 1) return
     setPeelDirection('prev')
@@ -66,8 +60,8 @@ export default function PeelAchievementDeck({ categories }) {
   }
 
   return (
-    <div className="peel-deck-section" aria-label="Interactive Achievement Peel Deck">
-      {/* ── Category Domain Filter Tabs ── */}
+    <div className="peel-deck-section" aria-label="Achievement Deck">
+      {/* Category Domain Filter Tabs */}
       <div className="peel-deck-tabs" role="tablist">
         <button
           type="button"
@@ -76,7 +70,6 @@ export default function PeelAchievementDeck({ categories }) {
           role="tab"
           aria-selected={selectedCat === 'all'}
         >
-          <span className="peel-tab-icon">✦</span>
           <span>All Milestones</span>
           <span className="peel-tab-count">{allAchievements.length}</span>
         </button>
@@ -92,7 +85,6 @@ export default function PeelAchievementDeck({ categories }) {
               role="tab"
               aria-selected={isActive}
             >
-              <span className="peel-tab-icon">{cat.icon}</span>
               <span>{cat.label}</span>
               <span className="peel-tab-count">{cat.achievements.length}</span>
             </button>
@@ -100,10 +92,9 @@ export default function PeelAchievementDeck({ categories }) {
         })}
       </div>
 
-      {/* ── Physical Tactile Peel Deck Canvas ── */}
+      {/* Peel Deck Canvas */}
       <div className="peel-deck-container">
-
-        {/* ── Stacked Paper Sheets Behind (Real Depth) ── */}
+        {/* Stacked Paper Sheets Behind */}
         {thirdItem && items.length > 2 && (
           <div className="peel-card-sheet sheet-depth-2" aria-hidden="true" />
         )}
@@ -111,13 +102,13 @@ export default function PeelAchievementDeck({ categories }) {
         {nextItem && items.length > 1 && (
           <div className="peel-card-sheet sheet-depth-1" aria-hidden="true">
             <div className="sheet-preview-row">
-              <span className="peek-tag">NEXT UP: {nextItem.title}</span>
+              <span className="peek-tag">Next: {nextItem.title}</span>
               <span className="peek-rank">{nextItem.rank}</span>
             </div>
           </div>
         )}
 
-        {/* ── Active Top Peel Card ── */}
+        {/* Active Top Card */}
         {currentItem && (
           <div
             className={`peel-card-sheet sheet-active ${
@@ -126,22 +117,22 @@ export default function PeelAchievementDeck({ categories }) {
             style={{ '--sheet-accent': currentItem.categoryColor }}
             onClick={handlePeelNext}
             role="region"
-            aria-label={`Achievement Sheet ${safeIndex + 1} of ${items.length}: ${currentItem.title}`}
+            aria-label={`Achievement ${safeIndex + 1} of ${items.length}: ${currentItem.title}`}
           >
             {/* Top Accent Strip */}
             <div className="sheet-accent-top" />
 
-            {/* Interactive Dog-Ear Peel Corner */}
+            {/* Corner */}
             <div
               className="sheet-peel-corner"
-              title="Click or drag to peel to next sheet"
+              title="Click to view next achievement"
               onClick={(e) => {
                 e.stopPropagation()
                 handlePeelNext()
               }}
             >
               <div className="peel-corner-fold" />
-              <span className="peel-corner-hint">PEEL ↷</span>
+              <span className="peel-corner-hint">NEXT</span>
             </div>
 
             {/* Main Sheet Body */}
@@ -150,27 +141,25 @@ export default function PeelAchievementDeck({ categories }) {
               <div className="sheet-top-meta">
                 <div className="sheet-badge-group">
                   <span className="sheet-cat-badge">
-                    <span className="cat-emoji">{currentItem.categoryIcon}</span>
                     {currentItem.categoryLabel}
                   </span>
                   <span className="sheet-rank-badge">{currentItem.rank}</span>
                 </div>
 
                 <div className="sheet-index-mark">
-                  <span>SHEET {String(safeIndex + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
+                  <span>{String(safeIndex + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
                 </div>
               </div>
 
               {/* Title */}
               <h3 className="sheet-title">{currentItem.title}</h3>
 
-              {/* Description Context */}
+              {/* Description */}
               <p className="sheet-desc">{currentItem.detail}</p>
 
               {/* Card Footer */}
               <div className="sheet-footer">
                 <div className="sheet-outcome-box">
-                  <span className="outcome-kicker">HONOUR //</span>
                   <span className="outcome-pill">{currentItem.prize}</span>
                 </div>
 
@@ -182,34 +171,27 @@ export default function PeelAchievementDeck({ categories }) {
                     handlePeelNext()
                   }}
                 >
-                  <span>Peel Next Sheet</span>
-                  <span className="peel-btn-arrow">↷</span>
+                  <span>Next Achievement</span>
                 </button>
               </div>
-            </div>
-
-            {/* Subtle Storyboard Stamp Mark */}
-            <div className="sheet-hanko-stamp">
-              <span>承認</span>
             </div>
           </div>
         )}
       </div>
 
-      {/* ── Deck Navigation & Sheet Progress Indicator ── */}
+      {/* Deck Controls */}
       <div className="peel-deck-controls">
         <button
           type="button"
           className="peel-nav-btn prev-btn"
           onClick={handlePeelPrev}
           disabled={isPeeling || items.length <= 1}
-          aria-label="Previous Achievement Sheet"
+          aria-label="Previous Achievement"
         >
-          <span>↶</span>
-          <span>Previous Sheet</span>
+          <span>Previous</span>
         </button>
 
-        {/* Sheet Dots / Thumbnails */}
+        {/* Sheet Dots */}
         <div className="peel-sheet-dots" role="tablist" aria-label="Achievement sheets">
           {items.map((it, idx) => (
             <button
@@ -217,7 +199,7 @@ export default function PeelAchievementDeck({ categories }) {
               type="button"
               className={`peel-dot ${idx === safeIndex ? 'is-active-dot' : ''}`}
               onClick={() => handleJumpTo(idx)}
-              aria-label={`Jump to sheet ${idx + 1}: ${it.title}`}
+              aria-label={`Go to sheet ${idx + 1}: ${it.title}`}
               title={`${idx + 1}. ${it.title}`}
             >
               <span className="dot-num">{idx + 1}</span>
@@ -230,16 +212,14 @@ export default function PeelAchievementDeck({ categories }) {
           className="peel-nav-btn next-btn"
           onClick={handlePeelNext}
           disabled={isPeeling || items.length <= 1}
-          aria-label="Next Achievement Sheet"
+          aria-label="Next Achievement"
         >
-          <span>Peel Next</span>
-          <span>↷</span>
+          <span>Next</span>
         </button>
       </div>
 
-      {/* Helpful Interactive Hint */}
       <p className="peel-deck-hint">
-        ✦ Click anywhere on the sheet or the folded top-right corner to peel to the next honour
+        Click the card or buttons to navigate through achievements
       </p>
     </div>
   )

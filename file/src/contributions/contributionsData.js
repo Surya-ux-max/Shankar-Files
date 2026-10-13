@@ -29,9 +29,7 @@ export const PHOTO_FRAMES_DATA = [
     period: '2026 – Present',
     badge: '4 Merged Upstream Contributions',
     status: 'ACTIVE CONTRIBUTOR',
-    sealText: '承認',
     sealSub: 'MERGED',
-    kanjiTag: '大名',
     summary:
       'Authoring and maintaining upstream contributions across GPU-accelerated cloud infrastructure, low-overhead container runtime interfaces, and static nullness safety checkers.',
     stats: [
@@ -53,9 +51,7 @@ export const PHOTO_FRAMES_DATA = [
     countText: '3 contributions',
     period: '2026 – Present',
     status: 'MERGED UPSTREAM',
-    sealText: '皆伝',
     sealSub: 'NVIDIA',
-    kanjiTag: '雲上',
     colorTheme: '#76b900',
     summary: 'Core Kubernetes admission control, container NRI runtime hooks, and NullAway static analysis.',
     items: [
@@ -94,9 +90,7 @@ export const PHOTO_FRAMES_DATA = [
     countText: '1 contribution',
     period: '2026 – Present',
     status: 'MERGED UPSTREAM',
-    sealText: '免許',
     sealSub: 'UBER',
-    kanjiTag: '俊敏',
     colorTheme: '#000000',
     summary: 'Platform tooling and developer ecosystem resilience improvements.',
     items: [

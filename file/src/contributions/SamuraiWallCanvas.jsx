@@ -18,7 +18,7 @@ export default function SamuraiWallCanvas({ onOpenModal }) {
 
         {/* Quick Active Spotlight Status Pill */}
         <div className="samurai-spotlight-status">
-          <span className="spotlight-icon">💡</span>
+          <span className="prompt-dot" />
           <span className="spotlight-text">
             {hoveredFrame
               ? `Spotlight: ${hoveredFrame.toUpperCase()} FRAME`

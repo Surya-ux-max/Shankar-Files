@@ -31,7 +31,6 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
             <div className="frame-parchment-canvas">
               {/* Header */}
               <div className="frame-clean-header">
-                <span className="frame-kicker">MILESTONE RECORD</span>
                 <h3 className="frame-heading">Open Source Contributor</h3>
                 <div className="frame-meta-line">
                   <span className="meta-time">2026 – Present</span>
@@ -58,12 +57,9 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 </div>
               </div>
 
-              {/* Clean Footer with Vermillion Hanko Seal */}
+              {/* Clean Footer */}
               <div className="frame-clean-footer">
-                <span className="footer-action-text">Click to inspect spec ↗</span>
-                <div className="footer-hanko-seal" title="Officially Merged">
-                  <span className="seal-char">承認</span>
-                </div>
+                <span className="footer-action-text">Click to inspect specification</span>
               </div>
             </div>
           </div>
@@ -128,12 +124,9 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 </div>
               </div>
 
-              {/* Clean Footer with Vermillion Hanko Seal */}
+              {/* Clean Footer */}
               <div className="frame-clean-footer">
-                <span className="footer-action-text">Click for deliverables ↗</span>
-                <div className="footer-hanko-seal" title="NVIDIA Upstream Verified">
-                  <span className="seal-char">皆伝</span>
-                </div>
+                <span className="footer-action-text">Click for deliverables</span>
               </div>
             </div>
           </div>
@@ -190,12 +183,9 @@ export default function WallPhotoFrames({ onSelectFrame, hoveredFrame, setHovere
                 <span className="highlight-tag">Maintainer Approved</span>
               </div>
 
-              {/* Clean Footer with Vermillion Hanko Seal */}
+              {/* Clean Footer */}
               <div className="frame-clean-footer">
-                <span className="footer-action-text">Click for deliverables ↗</span>
-                <div className="footer-hanko-seal" title="Uber Upstream Verified">
-                  <span className="seal-char">免許</span>
-                </div>
+                <span className="footer-action-text">Click for deliverables</span>
               </div>
             </div>
           </div>

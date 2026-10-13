@@ -34,7 +34,7 @@ export default function ContributionModal({ frame, onClose }) {
         {/* Blueprint Sheet Header */}
         <header className="sheet-header">
           <div className="sheet-meta-tag">
-            <span className="cad-spec">SPEC // OSS-CONTRIB-{frame.id.toUpperCase()}</span>
+            <span className="cad-spec">CONTRIBUTION {frame.id.toUpperCase()}</span>
             <span className="cad-status">{frame.status}</span>
           </div>
 
@@ -134,7 +134,7 @@ export default function ContributionModal({ frame, onClose }) {
 
         {/* Sheet Footer */}
         <footer className="sheet-footer">
-          <span className="footer-doc-code">VERIFIED UPSTREAM ARTIFACT // REPO: 2026-PRESENT</span>
+          <span className="footer-doc-code">VERIFIED UPSTREAM ARTIFACT</span>
           <button type="button" className="footer-done-btn" onClick={onClose}>
             Close Inspection
           </button>

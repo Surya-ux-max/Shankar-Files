@@ -50,7 +50,7 @@ export default function InternshipModal({ internship, onClose }) {
         {/* Blueprint Sheet Header */}
         <header className="sheet-header">
           <div className="sheet-meta-tag">
-            <span className="cad-spec">SPEC // EXP-SYS-{id.toUpperCase()}</span>
+            <span className="cad-spec">EXPERIENCE {id.toUpperCase()}</span>
             <span className="cad-status">{badgeText}</span>
           </div>
 
@@ -227,7 +227,7 @@ export default function InternshipModal({ internship, onClose }) {
 
         {/* Modal Footer */}
         <footer className="sheet-footer">
-          <div className="cad-ref-id">REF // {company} · {role}</div>
+          <div className="cad-ref-id">{company} · {role}</div>
           <button type="button" className="sheet-done-btn" onClick={onClose}>
             Close Blueprint
           </button>

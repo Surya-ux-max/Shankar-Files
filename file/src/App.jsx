@@ -8,6 +8,7 @@ import Contributions from './contributions/Contributions'
 import Projects from './projects/Projects'
 import WelcomeSplash from './hero/WelcomeSplash'
 import Leadership from './leadership/Leadership'
+import CTA from './cta/CTA'
 
 export default function App() {
   return (
@@ -21,6 +22,7 @@ export default function App() {
       <Contributions />
       <Projects />
       <Leadership />
+      <CTA />
     </div>
   )
 }

@@ -67,7 +67,7 @@ export default function Projects() {
             >
               <div className="mobile-card-top-row">
                 <span className="mobile-project-num">{proj.num}</span>
-                <span className="mobile-summit-badge">🏔️ {proj.elevation}</span>
+                <span className="mobile-summit-badge">{proj.elevation}</span>
               </div>
 
               <h3 className="mobile-project-title">{proj.title}</h3>
@@ -86,7 +86,7 @@ export default function Projects() {
               </div>
 
               <div className="mobile-card-footer">
-                <span className="mobile-inspect-link">Explore Blueprint Specification ↗</span>
+                <span className="mobile-inspect-link">Explore Project Specification</span>
               </div>
             </div>
           ))}

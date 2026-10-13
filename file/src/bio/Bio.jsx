@@ -1,4 +1,4 @@
-﻿import './Bio.css'
+import './Bio.css'
 
 export default function Bio() {
 
@@ -6,25 +6,21 @@ export default function Bio() {
     {
       no: '01',
       title: 'Full-Stack Web',
-      jp: 'ウェブ開発',
       desc: 'Building responsive, richly interactive web applications with clean, purposeful design and precision.',
     },
     {
       no: '02',
       title: 'Backend Systems',
-      jp: 'バックエンド',
       desc: 'Architecting scalable server-side systems, robust APIs and high-performance databases built to last.',
     },
     {
       no: '03',
       title: 'Mobile Applications',
-      jp: 'モバイルアプリ',
       desc: 'Developing smooth, high-performance cross-platform mobile experiences that feel native and fluid.',
     },
     {
       no: '04',
       title: 'AI & Machine Learning',
-      jp: '人工知能',
       desc: 'Engineering intelligent pipelines, models and pragmatic AI integrations that solve real problems.',
     },
   ]
@@ -106,7 +102,7 @@ export default function Bio() {
                 stroke="#6b5c44" strokeWidth="2.5" fill="rgba(254,243,220,0.93)" strokeLinecap="round"/>
             </svg>
             <div className="bph-inner">
-              <span className="bph-chapter">冒険の書 · CHAPTER 02</span>
+              <span className="bph-chapter">CHAPTER 02</span>
               <h2 className="bph-title">The Artisan's Story</h2>
               <svg className="bph-underline" viewBox="0 0 280 12" fill="none">
                 <path d="M4 6 C70 2, 180 10, 276 5" stroke="#6b5c44" strokeWidth="2" strokeLinecap="round"/>
@@ -132,7 +128,7 @@ export default function Bio() {
             <div className="page-margin-line" aria-hidden="true" />
 
             <div className="page-tag-row">
-              <span className="page-tag">CHARACTER BIO // プロフィール</span>
+              <span className="page-tag">PROFILE &amp; BACKGROUND</span>
               <span className="page-rank">RANK: APPRENTICE MASTER</span>
             </div>
 
@@ -227,7 +223,7 @@ export default function Bio() {
               <path d="M0 9 C133 4, 266 14, 400 9 C533 4, 666 14, 800 9"
                 stroke="#9b8c78" strokeWidth="1.2" strokeLinecap="round"/>
             </svg>
-            <span className="disc-header-label">職人技 · DISCIPLINES</span>
+            <span className="disc-header-label">DISCIPLINES</span>
             <svg width="100%" height="18" viewBox="0 0 800 18" fill="none" preserveAspectRatio="none">
               <path d="M0 9 C133 14, 266 4, 400 9 C533 14, 666 4, 800 9"
                 stroke="#9b8c78" strokeWidth="1.2" strokeLinecap="round"/>
@@ -252,7 +248,6 @@ export default function Bio() {
 
                 <div className="disc-title-block">
                   <h3 className="disc-title">{d.title}</h3>
-                  <span className="disc-jp">{d.jp}</span>
                 </div>
 
                 <p className="disc-desc">{d.desc}</p>

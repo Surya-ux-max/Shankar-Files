@@ -1,4 +1,4 @@
-﻿import { useState, useRef } from 'react'
+import { useState, useRef } from 'react'
 import './Hero.css'
 import shankarPhoto from '../image/shankar1.jpeg'
 
@@ -161,7 +161,7 @@ export default function Hero() {
             <div className="panel-header">
               <span className="panel-num">No. 01</span>
               <span className="panel-rule">SPECIALTY &amp; FOCUS</span>
-              <span className="panel-num">✦</span>
+              <span className="panel-num">•</span>
             </div>
             <div className="roles-grid">
               <div className="role-item">
@@ -255,16 +255,6 @@ export default function Hero() {
                 <div className="np-divider" />
                 <span className="np-rank">BUILDER</span>
               </div>
-            </div>
-
-            <div className="corner-tea" title="Matcha powered">
-              <span className="tea-steam-anim">♨</span>
-              <span className="tea-emoji">🍵</span>
-            </div>
-
-            <div className="lucky-charm">
-              <span className="charm-emoji">🎐</span>
-              <span className="charm-text">Good vibes</span>
             </div>
           </div>
 

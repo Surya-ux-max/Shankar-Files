@@ -33,7 +33,7 @@ export default function ProjectModal({ project, onClose }) {
         {/* Blueprint Sheet Header */}
         <header className="sheet-header">
           <div className="sheet-meta-tag">
-            <span className="cad-spec">SPEC // PRJ-SYS-{project.id.toUpperCase()}</span>
+            <span className="cad-spec">PROJECT {project.id.toUpperCase()}</span>
             <span className="cad-status">{project.status}</span>
           </div>
 
@@ -53,7 +53,7 @@ export default function ProjectModal({ project, onClose }) {
           <div className="modal-title-section">
             <div className="modal-title-top">
               <span className="modal-num-badge">PROJECT {project.num}</span>
-              <span className="modal-summit-tag">🏔️ {project.elevation}</span>
+              <span className="modal-summit-tag">{project.elevation}</span>
             </div>
 
             <h3 id="modal-project-title" className="modal-main-heading">
@@ -74,7 +74,7 @@ export default function ProjectModal({ project, onClose }) {
             <div className="modal-deliverables-list">
               {project.details.map((detail, idx) => (
                 <div key={idx} className="modal-deliverable-item">
-                  <span className="deliverable-bullet">▸</span>
+                  <span className="deliverable-bullet">•</span>
                   <p className="deliverable-text">{detail}</p>
                 </div>
               ))}

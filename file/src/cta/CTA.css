@@ -1,0 +1,710 @@
+/* ==========================================================================
+   CTA SECTION & HALF-SCREEN DISPLAY TYPOGRAPHY STYLES
+   ========================================================================== */
+
+.cta-section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #faf6ee;
+  color: #3d3226;
+  overflow: hidden;
+  padding: 80px 24px 40px;
+  box-sizing: border-box;
+}
+
+/* Drafting Paper Background & Subtle Grid Texture */
+.cta-paper-bg {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(circle at 50% 50%, rgba(217, 119, 6, 0.05) 0%, transparent 60%),
+    linear-gradient(to right, rgba(107, 92, 68, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(107, 92, 68, 0.04) 1px, transparent 1px);
+  background-size: 100% 100%, 32px 32px, 32px 32px;
+  z-index: 0;
+}
+
+/* Storyboard Drafting Corner Marks */
+.cta-frame-corner {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.cta-frame-corner::before,
+.cta-frame-corner::after {
+  content: '';
+  position: absolute;
+  background-color: #9b8c78;
+}
+
+.cta-fc-tl { top: 24px; left: 24px; }
+.cta-fc-tl::before { top: 0; left: 0; width: 14px; height: 1.5px; }
+.cta-fc-tl::after  { top: 0; left: 0; width: 1.5px; height: 14px; }
+
+.cta-fc-tr { top: 24px; right: 24px; }
+.cta-fc-tr::before { top: 0; right: 0; width: 14px; height: 1.5px; }
+.cta-fc-tr::after  { top: 0; right: 0; width: 1.5px; height: 14px; }
+
+.cta-fc-bl { bottom: 24px; left: 24px; }
+.cta-fc-bl::before { bottom: 0; left: 0; width: 14px; height: 1.5px; }
+.cta-fc-bl::after  { bottom: 0; left: 0; width: 1.5px; height: 14px; }
+
+.cta-fc-br { bottom: 24px; right: 24px; }
+.cta-fc-br::before { bottom: 0; right: 0; width: 14px; height: 1.5px; }
+.cta-fc-br::after  { bottom: 0; right: 0; width: 1.5px; height: 14px; }
+
+/* ==========================================================================
+   WIND & STORM POOL CANVAS STYLES
+   ========================================================================== */
+
+.wind-storm-canvas-container {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto;
+  cursor: crosshair;
+  z-index: 1;
+}
+
+.wind-storm-canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.storm-pool-badge {
+  position: absolute;
+  bottom: 24px;
+  right: 28px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(253, 248, 237, 0.85);
+  border: 1px solid rgba(180, 130, 70, 0.3);
+  border-radius: 999px;
+  padding: 6px 14px;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.08em;
+  color: #8c6239;
+  backdrop-filter: blur(4px);
+  pointer-events: none;
+  z-index: 2;
+}
+
+.storm-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #d97706;
+  box-shadow: 0 0 8px rgba(217, 119, 6, 0.6);
+  animation: pulseStormDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseStormDot {
+  0%, 100% { transform: scale(1); opacity: 0.8; }
+  50% { transform: scale(1.4); opacity: 1; }
+}
+
+/* ==========================================================================
+   CTA CONTENT CONTAINER
+   ========================================================================== */
+
+.cta-content-wrapper {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  pointer-events: auto;
+}
+
+/* Top Section Header Tag */
+.cta-header-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(245, 238, 224, 0.9);
+  border: 1px solid rgba(107, 92, 68, 0.25);
+  border-radius: 999px;
+  padding: 6px 16px;
+  margin-bottom: 28px;
+}
+
+.cta-header-tag .tag-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #c27835;
+}
+
+.cta-header-tag .tag-text {
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: #6b5c44;
+}
+
+/* ==========================================================================
+   HALF-SCREEN GIANT DISPLAY TYPOGRAPHY
+   ========================================================================== */
+
+.cta-giant-typo-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  margin-bottom: 24px;
+}
+
+.typo-row {
+  line-height: 0.92;
+  overflow: visible;
+}
+
+.giant-text {
+  display: block;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: clamp(3.8rem, 11.2vw, 9.8rem);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+/* Line 1: Warm Sand Terracotta Accent */
+.text-accent {
+  color: #c26a27;
+  text-shadow:
+    0 1px 2px rgba(255, 255, 255, 0.6),
+    0 4px 18px rgba(194, 106, 39, 0.18);
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.text-accent:hover {
+  color: #b05c1d;
+  transform: scale(1.015);
+}
+
+/* Line 2: Deep Dark Ink */
+.text-ink {
+  color: #2b2218;
+  text-shadow:
+    0 1px 2px rgba(255, 255, 255, 0.5),
+    0 4px 22px rgba(43, 34, 24, 0.12);
+  transition: transform 0.3s ease;
+}
+
+.text-ink:hover {
+  transform: scale(1.015);
+}
+
+/* Narrative Tagline */
+.cta-narrative-container {
+  max-width: 660px;
+  margin-bottom: 38px;
+}
+
+.cta-narrative-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1rem, 1.35vw, 1.25rem);
+  line-height: 1.6;
+  color: #554433;
+  margin: 0;
+}
+
+/* ==========================================================================
+   ACTION CHANNELS & BUTTONS
+   ========================================================================== */
+
+.cta-actions-group {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 42px;
+}
+
+/* Primary "Call Me" Button */
+.cta-primary-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  background-color: #2b2218;
+  color: #fcf8f0;
+  border: 1.5px solid #2b2218;
+  border-radius: 8px;
+  padding: 16px 36px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  box-shadow: 0 6px 20px rgba(43, 34, 24, 0.18);
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.cta-primary-btn:hover {
+  background-color: #c26a27;
+  border-color: #c26a27;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(194, 106, 39, 0.28);
+}
+
+.cta-primary-btn .btn-inner-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: #34d399;
+}
+
+/* Secondary "Drop an Email" Combo */
+.cta-email-btn-wrapper {
+  display: inline-flex;
+  align-items: center;
+  background: #fdfaf3;
+  border: 1.5px solid #6b5c44;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 14px rgba(107, 92, 68, 0.1);
+  transition: all 0.22s ease;
+}
+
+.cta-email-btn-wrapper:hover {
+  border-color: #2b2218;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(107, 92, 68, 0.18);
+}
+
+.cta-secondary-btn {
+  display: inline-block;
+  padding: 16px 26px;
+  color: #2b2218;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  text-decoration: none;
+  background: transparent;
+  transition: background-color 0.2s ease;
+}
+
+.cta-secondary-btn:hover {
+  background-color: rgba(107, 92, 68, 0.06);
+}
+
+.cta-copy-chip {
+  background-color: rgba(107, 92, 68, 0.1);
+  border: none;
+  border-left: 1px solid #d4c7b2;
+  color: #554433;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 16px 14px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.cta-copy-chip:hover {
+  background-color: #2b2218;
+  color: #fdfaf3;
+}
+
+/* ==========================================================================
+   SOCIAL STRIP & AVAILABILITY
+   ========================================================================== */
+
+.cta-social-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-bottom: 48px;
+  border-bottom: 1px dashed rgba(107, 92, 68, 0.25);
+  width: 100%;
+  max-width: 820px;
+}
+
+.strip-label {
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #8c7b67;
+  letter-spacing: 0.08em;
+}
+
+.social-pill-link {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(253, 248, 237, 0.75);
+  border: 1px solid rgba(107, 92, 68, 0.25);
+  border-radius: 6px;
+  padding: 6px 14px;
+  color: #3d3226;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.social-pill-link:hover {
+  background: #3d3226;
+  color: #fdfaf3;
+  border-color: #3d3226;
+  transform: translateY(-1px);
+}
+
+.availability-live-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(52, 211, 153, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  color: #065f46;
+}
+
+.live-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: #10b981;
+  box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+}
+
+/* ==========================================================================
+   METADATA COLOPHON FOOTER
+   ========================================================================== */
+
+.cta-colophon-footer {
+  width: 100%;
+  max-width: 820px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 24px;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.72rem;
+  color: #8c7b67;
+  letter-spacing: 0.06em;
+}
+
+/* ==========================================================================
+   CALL & DISPATCH DIALOG SHEET
+   ========================================================================== */
+
+.call-dialog-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(35, 27, 18, 0.75);
+  backdrop-filter: blur(6px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  z-index: 9999;
+  animation: fadeInBackdrop 0.25s ease-out;
+}
+
+@keyframes fadeInBackdrop {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.call-dialog-sheet {
+  position: relative;
+  width: 100%;
+  max-width: 580px;
+  background: #fdfaf3;
+  border: 2px solid #3d3226;
+  border-radius: 12px;
+  box-shadow: 0 24px 60px rgba(25, 18, 11, 0.45);
+  padding: 32px 36px;
+  box-sizing: border-box;
+  animation: slideUpSheet 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes slideUpSheet {
+  from { opacity: 0; transform: translateY(24px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Corner Screws */
+.sheet-screw {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border: 1px solid #9b8c78;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: monospace;
+  font-size: 10px;
+  color: #9b8c78;
+  background: #f8f2e4;
+  line-height: 1;
+}
+
+.screw-tl { top: 12px; left: 12px; }
+.screw-tr { top: 12px; right: 12px; }
+.screw-bl { bottom: 12px; left: 12px; }
+.screw-br { bottom: 12px; right: 12px; }
+
+/* Dialog Header */
+.dialog-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.dialog-meta-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dialog-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: #10b981;
+}
+
+.dialog-meta-text {
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #6b5c44;
+}
+
+.dialog-close-btn {
+  background: transparent;
+  border: 1px solid rgba(107, 92, 68, 0.3);
+  border-radius: 6px;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #3d3226;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.dialog-close-btn:hover {
+  background: #3d3226;
+  color: #fdfaf3;
+}
+
+.dialog-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: #2b2218;
+  margin: 0 0 10px;
+  line-height: 1.25;
+}
+
+.dialog-desc {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: #554433;
+  margin: 0 0 24px;
+}
+
+/* Method Cards */
+.dialog-methods-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 24px;
+}
+
+.method-card {
+  background: #f8f3e7;
+  border: 1.5px solid #d4c7b2;
+  border-radius: 8px;
+  padding: 16px 18px;
+}
+
+.method-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 6px;
+}
+
+.method-label {
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #8c7b67;
+  letter-spacing: 0.06em;
+}
+
+.method-pill {
+  background: rgba(194, 120, 53, 0.15);
+  border: 1px solid rgba(194, 120, 53, 0.3);
+  border-radius: 4px;
+  padding: 2px 8px;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: #9c5a24;
+}
+
+.method-val {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #2b2218;
+  margin-bottom: 12px;
+}
+
+.method-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.method-action-btn {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 700;
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.18s ease;
+}
+
+.btn-call {
+  background-color: #2b2218;
+  color: #fcf8f0;
+  border: 1px solid #2b2218;
+}
+
+.btn-call:hover {
+  background-color: #c26a27;
+  border-color: #c26a27;
+}
+
+.btn-copy {
+  background-color: transparent;
+  color: #3d3226;
+  border: 1px solid #6b5c44;
+}
+
+.btn-copy:hover {
+  background-color: rgba(107, 92, 68, 0.1);
+}
+
+/* Dialog Footer Details */
+.dialog-footer-details {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 14px;
+  border-top: 1px dashed rgba(107, 92, 68, 0.25);
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.68rem;
+  color: #8c7b67;
+}
+
+.footer-detail-item {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.f-label {
+  font-size: 0.62rem;
+  text-transform: uppercase;
+}
+
+.f-val {
+  font-weight: 700;
+  color: #3d3226;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+@media (max-width: 768px) {
+  .cta-section {
+    padding: 60px 16px 32px;
+    min-height: auto;
+  }
+
+  .cta-giant-typo-block {
+    margin-bottom: 18px;
+  }
+
+  .giant-text {
+    font-size: clamp(3rem, 13vw, 5.2rem);
+  }
+
+  .cta-narrative-container {
+    margin-bottom: 28px;
+  }
+
+  .cta-actions-group {
+    flex-direction: column;
+    width: 100%;
+    gap: 12px;
+  }
+
+  .cta-primary-btn,
+  .cta-email-btn-wrapper {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .cta-secondary-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .cta-social-strip {
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 32px;
+  }
+
+  .cta-colophon-footer {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+
+  .storm-pool-badge {
+    position: static;
+    margin-top: 20px;
+  }
+}

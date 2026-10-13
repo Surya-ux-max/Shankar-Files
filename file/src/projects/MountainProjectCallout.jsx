@@ -17,7 +17,7 @@ export default function MountainProjectCallout({ project, onSelect, onClose }) {
           <span className="mpc-num">{project.num}</span>
           <span className="mpc-status">{project.status}</span>
         </div>
-        <span className="mpc-elevation">🏔 {project.elevation}</span>
+        <span className="mpc-elevation">{project.elevation}</span>
       </div>
 
       {/* Title + Category */}

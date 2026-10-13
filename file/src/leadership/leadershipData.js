@@ -1,14 +1,12 @@
 /**
  * Leadership, Achievements & Recognition Data
- * Organised into four honour categories for the ceremony hall
+ * Organised into four honour categories
  */
 
 export const LEADERSHIP_CATEGORIES = [
   {
     id: 'competitions',
     label: 'Competitions',
-    icon: '🏆',
-    kanji: '武',
     color: '#f59e0b',
     glow: 'rgba(245,158,11,0.25)',
     achievements: [
@@ -49,8 +47,6 @@ export const LEADERSHIP_CATEGORIES = [
   {
     id: 'rankings',
     label: 'Rankings',
-    icon: '⚔️',
-    kanji: '道',
     color: '#38bdf8',
     glow: 'rgba(56,189,248,0.22)',
     achievements: [
@@ -75,8 +71,6 @@ export const LEADERSHIP_CATEGORIES = [
   {
     id: 'academic',
     label: 'Academic',
-    icon: '📜',
-    kanji: '知',
     color: '#a78bfa',
     glow: 'rgba(167,139,250,0.22)',
     achievements: [
@@ -101,8 +95,6 @@ export const LEADERSHIP_CATEGORIES = [
   {
     id: 'leadership',
     label: 'Leadership',
-    icon: '🚩',
-    kanji: '将',
     color: '#86efac',
     glow: 'rgba(134,239,172,0.2)',
     achievements: [

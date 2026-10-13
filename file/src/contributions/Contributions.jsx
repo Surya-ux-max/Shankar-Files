@@ -73,7 +73,7 @@ export default function Contributions() {
               ) : (
                 <p className="mobile-card-desc">{frame.badge}</p>
               )}
-              <span className="mobile-card-link">View Specification ↗</span>
+              <span className="mobile-card-link">View Specification</span>
             </div>
           ))}
         </div>

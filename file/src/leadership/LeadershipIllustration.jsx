@@ -110,8 +110,6 @@ export default function LeadershipIllustration() {
         {/* Stem */}
         <rect x="-4" y="45" width="8" height="14" fill="#d4c090" stroke="#3d3226" strokeWidth="1.2" />
         <rect x="-14" y="59" width="28" height="6" rx="1" fill="#d4c090" stroke="#3d3226" strokeWidth="1.2" />
-        {/* Star */}
-        <text x="0" y="30" textAnchor="middle" fontSize="16" fill="#3d3226" opacity="0.7">★</text>
       </g>
 
       {/* ═══ STANDING LEADER / PRESENTER ═══ */}
@@ -300,7 +298,7 @@ export default function LeadershipIllustration() {
         { x: 148, y: 268, r: -8, label: '1,891', sub: 'LeetCode' },
         { x: 215, y: 272, r: 5, label: '19,450+', sub: 'iQOO' },
         { x: 278, y: 266, r: -4, label: '#1,247', sub: 'Global' },
-        { x: 330, y: 273, r: 6, label: '3rd 🏆', sub: 'NeoVerse' },
+        { x: 330, y: 273, r: 6, label: '3rd Place', sub: 'NeoVerse' },
       ].map(({ x, y, r, label, sub }) => (
         <g key={label} transform={`rotate(${r} ${x + 28} ${y + 18})`}>
           <rect x={x} y={y} width="56" height="36" rx="2"

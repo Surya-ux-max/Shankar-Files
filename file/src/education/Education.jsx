@@ -1,4 +1,4 @@
-﻿import { useState } from 'react'
+import { useState } from 'react'
 import './Education.css'
 
 export default function Education() {
@@ -36,7 +36,7 @@ export default function Education() {
             Journeying across the countryside farm fields from school foundations to engineering craftsmanship.
           </p>
           <div className="mobile-scroll-hint" aria-hidden="true">
-            <span>↔ Scroll horizontally to explore the farm route</span>
+            <span>Scroll horizontally to explore the farm route</span>
           </div>
         </div>
 
@@ -220,7 +220,7 @@ export default function Education() {
 
               {/* Road Sign Text Badge */}
               <div className="road-sign-badge">
-                <span>To College ➔</span>
+                <span>To College</span>
               </div>
 
               {/* ================= ANIMATED JAPANESE FARMER TRACTOR ================= */}
