@@ -7,6 +7,7 @@ import Internships from './internships/Internships'
 import Contributions from './contributions/Contributions'
 import Projects from './projects/Projects'
 import WelcomeSplash from './hero/WelcomeSplash'
+import Leadership from './leadership/Leadership'
 
 export default function App() {
   return (
@@ -19,6 +20,7 @@ export default function App() {
       <Internships />
       <Contributions />
       <Projects />
+      <Leadership />
     </div>
   )
 }
